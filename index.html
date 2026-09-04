@@ -13,6 +13,8 @@
       --text-main: #0F172A;
       --text-muted: #64748B;
       --primary: #0284C7;
+      --success: #10B981;
+      --warning: #F59E0B;
       --danger: #E11D48;
     }
 
@@ -198,7 +200,6 @@
     .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(15, 23, 42, 0.2); }
     .dot.active { background: #0F172A; width: 14px; border-radius: 4px; }
 
-    /* Cabeçalho de Marca e Logo no Card */
     .brand-header-row {
       display: flex;
       align-items: center;
@@ -218,10 +219,7 @@
       height: 20px;
       max-width: 75px;
       object-fit: contain;
-      filter: grayscale(15%);
-      transition: filter 0.2s;
     }
-    .prod-card:hover .brand-inline-logo { filter: grayscale(0%); }
 
     .prod-name { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
 
@@ -240,7 +238,6 @@
     .spec-row span { color: var(--text-muted); font-weight: 500; }
     .spec-row strong { color: var(--text-main); font-weight: 700; }
 
-    /* Ações Admin nos Cards */
     .admin-card-actions {
       display: none;
       gap: 8px;
@@ -264,7 +261,7 @@
     .btn-action.btn-del { color: var(--danger); border-color: #FECDD3; }
     .btn-action.btn-del:hover { background: var(--danger); color: white; }
 
-    /* Barra Fixa Flutuante do Admin */
+    /* Barra Fixa Flutuante do Admin com Deploy Único */
     .admin-bar {
       display: none;
       position: fixed;
@@ -272,12 +269,13 @@
       right: 24px;
       background: #0F172A;
       color: white;
-      padding: 12px 20px;
+      padding: 10px 18px;
       border-radius: 50px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       z-index: 1500;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
     body.admin-mode .admin-bar { display: flex; }
     .admin-btn {
@@ -291,6 +289,33 @@
       cursor: pointer;
     }
     .admin-btn.secondary { background: #334155; }
+    .admin-btn-deploy {
+      background: var(--success);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: none;
+      animation: pulse 2s infinite;
+    }
+    .admin-btn-discard {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #FECDD3;
+      padding: 8px 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: none;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
     .admin-btn-logout {
       background: transparent;
       border: 1px solid rgba(255,255,255,0.3);
@@ -377,7 +402,7 @@
     .modal-details span { color: var(--text-muted); font-weight: 500; }
     .modal-details strong { color: var(--text-main); }
 
-    /* Formulários e Gerenciador de Fotos */
+    /* Formulários */
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
     .form-control {
@@ -419,7 +444,6 @@
       background: #FFFFFF;
     }
 
-    /* Galeria de Edição/Remoção de Fotos */
     .photos-manager-grid {
       display: flex;
       flex-wrap: wrap;
@@ -495,9 +519,14 @@
 
   <!-- Barra Flutuante de Administração -->
   <div class="admin-bar">
-    <span>🔒 Modo Gestor Ativo</span>
+    <span id="adminStatusText">🔒 Modo Gestor Ativo</span>
     <button class="admin-btn" onclick="openProductForm()">+ Novo Equipamento</button>
     <button class="admin-btn secondary" onclick="openCategoryModal()">Categorias</button>
+    
+    <!-- Botão de Salvar Tudo e Despachar para o GitHub -->
+    <button class="admin-btn-deploy" id="btnPublishDeploy" onclick="publishAllChanges()">🚀 Publicar Alterações (<span id="pendingCount">0</span>)</button>
+    <button class="admin-btn-discard" id="btnDiscardChanges" onclick="discardPendingChanges()">Descartar Rascunho</button>
+    
     <button class="admin-btn-logout" onclick="logoutAdmin()">Sair</button>
   </div>
 
@@ -537,15 +566,14 @@
           <input type="text" id="prodBrand" class="form-control" required placeholder="Xerox Color">
         </div>
 
-        <!-- Logotipo da Marca / Fabricante -->
+        <!-- Logotipo da Marca -->
         <div class="form-group">
-          <label>Logotipo do Fabricante (Opcional - PNG com fundo transparente)</label>
+          <label>Logotipo do Fabricante (PNG Transparente)</label>
           <div id="brandLogoCurrentContainer" style="display: none; align-items: center; gap: 10px; margin-bottom: 8px;">
             <img id="brandLogoPreviewImg" class="brand-logo-preview" src="">
             <button type="button" class="btn-action btn-del" onclick="removeBrandLogo()" style="max-width: 90px;">Remover</button>
           </div>
           <input type="file" id="prodBrandLogoInput" class="form-control" accept="image/*">
-          <small style="color: var(--text-muted); font-size: 0.75rem;">Aparecerá sutilmente no card e no modal de detalhes.</small>
         </div>
 
         <div class="form-group">
@@ -553,7 +581,7 @@
           <input type="text" id="prodName" class="form-control" required placeholder="Xerox VersaLink C7020/25/30">
         </div>
 
-        <!-- Gerenciador de Fotos Existentes -->
+        <!-- Fotos Existentes -->
         <div class="form-group" id="existingPhotosGroup" style="display: none;">
           <label>Fotos Atuais do Equipamento (Clique no "✕" para remover)</label>
           <div class="photos-manager-grid" id="existingPhotosContainer"></div>
@@ -562,7 +590,6 @@
         <div class="form-group">
           <label>Adicionar Novas Fotos (Selecione uma ou mais fotos do seu PC)</label>
           <input type="file" id="prodFileInput" class="form-control" accept="image/*" multiple>
-          <small style="color: var(--text-muted); font-size: 0.75rem;">As fotos serão salvas automaticamente no repositório.</small>
         </div>
 
         <div class="form-group">
@@ -572,7 +599,7 @@
 
         <div class="form-actions">
           <button type="button" class="btn-cancel" onclick="closeFormModal()">Cancelar</button>
-          <button type="submit" class="btn-submit" id="btnSaveProd">Salvar Alterações</button>
+          <button type="submit" class="btn-submit" id="btnSaveProd">Salvar no Rascunho</button>
         </div>
       </form>
     </div>
@@ -627,17 +654,12 @@
   </footer>
 
   <script>
-    // ==========================================
-    // CONFIGURAÇÃO DO REPOSITÓRIO GITHUB
-    // ==========================================
     const GITHUB_OWNER  = 'infinitycorp-experience';
     const GITHUB_REPO   = 'portfolio';
     const JSON_PATH     = 'produtos.json';
     const GITHUB_BRANCH = 'main';
-
     const SENHA_MESTRE  = 'InfinityCorp2026';
 
-    // Biblioteca de Ícones SVG Originais
     const ICONS_MAP = {
       print: `<polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect>`,
       scanner: `<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="7" y1="15" x2="9" y2="15"></line>`,
@@ -657,47 +679,84 @@
       return `<svg class="${className}" viewBox="0 0 24 24">${inner}</svg>`;
     }
 
-    let categorias = [
-      { id: 'print', title: 'Outsourcing de Impressão', icon: 'print', ativa: true },
-      { id: 'scanner', title: 'Scanners Profissionais', icon: 'scanner', ativa: true },
-      { id: 'thermal', title: 'Impressoras Térmicas de Etiquetas', icon: 'thermal', ativa: true },
-      { id: 'computer', title: 'Notebooks, Desktops & Periféricos', icon: 'computer', ativa: true },
-      { id: 'monitor', title: 'Monitores Profissionais', icon: 'monitor', ativa: true },
-      { id: 'mobile', title: 'Dispositivos Móveis & Tablets', icon: 'mobile', ativa: true },
-      { id: 'totem', title: 'Totens de Autoatendimento', icon: 'totem', ativa: true }
-    ];
-
+    let categorias = [];
     let produtos = [];
+    
+    // CACHE / BUFFER DE ALTERAÇÕES LOCAIS
+    let pendingChangesCount = 0;
+    let pendingUploadQueue = []; // Lista de fotos pendentes de envio
+    let originalSnapshot = null; // Cópia de segurança caso queira descartar
+
     let modalImages = [];
     let modalCurrentIdx = 0;
     let editCurrentPhotos = [];
     let editCurrentBrandLogo = '';
 
-    // 1. CARREGAMENTO INICIAL
     async function loadCatalog() {
       try {
         const response = await fetch(`${JSON_PATH}?t=${new Date().getTime()}`);
-        if (!response.ok) throw new Error('Não foi possível carregar os produtos.');
+        if (!response.ok) throw new Error('Erro ao carregar catálogo.');
         const data = await response.json();
 
         if (Array.isArray(data)) {
           produtos = data;
         } else {
           produtos = data.produtos || [];
-          if (data.categorias && data.categorias.length > 0) {
-            categorias = data.categorias;
-          }
+          categorias = data.categorias || [
+            { id: 'print', title: 'Outsourcing de Impressão', icon: 'print', ativa: true },
+            { id: 'scanner', title: 'Scanners Profissionais', icon: 'scanner', ativa: true },
+            { id: 'thermal', title: 'Impressoras Térmicas de Etiquetas', icon: 'thermal', ativa: true },
+            { id: 'computer', title: 'Notebooks, Desktops & Periféricos', icon: 'computer', ativa: true },
+            { id: 'monitor', title: 'Monitores Profissionais', icon: 'monitor', ativa: true },
+            { id: 'mobile', title: 'Dispositivos Móveis & Tablets', icon: 'mobile', ativa: true },
+            { id: 'totem', title: 'Totens de Autoatendimento', icon: 'totem', ativa: true }
+          ];
         }
+
+        // Guarda o estado inicial limpo
+        originalSnapshot = JSON.stringify({ categorias, produtos });
         renderCatalog();
       } catch (err) {
-        console.error('Erro ao carregar dados:', err);
+        console.error('Erro ao ler JSON:', err);
       }
     }
 
-    // 2. RENDERIZAÇÃO COMPLETA DA PÁGINA
+    function notifyLocalChange() {
+      pendingChangesCount++;
+      updateAdminBarUI();
+    }
+
+    function updateAdminBarUI() {
+      const btnDeploy = document.getElementById('btnPublishDeploy');
+      const btnDiscard = document.getElementById('btnDiscardChanges');
+      const countSpan = document.getElementById('pendingCount');
+
+      if (pendingChangesCount > 0) {
+        btnDeploy.style.display = 'inline-block';
+        btnDiscard.style.display = 'inline-block';
+        countSpan.textContent = pendingChangesCount;
+      } else {
+        btnDeploy.style.display = 'none';
+        btnDiscard.style.display = 'none';
+      }
+    }
+
+    function discardPendingChanges() {
+      if (!confirm('Deseja descartar todas as alterações não publicadas e restaurar o catálogo do servidor?')) return;
+      const data = JSON.parse(originalSnapshot);
+      categorias = data.categorias;
+      produtos = data.produtos;
+      pendingChangesCount = 0;
+      pendingUploadQueue = [];
+      updateAdminBarUI();
+      renderCatalog();
+      alert('Alterações descartadas com sucesso!');
+    }
+
     function renderCatalog() {
       const isAdmin = checkIsAdmin();
       document.body.classList.toggle('admin-mode', isAdmin);
+      updateAdminBarUI();
 
       const navContainer = document.getElementById('dynamicNavMenu');
       const sectionsContainer = document.getElementById('dynamicSectionsContainer');
@@ -709,9 +768,7 @@
         const produtosDaCat = produtos.filter(p => p.categoria === cat.id);
         const produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
 
-        if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) {
-          return;
-        }
+        if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) return;
 
         const navItem = document.createElement('a');
         navItem.href = `#${cat.id}`;
@@ -789,7 +846,6 @@
       });
     }
 
-    // 3. CARROSSEL
     function changeCardSlide(e, btn, step) {
       e.stopPropagation();
       const container = btn.closest('.thumb-slider-container');
@@ -807,7 +863,6 @@
       dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
     }
 
-    // 4. MODAL DE ZOOM
     function openProductModal(prod) {
       modalImages = prod.imagens || [];
       modalCurrentIdx = 0;
@@ -842,7 +897,7 @@
     function renderModalGallery() {
       const gallery = document.getElementById('modalGallery');
       if (modalImages.length === 0) {
-        gallery.innerHTML = `<span style="color:var(--text-muted); font-weight:700;">[Foto do Equipamento em Alta Resolução]</span>`;
+        gallery.innerHTML = `<span style="color:var(--text-muted); font-weight:700;">[Sem Fotos]</span>`;
         return;
       }
 
@@ -876,7 +931,6 @@
       if (e.target.id === 'productModal') closeModal();
     }
 
-    // 5. AUTENTICAÇÃO
     function checkIsAdmin() {
       return localStorage.getItem('infinity_admin_logged') === 'true';
     }
@@ -886,11 +940,11 @@
       if (senha === SENHA_MESTRE) {
         let token = localStorage.getItem('gh_pat_infinity');
         if (!token) {
-          token = prompt('Primeiro acesso: Insira o Personal Access Token do GitHub para salvar alterações:');
+          token = prompt('Primeiro acesso: Insira o Personal Access Token do GitHub:');
           if (token) localStorage.setItem('gh_pat_infinity', token.trim());
         }
         localStorage.setItem('infinity_admin_logged', 'true');
-        alert('Bem-vindo, Modo Gestor ativado!');
+        alert('Bem-vindo ao Modo Gestor!');
         renderCatalog();
       } else if (senha !== null) {
         alert('Senha incorreta.');
@@ -898,17 +952,76 @@
     }
 
     function logoutAdmin() {
+      if (pendingChangesCount > 0) {
+        if (!confirm('Você tem alterações não salvas no GitHub! Se sair agora, elas serão perdidas. Deseja sair mesmo assim?')) return;
+      }
       localStorage.removeItem('infinity_admin_logged');
-      alert('Sessão de administração encerrada.');
-      renderCatalog();
+      alert('Sessão encerrada.');
+      location.reload();
     }
 
-    // 6. OPERAÇÕES VIA GITHUB
-    async function saveCatalogToGithub(commitMessage) {
+    // ==========================================
+    // UPLOAD E PUBLICAÇÃO EM LOTE (1 ÚNICO DEPLOY)
+    // ==========================================
+    async function uploadSingleImageToGithub(file, token) {
+      const fileName = `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+      const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileName}`;
+
+      const reader = new FileReader();
+      const base64Promise = new Promise((resolve) => {
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.readAsDataURL(file);
+      });
+      const content = await base64Promise;
+
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `Upload mídia: ${file.name}`,
+          content: content,
+          branch: GITHUB_BRANCH
+        })
+      });
+
+      if (!res.ok) throw new Error(`Falha no upload de ${file.name}`);
+      return fileName;
+    }
+
+    async function publishAllChanges() {
       const token = localStorage.getItem('gh_pat_infinity');
       if (!token) return alert('Token do GitHub não encontrado. Faça login novamente.');
 
+      const btn = document.getElementById('btnPublishDeploy');
+      const statusText = document.getElementById('adminStatusText');
+      btn.disabled = true;
+      btn.textContent = 'Publicando...';
+
       try {
+        // 1. Processa upload de fotos pendentes se houver
+        if (pendingUploadQueue.length > 0) {
+          statusText.textContent = `Enviando ${pendingUploadQueue.length} imagens...`;
+          for (let item of pendingUploadQueue) {
+            const uploadedPath = await uploadSingleImageToGithub(item.file, token);
+            
+            // Substitui o DataURL de rascunho pelo caminho real no GitHub
+            const prod = produtos.find(p => p.id === item.prodId);
+            if (prod) {
+              if (item.type === 'image') {
+                const idx = prod.imagens.indexOf(item.previewUrl);
+                if (idx !== -1) prod.imagens[idx] = uploadedPath;
+              } else if (item.type === 'logo') {
+                prod.logoMarca = uploadedPath;
+              }
+            }
+          }
+        }
+
+        // 2. Faz um único commit no produtos.json (1 único deploy disparado)
+        statusText.textContent = 'Gravando produtos.json no repositório...';
         const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
         const getRes = await fetch(getFileUrl, { headers: { Authorization: `token ${token}` } });
         
@@ -928,49 +1041,29 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: commitMessage,
+            message: `Deploy Geral Infinity: ${pendingChangesCount} alterações aplicadas`,
             content: contentBase64,
             sha: sha || undefined,
             branch: GITHUB_BRANCH
           })
         });
 
-        if (!putRes.ok) throw new Error('Falha ao gravar no GitHub.');
-        alert('Alterações salvas com sucesso no GitHub!');
+        if (!putRes.ok) throw new Error('Erro ao gravar arquivo no GitHub.');
+
+        alert('🚀 Sucesso! Todas as alterações foram salvas em um único deploy.');
+        pendingChangesCount = 0;
+        pendingUploadQueue = [];
+        originalSnapshot = JSON.stringify({ categorias, produtos });
+        updateAdminBarUI();
         renderCatalog();
       } catch (err) {
         console.error(err);
-        alert('Erro ao salvar no GitHub. Verifique as permissões do seu Token.');
+        alert('Erro ao publicar alterações no GitHub. Tente novamente.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `🚀 Publicar Alterações (<span id="pendingCount">0</span>)`;
+        statusText.textContent = '🔒 Modo Gestor Ativo';
       }
-    }
-
-    async function uploadImageToGithub(file) {
-      const token = localStorage.getItem('gh_pat_infinity');
-      const fileName = `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
-      const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileName}`;
-
-      const reader = new FileReader();
-      const base64Promise = new Promise((resolve) => {
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.readAsDataURL(file);
-      });
-      const content = await base64Promise;
-
-      const res = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          Authorization: `token ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: `Upload foto: ${file.name}`,
-          content: content,
-          branch: GITHUB_BRANCH
-        })
-      });
-
-      if (!res.ok) throw new Error(`Falha no upload de ${file.name}`);
-      return fileName;
     }
 
     // Formulário de Cadastro e Edição
@@ -1016,7 +1109,6 @@
       }
       document.getElementById('prodSpecs').value = specsText;
 
-      // Gerenciar Logo do Fabricante
       editCurrentBrandLogo = prod.logoMarca || '';
       const brandLogoContainer = document.getElementById('brandLogoCurrentContainer');
       const brandLogoImg = document.getElementById('brandLogoPreviewImg');
@@ -1027,7 +1119,6 @@
         brandLogoContainer.style.display = 'none';
       }
 
-      // Fotos Existentes
       editCurrentPhotos = [...(prod.imagens || [])];
       renderExistingPhotos();
 
@@ -1073,96 +1164,99 @@
       document.getElementById('formModal').classList.remove('active');
     }
 
-    async function handleFormSubmit(e) {
-      e.preventDefault();
-      const btnSave = document.getElementById('btnSaveProd');
-      btnSave.disabled = true;
-      btnSave.textContent = 'Gravando...';
-
-      try {
-        const id = document.getElementById('prodId').value || `prod-${Date.now()}`;
-        const categoria = document.getElementById('prodCategory').value;
-        const marca = document.getElementById('prodBrand').value;
-        const nome = document.getElementById('prodName').value;
-        const specsText = document.getElementById('prodSpecs').value;
-        const fileInput = document.getElementById('prodFileInput');
-        const logoInput = document.getElementById('prodBrandLogoInput');
-
-        const specs = {};
-        specsText.split('\n').forEach(line => {
-          const parts = line.split(':');
-          if (parts.length >= 2) {
-            specs[parts[0].trim()] = parts.slice(1).join(':').trim();
-          }
-        });
-
-        // 1. Upload do Logo do Fabricante (se selecionado novo)
-        let finalBrandLogo = editCurrentBrandLogo;
-        if (logoInput.files.length > 0) {
-          finalBrandLogo = await uploadImageToGithub(logoInput.files[0]);
-        }
-
-        // 2. Upload das Fotos do Equipamento
-        let novasFotos = [];
-        if (fileInput.files.length > 0) {
-          for (let file of fileInput.files) {
-            const path = await uploadImageToGithub(file);
-            novasFotos.push(path);
-          }
-        }
-
-        const fotosFinais = [...editCurrentPhotos, ...novasFotos];
-        const existingIdx = produtos.findIndex(p => p.id === id);
-
-        if (existingIdx >= 0) {
-          produtos[existingIdx].categoria = categoria;
-          produtos[existingIdx].marca = marca;
-          produtos[existingIdx].nome = nome;
-          produtos[existingIdx].specs = specs;
-          produtos[existingIdx].imagens = fotosFinais;
-          produtos[existingIdx].logoMarca = finalBrandLogo;
-          await saveCatalogToGithub(`Atualizado: ${nome}`);
-        } else {
-          produtos.push({
-            id,
-            categoria,
-            marca,
-            nome,
-            ativo: true,
-            imagens: fotosFinais,
-            specs,
-            logoMarca: finalBrandLogo
-          });
-          await saveCatalogToGithub(`Novo produto: ${nome}`);
-        }
-
-        closeFormModal();
-      } catch (err) {
-        console.error(err);
-        alert('Erro ao salvar o produto.');
-      } finally {
-        btnSave.disabled = false;
-        btnSave.textContent = 'Salvar Alterações';
-      }
+    // Converte arquivo para visualização local imediata
+    function fileToDataUrl(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.readAsDataURL(file);
+      });
     }
 
-    async function toggleActive(id) {
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const id = document.getElementById('prodId').value || `prod-${Date.now()}`;
+      const categoria = document.getElementById('prodCategory').value;
+      const marca = document.getElementById('prodBrand').value;
+      const nome = document.getElementById('prodName').value;
+      const specsText = document.getElementById('prodSpecs').value;
+      const fileInput = document.getElementById('prodFileInput');
+      const logoInput = document.getElementById('prodBrandLogoInput');
+
+      const specs = {};
+      specsText.split('\n').forEach(line => {
+        const parts = line.split(':');
+        if (parts.length >= 2) {
+          specs[parts[0].trim()] = parts.slice(1).join(':').trim();
+        }
+      });
+
+      // Pré-visualização local imediata do Logo
+      let logoFinal = editCurrentBrandLogo;
+      if (logoInput.files.length > 0) {
+        const logoFile = logoInput.files[0];
+        const previewLogoUrl = await fileToDataUrl(logoFile);
+        logoFinal = previewLogoUrl;
+        pendingUploadQueue.push({ type: 'logo', prodId: id, file: logoFile, previewUrl: previewLogoUrl });
+      }
+
+      // Pré-visualização local imediata das Fotos
+      let novasFotosPreview = [];
+      if (fileInput.files.length > 0) {
+        for (let file of fileInput.files) {
+          const previewUrl = await fileToDataUrl(file);
+          novasFotosPreview.push(previewUrl);
+          pendingUploadQueue.push({ type: 'image', prodId: id, file: file, previewUrl: previewUrl });
+        }
+      }
+
+      const fotosFinais = [...editCurrentPhotos, ...novasFotosPreview];
+      const existingIdx = produtos.findIndex(p => p.id === id);
+
+      if (existingIdx >= 0) {
+        produtos[existingIdx].categoria = categoria;
+        produtos[existingIdx].marca = marca;
+        produtos[existingIdx].nome = nome;
+        produtos[existingIdx].specs = specs;
+        produtos[existingIdx].imagens = fotosFinais;
+        produtos[existingIdx].logoMarca = logoFinal;
+      } else {
+        produtos.push({
+          id,
+          categoria,
+          marca,
+          nome,
+          ativo: true,
+          imagens: fotosFinais,
+          specs,
+          logoMarca: logoFinal
+        });
+      }
+
+      notifyLocalChange();
+      closeFormModal();
+      renderCatalog();
+    }
+
+    function toggleActive(id) {
       const prod = produtos.find(p => p.id === id);
       if (!prod) return;
       prod.ativo = !prod.ativo;
-      await saveCatalogToGithub(`${prod.ativo ? 'Ativado' : 'Ocultado'}: ${prod.nome}`);
+      notifyLocalChange();
+      renderCatalog();
     }
 
-    async function deleteProduct(id) {
+    function deleteProduct(id) {
       const prod = produtos.find(p => p.id === id);
       if (!prod) return;
-      if (!confirm(`Tem certeza que deseja excluir "${prod.nome}"?`)) return;
+      if (!confirm(`Remover "${prod.nome}" do catálogo? (Só será definitivo após clicar em Publicar)`)) return;
 
       produtos = produtos.filter(p => p.id !== id);
-      await saveCatalogToGithub(`Excluído produto: ${prod.nome}`);
+      notifyLocalChange();
+      renderCatalog();
     }
 
-    // 7. GERENCIAMENTO DE CATEGORIAS
+    // Gestão de Categorias em Rascunho
     function openCategoryModal() {
       renderCategoriesManager();
       document.getElementById('categoryModal').classList.add('active');
@@ -1195,7 +1289,7 @@
       });
     }
 
-    async function addCategory() {
+    function addCategory() {
       const input = document.getElementById('newCatTitle');
       const iconSelect = document.getElementById('newCatIcon');
       const title = input.value.trim();
@@ -1205,24 +1299,27 @@
       const id = title.toLowerCase().replace(/[^a-z0-9]/g, '');
       categorias.push({ id, title, icon, ativa: true });
       input.value = '';
+      notifyLocalChange();
       renderCategoriesManager();
-      await saveCatalogToGithub(`Nova categoria: ${title}`);
+      renderCatalog();
     }
 
-    async function toggleCategoryActive(idx) {
+    function toggleCategoryActive(idx) {
       categorias[idx].ativa = !categorias[idx].ativa;
+      notifyLocalChange();
       renderCategoriesManager();
-      await saveCatalogToGithub(`Status de categoria alterado: ${categorias[idx].title}`);
+      renderCatalog();
     }
 
-    async function deleteCategory(idx) {
+    function deleteCategory(idx) {
       const cat = categorias[idx];
       const temProdutos = produtos.some(p => p.categoria === cat.id);
-      if (temProdutos && !confirm(`Existem equipamentos cadastrados nesta categoria. Deseja realmente excluí-la?`)) return;
+      if (temProdutos && !confirm(`Existem produtos vinculados a esta categoria. Deseja realmente remover?`)) return;
 
       categorias.splice(idx, 1);
+      notifyLocalChange();
       renderCategoriesManager();
-      await saveCatalogToGithub(`Categoria removida: ${cat.title}`);
+      renderCatalog();
     }
 
     window.addEventListener('DOMContentLoaded', loadCatalog);
