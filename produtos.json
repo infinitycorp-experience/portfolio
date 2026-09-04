@@ -1,75 +1,114 @@
-[
-  {
-    "id": "hp-4003",
-    "categoria": "print",
-    "marca": "HP Mono",
-    "nome": "HP LaserJet Pro 4003",
-    "ativo": true,
-    "imagens": [
-      "https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png"
-    ],
-    "specs": {
-      "Velocidade": "Até 40 ppm",
-      "1ª Página": "~6,3s",
-      "Tipo": "Laser Monocromático",
-      "Uso": "Pequenos e Médios Grupos"
+{
+  "categorias": [
+    {
+      "id": "print",
+      "title": "Outsourcing de Impressão",
+      "ativa": true
+    },
+    {
+      "id": "scanner",
+      "title": "Scanners Profissionais",
+      "ativa": false
+    },
+    {
+      "id": "thermal",
+      "title": "Impressoras Térmicas de Etiquetas",
+      "ativa": true
+    },
+    {
+      "id": "computer",
+      "title": "Notebooks, Desktops & Periféricos",
+      "ativa": true
+    },
+    {
+      "id": "monitor",
+      "title": "Monitores Profissionais",
+      "ativa": true
+    },
+    {
+      "id": "mobile",
+      "title": "Dispositivos Móveis & Tablets",
+      "ativa": true
+    },
+    {
+      "id": "totem",
+      "title": "Totens de Autoatendimento",
+      "ativa": true
     }
-  },
-  {
-    "id": "xerox-c7020",
-    "categoria": "print",
-    "marca": "Xerox Color",
-    "nome": "Xerox VersaLink C7020",
-    "ativo": true,
-    "imagens": [],
-    "specs": {
-      "Velocidade": "Até 20 ppm",
-      "1ª Página": "~8,1s",
-      "Tipo": "Laser Colorido"
+  ],
+  "produtos": [
+    {
+      "id": "hp-4003",
+      "categoria": "print",
+      "marca": "HP Mono",
+      "nome": "HP LaserJet Pro 4003",
+      "ativo": true,
+      "imagens": [
+        "https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png"
+      ],
+      "specs": {
+        "Velocidade": "Até 40 ppm",
+        "1ª Página": "~6,3s",
+        "Tipo": "Laser Monocromático",
+        "Uso": "Pequenos e Médios Grupos"
+      }
+    },
+    {
+      "id": "xerox-c7020",
+      "categoria": "print",
+      "marca": "Xerox Color",
+      "nome": "Xerox VersaLink C7020",
+      "ativo": true,
+      "imagens": [],
+      "specs": {
+        "Velocidade": "Até 20 ppm",
+        "1ª Página": "~8,1s",
+        "Tipo": "Laser Colorido"
+      }
+    },
+    {
+      "id": "brother-ads4700",
+      "categoria": "scanner",
+      "marca": "Brother",
+      "nome": "Brother ADS-4700W",
+      "ativo": true,
+      "imagens": [],
+      "specs": {
+        "Velocidade": "40 ppm / 80 ipm",
+        "ADF": "80 Folhas"
+      }
+    },
+    {
+      "id": "totem-stand5",
+      "categoria": "totem",
+      "marca": "Totem Stand",
+      "nome": "STAND 5 (32”)",
+      "ativo": true,
+      "imagens": [],
+      "specs": {
+        "Display": "32\" Touch Screen",
+        "Hardware": "i5 • 8GB • 128GB"
+      }
+    },
+    {
+      "id": "prod-1788520245805",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Dell Inspirion 15",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788520245805_Dell.png",
+        "fotos/1788520247465_Dell_1.png",
+        "fotos/1788520248641_Dell_2.png",
+        "fotos/1788520250021_Dell_3.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5",
+        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Tela": "15,6' - Full HD (1920 x 1080)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      }
     }
-  },
-  {
-    "id": "brother-ads4700",
-    "categoria": "scanner",
-    "marca": "Brother",
-    "nome": "Brother ADS-4700W",
-    "ativo": true,
-    "imagens": [],
-    "specs": {
-      "Velocidade": "40 ppm / 80 ipm",
-      "ADF": "80 Folhas"
-    }
-  },
-  {
-    "id": "totem-stand5",
-    "categoria": "totem",
-    "marca": "Totem Stand",
-    "nome": "STAND 5 (32”)",
-    "ativo": true,
-    "imagens": [],
-    "specs": {
-      "Display": "32\" Touch Screen",
-      "Hardware": "i5 • 8GB • 128GB"
-    }
-  },
-  {
-    "id": "prod-1788520245805",
-    "categoria": "computer",
-    "marca": "Dell",
-    "nome": "Dell Inspirion 15",
-    "ativo": true,
-    "imagens": [
-      "fotos/1788520245805_Dell.png",
-      "fotos/1788520247465_Dell_1.png",
-      "fotos/1788520248641_Dell_2.png",
-      "fotos/1788520250021_Dell_3.png"
-    ],
-    "specs": {
-      "Processador": "Intel Core  i5",
-      "Memória RAM": "8 GB  - 16 GB - 32 GB",
-      "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-      "Tela": "15,6' - Full HD (1920 x 1080)",
-      "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
-    }
-  }
-]
+  ]
+}
