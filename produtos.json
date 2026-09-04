@@ -208,26 +208,6 @@
       "logoMarca": "fotos/1788533823542_logozebra.png"
     },
     {
-      "id": "prod-1788541591157",
-      "categoria": "computer",
-      "marca": "Lenovo",
-      "nome": "IdeaPad S145 / 3 / 3i",
-      "ativo": true,
-      "imagens": [
-        "fotos/1788542018705_Notebook-IdeaPad-3.png",
-        "fotos/1788542020390_Notebook-IdeaPad-3-2.png",
-        "fotos/1788542022437_Notebook-IdeaPad-3-3.png"
-      ],
-      "specs": {
-        "Processador": "Intel Core  i5 - 10ª Gen",
-        "Memória": "8 GB  - 16 GB - 32 GB",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Tela": "15,6' - Full HD (1920 x 1080)",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
-      },
-      "logoMarca": "fotos/1788542042460_LogoLenovo.png"
-    },
-    {
       "id": "prod-1788541836554",
       "categoria": "computer",
       "marca": "Dell",
@@ -249,6 +229,30 @@
       "logoMarca": "fotos/1788542048564_LogoDell.png"
     },
     {
+      "id": "prod-1788543206762",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Alienware Aurora 16",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788544362389_ALIENWARE_AURORA5.jpg",
+        "fotos/1788544363651_ALIENWARE_AURORA4.jpg",
+        "fotos/1788544860512_ALIENWARE_AURORA3.jpg",
+        "fotos/1788544861437_ALIENWARE_AURORA2.jpg",
+        "fotos/1788544862474_ALIENWARE_AURORA1.jpg",
+        "fotos/1788544863350_ALIENWARE_AURORA.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core 5 /  7",
+        "Memória": "16/32/64GB DDR5 a 5600 MT/s",
+        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
+        "Tela": "16' WQXGA (2560 x 1600), de 120 Hz e 100% de cobertura sRGB",
+        "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050",
+        "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
+      },
+      "logoMarca": "logos/dell.png"
+    },
+    {
       "id": "prod-1788541943893",
       "categoria": "desktops",
       "marca": "Dell",
@@ -267,26 +271,52 @@
       "logoMarca": "fotos/1788542060469_LogoDell.png"
     },
     {
-      "id": "prod-1788543206762",
+      "id": "prod-1788546166053",
       "categoria": "computer",
-      "marca": "Dell",
-      "nome": "Alienware Aurora 16",
+      "marca": "Avell",
+      "nome": "B. ON LITE NEW",
       "ativo": true,
       "imagens": [
-        "fotos/1788544362389_ALIENWARE_AURORA5.jpg",
-        "fotos/1788544363651_ALIENWARE_AURORA4.jpg",
-        "fotos/1788544863350_ALIENWARE_AURORA.jpg",
-        "fotos/1788545774370_ALIENWARE_AURORA.jpg"
+        "fotos/1788546249668_avell4.jpg",
+        "fotos/1788546250577_avell3.jpg",
+        "fotos/1788546251462_avell2.jpg",
+        "fotos/1788546252680_avell1.jpg",
+        "fotos/1788546253706_avell4.jpg",
+        "fotos/1788546254727_avell3.jpg",
+        "fotos/1788546255774_avell2.jpg",
+        "fotos/1788546256787_avell1.jpg"
       ],
       "specs": {
-        "Processador": "Intel Core 5 /  7",
-        "Memória": "16/32/64GB DDR5 a 5600 MT/s",
-        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Tela": "16' WQXGA (2560 x 1600), de 120 Hz e 100% de cobertura sRGB",
-        "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050",
-        "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
+        "Processador": "Intel Core i5-1235U",
+        "Memória": "8/16/32 GB DDR4 (3200 MHz)",
+        "Armazenamento": "SSD de 256 / 512 GB M.2 NVMe",
+        "Placa de Vídeo": "Intel Iris Xe Graphics G7 integrada",
+        "Tela": "LCD de 15.6\"",
+        "Resolução": "Full HD (1920x1080),  de 60 Hz e abertura de até 180°",
+        "Teclado": "Padrão ABNT2, retroiluminado e com teclado numérico dedicado",
+        "Portas e Conexões": "Wi-Fi 6, Bluetooth 5.2, 1x USB-C, 1x USB 3.2, 1x USB 2.0, HDMI 2.0, RJ45 e leitor de cartões de memória"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/avell.png"
+    },
+    {
+      "id": "prod-1788541591157",
+      "categoria": "computer",
+      "marca": "Lenovo",
+      "nome": "IdeaPad S145 / 3 / 3i",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788542018705_Notebook-IdeaPad-3.png",
+        "fotos/1788542020390_Notebook-IdeaPad-3-2.png",
+        "fotos/1788542022437_Notebook-IdeaPad-3-3.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 - 10ª Gen",
+        "Memória": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Tela": "15,6' - Full HD (1920 x 1080)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "fotos/1788542042460_LogoLenovo.png"
     }
   ]
 }
