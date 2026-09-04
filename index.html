@@ -77,29 +77,31 @@
 
     .nav-menu {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       overflow-x: auto;
       padding: 4px 0;
       scrollbar-width: none;
     }
     .nav-menu::-webkit-scrollbar { display: none; }
 
+    /* Botões Coloridos de Categoria */
     .nav-item {
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 700;
       padding: 8px 14px;
-      border-radius: 8px;
+      border-radius: 10px;
       white-space: nowrap;
-      border: 1px solid var(--card-border);
-      background: #FFFFFF;
       transition: all 0.25s ease;
-      color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .nav-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); color: var(--primary); border-color: var(--primary); }
+    .nav-item:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08); 
+      filter: brightness(0.95);
+    }
 
     .hero {
       position: relative;
@@ -240,15 +242,22 @@
 
     .admin-card-actions {
       display: none;
+      flex-direction: column;
       gap: 8px;
       margin-top: 12px;
       padding-top: 10px;
       border-top: 1px solid var(--card-border);
     }
     body.admin-mode .admin-card-actions { display: flex; }
+    
+    .admin-card-buttons-row {
+      display: flex;
+      gap: 6px;
+    }
+
     .btn-action {
       flex: 1;
-      padding: 6px 10px;
+      padding: 6px 8px;
       font-size: 0.75rem;
       font-weight: 700;
       border-radius: 6px;
@@ -256,10 +265,19 @@
       background: #FFFFFF;
       cursor: pointer;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .btn-action:hover { background: #0F172A; color: white; }
     .btn-action.btn-del { color: var(--danger); border-color: #FECDD3; }
     .btn-action.btn-del:hover { background: var(--danger); color: white; }
+    .btn-order {
+      flex: 0 0 32px;
+      background: #F1F5F9;
+      color: #334155;
+      font-size: 0.85rem;
+    }
 
     /* Barra Fixa Flutuante do Admin com Deploy Único */
     .admin-bar {
@@ -631,7 +649,7 @@
         </div>
       </div>
 
-      <h4 style="font-size: 0.95rem; margin-bottom: 12px;">Categorias Existentes</h4>
+      <h4 style="font-size: 0.95rem; margin-bottom: 12px;">Categorias Existentes (Use as setas para ordenar)</h4>
       <div id="categoriesListContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
 
       <div class="form-actions">
@@ -660,6 +678,18 @@
     const GITHUB_BRANCH = 'main';
     const SENHA_MESTRE  = 'InfinityCorp2026';
 
+    // Paleta de cores para os botões do menu superior
+    const CATEGORY_COLORS = [
+      { bg: '#E0F2FE', text: '#0369A1', border: '#BAE6FD' }, // Azul Sky
+      { bg: '#DCFCE7', text: '#15803D', border: '#BBF7D0' }, // Verde Esmeralda
+      { bg: '#FEF3C7', text: '#B45309', border: '#FDE68A' }, // Âmbar
+      { bg: '#EDE9FE', text: '#6D28D9', border: '#DDD6FE' }, // Roxo
+      { bg: '#FFE4E6', text: '#BE123C', border: '#FECDD3' }, // Rosa / Vermelho
+      { bg: '#CCFBF1', text: '#0F766E', border: '#99F6E4' }, // Teal / Verde Água
+      { bg: '#FFEDD5', text: '#C2410C', border: '#FED7AA' }, // Laranja
+      { bg: '#F1F5F9', text: '#334155', border: '#CBD5E1' }  // Slate / Grafite
+    ];
+
     const ICONS_MAP = {
       print: `<polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect>`,
       scanner: `<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="7" y1="15" x2="9" y2="15"></line>`,
@@ -684,8 +714,8 @@
     
     // CACHE / BUFFER DE ALTERAÇÕES LOCAIS
     let pendingChangesCount = 0;
-    let pendingUploadQueue = []; // Lista de fotos pendentes de envio
-    let originalSnapshot = null; // Cópia de segurança caso queira descartar
+    let pendingUploadQueue = [];
+    let originalSnapshot = null;
 
     let modalImages = [];
     let modalCurrentIdx = 0;
@@ -713,7 +743,6 @@
           ];
         }
 
-        // Guarda o estado inicial limpo
         originalSnapshot = JSON.stringify({ categorias, produtos });
         renderCatalog();
       } catch (err) {
@@ -763,16 +792,23 @@
       navContainer.innerHTML = '';
       sectionsContainer.innerHTML = '';
 
-      categorias.forEach(cat => {
+      categorias.forEach((cat, catIdx) => {
         const iconKey = cat.icon || cat.id;
         const produtosDaCat = produtos.filter(p => p.categoria === cat.id);
         const produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
 
         if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) return;
 
+        // Estilização colorida da barra superior
+        const color = CATEGORY_COLORS[catIdx % CATEGORY_COLORS.length];
+
         const navItem = document.createElement('a');
         navItem.href = `#${cat.id}`;
         navItem.className = 'nav-item';
+        navItem.style.backgroundColor = color.bg;
+        navItem.style.color = color.text;
+        navItem.style.border = `1px solid ${color.border}`;
+
         navItem.innerHTML = `
           ${getCategorySvg(iconKey, 'icon-svg')}
           ${cat.title.split(' ')[0]} ${!cat.ativa ? '(Oculta)' : ''}
@@ -836,14 +872,65 @@
             <div class="prod-name">${prod.nome}</div>
             <div class="specs-list">${specsHtml}</div>
             <div class="admin-card-actions" onclick="event.stopPropagation()">
-              <button class="btn-action" onclick="toggleActive('${prod.id}')">${prod.ativo ? 'Ocultar' : 'Ativar'}</button>
-              <button class="btn-action" onclick="editProduct('${prod.id}')">Editar</button>
-              <button class="btn-action btn-del" onclick="deleteProduct('${prod.id}')">Excluir</button>
+              <div class="admin-card-buttons-row">
+                <button class="btn-action btn-order" title="Mover para a esquerda" onclick="moveProductOrder('${prod.id}', -1)">◀</button>
+                <button class="btn-action" onclick="toggleActive('${prod.id}')">${prod.ativo ? 'Ocultar' : 'Ativar'}</button>
+                <button class="btn-action" onclick="editProduct('${prod.id}')">Editar</button>
+                <button class="btn-action btn-del" onclick="deleteProduct('${prod.id}')">Excluir</button>
+                <button class="btn-action btn-order" title="Mover para a direita" onclick="moveProductOrder('${prod.id}', 1)">▶</button>
+              </div>
             </div>
           `;
           grid.appendChild(card);
         });
       });
+    }
+
+    // ==========================================
+    // ORDENAÇÃO DE PRODUTOS
+    // ==========================================
+    function moveProductOrder(prodId, direction) {
+      const prod = produtos.find(p => p.id === prodId);
+      if (!prod) return;
+
+      const catId = prod.categoria;
+      // Pega todos os produtos dessa categoria na ordem atual
+      const sameCatIndexes = [];
+      produtos.forEach((p, idx) => {
+        if (p.categoria === catId) sameCatIndexes.push(idx);
+      });
+
+      const currentPosition = sameCatIndexes.findIndex(idx => produtos[idx].id === prodId);
+      const targetPosition = currentPosition + direction;
+
+      if (targetPosition < 0 || targetPosition >= sameCatIndexes.length) return; // Limite da lista
+
+      const idxA = sameCatIndexes[currentPosition];
+      const idxB = sameCatIndexes[targetPosition];
+
+      // Inverte os dois produtos no array principal
+      const temp = produtos[idxA];
+      produtos[idxA] = produtos[idxB];
+      produtos[idxB] = temp;
+
+      notifyLocalChange();
+      renderCatalog();
+    }
+
+    // ==========================================
+    // ORDENAÇÃO DE CATEGORIAS
+    // ==========================================
+    function moveCategoryOrder(index, direction) {
+      const newIndex = index + direction;
+      if (newIndex < 0 || newIndex >= categorias.length) return;
+
+      const temp = categorias[index];
+      categorias[index] = categorias[newIndex];
+      categorias[newIndex] = temp;
+
+      notifyLocalChange();
+      renderCategoriesManager();
+      renderCatalog();
     }
 
     function changeCardSlide(e, btn, step) {
@@ -961,7 +1048,7 @@
     }
 
     // ==========================================
-    // UPLOAD E PUBLICAÇÃO EM LOTE (1 ÚNICO DEPLOY)
+    // UPLOAD E PUBLICAÇÃO EM LOTE
     // ==========================================
     async function uploadSingleImageToGithub(file, token) {
       const fileName = `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
@@ -1001,13 +1088,10 @@
       btn.textContent = 'Publicando...';
 
       try {
-        // 1. Processa upload de fotos pendentes se houver
         if (pendingUploadQueue.length > 0) {
           statusText.textContent = `Enviando ${pendingUploadQueue.length} imagens...`;
           for (let item of pendingUploadQueue) {
             const uploadedPath = await uploadSingleImageToGithub(item.file, token);
-            
-            // Substitui o DataURL de rascunho pelo caminho real no GitHub
             const prod = produtos.find(p => p.id === item.prodId);
             if (prod) {
               if (item.type === 'image') {
@@ -1020,7 +1104,6 @@
           }
         }
 
-        // 2. Faz um único commit no produtos.json (1 único deploy disparado)
         statusText.textContent = 'Gravando produtos.json no repositório...';
         const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
         const getRes = await fetch(getFileUrl, { headers: { Authorization: `token ${token}` } });
@@ -1164,7 +1247,6 @@
       document.getElementById('formModal').classList.remove('active');
     }
 
-    // Converte arquivo para visualização local imediata
     function fileToDataUrl(file) {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -1191,7 +1273,6 @@
         }
       });
 
-      // Pré-visualização local imediata do Logo
       let logoFinal = editCurrentBrandLogo;
       if (logoInput.files.length > 0) {
         const logoFile = logoInput.files[0];
@@ -1200,7 +1281,6 @@
         pendingUploadQueue.push({ type: 'logo', prodId: id, file: logoFile, previewUrl: previewLogoUrl });
       }
 
-      // Pré-visualização local imediata das Fotos
       let novasFotosPreview = [];
       if (fileInput.files.length > 0) {
         for (let file of fileInput.files) {
@@ -1256,7 +1336,7 @@
       renderCatalog();
     }
 
-    // Gestão de Categorias em Rascunho
+    // Gestão de Categorias
     function openCategoryModal() {
       renderCategoriesManager();
       document.getElementById('categoryModal').classList.add('active');
@@ -1272,6 +1352,9 @@
 
       categorias.forEach((cat, idx) => {
         const iconKey = cat.icon || cat.id;
+        const isFirst = idx === 0;
+        const isLast = idx === categorias.length - 1;
+
         const row = document.createElement('div');
         row.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 8px;';
         row.innerHTML = `
@@ -1280,7 +1363,9 @@
             <strong>${cat.title}</strong>
             <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 4px;">(${cat.ativa ? 'Ativa' : 'Oculta'})</span>
           </div>
-          <div style="display: flex; gap: 6px;">
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <button class="btn-action btn-order" title="Mover para cima" ${isFirst ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''} onclick="moveCategoryOrder(${idx}, -1)">▲</button>
+            <button class="btn-action btn-order" title="Mover para baixo" ${isLast ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''} onclick="moveCategoryOrder(${idx}, 1)">▼</button>
             <button class="btn-action" onclick="toggleCategoryActive(${idx})">${cat.ativa ? 'Ocultar' : 'Ativar'}</button>
             <button class="btn-action btn-del" onclick="deleteCategory(${idx})">Excluir</button>
           </div>
