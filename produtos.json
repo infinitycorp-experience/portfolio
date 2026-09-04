@@ -121,7 +121,9 @@
       "imagens": [
         "fotos/1788520250021_Dell_3.png",
         "fotos/1788522150168_Dell_1.png",
-        "fotos/1788522152125_Dell_2.png"
+        "fotos/1788522152125_Dell_2.png",
+        "fotos/1788548378200_NOTEBOOK_DELL_XPS_13_9320.png",
+        "fotos/1788548379607_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
       ],
       "specs": {
         "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
@@ -130,7 +132,7 @@
         "Tela": "15,6' - Full HD (1920 x 1080)",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
-      "logoMarca": "fotos/1788542036533_LogoLenovo.png"
+      "logoMarca": "logos/dell.png"
     },
     {
       "id": "prod-1788533573286",
@@ -208,6 +210,68 @@
       "logoMarca": "fotos/1788533823542_logozebra.png"
     },
     {
+      "id": "prod-1788541591157",
+      "categoria": "computer",
+      "marca": "Lenovo",
+      "nome": "IdeaPad S145 / 3 / 3i",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788542018705_Notebook-IdeaPad-3.png",
+        "fotos/1788542020390_Notebook-IdeaPad-3-2.png",
+        "fotos/1788542022437_Notebook-IdeaPad-3-3.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 - 10ª Gen",
+        "Memória": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Tela": "15,6' - Full HD (1920 x 1080)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "fotos/1788542042460_LogoLenovo.png"
+    },
+    {
+      "id": "prod-1788546166053",
+      "categoria": "computer",
+      "marca": "Avell",
+      "nome": "B. ON LITE NEW",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788546249668_avell4.jpg",
+        "fotos/1788546250577_avell3.jpg",
+        "fotos/1788546251462_avell2.jpg",
+        "fotos/1788546252680_avell1.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core i5-1235U",
+        "Memória": "8/16/32 GB DDR4 (3200 MHz)",
+        "Armazenamento": "SSD de 256 / 512 GB M.2 NVMe",
+        "Placa de Vídeo": "Intel Iris Xe Graphics G7 integrada",
+        "Tela": "LCD de 15.6\"",
+        "Resolução": "Full HD (1920x1080),  de 60 Hz e abertura de até 180°",
+        "Teclado": "Padrão ABNT2, retroiluminado e com teclado numérico dedicado",
+        "Portas e Conexões": "Wi-Fi 6, Bluetooth 5.2, 1x USB-C, 1x USB 3.2, 1x USB 2.0, HDMI 2.0, RJ45 e leitor de cartões de memória"
+      },
+      "logoMarca": "logos/avell.png"
+    },
+    {
+      "id": "prod-1788541943893",
+      "categoria": "desktops",
+      "marca": "Dell",
+      "nome": "Optiplex Mini",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788542052160_COMPUTADOR_DELL_OPTIPLEX_7010.png",
+        "fotos/1788542054083_COMPUTADOR_DELL_PRO.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 11ª / 12ª Gen",
+        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "fotos/1788542060469_LogoDell.png"
+    },
+    {
       "id": "prod-1788541836554",
       "categoria": "computer",
       "marca": "Dell",
@@ -253,66 +317,81 @@
       "logoMarca": "logos/dell.png"
     },
     {
-      "id": "prod-1788541943893",
-      "categoria": "desktops",
+      "id": "prod-1788548256418",
+      "categoria": "computer",
       "marca": "Dell",
-      "nome": "Optiplex Mini",
+      "nome": "XPS 13 9350",
       "ativo": true,
       "imagens": [
-        "fotos/1788542052160_COMPUTADOR_DELL_OPTIPLEX_7010.png",
-        "fotos/1788542054083_COMPUTADOR_DELL_PRO.png"
+        "fotos/1788548372625_NOTEBOOK_DELL_XPS_13_9320.png",
+        "fotos/1788548374109_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png",
+        "fotos/1788548375576_NOTEBOOK_DELL_XPS_13_9320.png",
+        "fotos/1788548376908_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
       ],
       "specs": {
-        "Processador": "Intel Core  i5 / i7- 11ª / 12ª Gen",
-        "Memória RAM": "8 GB  - 16 GB - 32 GB",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Processador": "Intel Core Ultra 7 256V/258V",
+        "Memória": "16 / 32 GB LPDDR5X (8533 MT/s)",
+        "NPU": "47 TOPS para recursos de IA",
+        "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
+        "Placa de Vídeo": "Intel Arc Graphics 140V",
+        "Tela": "OLED 3K (2880x1800): Touchscreen, 400 nits / FHD+ (1920x1200): Sem toque, 500 nits",
+        "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e apenas 2 portas Thunderbolt 4 (USB-C)"
       },
-      "logoMarca": "fotos/1788542060469_LogoDell.png"
+      "logoMarca": "logos/dell.png"
+    }
+  ],
+  "marcas": [
+    {
+      "name": "Avell",
+      "logo": "logos/avell.png"
     },
     {
-      "id": "prod-1788546166053",
-      "categoria": "computer",
-      "marca": "Avell",
-      "nome": "B. ON LITE NEW",
-      "ativo": true,
-      "imagens": [
-        "fotos/1788546249668_avell4.jpg",
-        "fotos/1788546250577_avell3.jpg",
-        "fotos/1788546251462_avell2.jpg",
-        "fotos/1788546252680_avell1.jpg"
-      ],
-      "specs": {
-        "Processador": "Intel Core i5-1235U",
-        "Memória": "8/16/32 GB DDR4 (3200 MHz)",
-        "Armazenamento": "SSD de 256 / 512 GB M.2 NVMe",
-        "Placa de Vídeo": "Intel Iris Xe Graphics G7 integrada",
-        "Tela": "LCD de 15.6\"",
-        "Resolução": "Full HD (1920x1080),  de 60 Hz e abertura de até 180°",
-        "Teclado": "Padrão ABNT2, retroiluminado e com teclado numérico dedicado",
-        "Portas e Conexões": "Wi-Fi 6, Bluetooth 5.2, 1x USB-C, 1x USB 3.2, 1x USB 2.0, HDMI 2.0, RJ45 e leitor de cartões de memória"
-      },
-      "logoMarca": "logos/avell.png"
+      "name": "Brother",
+      "logo": "logos/brother.png"
     },
     {
-      "id": "prod-1788541591157",
-      "categoria": "computer",
-      "marca": "Lenovo",
-      "nome": "IdeaPad S145 / 3 / 3i",
-      "ativo": true,
-      "imagens": [
-        "fotos/1788542018705_Notebook-IdeaPad-3.png",
-        "fotos/1788542020390_Notebook-IdeaPad-3-2.png",
-        "fotos/1788542022437_Notebook-IdeaPad-3-3.png"
-      ],
-      "specs": {
-        "Processador": "Intel Core  i5 - 10ª Gen",
-        "Memória": "8 GB  - 16 GB - 32 GB",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Tela": "15,6' - Full HD (1920 x 1080)",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
-      },
-      "logoMarca": "fotos/1788542042460_LogoLenovo.png"
+      "name": "Canon",
+      "logo": "logos/canon.png"
+    },
+    {
+      "name": "Dell",
+      "logo": "logos/dell.png"
+    },
+    {
+      "name": "Epson",
+      "logo": "logos/epson.png"
+    },
+    {
+      "name": "HP",
+      "logo": "logos/hp.png"
+    },
+    {
+      "name": "Kyocera",
+      "logo": "logos/kyocera.png"
+    },
+    {
+      "name": "Lenovo",
+      "logo": "logos/lenovo.png"
+    },
+    {
+      "name": "Lexmark",
+      "logo": "logos/lexmark.png"
+    },
+    {
+      "name": "Ricoh",
+      "logo": "logos/ricoh.png"
+    },
+    {
+      "name": "Samsung",
+      "logo": "logos/samsung.png"
+    },
+    {
+      "name": "Xerox",
+      "logo": "logos/xerox.png"
+    },
+    {
+      "name": "Zebra",
+      "logo": "logos/zebra.png"
     }
   ]
 }
