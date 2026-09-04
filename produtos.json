@@ -6,6 +6,16 @@
       "ativa": true
     },
     {
+      "id": "computer",
+      "title": "Notebooks, Desktops & Periféricos",
+      "ativa": true
+    },
+    {
+      "id": "mobile",
+      "title": "Dispositivos Móveis & Tablets",
+      "ativa": true
+    },
+    {
       "id": "scanner",
       "title": "Scanners Profissionais",
       "ativa": true
@@ -16,27 +26,35 @@
       "ativa": true
     },
     {
-      "id": "computer",
-      "title": "Notebooks, Desktops & Periféricos",
+      "id": "totem",
+      "title": "Totens de Autoatendimento",
       "ativa": true
     },
     {
       "id": "monitor",
       "title": "Monitores Profissionais",
       "ativa": false
-    },
-    {
-      "id": "mobile",
-      "title": "Dispositivos Móveis & Tablets",
-      "ativa": true
-    },
-    {
-      "id": "totem",
-      "title": "Totens de Autoatendimento",
-      "ativa": true
     }
   ],
   "produtos": [
+    {
+      "id": "prod-1788523510340",
+      "categoria": "print",
+      "marca": "HP",
+      "nome": "HP Mono 428",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788523510340_428.jpg",
+        "fotos/1788523511965_428_1.jpg",
+        "fotos/1788523513106_428_2.jpg"
+      ],
+      "specs": {
+        "Velocidade": "40ppm",
+        "Bandeja": "500 Folhas",
+        "ADF": "2 Faces Automático"
+      },
+      "logoMarca": "fotos/1788525660810_LogoHP.png"
+    },
     {
       "id": "hp-4003",
       "categoria": "print",
@@ -53,23 +71,6 @@
         "Uso": "Pequenos e Médios Grupos"
       },
       "logoMarca": "fotos/1788525509551_LogoHP.png"
-    },
-    {
-      "id": "xerox-c7020",
-      "categoria": "print",
-      "marca": "Xerox",
-      "nome": "Xerox VersaLink C7020/25/30",
-      "ativo": true,
-      "imagens": [
-        "fotos/1788524556626_7020.jpg",
-        "fotos/1788524557905_c7000.jpg"
-      ],
-      "specs": {
-        "Velocidade": "Até 20 ppm",
-        "1ª Página": "~8,1s",
-        "Tipo": "Laser Colorido A3"
-      },
-      "logoMarca": "fotos/1788525690206_LogoXerox.png"
     },
     {
       "id": "brother-ads4700",
@@ -122,22 +123,21 @@
       "logoMarca": "fotos/1788526457986_LogoDell.png"
     },
     {
-      "id": "prod-1788523510340",
+      "id": "xerox-c7020",
       "categoria": "print",
-      "marca": "HP",
-      "nome": "HP Mono 428",
+      "marca": "Xerox",
+      "nome": "Xerox VersaLink C7020/25/30",
       "ativo": true,
       "imagens": [
-        "fotos/1788523510340_428.jpg",
-        "fotos/1788523511965_428_1.jpg",
-        "fotos/1788523513106_428_2.jpg"
+        "fotos/1788524556626_7020.jpg",
+        "fotos/1788524557905_c7000.jpg"
       ],
       "specs": {
-        "Velocidade": "40ppm",
-        "Bandeja": "500 Folhas",
-        "ADF": "2 Faces Automático"
+        "Velocidade": "Até 20 ppm",
+        "1ª Página": "~8,1s",
+        "Tipo": "Laser Colorido A3"
       },
-      "logoMarca": "fotos/1788525660810_LogoHP.png"
+      "logoMarca": "fotos/1788525690206_LogoXerox.png"
     },
     {
       "id": "prod-1788529606080",
