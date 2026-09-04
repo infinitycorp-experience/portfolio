@@ -13,7 +13,7 @@
     {
       "id": "thermal",
       "title": "Impressoras Térmicas de Etiquetas",
-      "ativa": true
+      "ativa": false
     },
     {
       "id": "computer",
@@ -23,7 +23,7 @@
     {
       "id": "monitor",
       "title": "Monitores Profissionais",
-      "ativa": true
+      "ativa": false
     },
     {
       "id": "mobile",
