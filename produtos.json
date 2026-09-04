@@ -262,6 +262,21 @@
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "fotos/1788542060469_LogoDell.png"
+    },
+    {
+      "id": "prod-1788543206762",
+      "categoria": "print",
+      "marca": "Dell",
+      "nome": "Alienware Aurora 16",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788543217309_ALIENWARE_AURORA3.jpg",
+        "fotos/1788543218276_ALIENWARE_AURORA2.jpg",
+        "fotos/1788543219425_ALIENWARE_AURORA1.jpg",
+        "fotos/1788543220286_ALIENWARE_AURORA.jpg"
+      ],
+      "specs": {},
+      "logoMarca": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/300px-Dell_Logo.svg.png"
     }
   ]
 }
