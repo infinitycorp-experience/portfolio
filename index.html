@@ -71,7 +71,6 @@
       gap: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
-    /* Logo Superior */
     .brand-logo img { height: 70px; width: auto; object-fit: contain; }
 
     .nav-menu {
@@ -199,7 +198,31 @@
     .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(15, 23, 42, 0.2); }
     .dot.active { background: #0F172A; width: 14px; border-radius: 4px; }
 
-    .brand-sub { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; color: var(--primary); }
+    /* Cabeçalho de Marca e Logo no Card */
+    .brand-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      min-height: 24px;
+      gap: 8px;
+    }
+    .brand-sub { 
+      font-size: 0.74rem; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+      color: var(--primary); 
+      letter-spacing: 0.03em;
+    }
+    .brand-inline-logo {
+      height: 20px;
+      max-width: 75px;
+      object-fit: contain;
+      filter: grayscale(15%);
+      transition: filter 0.2s;
+    }
+    .prod-card:hover .brand-inline-logo { filter: grayscale(0%); }
+
     .prod-name { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
 
     .specs-list {
@@ -339,7 +362,15 @@
     .modal-gallery-area img { max-width: 92%; max-height: 92%; object-fit: contain; }
 
     .modal-body { padding: 30px; }
-    .modal-brand { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--primary); }
+    .modal-brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .modal-brand { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--primary); }
+    .modal-brand-inline-logo { height: 28px; max-width: 110px; object-fit: contain; }
     .modal-title { font-size: 1.7rem; font-weight: 800; margin: 4px 0 18px; color: var(--text-main); }
     .modal-details { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.95rem; }
     .modal-details li { display: flex; justify-content: space-between; border-bottom: 1px solid #F1F5F9; padding-bottom: 8px; }
@@ -376,6 +407,16 @@
       border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
+    }
+
+    .brand-logo-preview {
+      height: 36px;
+      max-width: 110px;
+      object-fit: contain;
+      border: 1px dashed var(--card-border);
+      padding: 4px;
+      border-radius: 6px;
+      background: #FFFFFF;
     }
 
     /* Galeria de Edição/Remoção de Fotos */
@@ -417,7 +458,7 @@
       font-weight: bold;
     }
 
-    /* Rodapé com Logo Maior */
+    /* Rodapé */
     footer {
       position: relative;
       z-index: 1;
@@ -468,7 +509,10 @@
       </button>
       <div class="modal-gallery-area" id="modalGallery"></div>
       <div class="modal-body">
-        <span class="modal-brand" id="modalBrand">Marca</span>
+        <div class="modal-brand-row">
+          <span class="modal-brand" id="modalBrand">Marca</span>
+          <img id="modalBrandLogo" class="modal-brand-inline-logo" src="" alt="Logo Fabricante" style="display:none;">
+        </div>
         <h3 class="modal-title" id="modalTitle">Título do Modelo</h3>
         <ul class="modal-details" id="modalSpecsList"></ul>
       </div>
@@ -489,13 +533,24 @@
         </div>
 
         <div class="form-group">
-          <label>Fabricante / Marca (Ex: HP Mono, Dell, Zebra)</label>
-          <input type="text" id="prodBrand" class="form-control" required placeholder="HP Mono">
+          <label>Fabricante / Marca (Ex: Xerox Color, HP Mono, Dell, Zebra)</label>
+          <input type="text" id="prodBrand" class="form-control" required placeholder="Xerox Color">
+        </div>
+
+        <!-- Logotipo da Marca / Fabricante -->
+        <div class="form-group">
+          <label>Logotipo do Fabricante (Opcional - PNG com fundo transparente)</label>
+          <div id="brandLogoCurrentContainer" style="display: none; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <img id="brandLogoPreviewImg" class="brand-logo-preview" src="">
+            <button type="button" class="btn-action btn-del" onclick="removeBrandLogo()" style="max-width: 90px;">Remover</button>
+          </div>
+          <input type="file" id="prodBrandLogoInput" class="form-control" accept="image/*">
+          <small style="color: var(--text-muted); font-size: 0.75rem;">Aparecerá sutilmente no card e no modal de detalhes.</small>
         </div>
 
         <div class="form-group">
           <label>Nome Completo do Modelo</label>
-          <input type="text" id="prodName" class="form-control" required placeholder="HP LaserJet Pro 4003">
+          <input type="text" id="prodName" class="form-control" required placeholder="Xerox VersaLink C7020/25/30">
         </div>
 
         <!-- Gerenciador de Fotos Existentes -->
@@ -512,7 +567,7 @@
 
         <div class="form-group">
           <label>Especificações Técnicas (Formato: Chave: Valor, uma por linha)</label>
-          <textarea id="prodSpecs" class="form-control" rows="4" placeholder="Velocidade: Até 40 ppm&#10;1ª Página: ~6,3s&#10;Tipo: Monocromático"></textarea>
+          <textarea id="prodSpecs" class="form-control" rows="4" placeholder="Velocidade: Até 20 ppm&#10;1ª Página: ~8,1s&#10;Tipo: Multifuncional Colorida"></textarea>
         </div>
 
         <div class="form-actions">
@@ -602,7 +657,6 @@
       return `<svg class="${className}" viewBox="0 0 24 24">${inner}</svg>`;
     }
 
-    // Categorias Padrão
     let categorias = [
       { id: 'print', title: 'Outsourcing de Impressão', icon: 'print', ativa: true },
       { id: 'scanner', title: 'Scanners Profissionais', icon: 'scanner', ativa: true },
@@ -617,6 +671,7 @@
     let modalImages = [];
     let modalCurrentIdx = 0;
     let editCurrentPhotos = [];
+    let editCurrentBrandLogo = '';
 
     // 1. CARREGAMENTO INICIAL
     async function loadCatalog() {
@@ -654,12 +709,10 @@
         const produtosDaCat = produtos.filter(p => p.categoria === cat.id);
         const produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
 
-        // Oculta categoria se estiver inativa ou vazia para o visitante
         if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) {
           return;
         }
 
-        // Renderiza Item no Menu Superior com seu SVG
         const navItem = document.createElement('a');
         navItem.href = `#${cat.id}`;
         navItem.className = 'nav-item';
@@ -669,7 +722,6 @@
         `;
         navContainer.appendChild(navItem);
 
-        // Renderiza Seção com SVG de Destaque
         const section = document.createElement('section');
         section.id = cat.id;
         section.style.opacity = !cat.ativa ? '0.6' : '1';
@@ -686,7 +738,6 @@
         `;
         sectionsContainer.appendChild(section);
 
-        // Renderiza os Cards da Seção
         const grid = section.querySelector(`#grid-${cat.id}`);
         produtosVisiveis.forEach(prod => {
           const card = document.createElement('div');
@@ -715,11 +766,16 @@
             specsHtml = entries.map(([k, v]) => `<div class="spec-row"><span>${k}</span><strong>${v}</strong></div>`).join('');
           }
 
+          const logoMarcaHtml = prod.logoMarca ? `<img src="${prod.logoMarca}" class="brand-inline-logo" alt="${prod.marca}">` : '';
+
           card.innerHTML = `
             <div class="thumb-slider-container" data-index="0" data-images='${JSON.stringify(prod.imagens || [])}'>
               ${mediaHtml}
             </div>
-            <span class="brand-sub">${prod.marca} ${!prod.ativo ? '(ITEM OCULTO)' : ''}</span>
+            <div class="brand-header-row">
+              <span class="brand-sub">${prod.marca} ${!prod.ativo ? '(ITEM OCULTO)' : ''}</span>
+              ${logoMarcaHtml}
+            </div>
             <div class="prod-name">${prod.nome}</div>
             <div class="specs-list">${specsHtml}</div>
             <div class="admin-card-actions" onclick="event.stopPropagation()">
@@ -758,6 +814,15 @@
 
       document.getElementById('modalBrand').textContent = prod.marca;
       document.getElementById('modalTitle').textContent = prod.nome;
+
+      const modalLogoImg = document.getElementById('modalBrandLogo');
+      if (prod.logoMarca) {
+        modalLogoImg.src = prod.logoMarca;
+        modalLogoImg.style.display = 'inline-block';
+      } else {
+        modalLogoImg.style.display = 'none';
+        modalLogoImg.src = '';
+      }
 
       const specsList = document.getElementById('modalSpecsList');
       specsList.innerHTML = '';
@@ -811,7 +876,7 @@
       if (e.target.id === 'productModal') closeModal();
     }
 
-    // 5. AUTENTICAÇÃO COM SENHA PARTICULAR
+    // 5. AUTENTICAÇÃO
     function checkIsAdmin() {
       return localStorage.getItem('infinity_admin_logged') === 'true';
     }
@@ -838,7 +903,7 @@
       renderCatalog();
     }
 
-    // 6. OPERAÇÕES DE CRUD VIA GITHUB API
+    // 6. OPERAÇÕES VIA GITHUB
     async function saveCatalogToGithub(commitMessage) {
       const token = localStorage.getItem('gh_pat_infinity');
       if (!token) return alert('Token do GitHub não encontrado. Faça login novamente.');
@@ -908,7 +973,7 @@
       return fileName;
     }
 
-    // Formulário de Cadastro e Edição de Produtos
+    // Formulário de Cadastro e Edição
     function populateCategorySelect(selectedId = '') {
       const select = document.getElementById('prodCategory');
       select.innerHTML = '';
@@ -925,7 +990,12 @@
       document.getElementById('productCrudForm').reset();
       document.getElementById('prodId').value = '';
       editCurrentPhotos = [];
+      editCurrentBrandLogo = '';
+
+      document.getElementById('brandLogoCurrentContainer').style.display = 'none';
+      document.getElementById('brandLogoPreviewImg').src = '';
       document.getElementById('existingPhotosGroup').style.display = 'none';
+
       populateCategorySelect();
       document.getElementById('formModalTitle').textContent = 'Cadastrar Novo Equipamento';
       document.getElementById('formModal').classList.add('active');
@@ -946,11 +1016,29 @@
       }
       document.getElementById('prodSpecs').value = specsText;
 
+      // Gerenciar Logo do Fabricante
+      editCurrentBrandLogo = prod.logoMarca || '';
+      const brandLogoContainer = document.getElementById('brandLogoCurrentContainer');
+      const brandLogoImg = document.getElementById('brandLogoPreviewImg');
+      if (editCurrentBrandLogo) {
+        brandLogoImg.src = editCurrentBrandLogo;
+        brandLogoContainer.style.display = 'flex';
+      } else {
+        brandLogoContainer.style.display = 'none';
+      }
+
+      // Fotos Existentes
       editCurrentPhotos = [...(prod.imagens || [])];
       renderExistingPhotos();
 
       document.getElementById('formModalTitle').textContent = 'Editar Equipamento';
       document.getElementById('formModal').classList.add('active');
+    }
+
+    function removeBrandLogo() {
+      editCurrentBrandLogo = '';
+      document.getElementById('brandLogoCurrentContainer').style.display = 'none';
+      document.getElementById('brandLogoPreviewImg').src = '';
     }
 
     function renderExistingPhotos() {
@@ -998,6 +1086,7 @@
         const nome = document.getElementById('prodName').value;
         const specsText = document.getElementById('prodSpecs').value;
         const fileInput = document.getElementById('prodFileInput');
+        const logoInput = document.getElementById('prodBrandLogoInput');
 
         const specs = {};
         specsText.split('\n').forEach(line => {
@@ -1007,6 +1096,13 @@
           }
         });
 
+        // 1. Upload do Logo do Fabricante (se selecionado novo)
+        let finalBrandLogo = editCurrentBrandLogo;
+        if (logoInput.files.length > 0) {
+          finalBrandLogo = await uploadImageToGithub(logoInput.files[0]);
+        }
+
+        // 2. Upload das Fotos do Equipamento
         let novasFotos = [];
         if (fileInput.files.length > 0) {
           for (let file of fileInput.files) {
@@ -1024,6 +1120,7 @@
           produtos[existingIdx].nome = nome;
           produtos[existingIdx].specs = specs;
           produtos[existingIdx].imagens = fotosFinais;
+          produtos[existingIdx].logoMarca = finalBrandLogo;
           await saveCatalogToGithub(`Atualizado: ${nome}`);
         } else {
           produtos.push({
@@ -1033,7 +1130,8 @@
             nome,
             ativo: true,
             imagens: fotosFinais,
-            specs
+            specs,
+            logoMarca: finalBrandLogo
           });
           await saveCatalogToGithub(`Novo produto: ${nome}`);
         }
