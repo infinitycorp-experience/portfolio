@@ -16,6 +16,11 @@
       "ativa": true
     },
     {
+      "id": "totem",
+      "title": "Totens de Autoatendimento",
+      "ativa": true
+    },
+    {
       "id": "scanner",
       "title": "Scanners Profissionais",
       "ativa": true
@@ -23,11 +28,6 @@
     {
       "id": "thermal",
       "title": "Impressoras Térmicas de Etiquetas",
-      "ativa": true
-    },
-    {
-      "id": "totem",
-      "title": "Totens de Autoatendimento",
       "ativa": true
     },
     {
