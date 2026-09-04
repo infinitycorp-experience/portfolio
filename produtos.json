@@ -75,13 +75,16 @@
       "id": "brother-ads4700",
       "categoria": "scanner",
       "marca": "Brother",
-      "nome": "Brother ADS-4700W",
+      "nome": "ADS-4700W",
       "ativo": true,
-      "imagens": [],
+      "imagens": [
+        "fotos/1788529609660_SCANNER_BROTHER_ADS4700W.png"
+      ],
       "specs": {
         "Velocidade": "40 ppm / 80 ipm",
         "ADF": "80 Folhas"
-      }
+      },
+      "logoMarca": "fotos/1788529608454_LogoBrother.png"
     },
     {
       "id": "totem-stand5",
@@ -135,6 +138,24 @@
         "ADF": "2 Faces Automático"
       },
       "logoMarca": "fotos/1788525660810_LogoHP.png"
+    },
+    {
+      "id": "prod-1788529606080",
+      "categoria": "mobile",
+      "marca": "Samsung",
+      "nome": "TABLET A7 LITE",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788529611767_TABLET_SAMSUNG_T220_A7_LITE_32GB.png"
+      ],
+      "specs": {
+        "Tela": "8,7'",
+        "Processador": "Octa-Core",
+        "Câmeras": "Traseira de 8 MP e frontal de 2 MP",
+        "Memória": "3 GB ou 4 GB",
+        "Armazenamento": "32 GB ou 64 GB"
+      },
+      "logoMarca": "fotos/1788529610862_logosamsung.jpg"
     }
   ]
 }
