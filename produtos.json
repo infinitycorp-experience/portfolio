@@ -281,11 +281,11 @@
         "fotos/1788544863350_ALIENWARE_AURORA.jpg"
       ],
       "specs": {
-        "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
-        "Memória RAM": "8 GB  - 16 GB - 32 GB",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Tela": "14' - Full HD (1920 x 1080)",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Processador": "Intel Core 5 210H (8-core) Core 7 240H (10-core)",
+        "Memória RAM": "16 GB - 32 GB - 64GB DDR5 a 5600 MT/s",
+        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
+        "Tela": "16' WQXGA (2560 x 1600), de 120 Hz e 100% de cobertura sRGB",
+        "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050"
       },
       "logoMarca": "logos/dell.png"
     }
