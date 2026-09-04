@@ -13,7 +13,7 @@
     {
       "id": "thermal",
       "title": "Impressoras Térmicas de Etiquetas",
-      "ativa": false
+      "ativa": true
     },
     {
       "id": "computer",
