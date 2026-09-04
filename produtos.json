@@ -57,13 +57,16 @@
       "id": "xerox-c7020",
       "categoria": "print",
       "marca": "Xerox Color",
-      "nome": "Xerox VersaLink C7020",
+      "nome": "Xerox VersaLink C7020/25/30",
       "ativo": true,
-      "imagens": [],
+      "imagens": [
+        "fotos/1788524297068_7020.jpg",
+        "fotos/1788524298578_c7000-series-panel-1000x1000.jpg"
+      ],
       "specs": {
         "Velocidade": "Até 20 ppm",
         "1ª Página": "~8,1s",
-        "Tipo": "Laser Colorido"
+        "Tipo": "Laser Colorido A3"
       }
     },
     {
