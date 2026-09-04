@@ -118,7 +118,7 @@
       "id": "prod-1788523510340",
       "categoria": "print",
       "marca": "HP",
-      "nome": "HP 428",
+      "nome": "HP Mono 428",
       "ativo": true,
       "imagens": [
         "fotos/1788523510340_428.jpg",
@@ -129,7 +129,8 @@
         "Velocidade": "40ppm",
         "Bandeja": "500 Folhas",
         "ADF": "2 Faces Automático"
-      }
+      },
+      "logoMarca": "fotos/1788525660810_LogoHP.png"
     }
   ]
 }
