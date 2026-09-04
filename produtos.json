@@ -41,7 +41,7 @@
       "id": "prod-1788523510340",
       "categoria": "print",
       "marca": "HP",
-      "nome": "HP Mono 428",
+      "nome": "Multi Mono 428",
       "ativo": true,
       "imagens": [
         "fotos/1788523510340_428.jpg",
@@ -59,7 +59,7 @@
       "id": "hp-4003",
       "categoria": "print",
       "marca": "HP",
-      "nome": "HP Mono  4003",
+      "nome": "Multi  Mono  4003",
       "ativo": true,
       "imagens": [
         "fotos/1788524251640_428_2.jpg"
@@ -91,7 +91,7 @@
       "id": "totem-stand5",
       "categoria": "totem",
       "marca": "ISD",
-      "nome": "STAND 3",
+      "nome": "Stand 3",
       "ativo": true,
       "imagens": [
         "fotos/1788528877888_TOTEM_AUTOATENDIMENTO_ISD_STAND_3_21_5.png"
@@ -126,11 +126,10 @@
       "id": "prod-1788533573286",
       "categoria": "print",
       "marca": "HP",
-      "nome": "MultiFuncional E52645DN",
+      "nome": "Multi Mono E52645DN",
       "ativo": true,
       "imagens": [
-        "fotos/1788533820035_HP_LASERJET_E52645DN.png",
-        "fotos/1788533822409_HP_LASERJET_E52645DN.png"
+        "fotos/1788533820035_HP_LASERJET_E52645DN.png"
       ],
       "specs": {
         "Velocidade": "45 ppm",
@@ -147,7 +146,7 @@
       "id": "prod-1788529606080",
       "categoria": "mobile",
       "marca": "Samsung",
-      "nome": "TABLET A7 LITE",
+      "nome": "Tablet A7 LITE",
       "ativo": true,
       "imagens": [
         "fotos/1788529611767_TABLET_SAMSUNG_T220_A7_LITE_32GB.png"
@@ -165,7 +164,7 @@
       "id": "xerox-c7020",
       "categoria": "print",
       "marca": "Xerox",
-      "nome": "Xerox VersaLink C7020/25/30",
+      "nome": "VersaLink C7020/25/30",
       "ativo": true,
       "imagens": [
         "fotos/1788524556626_7020.jpg",
@@ -189,11 +188,11 @@
         "fotos/1788533825746_ZEBRA_ZT231.png"
       ],
       "specs": {
-        "Construção": "Gabinete resistente em metal",
-        "Resolução": "Disponível em 203 dpi ou 300 dpi",
+        "Resolução": "203 dpi ou 300 dpi",
+        "Conectividade": "USB e Serial",
         "Tecnologia": "Transferência térmica (com ribbon) e térmica direta (sem ribbon)",
         "Painel": "Interface gráfica com visor LCD e botões de navegação",
-        "Conectividade": "USB e Serial",
+        "Construção": "Gabinete resistente em metal",
         "Opcionais": "Ethernet (RJ45)"
       },
       "logoMarca": "fotos/1788533823542_logozebra.png"
