@@ -234,7 +234,10 @@
       "nome": "Latitude 3440 / 3450",
       "ativo": true,
       "imagens": [
-        "fotos/1788542049645_NOTEBOOK_DELL_LATITUDE_3450.png"
+        "fotos/1788542049645_NOTEBOOK_DELL_LATITUDE_3450.png",
+        "fotos/1788544758396_latitude4.jpg",
+        "fotos/1788544759483_latitude3.jpg",
+        "fotos/1788544760673_latitude2.jpg"
       ],
       "specs": {
         "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
@@ -271,18 +274,14 @@
       "ativo": true,
       "imagens": [
         "fotos/1788544362389_ALIENWARE_AURORA5.jpg",
-        "fotos/1788544363651_ALIENWARE_AURORA4.jpg",
-        "fotos/1788544603509_ALIENWARE_AURORA3.jpg",
-        "fotos/1788544604552_ALIENWARE_AURORA2.jpg",
-        "fotos/1788544605663_ALIENWARE_AURORA1.jpg",
-        "fotos/1788544606552_ALIENWARE_AURORA.jpg"
+        "fotos/1788544363651_ALIENWARE_AURORA4.jpg"
       ],
       "specs": {
-        "Processador": "Intel Core  i5 / i7 - 12ª Gen",
-        "Memória RAM": "16 GB - 32 GB - 64 GB -DDR5",
-        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Tela": "16' - WQXGA (2560 x 1600), de 120 Hz",
-        "Placa de Vídeo (GPU)": "NVIDIA GeForce RTX 3050 / 4050 / 5050"
+        "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
+        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Tela": "14' - Full HD (1920 x 1080)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "logos/dell.png"
     }
