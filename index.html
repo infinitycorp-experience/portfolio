@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio de Soluções 2025 | Infinity Corp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --card-border: #E2E8F0;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+
+      --c-print: #0284C7;
+      --c-scanner: #7C3AED;
+      --c-thermal: #D97706;
+      --c-computer: #0284C7;
+      --c-monitor: #059669;
+      --c-mobile: #E11D48;
+      --c-totem: #CA8A04;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    html { scroll-behavior: smooth; }
+    
+    body { 
+      background-color: var(--bg-body); 
+      color: var(--text-main); 
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png');
+      background-repeat: repeat;
+      background-size: 320px auto;
+      background-position: center;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 0;
+      transform: rotate(-12deg) scale(1.1);
+    }
+
+    .icon-svg {
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
+      display: inline-block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .icon-svg-lg { width: 24px; height: 24px; stroke-width: 2.2; }
+
+    /* Barra Superior */
+    .top-navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .brand-logo img { height: 40px; width: auto; object-fit: contain; }
+
+    .nav-menu {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 0;
+      scrollbar-width: none;
+    }
+    .nav-menu::-webkit-scrollbar { display: none; }
+
+    .nav-item {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      white-space: nowrap;
+      border: 1px solid var(--card-border);
+      background: #FFFFFF;
+      transition: all 0.25s ease;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .nav-item[data-cat="print"]:hover { border-color: var(--c-print); color: var(--c-print); }
+    .nav-item[data-cat="scanner"]:hover { border-color: var(--c-scanner); color: var(--c-scanner); }
+    .nav-item[data-cat="thermal"]:hover { border-color: var(--c-thermal); color: var(--c-thermal); }
+    .nav-item[data-cat="computer"]:hover { border-color: var(--c-computer); color: var(--c-computer); }
+    .nav-item[data-cat="monitor"]:hover { border-color: var(--c-monitor); color: var(--c-monitor); }
+    .nav-item[data-cat="mobile"]:hover { border-color: var(--c-mobile); color: var(--c-mobile); }
+    .nav-item[data-cat="totem"]:hover { border-color: var(--c-totem); color: var(--c-totem); }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 55px 20px 25px;
+      background: radial-gradient(circle at center top, rgba(2, 132, 199, 0.08) 0%, transparent 70%);
+    }
+    .hero h1 { 
+      font-size: clamp(2rem, 5vw, 3rem); 
+      font-weight: 900; 
+      letter-spacing: -0.02em; 
+      margin-bottom: 8px; 
+      color: var(--text-main);
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, #0284C7, #00D2DF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { color: var(--text-muted); font-size: 1.05rem; max-width: 650px; margin: 0 auto; }
+
+    .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 60px 0 24px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #EDF2F7;
+      scroll-margin-top: 90px;
+    }
+    .section-title { font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .badge-count { font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    .prod-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+    .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08); }
+    .prod-card.item-oculto { opacity: 0.55; border-style: dashed; }
+
+    .thumb-slider-container {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      background: #FFFFFF;
+      border: 1px solid #EDF2F7;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .thumb-slider-container img { max-width: 92%; max-height: 92%; object-fit: contain; }
+    .placeholder-text { color: #94A3B8; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; text-align: center; padding: 10px; }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .carousel-btn:hover { background: #0F172A; color: white; }
+    .carousel-btn.prev { left: 8px; }
+    .carousel-btn.next { right: 8px; }
+
+    .carousel-dots { position: absolute; bottom: 8px; display: flex; gap: 6px; z-index: 5; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(15, 23, 42, 0.2); }
+    .dot.active { background: #0F172A; width: 14px; border-radius: 4px; }
+
+    .brand-sub { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; }
+    .prod-name { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
+
+    .specs-list {
+      background: #F8FAFC;
+      border: 1px solid #EDF2F7;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.8rem;
+    }
+    .spec-row { display: flex; justify-content: space-between; align-items: center; }
+    .spec-row span { color: var(--text-muted); font-weight: 500; }
+    .spec-row strong { color: var(--text-main); font-weight: 700; }
+
+    /* Estilos das Ações Admin nos Cards */
+    .admin-card-actions {
+      display: none;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--card-border);
+    }
+    body.admin-mode .admin-card-actions { display: flex; }
+    .btn-action {
+      flex: 1;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      background: #FFFFFF;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-action:hover { background: #0F172A; color: white; }
+    .btn-action.btn-del { color: #E11D48; border-color: #FECDD3; }
+    .btn-action.btn-del:hover { background: #E11D48; color: white; }
+
+    /* Barra Fixa Flutuante do Admin */
+    .admin-bar {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0F172A;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 1500;
+      align-items: center;
+      gap: 14px;
+    }
+    body.admin-mode .admin-bar { display: flex; }
+    .admin-btn-new {
+      background: #0284C7;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .admin-btn-logout {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    /* Cores Temáticas */
+    .cat-print .section-title, .cat-print .brand-sub, .cat-print .spec-row strong { color: var(--c-print); }
+    .cat-print .badge-count { background: #E0F2FE; color: var(--c-print); border: 1px solid #BAE6FD; }
+    .cat-print .prod-card:hover { border-color: var(--c-print); }
+
+    .cat-scanner .section-title, .cat-scanner .brand-sub, .cat-scanner .spec-row strong { color: var(--c-scanner); }
+    .cat-scanner .badge-count { background: #F3E8FF; color: var(--c-scanner); border: 1px solid #E9D5FF; }
+    .cat-scanner .prod-card:hover { border-color: var(--c-scanner); }
+
+    .cat-thermal .section-title, .cat-thermal .brand-sub, .cat-thermal .spec-row strong { color: var(--c-thermal); }
+    .cat-thermal .badge-count { background: #FEF3C7; color: var(--c-thermal); border: 1px solid #FDE68A; }
+    .cat-thermal .prod-card:hover { border-color: var(--c-thermal); }
+
+    .cat-computer .section-title, .cat-computer .brand-sub, .cat-computer .spec-row strong { color: var(--c-computer); }
+    .cat-computer .badge-count { background: #E0F2FE; color: var(--c-computer); border: 1px solid #BAE6FD; }
+    .cat-computer .prod-card:hover { border-color: var(--c-computer); }
+
+    .cat-monitor .section-title, .cat-monitor .brand-sub, .cat-monitor .spec-row strong { color: var(--c-monitor); }
+    .cat-monitor .badge-count { background: #D1FAE5; color: var(--c-monitor); border: 1px solid #A7F3D0; }
+    .cat-monitor .prod-card:hover { border-color: var(--c-monitor); }
+
+    .cat-mobile .section-title, .cat-mobile .brand-sub, .cat-mobile .spec-row strong { color: var(--c-mobile); }
+    .cat-mobile .badge-count { background: #FFE4E6; color: var(--c-mobile); border: 1px solid #FECDD3; }
+    .cat-mobile .prod-card:hover { border-color: var(--c-mobile); }
+
+    .cat-totem .section-title, .cat-totem .brand-sub, .cat-totem .spec-row strong { color: var(--c-totem); }
+    .cat-totem .badge-count { background: #FEF9C3; color: var(--c-totem); border: 1px solid #FEF08A; }
+    .cat-totem .prod-card:hover { border-color: var(--c-totem); }
+
+    /* Modais (Zoom e Edição) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-box {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #F1F5F9;
+      border: none;
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    }
+    .modal-close-btn:hover { background: #E11D48; color: white; }
+
+    .modal-gallery-area {
+      position: relative;
+      height: 380px;
+      background: #FAFAFA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--card-border);
+      padding: 20px;
+    }
+    .modal-gallery-area img { max-width: 92%; max-height: 92%; object-fit: contain; }
+
+    .modal-body { padding: 30px; }
+    .modal-brand { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
+    .modal-title { font-size: 1.7rem; font-weight: 800; margin: 4px 0 18px; color: var(--text-main); }
+    .modal-details { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.95rem; }
+    .modal-details li { display: flex; justify-content: space-between; border-bottom: 1px solid #F1F5F9; padding-bottom: 8px; }
+    .modal-details span { color: var(--text-muted); font-weight: 500; }
+    .modal-details strong { color: var(--text-main); }
+
+    /* Formulário Admin */
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .form-control:focus { border-color: #0284C7; }
+    .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
+    .btn-submit {
+      background: #0284C7;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-cancel {
+      background: #E2E8F0;
+      color: var(--text-main);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      background: #FFFFFF;
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 30px; margin-top: 16px; font-weight: 700; flex-wrap: wrap; }
+    .footer-links a { color: var(--c-print); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="top-navbar">
+    <div class="brand-logo">
+      <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
+    </div>
+    
+    <nav class="nav-menu">
+      <a href="#impressoras" class="nav-item" data-cat="print">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Impressoras
+      </a>
+      <a href="#scanners" class="nav-item" data-cat="scanner">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M7 15h2M11 15h6"/></svg>
+        Scanners
+      </a>
+      <a href="#termicas" class="nav-item" data-cat="thermal">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82zM7 7h.01"/></svg>
+        Térmicas
+      </a>
+      <a href="#computacao" class="nav-item" data-cat="computer">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 20h20M9 17v3M15 17v3"/></svg>
+        Notebooks & PCs
+      </a>
+      <a href="#monitores" class="nav-item" data-cat="monitor">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Monitores
+      </a>
+      <a href="#mobile" class="nav-item" data-cat="mobile">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        Mobile
+      </a>
+      <a href="#totens" class="nav-item" data-cat="totem">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="14" rx="1"/><path d="M10 16v6M14 16v6M6 22h12"/></svg>
+        Totens
+      </a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>CATÁLOGO DE <span>EQUIPAMENTOS 2025</span></h1>
+    <p>Fotos em proporção vertical real, galeria e zoom interativo.</p>
+  </section>
+
+  <!-- Conteúdo Renderizado Dinamicamente -->
+  <main class="main-content">
+    
+    <section id="impressoras" class="cat-print">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Outsourcing de Impressão
+        </h2>
+        <span class="badge-count" id="count-print">0 Modelos</span>
+      </div>
+      <div class="products-grid" id="grid-print"></div>
+    </section>
+
+    <section id="scanners" class="cat-scanner">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M7 15h2M11 15h6"/></svg>
+          Scanners Profissionais
+        </h2>
+        <span class="badge-count" id="count-scanner">0 Modelos</span>
+      </div>
+      <div class="products-grid" id="grid-scanner"></div>
+    </section>
+
+    <section id="termicas" class="cat-thermal">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82zM7 7h.01"/></svg>
+          Impressoras Térmicas de Etiquetas
+        </h2>
+        <span class="badge-count" id="count-thermal">0 Modelos</span>
+      </div>
+      <div class="products-grid" id="grid-thermal"></div>
+    </section>
+
+    <section id="computacao" class="cat-computer">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 20h20M9 17v3M15 17v3"/></svg>
+          Notebooks, Desktops & Periféricos
+        </h2>
+        <span class="badge-count" id="count-computer">0 Soluções</span>
+      </div>
+      <div class="products-grid" id="grid-computer"></div>
+    </section>
+
+    <section id="monitores" class="cat-monitor">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Monitores Profissionais
+        </h2>
+        <span class="badge-count" id="count-monitor">0 Modelos</span>
+      </div>
+      <div class="products-grid" id="grid-monitor"></div>
+    </section>
+
+    <section id="mobile" class="cat-mobile">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Dispositivos Móveis & Tablets
+        </h2>
+        <span class="badge-count" id="count-mobile">0 Segmentos</span>
+      </div>
+      <div class="products-grid" id="grid-mobile"></div>
+    </section>
+
+    <section id="totens" class="cat-totem">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="14" rx="1"/><path d="M10 16v6M14 16v6M6 22h12"/></svg>
+          Totens de Autoatendimento
+        </h2>
+        <span class="badge-count" id="count-totem">0 Versões</span>
+      </div>
+      <div class="products-grid" id="grid-totem"></div>
+    </section>
+
+  </main>
+
+  <!-- Barra Flutuante de Administração -->
+  <div class="admin-bar">
+    <span>🔒 Modo Gestor Ativo</span>
+    <button class="admin-btn-new" onclick="openProductForm()">+ Novo Equipamento</button>
+    <button class="admin-btn-logout" onclick="logoutAdmin()">Sair</button>
+  </div>
+
+  <!-- Modal de Zoom/Visualização -->
+  <div class="modal-overlay" id="productModal" onclick="closeModalOnOutsideClick(event)">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal()">
+        <svg class="icon-svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-gallery-area" id="modalGallery"></div>
+      <div class="modal-body">
+        <span class="modal-brand" id="modalBrand">Marca</span>
+        <h3 class="modal-title" id="modalTitle">Título do Modelo</h3>
+        <ul class="modal-details" id="modalSpecsList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal do Formulário de Cadastro/Edição -->
+  <div class="modal-overlay" id="formModal">
+    <div class="modal-box" style="padding: 30px;">
+      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;" id="formModalTitle">Cadastrar Equipamento</h3>
+      
+      <form id="productCrudForm" onsubmit="handleFormSubmit(event)">
+        <input type="hidden" id="prodId">
+
+        <div class="form-group">
+          <label>Categoria</label>
+          <select id="prodCategory" class="form-control" required>
+            <option value="print">Impressoras</option>
+            <option value="scanner">Scanners</option>
+            <option value="thermal">Térmicas</option>
+            <option value="computer">Notebooks & PCs</option>
+            <option value="monitor">Monitores</option>
+            <option value="mobile">Mobile</option>
+            <option value="totem">Totens</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Fabricante / Marca (Ex: HP Mono, Dell, Zebra)</label>
+          <input type="text" id="prodBrand" class="form-control" required placeholder="HP Mono">
+        </div>
+
+        <div class="form-group">
+          <label>Nome Completo do Modelo</label>
+          <input type="text" id="prodName" class="form-control" required placeholder="HP LaserJet Pro 4003">
+        </div>
+
+        <div class="form-group">
+          <label>Adicionar Novas Fotos (Selecione uma ou mais fotos do seu PC)</label>
+          <input type="file" id="prodFileInput" class="form-control" accept="image/*" multiple>
+          <small style="color: var(--text-muted); font-size: 0.75rem;">Elas serão salvas automaticamente na pasta /fotos do GitHub.</small>
+        </div>
+
+        <div class="form-group">
+          <label>Especificações Técnicas (Formato: Chave: Valor, uma por linha)</label>
+          <textarea id="prodSpecs" class="form-control" rows="4" placeholder="Velocidade: Até 40 ppm&#10;1ª Página: ~6,3s&#10;Tipo: Monocromático"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="closeFormModal()">Cancelar</button>
+          <button type="submit" class="btn-submit" id="btnSaveProd">Salvar no GitHub</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="brand-logo" style="justify-content: center; margin-bottom: 12px;">
+      <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
+    </div>
+    <p>Facilitando seu dia a dia com soluções ágeis de infraestrutura de TI.</p>
+    <div class="footer-links">
+      <a href="tel:+551140630424">+55 11 4063-0424</a>
+      <a href="mailto:contato@infinitycorp.com.br">contato@infinitycorp.com.br</a>
+      <a href="javascript:void(0)" onclick="promptAdminLogin()" style="color: var(--text-muted); font-size: 0.8rem;">🔒 Acesso Restrito</a>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // CONFIGURAÇÃO DO SEU REPOSITÓRIO GITHUB
+    // Substitua pelos seus dados reais:
+    // ==========================================
+    const GITHUB_OWNER = 'infinitycorp-experience';
+    const GITHUB_REPO  = 'portifolio';
+    const JSON_PATH    = 'produtos.json';
+    const GITHUB_BRANCH = 'main';
+
+    let produtos = [];
+    let modalImages = [];
+    let modalCurrentIdx = 0;
+
+    // 1. CARREGAMENTO INICIAL
+    async function loadCatalog() {
+      try {
+        // Adiciona timestamp para evitar cache no navegador
+        const response = await fetch(`${JSON_PATH}?t=${new Date().getTime()}`);
+        if (!response.ok) throw new Error('Não foi possível carregar o arquivo produtos.json');
+        produtos = await response.json();
+        renderCatalog();
+      } catch (err) {
+        console.error('Erro:', err);
+        alert('Atenção: Não foi possível carregar os dados. Verifique se o arquivo produtos.json está no repositório.');
+      }
+    }
+
+    // 2. RENDERIZAÇÃO DOS PRODUTOS NA TELA
+    function renderCatalog() {
+      const isAdmin = checkIsAdmin();
+      document.body.classList.toggle('admin-mode', isAdmin);
+
+      const categories = ['print', 'scanner', 'thermal', 'computer', 'monitor', 'mobile', 'totem'];
+      const counts = { print: 0, scanner: 0, thermal: 0, computer: 0, monitor: 0, mobile: 0, totem: 0 };
+
+      // Limpa os grids
+      categories.forEach(cat => {
+        const grid = document.getElementById(`grid-${cat}`);
+        if (grid) grid.innerHTML = '';
+      });
+
+      produtos.forEach(prod => {
+        // Se estiver inativo e não for admin, não exibe
+        if (!prod.ativo && !isAdmin) return;
+
+        counts[prod.categoria] = (counts[prod.categoria] || 0) + 1;
+        const grid = document.getElementById(`grid-${prod.categoria}`);
+        if (!grid) return;
+
+        const card = document.createElement('div');
+        card.className = `prod-card ${!prod.ativo ? 'item-oculto' : ''}`;
+        card.onclick = () => openProductModal(prod);
+
+        // Imagem / Carrossel
+        let mediaHtml = '';
+        if (!prod.imagens || prod.imagens.length === 0) {
+          mediaHtml = `<span class="placeholder-text">[Foto Vertical ${prod.nome}]</span>`;
+        } else if (prod.imagens.length === 1) {
+          mediaHtml = `<img src="${prod.imagens[0]}" alt="${prod.nome}">`;
+        } else {
+          mediaHtml = `
+            <button class="carousel-btn prev" onclick="changeCardSlide(event, this, -1)">◀</button>
+            <img src="${prod.imagens[0]}" alt="${prod.nome}">
+            <button class="carousel-btn next" onclick="changeCardSlide(event, this, 1)">▶</button>
+            <div class="carousel-dots">
+              ${prod.imagens.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
+            </div>
+          `;
+        }
+
+        // Especificações
+        let specsHtml = '';
+        if (prod.specs) {
+          const entries = Object.entries(prod.specs).slice(0, 2);
+          specsHtml = entries.map(([k, v]) => `<div class="spec-row"><span>${k}</span><strong>${v}</strong></div>`).join('');
+        }
+
+        card.innerHTML = `
+          <div class="thumb-slider-container" data-index="0" data-images='${JSON.stringify(prod.imagens || [])}'>
+            ${mediaHtml}
+          </div>
+          <span class="brand-sub">${prod.marca} ${!prod.ativo ? '(OCULTO)' : ''}</span>
+          <div class="prod-name">${prod.nome}</div>
+          <div class="specs-list">${specsHtml}</div>
+          <div class="admin-card-actions" onclick="event.stopPropagation()">
+            <button class="btn-action" onclick="toggleActive('${prod.id}')">${prod.ativo ? 'Ocultar' : 'Ativar'}</button>
+            <button class="btn-action" onclick="editProduct('${prod.id}')">Editar</button>
+            <button class="btn-action btn-del" onclick="deleteProduct('${prod.id}')">Excluir</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // Atualiza contadores
+      categories.forEach(cat => {
+        const badge = document.getElementById(`count-${cat}`);
+        if (badge) badge.textContent = `${counts[cat]} Modelos`;
+      });
+    }
+
+    // 3. CARROSSEL DOS CARDS
+    function changeCardSlide(e, btn, step) {
+      e.stopPropagation();
+      const container = btn.closest('.thumb-slider-container');
+      const images = JSON.parse(container.dataset.images);
+      let idx = parseInt(container.dataset.index) + step;
+
+      if (idx < 0) idx = images.length - 1;
+      if (idx >= images.length) idx = 0;
+
+      container.dataset.index = idx;
+      const img = container.querySelector('img');
+      img.src = images[idx];
+
+      const dots = container.querySelectorAll('.dot');
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+    }
+
+    // 4. MODAL DE ZOOM
+    function openProductModal(prod) {
+      modalImages = prod.imagens || [];
+      modalCurrentIdx = 0;
+
+      document.getElementById('modalBrand').textContent = prod.marca;
+      document.getElementById('modalTitle').textContent = prod.nome;
+
+      const specsList = document.getElementById('modalSpecsList');
+      specsList.innerHTML = '';
+      if (prod.specs) {
+        for (const [k, v] of Object.entries(prod.specs)) {
+          const li = document.createElement('li');
+          li.innerHTML = `<span>${k}:</span> <strong>${v}</strong>`;
+          specsList.appendChild(li);
+        }
+      }
+
+      renderModalGallery();
+      document.getElementById('productModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderModalGallery() {
+      const gallery = document.getElementById('modalGallery');
+      if (modalImages.length === 0) {
+        gallery.innerHTML = `<span style="color:var(--text-muted); font-weight:700;">[Foto do Equipamento em Alta Resolução]</span>`;
+        return;
+      }
+
+      if (modalImages.length === 1) {
+        gallery.innerHTML = `<img src="${modalImages[0]}" alt="Zoom">`;
+      } else {
+        gallery.innerHTML = `
+          <button class="carousel-btn prev" style="width:40px; height:40px; font-size:16px;" onclick="changeModalSlide(-1)">◀</button>
+          <img src="${modalImages[modalCurrentIdx]}" alt="Zoom">
+          <button class="carousel-btn next" style="width:40px; height:40px; font-size:16px;" onclick="changeModalSlide(1)">▶</button>
+          <div class="carousel-dots">
+            ${modalImages.map((_, i) => `<span class="dot ${i === modalCurrentIdx ? 'active' : ''}"></span>`).join('')}
+          </div>
+        `;
+      }
+    }
+
+    function changeModalSlide(step) {
+      modalCurrentIdx += step;
+      if (modalCurrentIdx < 0) modalCurrentIdx = modalImages.length - 1;
+      if (modalCurrentIdx >= modalImages.length) modalCurrentIdx = 0;
+      renderModalGallery();
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalOnOutsideClick(e) {
+      if (e.target.id === 'productModal') closeModal();
+    }
+
+    // 5. AUTENTICAÇÃO DO ADMIN (TOKEN GITHUB)
+    function checkIsAdmin() {
+      return !!localStorage.getItem('gh_pat_infinity');
+    }
+
+    function promptAdminLogin() {
+      const token = prompt('Digite seu GitHub Personal Access Token para gerenciar o catálogo:');
+      if (token) {
+        localStorage.setItem('gh_pat_infinity', token.trim());
+        alert('Modo de administração ativado!');
+        renderCatalog();
+      }
+    }
+
+    function logoutAdmin() {
+      localStorage.removeItem('gh_pat_infinity');
+      alert('Sessão de administração encerrada.');
+      renderCatalog();
+    }
+
+    // 6. OPERAÇÕES DE CRUD VIA GITHUB REST API
+    async function saveCatalogToGithub(commitMessage) {
+      const token = localStorage.getItem('gh_pat_infinity');
+      if (!token) return alert('Você não está autenticado.');
+
+      try {
+        // 1. Obter o SHA atual do arquivo produtos.json
+        const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
+        const getRes = await fetch(getFileUrl, {
+          headers: { Authorization: `token ${token}` }
+        });
+        
+        let sha = '';
+        if (getRes.ok) {
+          const fileData = await getRes.json();
+          sha = fileData.sha;
+        }
+
+        // 2. Enviar a versão atualizada
+        const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(produtos, null, 2))));
+        const putRes = await fetch(getFileUrl, {
+          method: 'PUT',
+          headers: {
+            Authorization: `token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: commitMessage,
+            content: contentBase64,
+            sha: sha || undefined,
+            branch: GITHUB_BRANCH
+          })
+        });
+
+        if (!putRes.ok) throw new Error('Falha ao commitar no repositório.');
+        alert('Alteração salva com sucesso no GitHub! O site será atualizado em instantes.');
+        renderCatalog();
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao salvar no GitHub: Verifique seu Token e permissões de escrita.');
+      }
+    }
+
+    async function uploadImageToGithub(file) {
+      const token = localStorage.getItem('gh_pat_infinity');
+      const fileName = `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+      const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileName}`;
+
+      const reader = new FileReader();
+      const base64Promise = new Promise((resolve) => {
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.readAsDataURL(file);
+      });
+      const content = await base64Promise;
+
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `Upload de imagem: ${file.name}`,
+          content: content,
+          branch: GITHUB_BRANCH
+        })
+      });
+
+      if (!res.ok) throw new Error(`Falha no upload da foto ${file.name}`);
+      return fileName; // Retorna o caminho relativo da foto
+    }
+
+    // Formulário de Cadastro/Edição
+    function openProductForm() {
+      document.getElementById('productCrudForm').reset();
+      document.getElementById('prodId').value = '';
+      document.getElementById('formModalTitle').textContent = 'Cadastrar Novo Equipamento';
+      document.getElementById('formModal').classList.add('active');
+    }
+
+    function editProduct(id) {
+      const prod = produtos.find(p => p.id === id);
+      if (!prod) return;
+
+      document.getElementById('prodId').value = prod.id;
+      document.getElementById('prodCategory').value = prod.categoria;
+      document.getElementById('prodBrand').value = prod.marca;
+      document.getElementById('prodName').value = prod.nome;
+
+      let specsText = '';
+      if (prod.specs) {
+        specsText = Object.entries(prod.specs).map(([k, v]) => `${k}: ${v}`).join('\n');
+      }
+      document.getElementById('prodSpecs').value = specsText;
+
+      document.getElementById('formModalTitle').textContent = 'Editar Equipamento';
+      document.getElementById('formModal').classList.add('active');
+    }
+
+    function closeFormModal() {
+      document.getElementById('formModal').classList.remove('active');
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const btnSave = document.getElementById('btnSaveProd');
+      btnSave.disabled = true;
+      btnSave.textContent = 'Enviando ao GitHub...';
+
+      try {
+        const id = document.getElementById('prodId').value || `prod-${Date.now()}`;
+        const categoria = document.getElementById('prodCategory').value;
+        const marca = document.getElementById('prodBrand').value;
+        const nome = document.getElementById('prodName').value;
+        const specsText = document.getElementById('prodSpecs').value;
+        const fileInput = document.getElementById('prodFileInput');
+
+        // Parse das especificações
+        const specs = {};
+        specsText.split('\n').forEach(line => {
+          const parts = line.split(':');
+          if (parts.length >= 2) {
+            specs[parts[0].trim()] = parts.slice(1).join(':').trim();
+          }
+        });
+
+        // Upload das fotos selecionadas
+        let novasFotos = [];
+        if (fileInput.files.length > 0) {
+          for (let file of fileInput.files) {
+            const path = await uploadImageToGithub(file);
+            novasFotos.push(path);
+          }
+        }
+
+        const existingIdx = produtos.findIndex(p => p.id === id);
+        if (existingIdx >= 0) {
+          // Atualização
+          produtos[existingIdx].categoria = categoria;
+          produtos[existingIdx].marca = marca;
+          produtos[existingIdx].nome = nome;
+          produtos[existingIdx].specs = specs;
+          if (novasFotos.length > 0) {
+            produtos[existingIdx].imagens = [...(produtos[existingIdx].imagens || []), ...novasFotos];
+          }
+          await saveCatalogToGithub(`Atualização do produto: ${nome}`);
+        } else {
+          // Novo
+          const novoProduto = {
+            id,
+            categoria,
+            marca,
+            nome,
+            ativo: true,
+            imagens: novasFotos,
+            specs
+          };
+          produtos.push(novoProduto);
+          await saveCatalogToGithub(`Adicionado novo produto: ${nome}`);
+        }
+
+        closeFormModal();
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao salvar produto.');
+      } finally {
+        btnSave.disabled = false;
+        btnSave.textContent = 'Salvar no GitHub';
+      }
+    }
+
+    async function toggleActive(id) {
+      const prod = produtos.find(p => p.id === id);
+      if (!prod) return;
+      prod.ativo = !prod.ativo;
+      await saveCatalogToGithub(`${prod.ativo ? 'Ativado' : 'Ocultado'}: ${prod.nome}`);
+    }
+
+    async function deleteProduct(id) {
+      const prod = produtos.find(p => p.id === id);
+      if (!prod) return;
+      if (!confirm(`Tem certeza que deseja excluir "${prod.nome}"?`)) return;
+
+      produtos = produtos.filter(p => p.id !== id);
+      await saveCatalogToGithub(`Excluído produto: ${prod.nome}`);
+    }
+
+    // Inicialização ao carregar a página
+    window.addEventListener('DOMContentLoaded', loadCatalog);
+  </script>
+</body>
+</html>

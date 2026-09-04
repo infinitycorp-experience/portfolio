@@ -1,0 +1,55 @@
+[
+  {
+    "id": "hp-4003",
+    "categoria": "print",
+    "marca": "HP Mono",
+    "nome": "HP LaserJet Pro 4003",
+    "ativo": true,
+    "imagens": [
+      "https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png"
+    ],
+    "specs": {
+      "Velocidade": "Até 40 ppm",
+      "1ª Página": "~6,3s",
+      "Tipo": "Laser Monocromático",
+      "Uso": "Pequenos e Médios Grupos"
+    }
+  },
+  {
+    "id": "xerox-c7020",
+    "categoria": "print",
+    "marca": "Xerox Color",
+    "nome": "Xerox VersaLink C7020",
+    "ativo": true,
+    "imagens": [],
+    "specs": {
+      "Velocidade": "Até 20 ppm",
+      "1ª Página": "~8,1s",
+      "Tipo": "Laser Colorido"
+    }
+  },
+  {
+    "id": "brother-ads4700",
+    "categoria": "scanner",
+    "marca": "Brother",
+    "nome": "Brother ADS-4700W",
+    "ativo": true,
+    "imagens": [],
+    "specs": {
+      "Velocidade": "40 ppm / 80 ipm",
+      "ADF": "80 Folhas"
+    }
+  },
+  {
+    "id": "totem-stand5",
+    "categoria": "totem",
+    "marca": "Totem Stand",
+    "nome": "STAND 5 (32”)",
+    "ativo": true,
+    "imagens": [],
+    "specs": {
+      "Display": "32\" Touch Screen",
+      "Hardware": "i5 • 8GB • 128GB"
+    }
+  }
+]
