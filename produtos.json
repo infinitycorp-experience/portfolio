@@ -123,21 +123,25 @@
       "logoMarca": "fotos/1788526457986_LogoDell.png"
     },
     {
-      "id": "xerox-c7020",
+      "id": "prod-1788533573286",
       "categoria": "print",
-      "marca": "Xerox",
-      "nome": "Xerox VersaLink C7020/25/30",
+      "marca": "HP",
+      "nome": "MultiFuncional E52645DN",
       "ativo": true,
       "imagens": [
-        "fotos/1788524556626_7020.jpg",
-        "fotos/1788524557905_c7000.jpg"
+        "fotos/1788533820035_HP_LASERJET_E52645DN.png",
+        "fotos/1788533822409_HP_LASERJET_E52645DN.png"
       ],
       "specs": {
-        "Velocidade": "Até 20 ppm",
-        "1ª Página": "~8,1s",
-        "Tipo": "Laser Colorido A3"
+        "Velocidade": "45 ppm",
+        "1ª Página": "5,9 segundos",
+        "Resolução": "Até 1200 x 1200 dpi",
+        "Impressão frente e verso": "Duplex automático padrão",
+        "ADF": "Capacidade para até 100 folhas",
+        "Conectividade": "USB 2.0 e Ethernet",
+        "Rendimento do toner": "Até 23.000"
       },
-      "logoMarca": "fotos/1788525690206_LogoXerox.png"
+      "logoMarca": "fotos/1788533821335_LogoHP.png"
     },
     {
       "id": "prod-1788529606080",
@@ -156,6 +160,43 @@
         "Armazenamento": "32 GB ou 64 GB"
       },
       "logoMarca": "fotos/1788529610862_logosamsung.jpg"
+    },
+    {
+      "id": "xerox-c7020",
+      "categoria": "print",
+      "marca": "Xerox",
+      "nome": "Xerox VersaLink C7020/25/30",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788524556626_7020.jpg",
+        "fotos/1788524557905_c7000.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 20 ppm",
+        "1ª Página": "~8,1s",
+        "Tipo": "Laser Colorido A3"
+      },
+      "logoMarca": "fotos/1788525690206_LogoXerox.png"
+    },
+    {
+      "id": "prod-1788533804721",
+      "categoria": "thermal",
+      "marca": "Zebra",
+      "nome": "ZT230",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788533824605_ZEBRA_ZT230.png",
+        "fotos/1788533825746_ZEBRA_ZT231.png"
+      ],
+      "specs": {
+        "Construção": "Gabinete resistente em metal",
+        "Resolução": "Disponível em 203 dpi ou 300 dpi",
+        "Tecnologia": "Transferência térmica (com ribbon) e térmica direta (sem ribbon)",
+        "Painel": "Interface gráfica com visor LCD e botões de navegação",
+        "Conectividade": "USB e Serial",
+        "Opcionais": "Ethernet (RJ45)"
+      },
+      "logoMarca": "fotos/1788533823542_logozebra.png"
     }
   ]
 }
