@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio de Soluções 2025 | Infinity Corp</title>
+  <title>Portfólio de Soluções 2026 | Infinity Corp</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -12,14 +12,8 @@
       --card-border: #E2E8F0;
       --text-main: #0F172A;
       --text-muted: #64748B;
-
-      --c-print: #0284C7;
-      --c-scanner: #7C3AED;
-      --c-thermal: #D97706;
-      --c-computer: #0284C7;
-      --c-monitor: #059669;
-      --c-mobile: #E11D48;
-      --c-totem: #CA8A04;
+      --primary: #0284C7;
+      --danger: #E11D48;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -77,7 +71,7 @@
       gap: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
-    .brand-logo img { height: 40px; width: auto; object-fit: contain; }
+    .brand-logo img { height: 50px; width: auto; object-fit: contain; }
 
     .nav-menu {
       display: flex;
@@ -103,14 +97,7 @@
       align-items: center;
       gap: 8px;
     }
-    .nav-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    .nav-item[data-cat="print"]:hover { border-color: var(--c-print); color: var(--c-print); }
-    .nav-item[data-cat="scanner"]:hover { border-color: var(--c-scanner); color: var(--c-scanner); }
-    .nav-item[data-cat="thermal"]:hover { border-color: var(--c-thermal); color: var(--c-thermal); }
-    .nav-item[data-cat="computer"]:hover { border-color: var(--c-computer); color: var(--c-computer); }
-    .nav-item[data-cat="monitor"]:hover { border-color: var(--c-monitor); color: var(--c-monitor); }
-    .nav-item[data-cat="mobile"]:hover { border-color: var(--c-mobile); color: var(--c-mobile); }
-    .nav-item[data-cat="totem"]:hover { border-color: var(--c-totem); color: var(--c-totem); }
+    .nav-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); color: var(--primary); border-color: var(--primary); }
 
     .hero {
       position: relative;
@@ -145,7 +132,7 @@
       scroll-margin-top: 90px;
     }
     .section-title { font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
-    .badge-count { font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+    .badge-count { font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: #E0F2FE; color: var(--primary); border: 1px solid #BAE6FD; }
 
     .products-grid {
       display: grid;
@@ -165,8 +152,8 @@
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     }
-    .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08); }
-    .prod-card.item-oculto { opacity: 0.55; border-style: dashed; }
+    .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08); border-color: var(--primary); }
+    .prod-card.item-oculto { opacity: 0.5; border-style: dashed; }
 
     .thumb-slider-container {
       position: relative;
@@ -211,7 +198,7 @@
     .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(15, 23, 42, 0.2); }
     .dot.active { background: #0F172A; width: 14px; border-radius: 4px; }
 
-    .brand-sub { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; }
+    .brand-sub { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; color: var(--primary); }
     .prod-name { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
 
     .specs-list {
@@ -229,7 +216,7 @@
     .spec-row span { color: var(--text-muted); font-weight: 500; }
     .spec-row strong { color: var(--text-main); font-weight: 700; }
 
-    /* Estilos das Ações Admin nos Cards */
+    /* Ações Admin nos Cards */
     .admin-card-actions {
       display: none;
       gap: 8px;
@@ -250,8 +237,8 @@
       transition: 0.2s;
     }
     .btn-action:hover { background: #0F172A; color: white; }
-    .btn-action.btn-del { color: #E11D48; border-color: #FECDD3; }
-    .btn-action.btn-del:hover { background: #E11D48; color: white; }
+    .btn-action.btn-del { color: var(--danger); border-color: #FECDD3; }
+    .btn-action.btn-del:hover { background: var(--danger); color: white; }
 
     /* Barra Fixa Flutuante do Admin */
     .admin-bar {
@@ -266,19 +253,20 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       z-index: 1500;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
     body.admin-mode .admin-bar { display: flex; }
-    .admin-btn-new {
-      background: #0284C7;
+    .admin-btn {
+      background: var(--primary);
       color: white;
       border: none;
       padding: 8px 16px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       cursor: pointer;
     }
+    .admin-btn.secondary { background: #334155; }
     .admin-btn-logout {
       background: transparent;
       border: 1px solid rgba(255,255,255,0.3);
@@ -289,36 +277,7 @@
       cursor: pointer;
     }
 
-    /* Cores Temáticas */
-    .cat-print .section-title, .cat-print .brand-sub, .cat-print .spec-row strong { color: var(--c-print); }
-    .cat-print .badge-count { background: #E0F2FE; color: var(--c-print); border: 1px solid #BAE6FD; }
-    .cat-print .prod-card:hover { border-color: var(--c-print); }
-
-    .cat-scanner .section-title, .cat-scanner .brand-sub, .cat-scanner .spec-row strong { color: var(--c-scanner); }
-    .cat-scanner .badge-count { background: #F3E8FF; color: var(--c-scanner); border: 1px solid #E9D5FF; }
-    .cat-scanner .prod-card:hover { border-color: var(--c-scanner); }
-
-    .cat-thermal .section-title, .cat-thermal .brand-sub, .cat-thermal .spec-row strong { color: var(--c-thermal); }
-    .cat-thermal .badge-count { background: #FEF3C7; color: var(--c-thermal); border: 1px solid #FDE68A; }
-    .cat-thermal .prod-card:hover { border-color: var(--c-thermal); }
-
-    .cat-computer .section-title, .cat-computer .brand-sub, .cat-computer .spec-row strong { color: var(--c-computer); }
-    .cat-computer .badge-count { background: #E0F2FE; color: var(--c-computer); border: 1px solid #BAE6FD; }
-    .cat-computer .prod-card:hover { border-color: var(--c-computer); }
-
-    .cat-monitor .section-title, .cat-monitor .brand-sub, .cat-monitor .spec-row strong { color: var(--c-monitor); }
-    .cat-monitor .badge-count { background: #D1FAE5; color: var(--c-monitor); border: 1px solid #A7F3D0; }
-    .cat-monitor .prod-card:hover { border-color: var(--c-monitor); }
-
-    .cat-mobile .section-title, .cat-mobile .brand-sub, .cat-mobile .spec-row strong { color: var(--c-mobile); }
-    .cat-mobile .badge-count { background: #FFE4E6; color: var(--c-mobile); border: 1px solid #FECDD3; }
-    .cat-mobile .prod-card:hover { border-color: var(--c-mobile); }
-
-    .cat-totem .section-title, .cat-totem .brand-sub, .cat-totem .spec-row strong { color: var(--c-totem); }
-    .cat-totem .badge-count { background: #FEF9C3; color: var(--c-totem); border: 1px solid #FEF08A; }
-    .cat-totem .prod-card:hover { border-color: var(--c-totem); }
-
-    /* Modais (Zoom e Edição) */
+    /* Modais */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -364,7 +323,7 @@
       justify-content: center;
       z-index: 20;
     }
-    .modal-close-btn:hover { background: #E11D48; color: white; }
+    .modal-close-btn:hover { background: var(--danger); color: white; }
 
     .modal-gallery-area {
       position: relative;
@@ -379,14 +338,14 @@
     .modal-gallery-area img { max-width: 92%; max-height: 92%; object-fit: contain; }
 
     .modal-body { padding: 30px; }
-    .modal-brand { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
+    .modal-brand { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--primary); }
     .modal-title { font-size: 1.7rem; font-weight: 800; margin: 4px 0 18px; color: var(--text-main); }
     .modal-details { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.95rem; }
     .modal-details li { display: flex; justify-content: space-between; border-bottom: 1px solid #F1F5F9; padding-bottom: 8px; }
     .modal-details span { color: var(--text-muted); font-weight: 500; }
     .modal-details strong { color: var(--text-main); }
 
-    /* Formulário Admin */
+    /* Formulários e Gerenciador de Fotos */
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
     .form-control {
@@ -397,10 +356,10 @@
       font-size: 0.9rem;
       outline: none;
     }
-    .form-control:focus { border-color: #0284C7; }
+    .form-control:focus { border-color: var(--primary); }
     .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
     .btn-submit {
-      background: #0284C7;
+      background: var(--primary);
       color: white;
       border: none;
       padding: 10px 20px;
@@ -418,6 +377,45 @@
       cursor: pointer;
     }
 
+    /* Galeria de Edição/Remoção de Fotos */
+    .photos-manager-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    .photo-thumb-edit {
+      position: relative;
+      width: 75px;
+      height: 75px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+    .photo-thumb-edit img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .btn-remove-photo {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--danger);
+      color: white;
+      border: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
     footer {
       position: relative;
       z-index: 1;
@@ -429,7 +427,7 @@
       font-size: 0.9rem;
     }
     .footer-links { display: flex; justify-content: center; gap: 30px; margin-top: 16px; font-weight: 700; flex-wrap: wrap; }
-    .footer-links a { color: var(--c-print); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .footer-links a { color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 6px; }
   </style>
 </head>
 <body>
@@ -439,131 +437,23 @@
     <div class="brand-logo">
       <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
     </div>
-    
-    <nav class="nav-menu">
-      <a href="#impressoras" class="nav-item" data-cat="print">
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        Impressoras
-      </a>
-      <a href="#scanners" class="nav-item" data-cat="scanner">
-        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M7 15h2M11 15h6"/></svg>
-        Scanners
-      </a>
-      <a href="#termicas" class="nav-item" data-cat="thermal">
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82zM7 7h.01"/></svg>
-        Térmicas
-      </a>
-      <a href="#computacao" class="nav-item" data-cat="computer">
-        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 20h20M9 17v3M15 17v3"/></svg>
-        Notebooks & PCs
-      </a>
-      <a href="#monitores" class="nav-item" data-cat="monitor">
-        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        Monitores
-      </a>
-      <a href="#mobile" class="nav-item" data-cat="mobile">
-        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        Mobile
-      </a>
-      <a href="#totens" class="nav-item" data-cat="totem">
-        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="14" rx="1"/><path d="M10 16v6M14 16v6M6 22h12"/></svg>
-        Totens
-      </a>
-    </nav>
+    <nav class="nav-menu" id="dynamicNavMenu"></nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>CATÁLOGO DE <span>EQUIPAMENTOS 2025</span></h1>
-    <p>Fotos em proporção vertical real, galeria e zoom interativo.</p>
+    <h1>CATÁLOGO DE <span>EQUIPAMENTOS 2026</span></h1>
+    <p>Apresentação oficial de soluções e equipamentos do nosso portfólio.</p>
   </section>
 
   <!-- Conteúdo Renderizado Dinamicamente -->
-  <main class="main-content">
-    
-    <section id="impressoras" class="cat-print">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Outsourcing de Impressão
-        </h2>
-        <span class="badge-count" id="count-print">0 Modelos</span>
-      </div>
-      <div class="products-grid" id="grid-print"></div>
-    </section>
-
-    <section id="scanners" class="cat-scanner">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M7 15h2M11 15h6"/></svg>
-          Scanners Profissionais
-        </h2>
-        <span class="badge-count" id="count-scanner">0 Modelos</span>
-      </div>
-      <div class="products-grid" id="grid-scanner"></div>
-    </section>
-
-    <section id="termicas" class="cat-thermal">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82zM7 7h.01"/></svg>
-          Impressoras Térmicas de Etiquetas
-        </h2>
-        <span class="badge-count" id="count-thermal">0 Modelos</span>
-      </div>
-      <div class="products-grid" id="grid-thermal"></div>
-    </section>
-
-    <section id="computacao" class="cat-computer">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 20h20M9 17v3M15 17v3"/></svg>
-          Notebooks, Desktops & Periféricos
-        </h2>
-        <span class="badge-count" id="count-computer">0 Soluções</span>
-      </div>
-      <div class="products-grid" id="grid-computer"></div>
-    </section>
-
-    <section id="monitores" class="cat-monitor">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          Monitores Profissionais
-        </h2>
-        <span class="badge-count" id="count-monitor">0 Modelos</span>
-      </div>
-      <div class="products-grid" id="grid-monitor"></div>
-    </section>
-
-    <section id="mobile" class="cat-mobile">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          Dispositivos Móveis & Tablets
-        </h2>
-        <span class="badge-count" id="count-mobile">0 Segmentos</span>
-      </div>
-      <div class="products-grid" id="grid-mobile"></div>
-    </section>
-
-    <section id="totens" class="cat-totem">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="14" rx="1"/><path d="M10 16v6M14 16v6M6 22h12"/></svg>
-          Totens de Autoatendimento
-        </h2>
-        <span class="badge-count" id="count-totem">0 Versões</span>
-      </div>
-      <div class="products-grid" id="grid-totem"></div>
-    </section>
-
-  </main>
+  <main class="main-content" id="dynamicSectionsContainer"></main>
 
   <!-- Barra Flutuante de Administração -->
   <div class="admin-bar">
     <span>🔒 Modo Gestor Ativo</span>
-    <button class="admin-btn-new" onclick="openProductForm()">+ Novo Equipamento</button>
+    <button class="admin-btn" onclick="openProductForm()">+ Novo Equipamento</button>
+    <button class="admin-btn secondary" onclick="openCategoryModal()">Categorias</button>
     <button class="admin-btn-logout" onclick="logoutAdmin()">Sair</button>
   </div>
 
@@ -582,7 +472,7 @@
     </div>
   </div>
 
-  <!-- Modal do Formulário de Cadastro/Edição -->
+  <!-- Modal do Formulário de Produto (Cadastrar / Editar) -->
   <div class="modal-overlay" id="formModal">
     <div class="modal-box" style="padding: 30px;">
       <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;" id="formModalTitle">Cadastrar Equipamento</h3>
@@ -592,15 +482,7 @@
 
         <div class="form-group">
           <label>Categoria</label>
-          <select id="prodCategory" class="form-control" required>
-            <option value="print">Impressoras</option>
-            <option value="scanner">Scanners</option>
-            <option value="thermal">Térmicas</option>
-            <option value="computer">Notebooks & PCs</option>
-            <option value="monitor">Monitores</option>
-            <option value="mobile">Mobile</option>
-            <option value="totem">Totens</option>
-          </select>
+          <select id="prodCategory" class="form-control" required></select>
         </div>
 
         <div class="form-group">
@@ -613,10 +495,16 @@
           <input type="text" id="prodName" class="form-control" required placeholder="HP LaserJet Pro 4003">
         </div>
 
+        <!-- Gerenciador de Fotos Existentes -->
+        <div class="form-group" id="existingPhotosGroup" style="display: none;">
+          <label>Fotos Atuais do Equipamento (Clique no "✕" para remover)</label>
+          <div class="photos-manager-grid" id="existingPhotosContainer"></div>
+        </div>
+
         <div class="form-group">
           <label>Adicionar Novas Fotos (Selecione uma ou mais fotos do seu PC)</label>
           <input type="file" id="prodFileInput" class="form-control" accept="image/*" multiple>
-          <small style="color: var(--text-muted); font-size: 0.75rem;">Elas serão salvas automaticamente na pasta /fotos do GitHub.</small>
+          <small style="color: var(--text-muted); font-size: 0.75rem;">As fotos serão salvas automaticamente no repositório.</small>
         </div>
 
         <div class="form-group">
@@ -626,9 +514,31 @@
 
         <div class="form-actions">
           <button type="button" class="btn-cancel" onclick="closeFormModal()">Cancelar</button>
-          <button type="submit" class="btn-submit" id="btnSaveProd">Salvar no GitHub</button>
+          <button type="submit" class="btn-submit" id="btnSaveProd">Salvar Alterações</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Modal de Gestão de Categorias -->
+  <div class="modal-overlay" id="categoryModal">
+    <div class="modal-box" style="padding: 30px;">
+      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;">Gerenciar Categorias</h3>
+      
+      <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border);">
+        <h4 style="font-size: 0.95rem; margin-bottom: 10px;">Adicionar Nova Categoria</h4>
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="newCatTitle" class="form-control" placeholder="Nome da Categoria (Ex: Servidores)">
+          <button class="btn-submit" onclick="addCategory()" style="white-space: nowrap;">Adicionar</button>
+        </div>
+      </div>
+
+      <h4 style="font-size: 0.95rem; margin-bottom: 12px;">Categorias Existentes</h4>
+      <div id="categoriesListContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" onclick="closeCategoryModal()">Fechar</button>
+      </div>
     </div>
   </div>
 
@@ -647,106 +557,148 @@
 
   <script>
     // ==========================================
-    // CONFIGURAÇÃO DO SEU REPOSITÓRIO GITHUB
-    // Substitua pelos seus dados reais:
+    // CONFIGURAÇÃO DO REPOSITÓRIO GITHUB
     // ==========================================
-    const GITHUB_OWNER = 'infinitycorp-experience';
-    const GITHUB_REPO  = 'portifolio';
-    const JSON_PATH    = 'produtos.json';
+    const GITHUB_OWNER  = 'infinitycorp-experience';
+    const GITHUB_REPO   = 'portifolio';
+    const JSON_PATH     = 'produtos.json';
     const GITHUB_BRANCH = 'main';
+
+    // SENHA PESSOAL DA SUA EMPRESA (Você pode mudar para qualquer senha)
+    const SENHA_MESTRE  = 'InfinityCorp2026';
+
+    // Categorias Padrão
+    let categorias = [
+      { id: 'print', title: 'Outsourcing de Impressão', ativa: true },
+      { id: 'scanner', title: 'Scanners Profissionais', ativa: true },
+      { id: 'thermal', title: 'Impressoras Térmicas de Etiquetas', ativa: true },
+      { id: 'computer', title: 'Notebooks, Desktops & Periféricos', ativa: true },
+      { id: 'monitor', title: 'Monitores Profissionais', ativa: true },
+      { id: 'mobile', title: 'Dispositivos Móveis & Tablets', ativa: true },
+      { id: 'totem', title: 'Totens de Autoatendimento', ativa: true }
+    ];
 
     let produtos = [];
     let modalImages = [];
     let modalCurrentIdx = 0;
+    let editCurrentPhotos = []; // Armazena as fotos do produto em edição
 
     // 1. CARREGAMENTO INICIAL
     async function loadCatalog() {
       try {
-        // Adiciona timestamp para evitar cache no navegador
         const response = await fetch(`${JSON_PATH}?t=${new Date().getTime()}`);
-        if (!response.ok) throw new Error('Não foi possível carregar o arquivo produtos.json');
-        produtos = await response.json();
+        if (!response.ok) throw new Error('Não foi possível carregar os produtos.');
+        const data = await response.json();
+
+        // Suporta tanto o formato legado (só produtos) quanto o com categorias
+        if (Array.isArray(data)) {
+          produtos = data;
+        } else {
+          produtos = data.produtos || [];
+          if (data.categorias && data.categorias.length > 0) {
+            categorias = data.categorias;
+          }
+        }
         renderCatalog();
       } catch (err) {
-        console.error('Erro:', err);
-        alert('Atenção: Não foi possível carregar os dados. Verifique se o arquivo produtos.json está no repositório.');
+        console.error('Erro ao carregar dados:', err);
       }
     }
 
-    // 2. RENDERIZAÇÃO DOS PRODUTOS NA TELA
+    // 2. RENDERIZAÇÃO COMPLETA DA PÁGINA
     function renderCatalog() {
       const isAdmin = checkIsAdmin();
       document.body.classList.toggle('admin-mode', isAdmin);
 
-      const categories = ['print', 'scanner', 'thermal', 'computer', 'monitor', 'mobile', 'totem'];
-      const counts = { print: 0, scanner: 0, thermal: 0, computer: 0, monitor: 0, mobile: 0, totem: 0 };
+      const navContainer = document.getElementById('dynamicNavMenu');
+      const sectionsContainer = document.getElementById('dynamicSectionsContainer');
+      navContainer.innerHTML = '';
+      sectionsContainer.innerHTML = '';
 
-      // Limpa os grids
-      categories.forEach(cat => {
-        const grid = document.getElementById(`grid-${cat}`);
-        if (grid) grid.innerHTML = '';
-      });
+      categorias.forEach(cat => {
+        const produtosDaCat = produtos.filter(p => p.categoria === cat.id);
+        const produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
 
-      produtos.forEach(prod => {
-        // Se estiver inativo e não for admin, não exibe
-        if (!prod.ativo && !isAdmin) return;
+        // Oculta categoria se não tiver produto visível (para o cliente comum) ou se estiver inativa
+        if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) {
+          return;
+        }
 
-        counts[prod.categoria] = (counts[prod.categoria] || 0) + 1;
-        const grid = document.getElementById(`grid-${prod.categoria}`);
-        if (!grid) return;
+        // Renderiza Item no Menu Superior
+        const navItem = document.createElement('a');
+        navItem.href = `#${cat.id}`;
+        navItem.className = 'nav-item';
+        navItem.innerHTML = `
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+          ${cat.title.split(' ')[0]} ${!cat.ativa ? '(Oculta)' : ''}
+        `;
+        navContainer.appendChild(navItem);
 
-        const card = document.createElement('div');
-        card.className = `prod-card ${!prod.ativo ? 'item-oculto' : ''}`;
-        card.onclick = () => openProductModal(prod);
+        // Renderiza Seção
+        const section = document.createElement('section');
+        section.id = cat.id;
+        section.style.opacity = !cat.ativa ? '0.6' : '1';
 
-        // Imagem / Carrossel
-        let mediaHtml = '';
-        if (!prod.imagens || prod.imagens.length === 0) {
-          mediaHtml = `<span class="placeholder-text">[Foto Vertical ${prod.nome}]</span>`;
-        } else if (prod.imagens.length === 1) {
-          mediaHtml = `<img src="${prod.imagens[0]}" alt="${prod.nome}">`;
-        } else {
-          mediaHtml = `
-            <button class="carousel-btn prev" onclick="changeCardSlide(event, this, -1)">◀</button>
-            <img src="${prod.imagens[0]}" alt="${prod.nome}">
-            <button class="carousel-btn next" onclick="changeCardSlide(event, this, 1)">▶</button>
-            <div class="carousel-dots">
-              ${prod.imagens.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
+        section.innerHTML = `
+          <div class="section-header">
+            <h2 class="section-title">
+              <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              ${cat.title} ${!cat.ativa ? '<small style="color:var(--danger); font-size:0.8rem;">(CATEGORIA OCULTA)</small>' : ''}
+            </h2>
+            <span class="badge-count">${produtosVisiveis.length} Itens</span>
+          </div>
+          <div class="products-grid" id="grid-${cat.id}"></div>
+        `;
+        sectionsContainer.appendChild(section);
+
+        // Renderiza os Cards da Seção
+        const grid = section.querySelector(`#grid-${cat.id}`);
+        produtosVisiveis.forEach(prod => {
+          const card = document.createElement('div');
+          card.className = `prod-card ${!prod.ativo ? 'item-oculto' : ''}`;
+          card.onclick = () => openProductModal(prod);
+
+          let mediaHtml = '';
+          if (!prod.imagens || prod.imagens.length === 0) {
+            mediaHtml = `<span class="placeholder-text">[Foto Vertical ${prod.nome}]</span>`;
+          } else if (prod.imagens.length === 1) {
+            mediaHtml = `<img src="${prod.imagens[0]}" alt="${prod.nome}">`;
+          } else {
+            mediaHtml = `
+              <button class="carousel-btn prev" onclick="changeCardSlide(event, this, -1)">◀</button>
+              <img src="${prod.imagens[0]}" alt="${prod.nome}">
+              <button class="carousel-btn next" onclick="changeCardSlide(event, this, 1)">▶</button>
+              <div class="carousel-dots">
+                ${prod.imagens.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
+              </div>
+            `;
+          }
+
+          let specsHtml = '';
+          if (prod.specs) {
+            const entries = Object.entries(prod.specs).slice(0, 2);
+            specsHtml = entries.map(([k, v]) => `<div class="spec-row"><span>${k}</span><strong>${v}</strong></div>`).join('');
+          }
+
+          card.innerHTML = `
+            <div class="thumb-slider-container" data-index="0" data-images='${JSON.stringify(prod.imagens || [])}'>
+              ${mediaHtml}
+            </div>
+            <span class="brand-sub">${prod.marca} ${!prod.ativo ? '(ITEM OCULTO)' : ''}</span>
+            <div class="prod-name">${prod.nome}</div>
+            <div class="specs-list">${specsHtml}</div>
+            <div class="admin-card-actions" onclick="event.stopPropagation()">
+              <button class="btn-action" onclick="toggleActive('${prod.id}')">${prod.ativo ? 'Ocultar' : 'Ativar'}</button>
+              <button class="btn-action" onclick="editProduct('${prod.id}')">Editar</button>
+              <button class="btn-action btn-del" onclick="deleteProduct('${prod.id}')">Excluir</button>
             </div>
           `;
-        }
-
-        // Especificações
-        let specsHtml = '';
-        if (prod.specs) {
-          const entries = Object.entries(prod.specs).slice(0, 2);
-          specsHtml = entries.map(([k, v]) => `<div class="spec-row"><span>${k}</span><strong>${v}</strong></div>`).join('');
-        }
-
-        card.innerHTML = `
-          <div class="thumb-slider-container" data-index="0" data-images='${JSON.stringify(prod.imagens || [])}'>
-            ${mediaHtml}
-          </div>
-          <span class="brand-sub">${prod.marca} ${!prod.ativo ? '(OCULTO)' : ''}</span>
-          <div class="prod-name">${prod.nome}</div>
-          <div class="specs-list">${specsHtml}</div>
-          <div class="admin-card-actions" onclick="event.stopPropagation()">
-            <button class="btn-action" onclick="toggleActive('${prod.id}')">${prod.ativo ? 'Ocultar' : 'Ativar'}</button>
-            <button class="btn-action" onclick="editProduct('${prod.id}')">Editar</button>
-            <button class="btn-action btn-del" onclick="deleteProduct('${prod.id}')">Excluir</button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-
-      // Atualiza contadores
-      categories.forEach(cat => {
-        const badge = document.getElementById(`count-${cat}`);
-        if (badge) badge.textContent = `${counts[cat]} Modelos`;
+          grid.appendChild(card);
+        });
       });
     }
 
-    // 3. CARROSSEL DOS CARDS
+    // 3. CARROSSEL
     function changeCardSlide(e, btn, step) {
       e.stopPropagation();
       const container = btn.closest('.thumb-slider-container');
@@ -824,37 +776,42 @@
       if (e.target.id === 'productModal') closeModal();
     }
 
-    // 5. AUTENTICAÇÃO DO ADMIN (TOKEN GITHUB)
+    // 5. AUTENTICAÇÃO COM SENHA PARTICULAR
     function checkIsAdmin() {
-      return !!localStorage.getItem('gh_pat_infinity');
+      return localStorage.getItem('infinity_admin_logged') === 'true';
     }
 
     function promptAdminLogin() {
-      const token = prompt('Digite seu GitHub Personal Access Token para gerenciar o catálogo:');
-      if (token) {
-        localStorage.setItem('gh_pat_infinity', token.trim());
-        alert('Modo de administração ativado!');
+      const senha = prompt('Digite sua Senha de Gestor:');
+      if (senha === SENHA_MESTRE) {
+        // Se ainda não tiver o token configurado no navegador, ele pede 1 única vez
+        let token = localStorage.getItem('gh_pat_infinity');
+        if (!token) {
+          token = prompt('Primeiro acesso: Insira o Personal Access Token do GitHub para salvar alterações:');
+          if (token) localStorage.setItem('gh_pat_infinity', token.trim());
+        }
+        localStorage.setItem('infinity_admin_logged', 'true');
+        alert('Bem-vindo, Modo Gestor ativado!');
         renderCatalog();
+      } else if (senha !== null) {
+        alert('Senha incorreta.');
       }
     }
 
     function logoutAdmin() {
-      localStorage.removeItem('gh_pat_infinity');
+      localStorage.removeItem('infinity_admin_logged');
       alert('Sessão de administração encerrada.');
       renderCatalog();
     }
 
-    // 6. OPERAÇÕES DE CRUD VIA GITHUB REST API
+    // 6. OPERAÇÕES DE CRUD VIA GITHUB API
     async function saveCatalogToGithub(commitMessage) {
       const token = localStorage.getItem('gh_pat_infinity');
-      if (!token) return alert('Você não está autenticado.');
+      if (!token) return alert('Token do GitHub não encontrado. Faça login novamente.');
 
       try {
-        // 1. Obter o SHA atual do arquivo produtos.json
         const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
-        const getRes = await fetch(getFileUrl, {
-          headers: { Authorization: `token ${token}` }
-        });
+        const getRes = await fetch(getFileUrl, { headers: { Authorization: `token ${token}` } });
         
         let sha = '';
         if (getRes.ok) {
@@ -862,8 +819,9 @@
           sha = fileData.sha;
         }
 
-        // 2. Enviar a versão atualizada
-        const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(produtos, null, 2))));
+        const payload = { categorias, produtos };
+        const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+        
         const putRes = await fetch(getFileUrl, {
           method: 'PUT',
           headers: {
@@ -878,12 +836,12 @@
           })
         });
 
-        if (!putRes.ok) throw new Error('Falha ao commitar no repositório.');
-        alert('Alteração salva com sucesso no GitHub! O site será atualizado em instantes.');
+        if (!putRes.ok) throw new Error('Falha ao gravar no GitHub.');
+        alert('Alterações salvas com sucesso no GitHub!');
         renderCatalog();
       } catch (err) {
         console.error(err);
-        alert('Erro ao salvar no GitHub: Verifique seu Token e permissões de escrita.');
+        alert('Erro ao salvar no GitHub. Verifique as permissões do seu Token.');
       }
     }
 
@@ -906,20 +864,35 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: `Upload de imagem: ${file.name}`,
+          message: `Upload foto: ${file.name}`,
           content: content,
           branch: GITHUB_BRANCH
         })
       });
 
-      if (!res.ok) throw new Error(`Falha no upload da foto ${file.name}`);
-      return fileName; // Retorna o caminho relativo da foto
+      if (!res.ok) throw new Error(`Falha no upload de ${file.name}`);
+      return fileName;
     }
 
-    // Formulário de Cadastro/Edição
+    // Formulário de Cadastro e Edição de Produtos
+    function populateCategorySelect(selectedId = '') {
+      const select = document.getElementById('prodCategory');
+      select.innerHTML = '';
+      categorias.forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat.id;
+        opt.textContent = cat.title;
+        if (cat.id === selectedId) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
     function openProductForm() {
       document.getElementById('productCrudForm').reset();
       document.getElementById('prodId').value = '';
+      editCurrentPhotos = [];
+      document.getElementById('existingPhotosGroup').style.display = 'none';
+      populateCategorySelect();
       document.getElementById('formModalTitle').textContent = 'Cadastrar Novo Equipamento';
       document.getElementById('formModal').classList.add('active');
     }
@@ -929,7 +902,7 @@
       if (!prod) return;
 
       document.getElementById('prodId').value = prod.id;
-      document.getElementById('prodCategory').value = prod.categoria;
+      populateCategorySelect(prod.categoria);
       document.getElementById('prodBrand').value = prod.marca;
       document.getElementById('prodName').value = prod.nome;
 
@@ -939,8 +912,40 @@
       }
       document.getElementById('prodSpecs').value = specsText;
 
+      // Gerenciar Fotos Existentes
+      editCurrentPhotos = [...(prod.imagens || [])];
+      renderExistingPhotos();
+
       document.getElementById('formModalTitle').textContent = 'Editar Equipamento';
       document.getElementById('formModal').classList.add('active');
+    }
+
+    function renderExistingPhotos() {
+      const container = document.getElementById('existingPhotosContainer');
+      const group = document.getElementById('existingPhotosGroup');
+
+      if (editCurrentPhotos.length === 0) {
+        group.style.display = 'none';
+        container.innerHTML = '';
+        return;
+      }
+
+      group.style.display = 'block';
+      container.innerHTML = '';
+      editCurrentPhotos.forEach((photoUrl, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'photo-thumb-edit';
+        thumb.innerHTML = `
+          <img src="${photoUrl}">
+          <button type="button" class="btn-remove-photo" onclick="removePhotoFromEdit(${idx})">✕</button>
+        `;
+        container.appendChild(thumb);
+      });
+    }
+
+    function removePhotoFromEdit(index) {
+      editCurrentPhotos.splice(index, 1);
+      renderExistingPhotos();
     }
 
     function closeFormModal() {
@@ -951,7 +956,7 @@
       e.preventDefault();
       const btnSave = document.getElementById('btnSaveProd');
       btnSave.disabled = true;
-      btnSave.textContent = 'Enviando ao GitHub...';
+      btnSave.textContent = 'Gravando...';
 
       try {
         const id = document.getElementById('prodId').value || `prod-${Date.now()}`;
@@ -961,7 +966,6 @@
         const specsText = document.getElementById('prodSpecs').value;
         const fileInput = document.getElementById('prodFileInput');
 
-        // Parse das especificações
         const specs = {};
         specsText.split('\n').forEach(line => {
           const parts = line.split(':');
@@ -970,7 +974,7 @@
           }
         });
 
-        // Upload das fotos selecionadas
+        // Upload das fotos novas
         let novasFotos = [];
         if (fileInput.files.length > 0) {
           for (let file of fileInput.files) {
@@ -979,39 +983,36 @@
           }
         }
 
+        const fotosFinais = [...editCurrentPhotos, ...novasFotos];
         const existingIdx = produtos.findIndex(p => p.id === id);
+
         if (existingIdx >= 0) {
-          // Atualização
           produtos[existingIdx].categoria = categoria;
           produtos[existingIdx].marca = marca;
           produtos[existingIdx].nome = nome;
           produtos[existingIdx].specs = specs;
-          if (novasFotos.length > 0) {
-            produtos[existingIdx].imagens = [...(produtos[existingIdx].imagens || []), ...novasFotos];
-          }
-          await saveCatalogToGithub(`Atualização do produto: ${nome}`);
+          produtos[existingIdx].imagens = fotosFinais;
+          await saveCatalogToGithub(`Atualizado: ${nome}`);
         } else {
-          // Novo
-          const novoProduto = {
+          produtos.push({
             id,
             categoria,
             marca,
             nome,
             ativo: true,
-            imagens: novasFotos,
+            imagens: fotosFinais,
             specs
-          };
-          produtos.push(novoProduto);
-          await saveCatalogToGithub(`Adicionado novo produto: ${nome}`);
+          });
+          await saveCatalogToGithub(`Novo produto: ${nome}`);
         }
 
         closeFormModal();
       } catch (err) {
         console.error(err);
-        alert('Erro ao salvar produto.');
+        alert('Erro ao salvar o produto.');
       } finally {
         btnSave.disabled = false;
-        btnSave.textContent = 'Salvar no GitHub';
+        btnSave.textContent = 'Salvar Alterações';
       }
     }
 
@@ -1031,7 +1032,65 @@
       await saveCatalogToGithub(`Excluído produto: ${prod.nome}`);
     }
 
-    // Inicialização ao carregar a página
+    // 7. GERENCIAMENTO DE CATEGORIAS
+    function openCategoryModal() {
+      renderCategoriesManager();
+      document.getElementById('categoryModal').classList.add('active');
+    }
+
+    function closeCategoryModal() {
+      document.getElementById('categoryModal').classList.remove('active');
+    }
+
+    function renderCategoriesManager() {
+      const container = document.getElementById('categoriesListContainer');
+      container.innerHTML = '';
+
+      categorias.forEach((cat, idx) => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 8px;';
+        row.innerHTML = `
+          <div>
+            <strong>${cat.title}</strong>
+            <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 8px;">(${cat.ativa ? 'Ativa' : 'Oculta'})</span>
+          </div>
+          <div style="display: flex; gap: 6px;">
+            <button class="btn-action" onclick="toggleCategoryActive(${idx})">${cat.ativa ? 'Ocultar' : 'Ativar'}</button>
+            <button class="btn-action btn-del" onclick="deleteCategory(${idx})">Excluir</button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    async function addCategory() {
+      const input = document.getElementById('newCatTitle');
+      const title = input.value.trim();
+      if (!title) return;
+
+      const id = title.toLowerCase().replace(/[^a-z0-9]/g, '');
+      categorias.push({ id, title, ativa: true });
+      input.value = '';
+      renderCategoriesManager();
+      await saveCatalogToGithub(`Nova categoria: ${title}`);
+    }
+
+    async function toggleCategoryActive(idx) {
+      categorias[idx].ativa = !categorias[idx].ativa;
+      renderCategoriesManager();
+      await saveCatalogToGithub(`Status de categoria alterado: ${categorias[idx].title}`);
+    }
+
+    async function deleteCategory(idx) {
+      const cat = categorias[idx];
+      const temProdutos = produtos.some(p => p.categoria === cat.id);
+      if (temProdutos && !confirm(`Existem equipamentos cadastrados nesta categoria. Deseja realmente excluí-la?`)) return;
+
+      categorias.splice(idx, 1);
+      renderCategoriesManager();
+      await saveCatalogToGithub(`Categoria removida: ${cat.title}`);
+    }
+
     window.addEventListener('DOMContentLoaded', loadCatalog);
   </script>
 </body>
