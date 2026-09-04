@@ -58,7 +58,7 @@
     }
     .icon-svg-lg { width: 24px; height: 24px; stroke-width: 2.2; }
 
-    /* Barra Superior */
+    /* Barra Superior Compacta */
     .top-navbar {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
@@ -66,18 +66,19 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 10px 30px;
+      padding: 6px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
-    .brand-logo img { height: 120px; width: auto; object-fit: contain; }
+    .brand-logo { display: flex; align-items: center; }
+    .brand-logo img { height: 58px; width: auto; object-fit: contain; }
 
     .nav-menu {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       overflow-x: auto;
       padding: 4px 0;
       scrollbar-width: none;
@@ -87,31 +88,31 @@
     /* Botões Coloridos de Categoria */
     .nav-item {
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      padding: 8px 14px;
-      border-radius: 10px;
+      padding: 7px 12px;
+      border-radius: 8px;
       white-space: nowrap;
       transition: all 0.25s ease;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .nav-item:hover { 
       transform: translateY(-2px); 
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08); 
-      filter: brightness(0.95);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
+      filter: brightness(0.96);
     }
 
     .hero {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 55px 20px 25px;
+      padding: 45px 20px 20px;
       background: radial-gradient(circle at center top, rgba(2, 132, 199, 0.08) 0%, transparent 70%);
     }
     .hero h1 { 
-      font-size: clamp(2rem, 5vw, 3rem); 
+      font-size: clamp(1.8rem, 4.5vw, 2.7rem); 
       font-weight: 900; 
       letter-spacing: -0.02em; 
       margin-bottom: 8px; 
@@ -122,7 +123,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero p { color: var(--text-muted); font-size: 1.05rem; max-width: 650px; margin: 0 auto; }
+    .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto; }
 
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
 
@@ -130,12 +131,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 60px 0 24px;
-      padding-bottom: 14px;
+      margin: 50px 0 20px;
+      padding-bottom: 12px;
       border-bottom: 2px solid #EDF2F7;
-      scroll-margin-top: 90px;
+      scroll-margin-top: 80px;
     }
-    .section-title { font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
     .badge-count { font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: #E0F2FE; color: var(--primary); border: 1px solid #BAE6FD; }
 
     .products-grid {
@@ -279,7 +280,7 @@
       font-size: 0.85rem;
     }
 
-    /* Barra Fixa Flutuante do Admin com Deploy Único */
+    /* Barra Fixa Flutuante do Admin */
     .admin-bar {
       display: none;
       position: fixed;
@@ -351,7 +352,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.65);
       backdrop-filter: blur(8px);
       display: none;
       align-items: center;
@@ -381,8 +382,8 @@
       background: #F1F5F9;
       border: none;
       color: var(--text-main);
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -500,6 +501,73 @@
       font-weight: bold;
     }
 
+    /* Modal Estilizado de Login Admin */
+    .login-modal-box {
+      max-width: 420px;
+      padding: 30px 24px;
+      text-align: center;
+      border-radius: 20px;
+    }
+    .login-icon-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #E0F2FE;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    /* Modal Estilizado de Publicação e Countdown */
+    .deploy-modal-box {
+      max-width: 460px;
+      padding: 36px 28px;
+      text-align: center;
+      border-radius: 20px;
+    }
+    .deploy-spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #E2E8F0;
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 18px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .countdown-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #ECFDF5;
+      border: 3px solid #10B981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #059669;
+      margin: 16px auto;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 18px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #10B981, #0284C7);
+      transition: width 1s linear;
+    }
+
     /* Rodapé */
     footer {
       position: relative;
@@ -511,7 +579,7 @@
       color: var(--text-muted);
       font-size: 0.9rem;
     }
-    footer .brand-logo img { height: 130px; }
+    footer .brand-logo img { height: 110px; }
     .footer-links { display: flex; justify-content: center; gap: 30px; margin-top: 16px; font-weight: 700; flex-wrap: wrap; }
     .footer-links a { color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 6px; }
   </style>
@@ -540,11 +608,8 @@
     <span id="adminStatusText">🔒 Modo Gestor Ativo</span>
     <button class="admin-btn" onclick="openProductForm()">+ Novo Equipamento</button>
     <button class="admin-btn secondary" onclick="openCategoryModal()">Categorias</button>
-    
-    <!-- Botão de Salvar Tudo e Despachar para o GitHub -->
     <button class="admin-btn-deploy" id="btnPublishDeploy" onclick="publishAllChanges()">🚀 Publicar Alterações (<span id="pendingCount">0</span>)</button>
     <button class="admin-btn-discard" id="btnDiscardChanges" onclick="discardPendingChanges()">Descartar Rascunho</button>
-    
     <button class="admin-btn-logout" onclick="logoutAdmin()">Sair</button>
   </div>
 
@@ -658,6 +723,63 @@
     </div>
   </div>
 
+  <!-- Modal Estilizado de Login de Acesso Restrito -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-box login-modal-box">
+      <div class="login-icon-badge">
+        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      </div>
+      <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px;">Acesso Restrito</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Área exclusiva para gestão do catálogo Infinity Corp.</p>
+      
+      <form onsubmit="handleLoginSubmit(event)">
+        <div class="form-group" style="text-align: left;">
+          <label>Senha de Gestor</label>
+          <input type="password" id="adminPasswordInput" class="form-control" placeholder="••••••••••••" required autofocus>
+        </div>
+        <div class="form-group" id="patTokenGroup" style="text-align: left; display: none;">
+          <label>GitHub Personal Access Token (Primeiro acesso)</label>
+          <input type="password" id="adminPatInput" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+        </div>
+        <div id="loginErrorMessage" style="color: var(--danger); font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; display: none;">
+          Senha incorreta. Verifique e tente novamente.
+        </div>
+        <div class="form-actions" style="justify-content: center;">
+          <button type="button" class="btn-cancel" onclick="closeLoginModal()">Cancelar</button>
+          <button type="submit" class="btn-submit" style="min-width: 110px;">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Estilizado de Publicação e Feedback com Contagem -->
+  <div class="modal-overlay" id="deployProgressModal">
+    <div class="modal-box deploy-modal-box">
+      <!-- Fase 1: Processando / Enviando ao GitHub -->
+      <div id="deployPhaseUploading">
+        <div class="deploy-spinner"></div>
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Publicando Atualizações</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);" id="deployStatusMessage">Gravando arquivos no repositório GitHub...</p>
+      </div>
+
+      <!-- Fase 2: Concluído com Contagem Regressiva de 30s -->
+      <div id="deployPhaseCountdown" style="display: none;">
+        <div class="countdown-circle" id="countdownNumber">30</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Publicação Enviada com Sucesso!</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">
+          O GitHub Pages está compilando a nova versão do catálogo.<br>
+          Aguarde a atualização automática para visualizar todas as mudanças online:
+        </p>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="deployProgressBar"></div>
+        </div>
+        <div style="margin-top: 24px;">
+          <button class="btn-submit" style="background:#0F172A;" onclick="location.reload()">Atualizar Agora ↺</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Rodapé -->
   <footer>
     <div class="brand-logo" style="justify-content: center; margin-bottom: 12px;">
@@ -667,7 +789,7 @@
     <div class="footer-links">
       <a href="tel:+551140630424">+55 11 4063-0424</a>
       <a href="mailto:contato@infinitycorp.com.br">contato@infinitycorp.com.br</a>
-      <a href="javascript:void(0)" onclick="promptAdminLogin()" style="color: var(--text-muted); font-size: 0.8rem;">🔒 Acesso Restrito</a>
+      <a href="javascript:void(0)" onclick="openLoginModal()" style="color: var(--text-muted); font-size: 0.8rem;">🔒 Acesso Restrito</a>
     </div>
   </footer>
 
@@ -678,16 +800,15 @@
     const GITHUB_BRANCH = 'main';
     const SENHA_MESTRE  = 'InfinityCorp2026';
 
-    // Paleta de cores para os botões do menu superior
     const CATEGORY_COLORS = [
-      { bg: '#E0F2FE', text: '#0369A1', border: '#BAE6FD' }, // Azul Sky
-      { bg: '#DCFCE7', text: '#15803D', border: '#BBF7D0' }, // Verde Esmeralda
-      { bg: '#FEF3C7', text: '#B45309', border: '#FDE68A' }, // Âmbar
-      { bg: '#EDE9FE', text: '#6D28D9', border: '#DDD6FE' }, // Roxo
-      { bg: '#FFE4E6', text: '#BE123C', border: '#FECDD3' }, // Rosa / Vermelho
-      { bg: '#CCFBF1', text: '#0F766E', border: '#99F6E4' }, // Teal / Verde Água
-      { bg: '#FFEDD5', text: '#C2410C', border: '#FED7AA' }, // Laranja
-      { bg: '#F1F5F9', text: '#334155', border: '#CBD5E1' }  // Slate / Grafite
+      { bg: '#E0F2FE', text: '#0369A1', border: '#BAE6FD' },
+      { bg: '#DCFCE7', text: '#15803D', border: '#BBF7D0' },
+      { bg: '#FEF3C7', text: '#B45309', border: '#FDE68A' },
+      { bg: '#EDE9FE', text: '#6D28D9', border: '#DDD6FE' },
+      { bg: '#FFE4E6', text: '#BE123C', border: '#FECDD3' },
+      { bg: '#CCFBF1', text: '#0F766E', border: '#99F6E4' },
+      { bg: '#FFEDD5', text: '#C2410C', border: '#FED7AA' },
+      { bg: '#F1F5F9', text: '#334155', border: '#CBD5E1' }
     ];
 
     const ICONS_MAP = {
@@ -712,7 +833,6 @@
     let categorias = [];
     let produtos = [];
     
-    // CACHE / BUFFER DE ALTERAÇÕES LOCAIS
     let pendingChangesCount = 0;
     let pendingUploadQueue = [];
     let originalSnapshot = null;
@@ -779,7 +899,6 @@
       pendingUploadQueue = [];
       updateAdminBarUI();
       renderCatalog();
-      alert('Alterações descartadas com sucesso!');
     }
 
     function renderCatalog() {
@@ -799,7 +918,6 @@
 
         if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) return;
 
-        // Estilização colorida da barra superior
         const color = CATEGORY_COLORS[catIdx % CATEGORY_COLORS.length];
 
         const navItem = document.createElement('a');
@@ -886,15 +1004,11 @@
       });
     }
 
-    // ==========================================
-    // ORDENAÇÃO DE PRODUTOS
-    // ==========================================
     function moveProductOrder(prodId, direction) {
       const prod = produtos.find(p => p.id === prodId);
       if (!prod) return;
 
       const catId = prod.categoria;
-      // Pega todos os produtos dessa categoria na ordem atual
       const sameCatIndexes = [];
       produtos.forEach((p, idx) => {
         if (p.categoria === catId) sameCatIndexes.push(idx);
@@ -903,12 +1017,11 @@
       const currentPosition = sameCatIndexes.findIndex(idx => produtos[idx].id === prodId);
       const targetPosition = currentPosition + direction;
 
-      if (targetPosition < 0 || targetPosition >= sameCatIndexes.length) return; // Limite da lista
+      if (targetPosition < 0 || targetPosition >= sameCatIndexes.length) return;
 
       const idxA = sameCatIndexes[currentPosition];
       const idxB = sameCatIndexes[targetPosition];
 
-      // Inverte os dois produtos no array principal
       const temp = produtos[idxA];
       produtos[idxA] = produtos[idxB];
       produtos[idxB] = temp;
@@ -917,9 +1030,6 @@
       renderCatalog();
     }
 
-    // ==========================================
-    // ORDENAÇÃO DE CATEGORIAS
-    // ==========================================
     function moveCategoryOrder(index, direction) {
       const newIndex = index + direction;
       if (newIndex < 0 || newIndex >= categorias.length) return;
@@ -1022,19 +1132,37 @@
       return localStorage.getItem('infinity_admin_logged') === 'true';
     }
 
-    function promptAdminLogin() {
-      const senha = prompt('Digite sua Senha de Gestor:');
+    // Modal Customizado de Login
+    function openLoginModal() {
+      const token = localStorage.getItem('gh_pat_infinity');
+      document.getElementById('patTokenGroup').style.display = token ? 'none' : 'block';
+      document.getElementById('adminPasswordInput').value = '';
+      document.getElementById('loginErrorMessage').style.display = 'none';
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.remove('active');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const senha = document.getElementById('adminPasswordInput').value;
+      const patToken = document.getElementById('adminPatInput').value.trim();
+
       if (senha === SENHA_MESTRE) {
-        let token = localStorage.getItem('gh_pat_infinity');
-        if (!token) {
-          token = prompt('Primeiro acesso: Insira o Personal Access Token do GitHub:');
-          if (token) localStorage.setItem('gh_pat_infinity', token.trim());
+        if (!localStorage.getItem('gh_pat_infinity')) {
+          if (!patToken) {
+            alert('Por favor, informe seu Personal Access Token do GitHub para o primeiro acesso.');
+            return;
+          }
+          localStorage.setItem('gh_pat_infinity', patToken);
         }
         localStorage.setItem('infinity_admin_logged', 'true');
-        alert('Bem-vindo ao Modo Gestor!');
+        closeLoginModal();
         renderCatalog();
-      } else if (senha !== null) {
-        alert('Senha incorreta.');
+      } else {
+        document.getElementById('loginErrorMessage').style.display = 'block';
       }
     }
 
@@ -1043,12 +1171,11 @@
         if (!confirm('Você tem alterações não salvas no GitHub! Se sair agora, elas serão perdidas. Deseja sair mesmo assim?')) return;
       }
       localStorage.removeItem('infinity_admin_logged');
-      alert('Sessão encerrada.');
       location.reload();
     }
 
     // ==========================================
-    // UPLOAD E PUBLICAÇÃO EM LOTE
+    // UPLOAD E PUBLICAÇÃO COM FEEDBACK DE 30s
     // ==========================================
     async function uploadSingleImageToGithub(file, token) {
       const fileName = `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
@@ -1080,17 +1207,28 @@
 
     async function publishAllChanges() {
       const token = localStorage.getItem('gh_pat_infinity');
-      if (!token) return alert('Token do GitHub não encontrado. Faça login novamente.');
+      if (!token) {
+        openLoginModal();
+        return;
+      }
 
-      const btn = document.getElementById('btnPublishDeploy');
-      const statusText = document.getElementById('adminStatusText');
-      btn.disabled = true;
-      btn.textContent = 'Publicando...';
+      // Abre modal de progresso
+      const deployModal = document.getElementById('deployProgressModal');
+      const phaseUpload = document.getElementById('deployPhaseUploading');
+      const phaseCountdown = document.getElementById('deployPhaseCountdown');
+      const statusMsg = document.getElementById('deployStatusMessage');
+
+      phaseUpload.style.display = 'block';
+      phaseCountdown.style.display = 'none';
+      deployModal.classList.add('active');
 
       try {
         if (pendingUploadQueue.length > 0) {
-          statusText.textContent = `Enviando ${pendingUploadQueue.length} imagens...`;
+          statusMsg.textContent = `Enviando fotos pendentes (1 de ${pendingUploadQueue.length})...`;
+          let count = 0;
           for (let item of pendingUploadQueue) {
+            count++;
+            statusMsg.textContent = `Enviando imagem ${count} de ${pendingUploadQueue.length}...`;
             const uploadedPath = await uploadSingleImageToGithub(item.file, token);
             const prod = produtos.find(p => p.id === item.prodId);
             if (prod) {
@@ -1104,7 +1242,7 @@
           }
         }
 
-        statusText.textContent = 'Gravando produtos.json no repositório...';
+        statusMsg.textContent = 'Gravando produtos.json no repositório...';
         const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
         const getRes = await fetch(getFileUrl, { headers: { Authorization: `token ${token}` } });
         
@@ -1133,20 +1271,41 @@
 
         if (!putRes.ok) throw new Error('Erro ao gravar arquivo no GitHub.');
 
-        alert('🚀 Sucesso! Todas as alterações foram salvas em um único deploy.');
+        // Transição para contagem regressiva de 30 segundos
+        phaseUpload.style.display = 'none';
+        phaseCountdown.style.display = 'block';
+        startDeployCountdown(30);
+
         pendingChangesCount = 0;
         pendingUploadQueue = [];
         originalSnapshot = JSON.stringify({ categorias, produtos });
         updateAdminBarUI();
-        renderCatalog();
       } catch (err) {
         console.error(err);
-        alert('Erro ao publicar alterações no GitHub. Tente novamente.');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = `🚀 Publicar Alterações (<span id="pendingCount">0</span>)`;
-        statusText.textContent = '🔒 Modo Gestor Ativo';
+        deployModal.classList.remove('active');
+        alert('Erro ao publicar alterações no GitHub. Verifique seu token e tente novamente.');
       }
+    }
+
+    function startDeployCountdown(seconds) {
+      let remaining = seconds;
+      const numberEl = document.getElementById('countdownNumber');
+      const barEl = document.getElementById('deployProgressBar');
+
+      numberEl.textContent = remaining;
+      barEl.style.width = '0%';
+
+      const interval = setInterval(() => {
+        remaining--;
+        numberEl.textContent = remaining;
+        const progress = ((seconds - remaining) / seconds) * 100;
+        barEl.style.width = `${progress}%`;
+
+        if (remaining <= 0) {
+          clearInterval(interval);
+          location.reload();
+        }
+      }, 1000);
     }
 
     // Formulário de Cadastro e Edição
