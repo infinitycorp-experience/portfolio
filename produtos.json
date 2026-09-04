@@ -270,10 +270,17 @@
       "nome": "Alienware Aurora 16",
       "ativo": true,
       "imagens": [
-        "fotos/1788543220286_ALIENWARE_AURORA.jpg"
+        "fotos/1788544362389_ALIENWARE_AURORA5.jpg",
+        "fotos/1788544363651_ALIENWARE_AURORA4.jpg"
       ],
-      "specs": {},
-      "logoMarca": ""
+      "specs": {
+        "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
+        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Tela": "14' - Full HD (1920 x 1080)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "logos/dell.png"
     }
   ]
 }
