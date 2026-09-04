@@ -13,6 +13,12 @@
       "icon": "laptop"
     },
     {
+      "id": "desktops",
+      "title": "Desktops",
+      "icon": "computer",
+      "ativa": true
+    },
+    {
       "id": "mobile",
       "title": "Tablets",
       "ativa": true,
@@ -115,16 +121,22 @@
       "imagens": [
         "fotos/1788520250021_Dell_3.png",
         "fotos/1788522150168_Dell_1.png",
-        "fotos/1788522152125_Dell_2.png"
+        "fotos/1788522152125_Dell_2.png",
+        "fotos/1788542031350_Notebook-IdeaPad-3.png",
+        "fotos/1788542032881_Notebook-IdeaPad-3-2.png",
+        "fotos/1788542034719_Notebook-IdeaPad-3-3.png",
+        "fotos/1788542037428_Notebook-IdeaPad-3.png",
+        "fotos/1788542038950_Notebook-IdeaPad-3-2.png",
+        "fotos/1788542040665_Notebook-IdeaPad-3-3.png"
       ],
       "specs": {
-        "Processador": "Intel Core  i5",
+        "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
         "Memória RAM": "8 GB  - 16 GB - 32 GB",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
         "Tela": "15,6' - Full HD (1920 x 1080)",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
-      "logoMarca": "fotos/1788526457986_LogoDell.png"
+      "logoMarca": "fotos/1788542036533_LogoLenovo.png"
     },
     {
       "id": "prod-1788533573286",
@@ -200,6 +212,66 @@
         "Opcionais": "Ethernet (RJ45)"
       },
       "logoMarca": "fotos/1788533823542_logozebra.png"
+    },
+    {
+      "id": "prod-1788541591157",
+      "categoria": "computer",
+      "marca": "Lenovo",
+      "nome": "IdeaPad S145 / 3 / 3i",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788542018705_Notebook-IdeaPad-3.png",
+        "fotos/1788542020390_Notebook-IdeaPad-3-2.png",
+        "fotos/1788542022437_Notebook-IdeaPad-3-3.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 - 10ª Gen",
+        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Tela": "15,6' - Full HD (1920 x 1080)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "fotos/1788542042460_LogoLenovo.png"
+    },
+    {
+      "id": "prod-1788541836554",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Latitude 3440 / 3450",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788542049645_NOTEBOOK_DELL_LATITUDE_3450.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
+        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Tela": "14' - Full HD (1920 x 1080)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "fotos/1788542048564_LogoDell.png"
+    },
+    {
+      "id": "prod-1788541943893",
+      "categoria": "desktops",
+      "marca": "Dell",
+      "nome": "Optiplex Mini",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788542052160_COMPUTADOR_DELL_OPTIPLEX_7010.png",
+        "fotos/1788542054083_COMPUTADOR_DELL_PRO.png",
+        "fotos/1788542056928_COMPUTADOR_DELL_OPTIPLEX_7010.png",
+        "fotos/1788542058757_COMPUTADOR_DELL_PRO.png",
+        "fotos/1788542061535_COMPUTADOR_DELL_OPTIPLEX_7010.png",
+        "fotos/1788542063419_COMPUTADOR_DELL_PRO.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 11ª / 12ª Gen",
+        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "fotos/1788542060469_LogoDell.png"
     }
   ]
 }
