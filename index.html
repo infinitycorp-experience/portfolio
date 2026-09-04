@@ -693,28 +693,45 @@
     <div class="modal-box" style="padding: 30px;">
       <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;">Gerenciar Categorias</h3>
       
+      <!-- Formulário para Adicionar ou Editar Categoria -->
       <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border);">
-        <h4 style="font-size: 0.95rem; margin-bottom: 10px;">Adicionar Nova Categoria</h4>
-        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
-          <input type="text" id="newCatTitle" class="form-control" placeholder="Nome da Categoria (Ex: Servidores)">
-          <select id="newCatIcon" class="form-control" style="max-width: 170px;">
-            <option value="menu">Padrão (Menu)</option>
-            <option value="server">Servidor</option>
-            <option value="network">Rede / Wi-Fi</option>
-            <option value="shield">Segurança</option>
-            <option value="print">Impressora</option>
-            <option value="scanner">Scanner</option>
-            <option value="thermal">Térmica</option>
-            <option value="computer">Computador</option>
-            <option value="monitor">Monitor</option>
-            <option value="mobile">Móvel</option>
-            <option value="totem">Totem</option>
-          </select>
-          <button class="btn-submit" onclick="addCategory()" style="white-space: nowrap;">Adicionar</button>
+        <h4 id="catFormHeaderTitle" style="font-size: 0.95rem; margin-bottom: 12px; font-weight: 800; color: var(--primary);">Adicionar Nova Categoria</h4>
+        
+        <!-- Campo ID Oculto para segurança e integridade -->
+        <input type="hidden" id="editCatId" value="">
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+          <div style="flex: 1; min-width: 220px;">
+            <label style="display:block; font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; color: var(--text-muted);">Nome da Categoria</label>
+            <input type="text" id="catTitleInput" class="form-control" placeholder="Ex: Notebooks Corporativos">
+          </div>
+          
+          <div style="width: 190px;">
+            <label style="display:block; font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; color: var(--text-muted);">Ícone Representativo</label>
+            <select id="catIconSelect" class="form-control">
+              <option value="menu">Padrão (Menu)</option>
+              <option value="laptop">Notebook / Laptop</option>
+              <option value="computer">Computador / Desktop</option>
+              <option value="monitor">Monitor Profissional</option>
+              <option value="print">Impressora / Multifuncional</option>
+              <option value="scanner">Scanner Profissional</option>
+              <option value="thermal">Impressora Térmica</option>
+              <option value="mobile">Móvel / Tablet</option>
+              <option value="totem">Totem</option>
+              <option value="server">Servidor</option>
+              <option value="network">Rede / Wi-Fi</option>
+              <option value="shield">Segurança</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 6px;">
+            <button class="btn-submit" id="btnSaveCategory" onclick="handleCategorySave()" style="white-space: nowrap; height: 41px;">Adicionar</button>
+            <button class="btn-cancel" id="btnCancelCategoryEdit" onclick="resetCategoryForm()" style="white-space: nowrap; height: 41px; display: none;">Cancelar</button>
+          </div>
         </div>
       </div>
 
-      <h4 style="font-size: 0.95rem; margin-bottom: 12px;">Categorias Existentes (Use as setas para ordenar)</h4>
+      <h4 style="font-size: 0.95rem; margin-bottom: 12px; font-weight: 800;">Categorias Cadastradas</h4>
       <div id="categoriesListContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
 
       <div class="form-actions">
@@ -816,6 +833,8 @@
       scanner: `<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="7" y1="15" x2="9" y2="15"></line>`,
       thermal: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><line x1="6" y1="12" x2="6" y2="16"></line><line x1="10" y1="12" x2="10" y2="16"></line><line x1="14" y1="12" x2="14" y2="16"></line><line x1="18" y1="12" x2="18" y2="16"></line>`,
       computer: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>`,
+      laptop: `<rect x="4" y="4" width="16" height="11" rx="2" ry="2"></rect><path d="M2 19h20"></path><line x1="9" y1="15" x2="15" y2="15"></line>`,
+      notebook: `<rect x="4" y="4" width="16" height="11" rx="2" ry="2"></rect><path d="M2 19h20"></path><line x1="9" y1="15" x2="15" y2="15"></line>`,
       monitor: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="12" y1="17" x2="12" y2="21"></line><line x1="8" y1="21" x2="16" y2="21"></line>`,
       mobile: `<rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line>`,
       totem: `<rect x="6" y="2" width="12" height="20" rx="2"></rect><circle cx="12" cy="18" r="1"></circle><rect x="8" y="5" width="8" height="6"></rect>`,
@@ -1308,7 +1327,7 @@
       }, 1000);
     }
 
-    // Formulário de Cadastro e Edição
+    // Formulário de Cadastro e Edição de Produtos
     function populateCategorySelect(selectedId = '') {
       const select = document.getElementById('prodCategory');
       select.innerHTML = '';
@@ -1495,13 +1514,17 @@
       renderCatalog();
     }
 
-    // Gestão de Categorias
+    // ==========================================
+    // GESTÃO DE CATEGORIAS (CENÁRIO 1 - SEGURO)
+    // ==========================================
     function openCategoryModal() {
+      resetCategoryForm();
       renderCategoriesManager();
       document.getElementById('categoryModal').classList.add('active');
     }
 
     function closeCategoryModal() {
+      resetCategoryForm();
       document.getElementById('categoryModal').classList.remove('active');
     }
 
@@ -1525,6 +1548,7 @@
           <div style="display: flex; gap: 6px; align-items: center;">
             <button class="btn-action btn-order" title="Mover para cima" ${isFirst ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''} onclick="moveCategoryOrder(${idx}, -1)">▲</button>
             <button class="btn-action btn-order" title="Mover para baixo" ${isLast ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''} onclick="moveCategoryOrder(${idx}, 1)">▼</button>
+            <button class="btn-action" onclick="prepareEditCategory('${cat.id}')">Editar</button>
             <button class="btn-action" onclick="toggleCategoryActive(${idx})">${cat.ativa ? 'Ocultar' : 'Ativar'}</button>
             <button class="btn-action btn-del" onclick="deleteCategory(${idx})">Excluir</button>
           </div>
@@ -1533,16 +1557,63 @@
       });
     }
 
-    function addCategory() {
-      const input = document.getElementById('newCatTitle');
-      const iconSelect = document.getElementById('newCatIcon');
-      const title = input.value.trim();
-      const icon = iconSelect.value;
-      if (!title) return;
+    function prepareEditCategory(catId) {
+      const cat = categorias.find(c => c.id === catId);
+      if (!cat) return;
 
-      const id = title.toLowerCase().replace(/[^a-z0-9]/g, '');
-      categorias.push({ id, title, icon, ativa: true });
-      input.value = '';
+      document.getElementById('editCatId').value = cat.id;
+      document.getElementById('catTitleInput').value = cat.title;
+      document.getElementById('catIconSelect').value = cat.icon || 'menu';
+
+      document.getElementById('catFormHeaderTitle').textContent = `Editar Categoria (${cat.title})`;
+      document.getElementById('btnSaveCategory').textContent = 'Salvar Alteração';
+      document.getElementById('btnCancelCategoryEdit').style.display = 'inline-block';
+      document.getElementById('catTitleInput').focus();
+    }
+
+    function resetCategoryForm() {
+      document.getElementById('editCatId').value = '';
+      document.getElementById('catTitleInput').value = '';
+      document.getElementById('catIconSelect').value = 'menu';
+
+      document.getElementById('catFormHeaderTitle').textContent = 'Adicionar Nova Categoria';
+      document.getElementById('btnSaveCategory').textContent = 'Adicionar';
+      document.getElementById('btnCancelCategoryEdit').style.display = 'none';
+    }
+
+    function handleCategorySave() {
+      const editId = document.getElementById('editCatId').value;
+      const title = document.getElementById('catTitleInput').value.trim();
+      const icon = document.getElementById('catIconSelect').value;
+
+      if (!title) {
+        alert('Por favor, informe um nome para a categoria.');
+        return;
+      }
+
+      if (editId) {
+        // Modo Edição: Mantém o ID intacto (100% seguro para não quebrar produtos)
+        const cat = categorias.find(c => c.id === editId);
+        if (cat) {
+          cat.title = title;
+          cat.icon = icon;
+        }
+      } else {
+        // Modo Adição: Cria ID sanitizado a partir do nome
+        let generatedId = title.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (!generatedId) generatedId = `cat-${Date.now()}`;
+        
+        // Evita colisão de IDs
+        let finalId = generatedId;
+        let counter = 1;
+        while (categorias.some(c => c.id === finalId)) {
+          finalId = `${generatedId}-${counter++}`;
+        }
+
+        categorias.push({ id: finalId, title, icon, ativa: true });
+      }
+
+      resetCategoryForm();
       notifyLocalChange();
       renderCategoriesManager();
       renderCatalog();
