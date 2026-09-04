@@ -71,7 +71,8 @@
       gap: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
-    .brand-logo img { height: 50px; width: auto; object-fit: contain; }
+    /* Logo Superior */
+    .brand-logo img { height: 70px; width: auto; object-fit: contain; }
 
     .nav-menu {
       display: flex;
@@ -416,6 +417,7 @@
       font-weight: bold;
     }
 
+    /* Rodapé com Logo Maior */
     footer {
       position: relative;
       z-index: 1;
@@ -426,6 +428,7 @@
       color: var(--text-muted);
       font-size: 0.9rem;
     }
+    footer .brand-logo img { height: 85px; }
     .footer-links { display: flex; justify-content: center; gap: 30px; margin-top: 16px; font-weight: 700; flex-wrap: wrap; }
     .footer-links a { color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 6px; }
   </style>
@@ -527,8 +530,21 @@
       
       <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border);">
         <h4 style="font-size: 0.95rem; margin-bottom: 10px;">Adicionar Nova Categoria</h4>
-        <div style="display: flex; gap: 10px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
           <input type="text" id="newCatTitle" class="form-control" placeholder="Nome da Categoria (Ex: Servidores)">
+          <select id="newCatIcon" class="form-control" style="max-width: 170px;">
+            <option value="menu">Padrão (Menu)</option>
+            <option value="server">Servidor</option>
+            <option value="network">Rede / Wi-Fi</option>
+            <option value="shield">Segurança</option>
+            <option value="print">Impressora</option>
+            <option value="scanner">Scanner</option>
+            <option value="thermal">Térmica</option>
+            <option value="computer">Computador</option>
+            <option value="monitor">Monitor</option>
+            <option value="mobile">Móvel</option>
+            <option value="totem">Totem</option>
+          </select>
           <button class="btn-submit" onclick="addCategory()" style="white-space: nowrap;">Adicionar</button>
         </div>
       </div>
@@ -564,24 +580,43 @@
     const JSON_PATH     = 'produtos.json';
     const GITHUB_BRANCH = 'main';
 
-    // SENHA PESSOAL DA SUA EMPRESA (Você pode mudar para qualquer senha)
     const SENHA_MESTRE  = 'InfinityCorp2026';
+
+    // Biblioteca de Ícones SVG Originais
+    const ICONS_MAP = {
+      print: `<polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect>`,
+      scanner: `<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="7" y1="15" x2="9" y2="15"></line>`,
+      thermal: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><line x1="6" y1="12" x2="6" y2="16"></line><line x1="10" y1="12" x2="10" y2="16"></line><line x1="14" y1="12" x2="14" y2="16"></line><line x1="18" y1="12" x2="18" y2="16"></line>`,
+      computer: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>`,
+      monitor: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="12" y1="17" x2="12" y2="21"></line><line x1="8" y1="21" x2="16" y2="21"></line>`,
+      mobile: `<rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line>`,
+      totem: `<rect x="6" y="2" width="12" height="20" rx="2"></rect><circle cx="12" cy="18" r="1"></circle><rect x="8" y="5" width="8" height="6"></rect>`,
+      server: `<rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line>`,
+      network: `<rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><line x1="12" y1="12" x2="12" y2="8"></line>`,
+      shield: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
+      menu: `<path d="M4 6h16M4 12h16M4 18h7"></path>`
+    };
+
+    function getCategorySvg(iconKey, className = "icon-svg") {
+      const inner = ICONS_MAP[iconKey] || ICONS_MAP.menu;
+      return `<svg class="${className}" viewBox="0 0 24 24">${inner}</svg>`;
+    }
 
     // Categorias Padrão
     let categorias = [
-      { id: 'print', title: 'Outsourcing de Impressão', ativa: true },
-      { id: 'scanner', title: 'Scanners Profissionais', ativa: true },
-      { id: 'thermal', title: 'Impressoras Térmicas de Etiquetas', ativa: true },
-      { id: 'computer', title: 'Notebooks, Desktops & Periféricos', ativa: true },
-      { id: 'monitor', title: 'Monitores Profissionais', ativa: true },
-      { id: 'mobile', title: 'Dispositivos Móveis & Tablets', ativa: true },
-      { id: 'totem', title: 'Totens de Autoatendimento', ativa: true }
+      { id: 'print', title: 'Outsourcing de Impressão', icon: 'print', ativa: true },
+      { id: 'scanner', title: 'Scanners Profissionais', icon: 'scanner', ativa: true },
+      { id: 'thermal', title: 'Impressoras Térmicas de Etiquetas', icon: 'thermal', ativa: true },
+      { id: 'computer', title: 'Notebooks, Desktops & Periféricos', icon: 'computer', ativa: true },
+      { id: 'monitor', title: 'Monitores Profissionais', icon: 'monitor', ativa: true },
+      { id: 'mobile', title: 'Dispositivos Móveis & Tablets', icon: 'mobile', ativa: true },
+      { id: 'totem', title: 'Totens de Autoatendimento', icon: 'totem', ativa: true }
     ];
 
     let produtos = [];
     let modalImages = [];
     let modalCurrentIdx = 0;
-    let editCurrentPhotos = []; // Armazena as fotos do produto em edição
+    let editCurrentPhotos = [];
 
     // 1. CARREGAMENTO INICIAL
     async function loadCatalog() {
@@ -590,7 +625,6 @@
         if (!response.ok) throw new Error('Não foi possível carregar os produtos.');
         const data = await response.json();
 
-        // Suporta tanto o formato legado (só produtos) quanto o com categorias
         if (Array.isArray(data)) {
           produtos = data;
         } else {
@@ -616,25 +650,26 @@
       sectionsContainer.innerHTML = '';
 
       categorias.forEach(cat => {
+        const iconKey = cat.icon || cat.id;
         const produtosDaCat = produtos.filter(p => p.categoria === cat.id);
         const produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
 
-        // Oculta categoria se não tiver produto visível (para o cliente comum) ou se estiver inativa
+        // Oculta categoria se estiver inativa ou vazia para o visitante
         if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) {
           return;
         }
 
-        // Renderiza Item no Menu Superior
+        // Renderiza Item no Menu Superior com seu SVG
         const navItem = document.createElement('a');
         navItem.href = `#${cat.id}`;
         navItem.className = 'nav-item';
         navItem.innerHTML = `
-          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+          ${getCategorySvg(iconKey, 'icon-svg')}
           ${cat.title.split(' ')[0]} ${!cat.ativa ? '(Oculta)' : ''}
         `;
         navContainer.appendChild(navItem);
 
-        // Renderiza Seção
+        // Renderiza Seção com SVG de Destaque
         const section = document.createElement('section');
         section.id = cat.id;
         section.style.opacity = !cat.ativa ? '0.6' : '1';
@@ -642,7 +677,7 @@
         section.innerHTML = `
           <div class="section-header">
             <h2 class="section-title">
-              <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              ${getCategorySvg(iconKey, 'icon-svg icon-svg-lg')}
               ${cat.title} ${!cat.ativa ? '<small style="color:var(--danger); font-size:0.8rem;">(CATEGORIA OCULTA)</small>' : ''}
             </h2>
             <span class="badge-count">${produtosVisiveis.length} Itens</span>
@@ -784,7 +819,6 @@
     function promptAdminLogin() {
       const senha = prompt('Digite sua Senha de Gestor:');
       if (senha === SENHA_MESTRE) {
-        // Se ainda não tiver o token configurado no navegador, ele pede 1 única vez
         let token = localStorage.getItem('gh_pat_infinity');
         if (!token) {
           token = prompt('Primeiro acesso: Insira o Personal Access Token do GitHub para salvar alterações:');
@@ -912,7 +946,6 @@
       }
       document.getElementById('prodSpecs').value = specsText;
 
-      // Gerenciar Fotos Existentes
       editCurrentPhotos = [...(prod.imagens || [])];
       renderExistingPhotos();
 
@@ -974,7 +1007,6 @@
           }
         });
 
-        // Upload das fotos novas
         let novasFotos = [];
         if (fileInput.files.length > 0) {
           for (let file of fileInput.files) {
@@ -1047,12 +1079,14 @@
       container.innerHTML = '';
 
       categorias.forEach((cat, idx) => {
+        const iconKey = cat.icon || cat.id;
         const row = document.createElement('div');
         row.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 8px;';
         row.innerHTML = `
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            ${getCategorySvg(iconKey, 'icon-svg')}
             <strong>${cat.title}</strong>
-            <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 8px;">(${cat.ativa ? 'Ativa' : 'Oculta'})</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 4px;">(${cat.ativa ? 'Ativa' : 'Oculta'})</span>
           </div>
           <div style="display: flex; gap: 6px;">
             <button class="btn-action" onclick="toggleCategoryActive(${idx})">${cat.ativa ? 'Ocultar' : 'Ativar'}</button>
@@ -1065,11 +1099,13 @@
 
     async function addCategory() {
       const input = document.getElementById('newCatTitle');
+      const iconSelect = document.getElementById('newCatIcon');
       const title = input.value.trim();
+      const icon = iconSelect.value;
       if (!title) return;
 
       const id = title.toLowerCase().replace(/[^a-z0-9]/g, '');
-      categorias.push({ id, title, ativa: true });
+      categorias.push({ id, title, icon, ativa: true });
       input.value = '';
       renderCategoriesManager();
       await saveCatalogToGithub(`Nova categoria: ${title}`);
