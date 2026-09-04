@@ -108,6 +108,23 @@
         "Tela": "15,6' - Full HD (1920 x 1080)",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       }
+    },
+    {
+      "id": "prod-1788523510340",
+      "categoria": "thermal",
+      "marca": "HP",
+      "nome": "HP 428",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788523510340_428.jpg",
+        "fotos/1788523511965_428_1.jpg",
+        "fotos/1788523513106_428_2.jpg"
+      ],
+      "specs": {
+        "Velocidade": "40ppm",
+        "Bandeja": "500 Folhas",
+        "ADF": "2 Faces Automático"
+      }
     }
   ]
 }
