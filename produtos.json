@@ -8,7 +8,7 @@
     {
       "id": "scanner",
       "title": "Scanners Profissionais",
-      "ativa": false
+      "ativa": true
     },
     {
       "id": "thermal",
