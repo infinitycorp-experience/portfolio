@@ -2,18 +2,21 @@
   "categorias": [
     {
       "id": "print",
-      "title": "Outsourcing de Impressão",
-      "ativa": true
+      "title": "Impressoras",
+      "ativa": true,
+      "icon": "print"
     },
     {
       "id": "computer",
-      "title": "Notebooks, Desktops & Periféricos",
-      "ativa": true
+      "title": "Notebooks",
+      "ativa": true,
+      "icon": "laptop"
     },
     {
       "id": "mobile",
-      "title": "Dispositivos Móveis & Tablets",
-      "ativa": true
+      "title": "Tablets",
+      "ativa": true,
+      "icon": "mobile"
     },
     {
       "id": "totem",
@@ -27,8 +30,9 @@
     },
     {
       "id": "thermal",
-      "title": "Impressoras Térmicas de Etiquetas",
-      "ativa": true
+      "title": "Térmicas de Etiquetas",
+      "ativa": true,
+      "icon": "thermal"
     },
     {
       "id": "monitor",
