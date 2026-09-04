@@ -324,13 +324,11 @@
       "ativo": true,
       "imagens": [
         "fotos/1788548372625_NOTEBOOK_DELL_XPS_13_9320.png",
-        "fotos/1788548374109_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png",
-        "fotos/1788548375576_NOTEBOOK_DELL_XPS_13_9320.png",
-        "fotos/1788548376908_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
+        "fotos/1788548374109_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
       ],
       "specs": {
         "Processador": "Intel Core Ultra 7 256V/258V",
-        "Memória": "16 / 32 GB LPDDR5X (8533 MT/s)",
+        "Memória": "16/32 GB LPDDR5X (8533 MT/s)",
         "NPU": "47 TOPS para recursos de IA",
         "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
         "Placa de Vídeo": "Intel Arc Graphics 140V",
