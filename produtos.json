@@ -97,10 +97,9 @@
       "nome": "Dell Inspirion 15",
       "ativo": true,
       "imagens": [
-        "fotos/1788520245805_Dell.png",
-        "fotos/1788520247465_Dell_1.png",
-        "fotos/1788520248641_Dell_2.png",
-        "fotos/1788520250021_Dell_3.png"
+        "fotos/1788520250021_Dell_3.png",
+        "fotos/1788522150168_Dell_1.png",
+        "fotos/1788522152125_Dell_2.png"
       ],
       "specs": {
         "Processador": "Intel Core  i5",
