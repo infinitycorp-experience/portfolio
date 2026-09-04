@@ -608,6 +608,8 @@
     <span id="adminStatusText">🔒 Modo Gestor Ativo</span>
     <button class="admin-btn" onclick="openProductForm()">+ Novo Equipamento</button>
     <button class="admin-btn secondary" onclick="openCategoryModal()">Categorias</button>
+    <button class="admin-btn secondary" onclick="openBrandModal()">+ Fabricante</button>
+    <button class="admin-btn secondary" onclick="promptUploadLogoFabricante()">🖼️ Enviar Logo (/logos)</button>
     <button class="admin-btn-deploy" id="btnPublishDeploy" onclick="publishAllChanges()">🚀 Publicar Alterações (<span id="pendingCount">0</span>)</button>
     <button class="admin-btn-discard" id="btnDiscardChanges" onclick="discardPendingChanges()">Descartar Rascunho</button>
     <button class="admin-btn-logout" onclick="logoutAdmin()">Sair</button>
@@ -650,7 +652,6 @@
           <div style="display: flex; gap: 10px; margin-bottom: 8px;">
             <select id="brandPresetSelect" class="form-control" style="flex: 1;" onchange="handleBrandPresetChange(this.value)">
               <option value="">-- Selecione uma marca cadastrada --</option>
-              <!-- Preenchido via JS -->
               <option value="__custom__">Outra Marca / Personalizada...</option>
             </select>
           </div>
@@ -695,6 +696,37 @@
         <div class="form-actions">
           <button type="button" class="btn-cancel" onclick="closeFormModal()">Cancelar</button>
           <button type="submit" class="btn-submit" id="btnSaveProd">Salvar no Rascunho</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Cadastro Rápido de Novo Fabricante / Logo -->
+  <div class="modal-overlay" id="brandModal">
+    <div class="modal-box" style="padding: 30px; max-width: 480px;">
+      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Cadastrar Fabricante</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+        O logotipo será salvo na pasta <code>logos/</code> e ficará disponível permanentemente para seleção.
+      </p>
+
+      <form id="brandForm" onsubmit="handleBrandSubmit(event)">
+        <div class="form-group">
+          <label>Nome do Fabricante / Marca</label>
+          <input type="text" id="newBrandName" class="form-control" required placeholder="Ex: Avell, Positivo, Elgin">
+        </div>
+
+        <div class="form-group">
+          <label>Arquivo do Logotipo (PNG transparente recomendado)</label>
+          <input type="file" id="newBrandFileInput" class="form-control" accept="image/*" required onchange="previewNewBrandLogo(this)">
+        </div>
+
+        <div id="newBrandPreviewContainer" style="display: none; align-items: center; justify-content: center; background: #F8FAFC; border: 1px dashed var(--card-border); border-radius: 8px; padding: 15px; margin-bottom: 16px;">
+          <img id="newBrandPreviewImg" src="" style="max-height: 48px; max-width: 140px; object-fit: contain;">
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="closeBrandModal()">Cancelar</button>
+          <button type="submit" class="btn-submit">Salvar Fabricante</button>
         </div>
       </form>
     </div>
@@ -812,7 +844,7 @@
     </div>
     <p>Facilitando o dia a dia com soluções ágeis de infraestrutura de TI.</p>
     <div class="footer-links">
-      <a href="tel:+551140630424">+55 11 4063-0424</a>
+      <a href="tel:+5511930001426">+55 11 93000-1426</a>
       <a href="mailto:contato@infinitycorp.com.br">contato@infinitycorp.com.br</a>
       <a href="javascript:void(0)" onclick="openLoginModal()" style="color: var(--text-muted); font-size: 0.8rem;">🔒 Acesso Restrito</a>
     </div>
@@ -825,24 +857,22 @@
     const GITHUB_BRANCH = 'main';
     const SENHA_MESTRE  = 'InfinityCorp2026';
 
-    // ==========================================
-    // LOGOS PRÉ-DEFINIDOS (PADRONIZAÇÃO VISUAL)
-    // ==========================================
-    const PRESET_LOGOS = [
-  { name: 'Avell', logo: 'logos/avell.png' },
-  { name: 'Brother', logo: 'logos/brother.png' },
-  { name: 'Canon', logo: 'logos/canon.png' },
-  { name: 'Dell', logo: 'logos/dell.png' },
-  { name: 'Epson', logo: 'logos/epson.png' },
-  { name: 'HP', logo: 'logos/hp.png' },
-  { name: 'Kyocera', logo: 'logos/kyocera.png' },
-  { name: 'Lenovo', logo: 'logos/lenovo.png' },
-  { name: 'Lexmark', logo: 'logos/lexmark.png' },
-  { name: 'Ricoh', logo: 'logos/ricoh.png' },
-  { name: 'Samsung', logo: 'logos/samsung.png' },
-  { name: 'Xerox', logo: 'logos/xerox.png' },
-  { name: 'Zebra', logo: 'logos/zebra.png' }
-];
+    // Lista Base de Marcas / Presets
+    const DEFAULT_PRESET_LOGOS = [
+      { name: 'Avell', logo: 'logos/avell.png' },
+      { name: 'Brother', logo: 'logos/brother.png' },
+      { name: 'Canon', logo: 'logos/canon.png' },
+      { name: 'Dell', logo: 'logos/dell.png' },
+      { name: 'Epson', logo: 'logos/epson.png' },
+      { name: 'HP', logo: 'logos/hp.png' },
+      { name: 'Kyocera', logo: 'logos/kyocera.png' },
+      { name: 'Lenovo', logo: 'logos/lenovo.png' },
+      { name: 'Lexmark', logo: 'logos/lexmark.png' },
+      { name: 'Ricoh', logo: 'logos/ricoh.png' },
+      { name: 'Samsung', logo: 'logos/samsung.png' },
+      { name: 'Xerox', logo: 'logos/xerox.png' },
+      { name: 'Zebra', logo: 'logos/zebra.png' }
+    ];
 
     const CATEGORY_COLORS = [
       { bg: '#E0F2FE', text: '#0369A1', border: '#BAE6FD' },
@@ -878,9 +908,11 @@
 
     let categorias = [];
     let produtos = [];
+    let marcas = [...DEFAULT_PRESET_LOGOS];
     
     let pendingChangesCount = 0;
     let pendingUploadQueue = [];
+    let pendingDeletionsQueue = [];
     let originalSnapshot = null;
 
     let modalImages = [];
@@ -891,8 +923,11 @@
     // Inicialização dos Presets no Seletor
     function initBrandPresetsUI() {
       const select = document.getElementById('brandPresetSelect');
+      if (!select) return;
       select.innerHTML = '<option value="">-- Selecione uma marca cadastrada --</option>';
-      PRESET_LOGOS.forEach(item => {
+      
+      const marcasOrdenadas = [...marcas].sort((a, b) => a.name.localeCompare(b.name));
+      marcasOrdenadas.forEach(item => {
         const opt = document.createElement('option');
         opt.value = item.name;
         opt.textContent = item.name;
@@ -913,7 +948,7 @@
         return;
       }
 
-      const preset = PRESET_LOGOS.find(p => p.name.toLowerCase() === val.toLowerCase());
+      const preset = marcas.find(p => p.name.toLowerCase() === val.toLowerCase());
       if (preset) {
         document.getElementById('prodBrand').value = preset.name;
         editCurrentBrandLogo = preset.logo;
@@ -955,9 +990,19 @@
             { id: 'mobile', title: 'Dispositivos Móveis & Tablets', icon: 'mobile', ativa: true },
             { id: 'totem', title: 'Totens de Autoatendimento', icon: 'totem', ativa: true }
           ];
+
+          if (data.marcas && Array.isArray(data.marcas) && data.marcas.length > 0) {
+            const savedNames = new Set(data.marcas.map(m => m.name.toLowerCase()));
+            marcas = [...data.marcas];
+            DEFAULT_PRESET_LOGOS.forEach(def => {
+              if (!savedNames.has(def.name.toLowerCase())) marcas.push(def);
+            });
+          } else {
+            marcas = [...DEFAULT_PRESET_LOGOS];
+          }
         }
 
-        originalSnapshot = JSON.stringify({ categorias, produtos });
+        originalSnapshot = JSON.stringify({ categorias, produtos, marcas });
         initBrandPresetsUI();
         renderCatalog();
       } catch (err) {
@@ -990,8 +1035,11 @@
       const data = JSON.parse(originalSnapshot);
       categorias = data.categorias;
       produtos = data.produtos;
+      marcas = data.marcas || [...DEFAULT_PRESET_LOGOS];
       pendingChangesCount = 0;
       pendingUploadQueue = [];
+      pendingDeletionsQueue = [];
+      initBrandPresetsUI();
       updateAdminBarUI();
       renderCatalog();
     }
@@ -1268,8 +1316,8 @@
       location.reload();
     }
 
-    async function uploadSingleImageToGithub(file, token) {
-      const fileName = `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
+    async function uploadSingleImageToGithub(file, token, customPath = null) {
+      const fileName = customPath || `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
       const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileName}`;
 
       const reader = new FileReader();
@@ -1286,14 +1334,41 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: `Upload mídia: ${file.name}`,
+          message: `Upload mídia: ${fileName}`,
           content: content,
           branch: GITHUB_BRANCH
         })
       });
 
-      if (!res.ok) throw new Error(`Falha no upload de ${file.name}`);
+      if (!res.ok) throw new Error(`Falha no upload de ${fileName}`);
       return fileName;
+    }
+
+    async function deleteGithubFile(filePath, token) {
+      try {
+        const fileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}?ref=${GITHUB_BRANCH}`;
+        const getRes = await fetch(fileUrl, { headers: { Authorization: `token ${token}` } });
+        if (!getRes.ok) return false;
+        const fileData = await getRes.json();
+        const sha = fileData.sha;
+
+        const delRes = await fetch(fileUrl, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `Limpeza de arquivo órfão: ${filePath}`,
+            sha: sha,
+            branch: GITHUB_BRANCH
+          })
+        });
+        return delRes.ok;
+      } catch (err) {
+        console.warn(`Erro ao excluir arquivo órfão ${filePath}:`, err);
+        return false;
+      }
     }
 
     async function publishAllChanges() {
@@ -1313,25 +1388,47 @@
       deployModal.classList.add('active');
 
       try {
+        // 1. Processar exclusão física de fotos órfãs
+        if (pendingDeletionsQueue.length > 0) {
+          statusMsg.textContent = 'Verificando fotos excluídas para limpeza...';
+          const stillInUse = new Set();
+          produtos.forEach(p => (p.imagens || []).forEach(img => stillInUse.add(img)));
+
+          const toDelete = [...new Set(pendingDeletionsQueue)].filter(path => !stillInUse.has(path));
+          let delCount = 0;
+          for (const delPath of toDelete) {
+            delCount++;
+            statusMsg.textContent = `Apagando foto órfã (${delCount} de ${toDelete.length})...`;
+            await deleteGithubFile(delPath, token);
+          }
+          pendingDeletionsQueue = [];
+        }
+
+        // 2. Upload de novos arquivos (fotos e novos logos de fabricante)
         if (pendingUploadQueue.length > 0) {
-          statusMsg.textContent = `Enviando fotos pendentes (1 de ${pendingUploadQueue.length})...`;
           let count = 0;
           for (let item of pendingUploadQueue) {
             count++;
-            statusMsg.textContent = `Enviando imagem ${count} de ${pendingUploadQueue.length}...`;
-            const uploadedPath = await uploadSingleImageToGithub(item.file, token);
-            const prod = produtos.find(p => p.id === item.prodId);
-            if (prod) {
-              if (item.type === 'image') {
+            statusMsg.textContent = `Enviando arquivo ${count} de ${pendingUploadQueue.length}...`;
+            const uploadedPath = await uploadSingleImageToGithub(item.file, token, item.targetPath || null);
+            
+            if (item.type === 'image') {
+              const prod = produtos.find(p => p.id === item.prodId);
+              if (prod) {
                 const idx = prod.imagens.indexOf(item.previewUrl);
                 if (idx !== -1) prod.imagens[idx] = uploadedPath;
-              } else if (item.type === 'logo') {
-                prod.logoMarca = uploadedPath;
               }
+            } else if (item.type === 'logo') {
+              const prod = produtos.find(p => p.id === item.prodId);
+              if (prod) prod.logoMarca = uploadedPath;
+            } else if (item.type === 'brand_logo') {
+              const marcaObj = marcas.find(m => m.name.toLowerCase() === item.brandName.toLowerCase());
+              if (marcaObj) marcaObj.logo = uploadedPath;
             }
           }
         }
 
+        // 3. Gravar produtos.json atualizado
         statusMsg.textContent = 'Gravando produtos.json no repositório...';
         const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
         const getRes = await fetch(getFileUrl, { headers: { Authorization: `token ${token}` } });
@@ -1342,7 +1439,7 @@
           sha = fileData.sha;
         }
 
-        const payload = { categorias, produtos };
+        const payload = { categorias, produtos, marcas };
         const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
         
         const putRes = await fetch(getFileUrl, {
@@ -1367,7 +1464,8 @@
 
         pendingChangesCount = 0;
         pendingUploadQueue = [];
-        originalSnapshot = JSON.stringify({ categorias, produtos });
+        pendingDeletionsQueue = [];
+        originalSnapshot = JSON.stringify({ categorias, produtos, marcas });
         updateAdminBarUI();
       } catch (err) {
         console.error(err);
@@ -1440,8 +1538,7 @@
       }
       document.getElementById('prodSpecs').value = specsText;
 
-      // Sincroniza marca com presets conhecidos
-      const foundPreset = PRESET_LOGOS.find(p => p.name.toLowerCase() === (prod.marca || '').toLowerCase());
+      const foundPreset = marcas.find(p => p.name.toLowerCase() === (prod.marca || '').toLowerCase());
       if (foundPreset) {
         document.getElementById('brandPresetSelect').value = foundPreset.name;
       } else {
@@ -1554,6 +1651,16 @@
       const existingIdx = produtos.findIndex(p => p.id === id);
 
       if (existingIdx >= 0) {
+        // Encontra fotos que foram excluídas neste produto e agenda para limpeza física
+        const fotosAntigas = produtos[existingIdx].imagens || [];
+        fotosAntigas.forEach(antigaUrl => {
+          if (!fotosFinais.includes(antigaUrl)) {
+            if (antigaUrl.startsWith('fotos/')) {
+              pendingDeletionsQueue.push(antigaUrl);
+            }
+          }
+        });
+
         produtos[existingIdx].categoria = categoria;
         produtos[existingIdx].marca = marca;
         produtos[existingIdx].nome = nome;
@@ -1578,6 +1685,77 @@
       renderCatalog();
     }
 
+    // ==========================================
+    // UPLOAD EXCLUSIVO PARA A PASTA /logos
+    // ==========================================
+    async function uploadLogoToLogosFolder(file, token) {
+      const cleanFileName = file.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\.\-_]/g, '');
+      const filePath = `logos/${cleanFileName}`;
+      const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`;
+
+      const reader = new FileReader();
+      const base64Promise = new Promise((resolve) => {
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.readAsDataURL(file);
+      });
+      const content = await base64Promise;
+
+      let sha = null;
+      try {
+        const checkRes = await fetch(`${url}?ref=${GITHUB_BRANCH}`, { headers: { Authorization: `token ${token}` } });
+        if (checkRes.ok) {
+          const existing = await checkRes.json();
+          sha = existing.sha;
+        }
+      } catch (e) {}
+
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `Upload de logo: ${filePath}`,
+          content: content,
+          sha: sha || undefined,
+          branch: GITHUB_BRANCH
+        })
+      });
+
+      if (!res.ok) throw new Error(`Falha ao enviar logo ${filePath}`);
+      return filePath;
+    }
+
+    // Função acionada pelo botão no Modo Gestor
+    async function promptUploadLogoFabricante() {
+      const token = localStorage.getItem('gh_pat_infinity');
+      if (!token) {
+        openLoginModal();
+        return;
+      }
+
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/png, image/webp, image/svg+xml';
+      input.onchange = async () => {
+        if (!input.files || !input.files[0]) return;
+        const file = input.files[0];
+
+        const confirmUpload = confirm(`Deseja enviar o logo "${file.name}" diretamente para a pasta logos/ no GitHub?`);
+        if (!confirmUpload) return;
+
+        try {
+          alert('Enviando logo para a pasta logos/... Por favor, aguarde.');
+          const pathGravado = await uploadLogoToLogosFolder(file, token);
+          alert(`Logo gravado com sucesso em: ${pathGravado}\nEle já estará disponível para uso nos equipamentos!`);
+        } catch (err) {
+          alert('Erro ao enviar o logotipo: ' + err.message);
+        }
+      };
+      input.click();
+    }
+
     function toggleActive(id) {
       const prod = produtos.find(p => p.id === id);
       if (!prod) return;
@@ -1589,14 +1767,81 @@
     function deleteProduct(id) {
       const prod = produtos.find(p => p.id === id);
       if (!prod) return;
-      if (!confirm(`Remover "${prod.nome}" do catálogo? (Só será definitivo após clicar em Publicar)`)) return;
+      if (!confirm(`Remover "${prod.nome}" do catálogo? (Fotos vinculadas também serão excluídas do repositório ao publicar)`)) return;
+
+      // Agenda as fotos do produto para limpeza física do GitHub
+      if (prod.imagens && prod.imagens.length > 0) {
+        prod.imagens.forEach(img => {
+          if (img.startsWith('fotos/')) pendingDeletionsQueue.push(img);
+        });
+      }
 
       produtos = produtos.filter(p => p.id !== id);
       notifyLocalChange();
       renderCatalog();
     }
 
-    // Categorias
+    // ==========================================
+    // MODAL DE FABRICANTE / LOGO
+    // ==========================================
+    function openBrandModal() {
+      document.getElementById('brandForm').reset();
+      document.getElementById('newBrandPreviewContainer').style.display = 'none';
+      document.getElementById('newBrandPreviewImg').src = '';
+      document.getElementById('brandModal').classList.add('active');
+    }
+
+    function closeBrandModal() {
+      document.getElementById('brandModal').classList.remove('active');
+    }
+
+    async function previewNewBrandLogo(input) {
+      if (input.files && input.files[0]) {
+        const previewUrl = await fileToDataUrl(input.files[0]);
+        document.getElementById('newBrandPreviewImg').src = previewUrl;
+        document.getElementById('newBrandPreviewContainer').style.display = 'flex';
+      }
+    }
+
+    async function handleBrandSubmit(e) {
+      e.preventDefault();
+      const brandName = document.getElementById('newBrandName').value.trim();
+      const fileInput = document.getElementById('newBrandFileInput');
+
+      if (!brandName || !fileInput.files[0]) {
+        alert('Informe o nome da marca e selecione um arquivo de logo.');
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const cleanFileName = brandName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\.\-_]/g, '') + '.png';
+      const logoPath = `logos/${cleanFileName}`;
+      const previewUrl = await fileToDataUrl(file);
+
+      pendingUploadQueue.push({
+        type: 'brand_logo',
+        brandName: brandName,
+        targetPath: logoPath,
+        file: file,
+        previewUrl: previewUrl
+      });
+
+      const existingBrand = marcas.find(m => m.name.toLowerCase() === brandName.toLowerCase());
+      if (existingBrand) {
+        existingBrand.logo = logoPath;
+      } else {
+        marcas.push({ name: brandName, logo: logoPath });
+      }
+
+      initBrandPresetsUI();
+      notifyLocalChange();
+      closeBrandModal();
+      alert(`Fabricante "${brandName}" preparado para inclusão! Clique em "Publicar Alterações" para salvar no repositório.`);
+    }
+
+    // ==========================================
+    // CATEGORIAS
+    // ==========================================
     function openCategoryModal() {
       resetCategoryForm();
       renderCategoriesManager();
