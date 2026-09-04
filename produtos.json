@@ -86,14 +86,17 @@
     {
       "id": "totem-stand5",
       "categoria": "totem",
-      "marca": "Totem Stand",
-      "nome": "STAND 5 (32”)",
+      "marca": "ISD",
+      "nome": "STAND 3",
       "ativo": true,
-      "imagens": [],
+      "imagens": [
+        "fotos/1788528877888_TOTEM_AUTOATENDIMENTO_ISD_STAND_3_21_5.png"
+      ],
       "specs": {
-        "Display": "32\" Touch Screen",
+        "Display": "21,5\" Touch Screen",
         "Hardware": "i5 • 8GB • 128GB"
-      }
+      },
+      "logoMarca": "fotos/1788528876715_logoISD.png"
     },
     {
       "id": "prod-1788520245805",
