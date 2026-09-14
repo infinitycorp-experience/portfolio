@@ -374,6 +374,28 @@
       "logoMarca": "fotos/1788533821335_LogoHP.png"
     },
     {
+      "id": "prod-1789408659803",
+      "categoria": "print",
+      "marca": "HP",
+      "nome": "X57945",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789408684730_579451.jpg",
+        "fotos/1789408685943_57945.jpg",
+        "fotos/1789408686838_579451.jpg",
+        "fotos/1789408687801_57945.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 45 ppm (preto e colorido)",
+        "Painel": "Touch colorido de 8' ou 10,1'",
+        "Resolução": "Até 1200 x 1200 dpi",
+        "Velocidade de digitalização (AAD)": "Até 120 ipm",
+        "Alimentador automático (AAD)": "100 páginas com digitalização duplex de passada única",
+        "Conectividade": "USB 3.0, RJ45 10/100/1000"
+      },
+      "logoMarca": "logos/hp.png"
+    },
+    {
       "id": "xerox-c7020",
       "categoria": "print",
       "marca": "Xerox",
@@ -396,26 +418,48 @@
       "logoMarca": "fotos/1788525690206_LogoXerox.png"
     },
     {
-      "id": "prod-1789408659803",
+      "id": "prod-1789410979194",
       "categoria": "print",
-      "marca": "HP",
-      "nome": "X57945",
+      "marca": "Xerox",
+      "nome": "Altalink c8045",
       "ativo": true,
       "imagens": [
-        "fotos/1789408684730_579451.jpg",
-        "fotos/1789408685943_57945.jpg",
-        "fotos/1789408686838_579451.jpg",
-        "fotos/1789408687801_57945.jpg"
+        "fotos/1789411050199_80452.jpg",
+        "fotos/1789411051134_80451.jpg",
+        "fotos/1789411052321_8045.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 45 ppm (preto e colorido)",
-        "Painel": "Touch colorido de 8' ou 10,1'",
-        "Resolução": "Até 1200 x 1200 dpi",
-        "Velocidade de digitalização (AAD)": "Até 120 ipm",
-        "Alimentador automático (AAD)": "100 páginas com digitalização duplex de passada única",
-        "Conectividade": "USB 3.0, RJ45 10/100/1000"
+        "Velocidade": "Até 45 ppm",
+        "Painel": "Touch colorido de 10.1'",
+        "Impressão": "Até 1200 x 2400 dpi",
+        "Cópia": "Até 600 x 600 dpi",
+        "Processador": "Intel Atom Quad-Core de 1,91 GHz",
+        "Memória": "8 GB do sistema.",
+        "Bandeja Bypass": "100 folhas",
+        "Bandejas 1 e 2": "520 folhas cada",
+        "Alimentador automático duplex (DADF) de passagem única": "130 folhas (velocidade de até 139 ipm em duplex)"
       },
-      "logoMarca": "logos/hp.png"
+      "logoMarca": "logos/xerox.png"
+    },
+    {
+      "id": "prod-1789409798572",
+      "categoria": "print",
+      "marca": "Canon",
+      "nome": "Maxify GX6010",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789409807611_60002.jpg",
+        "fotos/1789409808663_60001.jpg",
+        "fotos/1789409809875_6000.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 45 ppm",
+        "Painel": "Touch colorido + botões físicos",
+        "Resolução de Impressão": "Até 600 x 1200 dpi",
+        "Impressão Frente e Verso (Duplex)": "Automática (A4/Carta)",
+        "Capacidade de Papel": "Cassete frontal para 250 folhas"
+      },
+      "logoMarca": "logos/canon.png"
     },
     {
       "id": "prod-1789409034307",
@@ -456,50 +500,6 @@
         "Conectividade": "RJ45, USB e Wi-Fi opcional"
       },
       "logoMarca": "logos/canon.png"
-    },
-    {
-      "id": "prod-1789409798572",
-      "categoria": "print",
-      "marca": "Canon",
-      "nome": "Maxify GX6010",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789409807611_60002.jpg",
-        "fotos/1789409808663_60001.jpg",
-        "fotos/1789409809875_6000.jpg"
-      ],
-      "specs": {
-        "Velocidade": "Até 45 ppm",
-        "Painel": "Touch colorido + botões físicos",
-        "Resolução de Impressão": "Até 600 x 1200 dpi",
-        "Impressão Frente e Verso (Duplex)": "Automática (A4/Carta)",
-        "Capacidade de Papel": "Cassete frontal para 250 folhas"
-      },
-      "logoMarca": "logos/canon.png"
-    },
-    {
-      "id": "prod-1789410979194",
-      "categoria": "print",
-      "marca": "Xerox",
-      "nome": "Altalink c8045",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789411050199_80452.jpg",
-        "fotos/1789411051134_80451.jpg",
-        "fotos/1789411052321_8045.jpg"
-      ],
-      "specs": {
-        "Velocidade": "Até 45 ppm",
-        "Painel": "Touch colorido de 10.1'",
-        "Impressão": "Até 1200 x 2400 dpi",
-        "Cópia": "Até 600 x 600 dpi",
-        "Processador": "Intel Atom Quad-Core de 1,91 GHz",
-        "Memória": "8 GB do sistema.",
-        "Bandeja Bypass": "100 folhas",
-        "Bandejas 1 e 2": "520 folhas cada",
-        "Alimentador automático duplex (DADF) de passagem única": "130 folhas (velocidade de até 139 ipm em duplex)"
-      },
-      "logoMarca": "logos/xerox.png"
     }
   ],
   "marcas": [
