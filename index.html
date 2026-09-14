@@ -58,6 +58,7 @@
       stroke-linejoin: round;
     }
     .icon-svg-lg { width: 24px; height: 24px; stroke-width: 2.2; }
+    .icon-svg-sm { width: 14px; height: 14px; stroke-width: 2; }
 
     /* Barra Superior */
     .top-navbar {
@@ -126,39 +127,47 @@
     }
     .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 20px; }
 
-    /* Barra de Busca e Filtro Premium */
-    .search-filter-wrapper {
-      max-width: 740px;
-      margin: 0 auto 30px;
+    /* Container de Ações: Busca + Filtro + Botão Exportar */
+    .hero-actions-container {
+      max-width: 880px;
+      margin: 0 auto 25px;
       display: flex;
+      flex-wrap: wrap;
       gap: 12px;
-      padding: 6px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-filter-wrapper {
+      flex: 1;
+      min-width: 320px;
+      display: flex;
+      gap: 8px;
+      padding: 5px;
       background: #FFFFFF;
       border: 1px solid rgba(226, 232, 240, 0.9);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
       transition: all 0.3s ease;
-      position: relative;
-      z-index: 2;
     }
     .search-filter-wrapper:focus-within {
       border-color: var(--primary);
-      box-shadow: 0 12px 35px rgba(2, 132, 199, 0.15);
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12);
     }
 
     .search-box-inner {
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 0 14px;
+      gap: 8px;
+      padding: 0 12px;
     }
     .search-box-inner .icon-svg { color: var(--primary); flex-shrink: 0; }
     .search-input-field {
       width: 100%;
       border: none;
       outline: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-main);
       background: transparent;
@@ -184,9 +193,8 @@
       background: #F8FAFC;
       border: 1px solid var(--card-border);
       border-radius: 10px;
-      padding: 0 12px;
-      min-width: 180px;
-      transition: 0.2s;
+      padding: 0 10px;
+      min-width: 160px;
     }
     .brand-filter-box:hover { border-color: var(--primary); background: #FFFFFF; }
     .brand-filter-box .icon-svg { color: var(--text-muted); margin-right: 6px; }
@@ -194,12 +202,36 @@
       border: none;
       outline: none;
       background: transparent;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-main);
       width: 100%;
       cursor: pointer;
-      padding: 10px 0;
+      padding: 8px 0;
+    }
+
+    /* Botão de Exportar / Imprimir */
+    .btn-export-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 20px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      background: #0F172A;
+      color: #FFFFFF;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .btn-export-trigger:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
     }
 
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
@@ -540,20 +572,20 @@
       cursor: pointer;
     }
 
-    /* Balões / Pills de Categorias no Modal */
+    /* BALÕES / PILLS REFINADOS: MENORES, MAIS ELEGANTES E DISCRETOS */
     .category-pills-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       margin-top: 4px;
     }
     .cat-pill-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 10px;
-      font-size: 0.82rem;
+      gap: 5px;
+      padding: 5px 10px; /* Mais compacto */
+      border-radius: 8px;
+      font-size: 0.74rem; /* Proporção ideal */
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -562,14 +594,18 @@
       background: #F1F5F9;
       color: #475569;
     }
+    .cat-pill-btn .icon-svg {
+      width: 14px;
+      height: 14px;
+    }
     .cat-pill-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
       filter: brightness(0.97);
     }
     .cat-pill-btn.selected {
-      transform: scale(1.03);
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+      transform: scale(1.02);
+      box-shadow: 0 3px 10px rgba(2, 132, 199, 0.22);
       border-color: currentColor !important;
       outline: 2px solid currentColor;
       outline-offset: 1px;
@@ -642,7 +678,7 @@
     }
     .btn-logo-del:hover { background: var(--danger); color: white; border-color: var(--danger); }
 
-    /* Gerenciador de Fotos e Reordenação */
+    /* Gerenciador de Fotos */
     .photos-manager-grid {
       display: flex;
       flex-wrap: wrap;
@@ -714,58 +750,163 @@
     }
     .btn-photo-nav:hover { background: #0F172A; color: white; }
 
-    /* Modais Auxiliares */
-    .login-modal-box { max-width: 420px; padding: 30px 24px; text-align: center; border-radius: 20px; }
-    .login-icon-badge {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #E0F2FE;
-      color: var(--primary);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
+    /* Modal de Exportação / Impressão */
+    .export-modal-box {
+      max-width: 580px;
+      padding: 30px;
+      border-radius: 20px;
     }
-    .deploy-modal-box { max-width: 460px; padding: 36px 28px; text-align: center; border-radius: 20px; }
-    .deploy-spinner {
-      width: 48px;
-      height: 48px;
-      border: 4px solid #E2E8F0;
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 18px;
+    .export-categories-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0 24px;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 6px;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .countdown-circle {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: #ECFDF5;
-      border: 3px solid #10B981;
+    @media (max-width: 540px) {
+      .export-categories-list { grid-template-columns: 1fr; }
+    }
+    .export-category-item {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: #059669;
-      margin: 16px auto;
-    }
-    .progress-bar-container {
-      width: 100%;
-      height: 8px;
-      background: #E2E8F0;
+      gap: 10px;
+      background: #F8FAFC;
+      border: 1px solid var(--card-border);
       border-radius: 10px;
-      overflow: hidden;
-      margin-top: 18px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      user-select: none;
     }
-    .progress-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #10B981, #0284C7);
-      transition: width 1s linear;
+    .export-category-item:hover {
+      background: #FFFFFF;
+      border-color: var(--primary);
+    }
+    .export-category-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
+    .export-category-item span {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Elementos Exclusivos para a Impressão / PDF */
+    .print-header, .print-footer { display: none; }
+
+    /* REGRAS DE IMPRESSÃO / SALVAR EM PDF */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 14mm 10mm 15mm 10mm;
+      }
+      body {
+        background: #FFFFFF !important;
+        color: #0F172A !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png') !important;
+        background-repeat: repeat !important;
+        background-size: 380px auto !important;
+        opacity: 0.04 !important;
+        z-index: -10;
+        transform: rotate(-10deg) scale(1.05);
+      }
+
+      /* Ocultar elementos desnecessários na impressão */
+      .top-navbar,
+      .hero,
+      .admin-bar,
+      .modal-overlay,
+      .admin-card-actions,
+      .carousel-btn,
+      .carousel-dots,
+      footer {
+        display: none !important;
+      }
+
+      .main-content {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      /* Cabeçalho da Impressão */
+      .print-header {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+        border-bottom: 2px solid #0284C7;
+      }
+      .print-header img { height: 50px; width: auto; object-fit: contain; }
+      .print-header-meta { text-align: right; }
+      .print-header-meta h2 { font-size: 1.15rem; font-weight: 900; color: #0284C7; }
+      .print-header-meta p { font-size: 0.75rem; color: #64748B; font-weight: 600; }
+
+      /* Cards no PDF */
+      .section-header {
+        margin: 25px 0 15px !important;
+        padding-bottom: 6px !important;
+        page-break-after: avoid;
+      }
+      .products-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 16px !important;
+      }
+      .prod-card {
+        page-break-inside: avoid !important;
+        border: 1px solid #CBD5E1 !important;
+        box-shadow: none !important;
+        padding: 12px !important;
+        border-radius: 12px !important;
+      }
+      .thumb-slider-container {
+        height: 180px !important;
+        border: 1px solid #E2E8F0 !important;
+        margin-bottom: 10px !important;
+      }
+      .thumb-slider-container img { max-height: 90% !important; }
+      .prod-name { font-size: 0.95rem !important; margin-bottom: 8px !important; }
+      .specs-list {
+        padding: 8px !important;
+        font-size: 0.72rem !important;
+        background: #F8FAFC !important;
+        border: 1px solid #E2E8F0 !important;
+      }
+
+      /* Rodapé Institucional da Impressão / PDF */
+      .print-footer {
+        display: block !important;
+        margin-top: 40px;
+        padding-top: 18px;
+        border-top: 2px solid #0284C7;
+        page-break-inside: avoid;
+        text-align: center;
+      }
+      .print-footer-grid {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+      }
+      .print-footer-item { font-size: 0.8rem; font-weight: 700; color: #0F172A; }
+      .print-footer-item span { color: #64748B; font-size: 0.7rem; display: block; font-weight: 500; }
     }
 
     footer {
@@ -798,25 +939,65 @@
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
 
-    <!-- Barra de Busca Global e Filtro de Marca Integrado -->
-    <div class="search-filter-wrapper">
-      <div class="search-box-inner">
-        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="globalSearchInput" class="search-input-field" placeholder="Buscar por modelo, fabricante ou especificação..." oninput="handleSearchFilterChange()">
-        <button type="button" id="btnClearSearch" class="btn-clear-search" onclick="clearSearch()">✕</button>
+    <!-- Barra de Busca + Filtro + Botão de Exportar / PDF -->
+    <div class="hero-actions-container">
+      <div class="search-filter-wrapper">
+        <div class="search-box-inner">
+          <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="globalSearchInput" class="search-input-field" placeholder="Buscar por modelo, fabricante ou especificação..." oninput="handleSearchFilterChange()">
+          <button type="button" id="btnClearSearch" class="btn-clear-search" onclick="clearSearch()">✕</button>
+        </div>
+
+        <div class="brand-filter-box">
+          <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+          <select id="globalBrandFilter" class="brand-filter-select" onchange="handleSearchFilterChange()">
+            <option value="">Todas as Marcas</option>
+          </select>
+        </div>
       </div>
 
-      <div class="brand-filter-box">
-        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-        <select id="globalBrandFilter" class="brand-filter-select" onchange="handleSearchFilterChange()">
-          <option value="">Todas as Marcas</option>
-        </select>
-      </div>
+      <!-- Botão Exportar Catálogo / PDF -->
+      <button type="button" class="btn-export-trigger" onclick="openExportModal()" title="Exportar catálogo selecionado em PDF ou imprimir">
+        <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        <span>Exportar / Imprimir</span>
+      </button>
     </div>
   </section>
 
-  <!-- Conteúdo Renderizado Dinamicamente -->
-  <main class="main-content" id="dynamicSectionsContainer"></main>
+  <!-- Conteúdo Principal -->
+  <main class="main-content">
+    <!-- Cabeçalho Exclusivo para PDF / Impressão -->
+    <div class="print-header">
+      <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
+      <div class="print-header-meta">
+        <h2>PORTFÓLIO DE SOLUÇÕES & HARDWARE 2026</h2>
+        <p>Apresentação Comercial Exclusiva • Infinity Corp</p>
+      </div>
+    </div>
+
+    <!-- Div Dinâmica onde as seções são montadas -->
+    <div id="dynamicSectionsContainer"></div>
+
+    <!-- Rodapé Exclusivo para Impressão / PDF -->
+    <div class="print-footer">
+      <p style="font-size: 0.85rem; font-weight: 800; color: #0284C7; margin-bottom: 4px;">INFINITY CORP • SOLUÇÕES INTELIGENTES EM TI & OUTSOURCING</p>
+      <p style="font-size: 0.72rem; color: #64748B;">Facilitando o dia a dia corporativo com agilidade, tecnologia de ponta e suporte especializado.</p>
+      <div class="print-footer-grid">
+        <div class="print-footer-item">
+          <span>Telefone / WhatsApp:</span>
+          +55 11 93000-1426
+        </div>
+        <div class="print-footer-item">
+          <span>E-mail Corporativo:</span>
+          contato@infinitycorp.com.br
+        </div>
+        <div class="print-footer-item">
+          <span>Portal Oficial:</span>
+          www.infinitycorp.com.br
+        </div>
+      </div>
+    </div>
+  </main>
 
   <!-- Barra Flutuante de Administração -->
   <div class="admin-bar">
@@ -830,7 +1011,7 @@
     <button class="admin-btn-logout" onclick="logoutAdmin()">Sair</button>
   </div>
 
-  <!-- Modal de Zoom/Visualização -->
+  <!-- Modal de Zoom/Visualização de Produto -->
   <div class="modal-overlay" id="productModal" onclick="closeModalOnOutsideClick(event)">
     <div class="modal-box">
       <button class="modal-close-btn" onclick="closeModal()">
@@ -856,14 +1037,14 @@
       <form id="productCrudForm" onsubmit="handleFormSubmit(event)">
         <input type="hidden" id="prodId">
 
-        <!-- CATEGORIAS COMO BALÕES/PILLS COLORIDOS -->
+        <!-- CATEGORIAS COMO BALÕES/PILLS COMPACTOS E REFINADOS -->
         <div class="form-group">
           <label>Categoria do Equipamento</label>
           <input type="hidden" id="prodCategory" required>
           <div class="category-pills-container" id="categoryPillsContainer"></div>
         </div>
 
-        <!-- FABRICANTE E LOGOTIPO ALINHADOS E COM BOTÕES REFINADOS -->
+        <!-- FABRICANTE E LOGOTIPO ALINHADOS -->
         <div class="form-row">
           <div class="form-group" style="margin-bottom: 0;">
             <label>Fabricante / Marca</label>
@@ -874,7 +1055,7 @@
             <input type="text" id="prodBrand" class="form-control" style="margin-top: 8px; display: none;" placeholder="Digite o nome do fabricante">
           </div>
 
-          <!-- LOGOTIPO EM CONTAINER FIXO SEM DESCONFIGURAÇÃO -->
+          <!-- LOGOTIPO EM CONTAINER FIXO -->
           <div class="form-group" style="margin-bottom: 0;">
             <label>Logotipo do Fabricante</label>
             <div class="brand-logo-control-box">
@@ -922,7 +1103,35 @@
     </div>
   </div>
 
-  <!-- Modal de Cadastro Rápido de Novo Fabricante / Logo -->
+  <!-- MODAL EXCLUSIVO DE EXPORTAÇÃO / IMPRESSÃO EM PDF -->
+  <div class="modal-overlay" id="exportModal">
+    <div class="modal-box export-modal-box">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Exportar Catálogo / PDF</h3>
+        <button type="button" class="modal-close-btn" style="position: static; width: 32px; height: 32px;" onclick="closeExportModal()">✕</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+        Selecione as categorias que deseja incluir no documento oficial para impressão ou salvar em PDF:
+      </p>
+
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px;">
+        <button type="button" class="btn-action" style="flex: none; font-size: 0.72rem; padding: 4px 10px;" onclick="toggleAllExportCheckboxes(true)">Marcar Todas</button>
+        <button type="button" class="btn-action" style="flex: none; font-size: 0.72rem; padding: 4px 10px;" onclick="toggleAllExportCheckboxes(false)">Desmarcar Todas</button>
+      </div>
+
+      <div class="export-categories-list" id="exportCategoriesList"></div>
+
+      <div class="form-actions" style="margin-top: 10px;">
+        <button type="button" class="btn-cancel" onclick="closeExportModal()">Cancelar</button>
+        <button type="button" class="btn-submit" onclick="executePrint()" style="display: inline-flex; align-items: center; gap: 8px;">
+          <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Gerar PDF / Imprimir
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Cadastro Rápido de Fabricante -->
   <div class="modal-overlay" id="brandModal">
     <div class="modal-box" style="padding: 30px; max-width: 480px;">
       <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Cadastrar Fabricante</h3>
@@ -1004,8 +1213,8 @@
 
   <!-- Modal de Login -->
   <div class="modal-overlay" id="loginModal">
-    <div class="modal-box login-modal-box">
-      <div class="login-icon-badge">
+    <div class="modal-box" style="max-width: 420px; padding: 30px 24px; text-align: center; border-radius: 20px;">
+      <div style="width: 56px; height: 56px; border-radius: 50%; background: #E0F2FE; color: var(--primary); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
         <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </div>
       <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px;">Acesso Restrito</h3>
@@ -1033,22 +1242,22 @@
 
   <!-- Modal Deploy -->
   <div class="modal-overlay" id="deployProgressModal">
-    <div class="modal-box deploy-modal-box">
+    <div class="modal-box" style="max-width: 460px; padding: 36px 28px; text-align: center; border-radius: 20px;">
       <div id="deployPhaseUploading">
-        <div class="deploy-spinner"></div>
+        <div style="width: 48px; height: 48px; border: 4px solid #E2E8F0; border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 18px;"></div>
         <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Publicando Atualizações</h3>
         <p style="font-size: 0.85rem; color: var(--text-muted);" id="deployStatusMessage">Gravando arquivos...</p>
       </div>
 
       <div id="deployPhaseCountdown" style="display: none;">
-        <div class="countdown-circle" id="countdownNumber">30</div>
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: #ECFDF5; border: 3px solid #10B981; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: #059669; margin: 16px auto;" id="countdownNumber">30</div>
         <h3 style="font-size: 1.3rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Publicação Enviada com Sucesso!</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">
           As mudanças estão sendo compiladas.<br>
           Aguarde a atualização automática para visualizar todas as mudanças online:
         </p>
-        <div class="progress-bar-container">
-          <div class="progress-bar-fill" id="deployProgressBar"></div>
+        <div style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 10px; overflow: hidden; margin-top: 18px;">
+          <div style="height: 100%; width: 0%; background: linear-gradient(90deg, #10B981, #0284C7); transition: width 1s linear;" id="deployProgressBar"></div>
         </div>
         <div style="margin-top: 24px;">
           <button class="btn-submit" style="background:#0F172A;" onclick="location.reload()">Atualizar Agora ↺</button>
@@ -1376,6 +1585,8 @@
 
         const section = document.createElement('section');
         section.id = cat.id;
+        section.className = 'catalog-section';
+        section.dataset.catId = cat.id;
         section.style.opacity = !cat.ativa ? '0.6' : '1';
 
         section.innerHTML = `
@@ -1443,6 +1654,64 @@
           grid.appendChild(card);
         });
       });
+    }
+
+    /* SISTEMA DE EXPORTAÇÃO / IMPRESSÃO EM PDF */
+    function openExportModal() {
+      const container = document.getElementById('exportCategoriesList');
+      container.innerHTML = '';
+
+      categorias.forEach(cat => {
+        const item = document.createElement('label');
+        item.className = 'export-category-item';
+        item.innerHTML = `
+          <input type="checkbox" value="${cat.id}" checked>
+          ${getCategorySvg(cat.icon || cat.id, 'icon-svg-sm')}
+          <span>${cat.title}</span>
+        `;
+        container.appendChild(item);
+      });
+
+      document.getElementById('exportModal').classList.add('active');
+    }
+
+    function closeExportModal() {
+      document.getElementById('exportModal').classList.remove('active');
+    }
+
+    function toggleAllExportCheckboxes(state) {
+      document.querySelectorAll('#exportCategoriesList input[type="checkbox"]').forEach(chk => {
+        chk.checked = state;
+      });
+    }
+
+    function executePrint() {
+      const checkboxes = document.querySelectorAll('#exportCategoriesList input[type="checkbox"]');
+      const selectedCatIds = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
+
+      if (selectedCatIds.length === 0) {
+        alert('Por favor, selecione ao menos uma categoria para exportar.');
+        return;
+      }
+
+      // Ocultar seções que não foram marcadas
+      const allSections = document.querySelectorAll('.catalog-section');
+      allSections.forEach(sec => {
+        if (!selectedCatIds.includes(sec.dataset.catId)) {
+          sec.style.setProperty('display', 'none', 'important');
+        } else {
+          sec.style.removeProperty('display');
+        }
+      });
+
+      closeExportModal();
+
+      // Dispara a caixa de impressão/PDF do navegador
+      setTimeout(() => {
+        window.print();
+        // Restaura exibição na tela após fechar a caixa de impressão
+        allSections.forEach(sec => sec.style.removeProperty('display'));
+      }, 350);
     }
 
     function moveProductOrder(prodId, direction) {
@@ -1657,14 +1926,14 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: `Limpeza de arquivo órfão: ${filePath}`,
+            message: `Limpeza de foto excluída: ${filePath}`,
             sha: sha,
             branch: GITHUB_BRANCH
           })
         });
         return delRes.ok;
       } catch (err) {
-        console.warn(`Erro ao excluir arquivo órfão ${filePath}:`, err);
+        console.warn(`Erro ao excluir foto:`, err);
         return false;
       }
     }
@@ -1687,15 +1956,12 @@
 
       try {
         if (pendingDeletionsQueue.length > 0) {
-          statusMsg.textContent = 'Verificando fotos excluídas para limpeza...';
+          statusMsg.textContent = 'Limpando fotos órfãs...';
           const stillInUse = new Set();
           produtos.forEach(p => (p.imagens || []).forEach(img => stillInUse.add(img)));
 
           const toDelete = [...new Set(pendingDeletionsQueue)].filter(path => !stillInUse.has(path));
-          let delCount = 0;
           for (const delPath of toDelete) {
-            delCount++;
-            statusMsg.textContent = `Apagando foto órfã (${delCount} de ${toDelete.length})...`;
             await deleteGithubFile(delPath, token);
           }
           pendingDeletionsQueue = [];
@@ -1790,7 +2056,7 @@
       }, 1000);
     }
 
-    // RENDERIZADOR DE BALÕES/PILLS DE CATEGORIA NO MODAL
+    // BALÕES / PILLS REFINADOS NO MODAL DE CADASTRO
     function renderCategoryPills(selectedId = '') {
       const container = document.getElementById('categoryPillsContainer');
       const hiddenInput = document.getElementById('prodCategory');
@@ -1813,7 +2079,7 @@
         pill.style.borderColor = color.border;
 
         pill.innerHTML = `
-          ${getCategorySvg(iconKey, 'icon-svg')}
+          ${getCategorySvg(iconKey, 'icon-svg-sm')}
           <span>${cat.title.split(' ')[0]}</span>
         `;
 
