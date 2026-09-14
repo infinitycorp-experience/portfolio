@@ -13,6 +13,7 @@
       --text-main: #0F172A;
       --text-muted: #64748B;
       --primary: #0284C7;
+      --primary-hover: #0369A1;
       --success: #10B981;
       --warning: #F59E0B;
       --danger: #E11D48;
@@ -58,7 +59,7 @@
     }
     .icon-svg-lg { width: 24px; height: 24px; stroke-width: 2.2; }
 
-    /* Barra Superior Compacta */
+    /* Barra Superior */
     .top-navbar {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
@@ -85,7 +86,6 @@
     }
     .nav-menu::-webkit-scrollbar { display: none; }
 
-    /* Botões Coloridos de Categoria */
     .nav-item {
       text-decoration: none;
       font-size: 0.8rem;
@@ -104,11 +104,12 @@
       filter: brightness(0.96);
     }
 
+    /* Hero Section */
     .hero {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 45px 20px 20px;
+      padding: 45px 20px 15px;
       background: radial-gradient(circle at center top, rgba(2, 132, 199, 0.08) 0%, transparent 70%);
     }
     .hero h1 { 
@@ -123,7 +124,83 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto; }
+    .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 20px; }
+
+    /* Barra de Busca e Filtro Premium */
+    .search-filter-wrapper {
+      max-width: 740px;
+      margin: 0 auto 30px;
+      display: flex;
+      gap: 12px;
+      padding: 6px;
+      background: #FFFFFF;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+    .search-filter-wrapper:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 12px 35px rgba(2, 132, 199, 0.15);
+    }
+
+    .search-box-inner {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+    }
+    .search-box-inner .icon-svg { color: var(--primary); flex-shrink: 0; }
+    .search-input-field {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      background: transparent;
+    }
+    .search-input-field::placeholder { color: #94A3B8; font-weight: 500; }
+    
+    .btn-clear-search {
+      background: none;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+    .btn-clear-search:hover { color: var(--danger); }
+
+    .brand-filter-box {
+      display: flex;
+      align-items: center;
+      background: #F8FAFC;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 0 12px;
+      min-width: 180px;
+      transition: 0.2s;
+    }
+    .brand-filter-box:hover { border-color: var(--primary); background: #FFFFFF; }
+    .brand-filter-box .icon-svg { color: var(--text-muted); margin-right: 6px; }
+    .brand-filter-select {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      width: 100%;
+      cursor: pointer;
+      padding: 10px 0;
+    }
 
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
 
@@ -131,7 +208,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 50px 0 20px;
+      margin: 40px 0 20px;
       padding-bottom: 12px;
       border-bottom: 2px solid #EDF2F7;
       scroll-margin-top: 80px;
@@ -251,10 +328,7 @@
     }
     body.admin-mode .admin-card-actions { display: flex; }
     
-    .admin-card-buttons-row {
-      display: flex;
-      gap: 6px;
-    }
+    .admin-card-buttons-row { display: flex; gap: 6px; }
 
     .btn-action {
       flex: 1;
@@ -367,7 +441,7 @@
       border: 1px solid var(--card-border);
       border-radius: 20px;
       width: 100%;
-      max-width: 800px;
+      max-width: 820px;
       max-height: 90vh;
       overflow-y: auto;
       box-shadow: 0 25px 60px rgba(0,0,0,0.25);
@@ -421,7 +495,17 @@
     .modal-details span { color: var(--text-muted); font-weight: 500; }
     .modal-details strong { color: var(--text-main); }
 
-    /* Formulários */
+    /* Formulários e Grid Lado a Lado */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
     .form-control {
@@ -443,6 +527,7 @@
       font-weight: 700;
       cursor: pointer;
     }
+    .btn-submit:hover { background: var(--primary-hover); }
     .btn-cancel {
       background: #E2E8F0;
       color: var(--text-main);
@@ -453,16 +538,24 @@
       cursor: pointer;
     }
 
-    .brand-logo-preview {
-      height: 36px;
-      max-width: 110px;
-      object-fit: contain;
+    /* Caixa Compacta do Logotipo */
+    .brand-logo-compact-box {
       border: 1px dashed var(--card-border);
-      padding: 4px;
-      border-radius: 6px;
-      background: #FFFFFF;
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+    }
+    .brand-logo-preview-thumb {
+      height: 30px;
+      max-width: 90px;
+      object-fit: contain;
     }
 
+    /* Gerenciador de Fotos e Reordenação */
     .photos-manager-grid {
       display: flex;
       flex-wrap: wrap;
@@ -472,17 +565,23 @@
     }
     .photo-thumb-edit {
       position: relative;
-      width: 75px;
-      height: 75px;
+      width: 90px;
+      height: 90px;
       border-radius: 8px;
       border: 1px solid var(--card-border);
       background: #FFF;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 4px;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.2s;
     }
-    .photo-thumb-edit img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .photo-thumb-edit.dragging { opacity: 0.4; border: 2px dashed var(--primary); }
+    .photo-thumb-edit img { max-width: 100%; max-height: 60px; object-fit: contain; pointer-events: none; }
+    
     .btn-remove-photo {
       position: absolute;
       top: -6px;
@@ -499,15 +598,37 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      z-index: 10;
     }
+    .photo-reorder-nav {
+      position: absolute;
+      bottom: 2px;
+      display: flex;
+      gap: 4px;
+      width: 100%;
+      justify-content: center;
+      background: rgba(255,255,255,0.85);
+      border-radius: 0 0 6px 6px;
+      padding: 2px 0;
+    }
+    .btn-photo-nav {
+      background: #E2E8F0;
+      border: none;
+      color: #334155;
+      font-size: 10px;
+      font-weight: bold;
+      width: 22px;
+      height: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-photo-nav:hover { background: #0F172A; color: white; }
 
-    /* Modal Login */
-    .login-modal-box {
-      max-width: 420px;
-      padding: 30px 24px;
-      text-align: center;
-      border-radius: 20px;
-    }
+    /* Modais Auxiliares */
+    .login-modal-box { max-width: 420px; padding: 30px 24px; text-align: center; border-radius: 20px; }
     .login-icon-badge {
       width: 56px;
       height: 56px;
@@ -519,14 +640,7 @@
       justify-content: center;
       margin-bottom: 16px;
     }
-
-    /* Modal Deploy */
-    .deploy-modal-box {
-      max-width: 460px;
-      padding: 36px 28px;
-      text-align: center;
-      border-radius: 20px;
-    }
+    .deploy-modal-box { max-width: 460px; padding: 36px 28px; text-align: center; border-radius: 20px; }
     .deploy-spinner {
       width: 48px;
       height: 48px;
@@ -552,7 +666,6 @@
       color: #059669;
       margin: 16px auto;
     }
-
     .progress-bar-container {
       width: 100%;
       height: 8px;
@@ -568,7 +681,6 @@
       transition: width 1s linear;
     }
 
-    /* Rodapé */
     footer {
       position: relative;
       z-index: 1;
@@ -598,6 +710,22 @@
   <section class="hero">
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
+
+    <!-- (1 e 2) BARRA DE BUSCA GLOBAL E FILTRO DE MARCA INTEGRADO -->
+    <div class="search-filter-wrapper">
+      <div class="search-box-inner">
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="globalSearchInput" class="search-input-field" placeholder="Buscar por modelo, fabricante ou especificação..." oninput="handleSearchFilterChange()">
+        <button type="button" id="btnClearSearch" class="btn-clear-search" onclick="clearSearch()">✕</button>
+      </div>
+
+      <div class="brand-filter-box">
+        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+        <select id="globalBrandFilter" class="brand-filter-select" onchange="handleSearchFilterChange()">
+          <option value="">Todas as Marcas</option>
+        </select>
+      </div>
+    </div>
   </section>
 
   <!-- Conteúdo Renderizado Dinamicamente -->
@@ -646,46 +774,51 @@
           <select id="prodCategory" class="form-control" required></select>
         </div>
 
-        <!-- Seletor de Marca / Preset Padronizado -->
-        <div class="form-group">
-          <label>Fabricante / Marca</label>
-          <div style="display: flex; gap: 10px; margin-bottom: 8px;">
-            <select id="brandPresetSelect" class="form-control" style="flex: 1;" onchange="handleBrandPresetChange(this.value)">
-              <option value="">-- Selecione uma marca cadastrada --</option>
-              <option value="__custom__">Outra Marca / Personalizada...</option>
+        <!-- (3 e 4) FABRICANTE / MARCA E LOGOTIPO LADO A LADO SEM REPETIÇÃO -->
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>Fabricante / Marca</label>
+            <select id="brandPresetSelect" class="form-control" onchange="handleBrandPresetChange(this.value)" required>
+              <option value="">-- Selecione a Marca --</option>
+              <option value="__custom__">Outra Marca / Digitar...</option>
             </select>
+            <!-- Campo manual exibido apenas se escolher "Outra Marca" -->
+            <input type="text" id="prodBrand" class="form-control" style="margin-top: 8px; display: none;" placeholder="Digite o nome do fabricante">
           </div>
-          <input type="text" id="prodBrand" class="form-control" required placeholder="Ex: Xerox, HP, Dell">
+
+          <!-- (5) LOGOTIPO DO FABRICANTE COMPACTO COM BOTOES INTEGRADOS -->
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>Logotipo do Fabricante</label>
+            <div class="brand-logo-compact-box">
+              <div id="brandLogoPreviewContainer" style="display: flex; align-items: center; gap: 8px;">
+                <img id="brandLogoPreviewImg" class="brand-logo-preview-thumb" src="" style="display: none;">
+                <span id="brandLogoTextState" style="font-size: 0.75rem; color: var(--text-muted);">Sem logotipo</span>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <label for="prodBrandLogoInput" class="btn-action" style="padding: 4px 8px; cursor: pointer;" title="Enviar novo logo PNG">
+                  📁 Trocar Logo
+                </label>
+                <input type="file" id="prodBrandLogoInput" accept="image/png, image/webp" style="display: none;" onchange="handleBrandLogoFileInput(this)">
+                <button type="button" class="btn-action btn-del" id="btnRemoveLogo" style="padding: 4px 8px; display: none;" onclick="removeBrandLogo()">✕</button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Logotipo da Marca com Prévia e Upload Opcional -->
-        <div class="form-group">
-          <label>Logotipo do Fabricante</label>
-          <div id="brandLogoCurrentContainer" style="display: none; align-items: center; gap: 12px; margin-bottom: 10px; padding: 10px; background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 8px;">
-            <img id="brandLogoPreviewImg" class="brand-logo-preview" src="">
-            <span id="brandLogoPresetName" style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">Logo Selecionada</span>
-            <button type="button" class="btn-action btn-del" onclick="removeBrandLogo()" style="margin-left: auto; max-width: 90px;">Remover</button>
-          </div>
-          <div id="brandLogoCustomUploadArea">
-            <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Ou envie um arquivo PNG transparente do seu computador:</span>
-            <input type="file" id="prodBrandLogoInput" class="form-control" accept="image/*" onchange="handleBrandLogoFileInput(this)">
-          </div>
-        </div>
-
-        <div class="form-group">
+        <div class="form-group" style="margin-top: 16px;">
           <label>Nome Completo do Modelo</label>
-          <input type="text" id="prodName" class="form-control" required placeholder="Xerox VersaLink C7020/25/30">
+          <input type="text" id="prodName" class="form-control" required placeholder="Ex: Xerox VersaLink C7020/25/30">
         </div>
 
-        <!-- Fotos Existentes -->
-        <div class="form-group" id="existingPhotosGroup" style="display: none;">
-          <label>Fotos Atuais do Equipamento (Clique no "✕" para remover)</label>
-          <div class="photos-manager-grid" id="existingPhotosContainer"></div>
-        </div>
-
+        <!-- (6) ÁREA DE FOTOS DO EQUIPAMENTO COM REORDENAÇÃO DINÂMICA (DRAG & DROP E SETAS) -->
         <div class="form-group">
-          <label>Adicionar Novas Fotos (Selecione uma ou mais fotos do seu PC)</label>
-          <input type="file" id="prodFileInput" class="form-control" accept="image/*" multiple>
+          <label>Fotos do Equipamento (Arraste para ordenar ou use as setas ◀ ▶)</label>
+          <div class="photos-manager-grid" id="photosGridContainer"></div>
+          
+          <div style="margin-top: 8px;">
+            <input type="file" id="prodFileInput" class="form-control" accept="image/*" multiple onchange="handleNewPhotosInput(this)">
+            <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">Você pode carregar várias fotos simultâneas e alterar suas ordens livremente acima.</span>
+          </div>
         </div>
 
         <div class="form-group">
@@ -739,7 +872,6 @@
       
       <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border);">
         <h4 id="catFormHeaderTitle" style="font-size: 0.95rem; margin-bottom: 12px; font-weight: 800; color: var(--primary);">Adicionar Nova Categoria</h4>
-        
         <input type="hidden" id="editCatId" value="">
 
         <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
@@ -782,7 +914,7 @@
     </div>
   </div>
 
-  <!-- Modal Estilizado de Login de Acesso Restrito -->
+  <!-- Modal de Login -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal-box login-modal-box">
       <div class="login-icon-badge">
@@ -811,7 +943,7 @@
     </div>
   </div>
 
-  <!-- Modal Estilizado de Publicação e Feedback com Contagem -->
+  <!-- Modal Deploy -->
   <div class="modal-overlay" id="deployProgressModal">
     <div class="modal-box deploy-modal-box">
       <div id="deployPhaseUploading">
@@ -857,7 +989,6 @@
     const GITHUB_BRANCH = 'main';
     const SENHA_MESTRE  = 'InfinityCorp2026';
 
-    // Lista Base de Marcas / Presets
     const DEFAULT_PRESET_LOGOS = [
       { name: 'Avell', logo: 'logos/avell.png' },
       { name: 'Brother', logo: 'logos/brother.png' },
@@ -917,58 +1048,125 @@
 
     let modalImages = [];
     let modalCurrentIdx = 0;
-    let editCurrentPhotos = [];
+    
+    // Lista unificada para gerenciar as fotos no formulário (existentes + novas)
+    let formActivePhotos = []; // { type: 'url' | 'file', src: string, file?: File }
     let editCurrentBrandLogo = '';
+    let draggedPhotoIdx = null;
 
-    // Inicialização dos Presets no Seletor
+    // Inicializa Filtros de Marcas (Top Hero & Modal de Cadastro)
     function initBrandPresetsUI() {
       const select = document.getElementById('brandPresetSelect');
-      if (!select) return;
-      select.innerHTML = '<option value="">-- Selecione uma marca cadastrada --</option>';
-      
-      const marcasOrdenadas = [...marcas].sort((a, b) => a.name.localeCompare(b.name));
-      marcasOrdenadas.forEach(item => {
-        const opt = document.createElement('option');
-        opt.value = item.name;
-        opt.textContent = item.name;
-        select.appendChild(opt);
-      });
-      const customOpt = document.createElement('option');
-      customOpt.value = '__custom__';
-      customOpt.textContent = 'Outra Marca / Personalizada...';
-      select.appendChild(customOpt);
+      const globalBrandSelect = document.getElementById('globalBrandFilter');
+
+      if (select) {
+        select.innerHTML = '<option value="">-- Selecione a Marca --</option>';
+        const marcasOrdenadas = [...marcas].sort((a, b) => a.name.localeCompare(b.name));
+        marcasOrdenadas.forEach(item => {
+          const opt = document.createElement('option');
+          opt.value = item.name;
+          opt.textContent = item.name;
+          select.appendChild(opt);
+        });
+        const customOpt = document.createElement('option');
+        customOpt.value = '__custom__';
+        customOpt.textContent = 'Outra Marca / Digitar...';
+        select.appendChild(customOpt);
+      }
+
+      if (globalBrandSelect) {
+        const currentSelected = globalBrandSelect.value;
+        globalBrandSelect.innerHTML = '<option value="">Todas as Marcas</option>';
+        const allBrands = new Set();
+        marcas.forEach(m => allBrands.add(m.name));
+        produtos.forEach(p => { if (p.marca) allBrands.add(p.marca); });
+
+        Array.from(allBrands).sort().forEach(bName => {
+          const opt = document.createElement('option');
+          opt.value = bName;
+          opt.textContent = bName;
+          if (bName === currentSelected) opt.selected = true;
+          globalBrandSelect.appendChild(opt);
+        });
+      }
     }
 
+    // (3) Trata a seleção da marca no formulário
     function handleBrandPresetChange(val) {
-      if (!val) return;
-      if (val === '__custom__') {
-        document.getElementById('prodBrand').value = '';
+      const brandInput = document.getElementById('prodBrand');
+      if (!val) {
+        brandInput.value = '';
+        brandInput.style.display = 'none';
         removeBrandLogo();
-        document.getElementById('prodBrand').focus();
         return;
       }
 
-      const preset = marcas.find(p => p.name.toLowerCase() === val.toLowerCase());
-      if (preset) {
-        document.getElementById('prodBrand').value = preset.name;
-        editCurrentBrandLogo = preset.logo;
-        document.getElementById('brandLogoPreviewImg').src = preset.logo;
-        document.getElementById('brandLogoPresetName').textContent = `Padrão: ${preset.name}`;
-        document.getElementById('brandLogoCurrentContainer').style.display = 'flex';
-        document.getElementById('prodBrandLogoInput').value = '';
+      if (val === '__custom__') {
+        brandInput.style.display = 'block';
+        brandInput.value = '';
+        brandInput.focus();
+        removeBrandLogo();
+        return;
       }
+
+      // Se for selecionada uma marca da lista, oculta o campo manual e define o nome
+      brandInput.style.display = 'none';
+      brandInput.value = val;
+
+      const preset = marcas.find(p => p.name.toLowerCase() === val.toLowerCase());
+      if (preset && preset.logo) {
+        setBrandLogoPreview(preset.logo, `Padrão: ${preset.name}`);
+      } else {
+        removeBrandLogo();
+      }
+    }
+
+    function setBrandLogoPreview(logoSrc, text) {
+      editCurrentBrandLogo = logoSrc;
+      const img = document.getElementById('brandLogoPreviewImg');
+      const textState = document.getElementById('brandLogoTextState');
+      const btnRemove = document.getElementById('btnRemoveLogo');
+
+      img.src = logoSrc;
+      img.style.display = 'inline-block';
+      textState.textContent = text;
+      btnRemove.style.display = 'inline-flex';
+    }
+
+    function removeBrandLogo() {
+      editCurrentBrandLogo = '';
+      const img = document.getElementById('brandLogoPreviewImg');
+      const textState = document.getElementById('brandLogoTextState');
+      const btnRemove = document.getElementById('btnRemoveLogo');
+      const fileInput = document.getElementById('prodBrandLogoInput');
+
+      img.style.display = 'none';
+      img.src = '';
+      textState.textContent = 'Sem logotipo';
+      btnRemove.style.display = 'none';
+      if (fileInput) fileInput.value = '';
     }
 
     async function handleBrandLogoFileInput(input) {
       if (input.files && input.files[0]) {
         const file = input.files[0];
         const previewUrl = await fileToDataUrl(file);
-        editCurrentBrandLogo = previewUrl;
-        document.getElementById('brandLogoPreviewImg').src = previewUrl;
-        document.getElementById('brandLogoPresetName').textContent = 'Arquivo local selecionado';
-        document.getElementById('brandLogoCurrentContainer').style.display = 'flex';
-        document.getElementById('brandPresetSelect').value = '__custom__';
+        setBrandLogoPreview(previewUrl, 'Novo PNG selecionado');
       }
+    }
+
+    // (1 e 2) Controle da Busca e Filtros Globais
+    function handleSearchFilterChange() {
+      const searchVal = document.getElementById('globalSearchInput').value.trim();
+      const btnClear = document.getElementById('btnClearSearch');
+      btnClear.style.display = searchVal.length > 0 ? 'inline-flex' : 'none';
+      renderCatalog();
+    }
+
+    function clearSearch() {
+      document.getElementById('globalSearchInput').value = '';
+      document.getElementById('btnClearSearch').style.display = 'none';
+      renderCatalog();
     }
 
     async function loadCatalog() {
@@ -1044,10 +1242,14 @@
       renderCatalog();
     }
 
+    // Renderização do Catálogo com Filtro Dinâmico
     function renderCatalog() {
       const isAdmin = checkIsAdmin();
       document.body.classList.toggle('admin-mode', isAdmin);
       updateAdminBarUI();
+
+      const searchKeyword = (document.getElementById('globalSearchInput')?.value || '').toLowerCase().trim();
+      const selectedBrand = (document.getElementById('globalBrandFilter')?.value || '').toLowerCase().trim();
 
       const navContainer = document.getElementById('dynamicNavMenu');
       const sectionsContainer = document.getElementById('dynamicSectionsContainer');
@@ -1056,10 +1258,25 @@
 
       categorias.forEach((cat, catIdx) => {
         const iconKey = cat.icon || cat.id;
-        const produtosDaCat = produtos.filter(p => p.categoria === cat.id);
-        const produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
+        let produtosDaCat = produtos.filter(p => p.categoria === cat.id);
+        let produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
+
+        // Aplica Busca e Filtro de Marca
+        if (selectedBrand) {
+          produtosVisiveis = produtosVisiveis.filter(p => (p.marca || '').toLowerCase() === selectedBrand);
+        }
+
+        if (searchKeyword) {
+          produtosVisiveis = produtosVisiveis.filter(p => {
+            const matchName = (p.nome || '').toLowerCase().includes(searchKeyword);
+            const matchBrand = (p.marca || '').toLowerCase().includes(searchKeyword);
+            const matchSpecs = p.specs ? Object.entries(p.specs).some(([k, v]) => `${k} ${v}`.toLowerCase().includes(searchKeyword)) : false;
+            return matchName || matchBrand || matchSpecs;
+          });
+        }
 
         if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) return;
+        if (searchKeyword && produtosVisiveis.length === 0) return;
 
         const color = CATEGORY_COLORS[catIdx % CATEGORY_COLORS.length];
 
@@ -1100,7 +1317,7 @@
 
           let mediaHtml = '';
           if (!prod.imagens || prod.imagens.length === 0) {
-            mediaHtml = `<span class="placeholder-text">[Foto Vertical ${prod.nome}]</span>`;
+            mediaHtml = `<span class="placeholder-text">[Sem Foto]</span>`;
           } else if (prod.imagens.length === 1) {
             mediaHtml = `<img src="${prod.imagens[0]}" alt="${prod.nome}">`;
           } else {
@@ -1388,7 +1605,6 @@
       deployModal.classList.add('active');
 
       try {
-        // 1. Processar exclusão física de fotos órfãs
         if (pendingDeletionsQueue.length > 0) {
           statusMsg.textContent = 'Verificando fotos excluídas para limpeza...';
           const stillInUse = new Set();
@@ -1404,7 +1620,6 @@
           pendingDeletionsQueue = [];
         }
 
-        // 2. Upload de novos arquivos (fotos e novos logos de fabricante)
         if (pendingUploadQueue.length > 0) {
           let count = 0;
           for (let item of pendingUploadQueue) {
@@ -1428,7 +1643,6 @@
           }
         }
 
-        // 3. Gravar produtos.json atualizado
         statusMsg.textContent = 'Gravando produtos.json no repositório...';
         const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
         const getRes = await fetch(getFileUrl, { headers: { Authorization: `token ${token}` } });
@@ -1507,18 +1721,101 @@
       });
     }
 
+    // (6) Manipulação de Fotos no Cadastro / Edição
+    async function handleNewPhotosInput(input) {
+      if (!input.files || input.files.length === 0) return;
+      for (let file of input.files) {
+        const previewUrl = await fileToDataUrl(file);
+        formActivePhotos.push({
+          type: 'file',
+          src: previewUrl,
+          file: file
+        });
+      }
+      input.value = '';
+      renderPhotosManagerGrid();
+    }
+
+    function renderPhotosManagerGrid() {
+      const container = document.getElementById('photosGridContainer');
+      container.innerHTML = '';
+
+      if (formActivePhotos.length === 0) {
+        container.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Nenhuma foto selecionada.</span>`;
+        return;
+      }
+
+      formActivePhotos.forEach((item, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'photo-thumb-edit';
+        thumb.draggable = true;
+        thumb.dataset.index = idx;
+
+        // Suporte Drag & Drop nativo
+        thumb.addEventListener('dragstart', (e) => {
+          draggedPhotoIdx = idx;
+          thumb.classList.add('dragging');
+          e.dataTransfer.effectAllowed = 'move';
+        });
+        thumb.addEventListener('dragend', () => {
+          thumb.classList.remove('dragging');
+          draggedPhotoIdx = null;
+        });
+        thumb.addEventListener('dragover', (e) => {
+          e.preventDefault();
+        });
+        thumb.addEventListener('drop', (e) => {
+          e.preventDefault();
+          if (draggedPhotoIdx === null || draggedPhotoIdx === idx) return;
+          const movedItem = formActivePhotos.splice(draggedPhotoIdx, 1)[0];
+          formActivePhotos.splice(idx, 0, movedItem);
+          renderPhotosManagerGrid();
+        });
+
+        const isFirst = idx === 0;
+        const isLast = idx === formActivePhotos.length - 1;
+
+        thumb.innerHTML = `
+          <button type="button" class="btn-remove-photo" onclick="removePhotoFromActive(${idx})">✕</button>
+          <img src="${item.src}">
+          <div class="photo-reorder-nav">
+            <button type="button" class="btn-photo-nav" ${isFirst ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, -1)">◀</button>
+            <span style="font-size:9px; font-weight:800; line-height:18px;">${idx + 1}</span>
+            <button type="button" class="btn-photo-nav" ${isLast ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, 1)">▶</button>
+          </div>
+        `;
+        container.appendChild(thumb);
+      });
+    }
+
+    function movePhotoOrder(idx, step) {
+      const targetIdx = idx + step;
+      if (targetIdx < 0 || targetIdx >= formActivePhotos.length) return;
+      const temp = formActivePhotos[idx];
+      formActivePhotos[idx] = formActivePhotos[targetIdx];
+      formActivePhotos[targetIdx] = temp;
+      renderPhotosManagerGrid();
+    }
+
+    function removePhotoFromActive(idx) {
+      formActivePhotos.splice(idx, 1);
+      renderPhotosManagerGrid();
+    }
+
     function openProductForm() {
       document.getElementById('productCrudForm').reset();
       document.getElementById('prodId').value = '';
-      editCurrentPhotos = [];
-      editCurrentBrandLogo = '';
+      formActivePhotos = [];
+      removeBrandLogo();
 
-      document.getElementById('brandLogoCurrentContainer').style.display = 'none';
-      document.getElementById('brandLogoPreviewImg').src = '';
-      document.getElementById('existingPhotosGroup').style.display = 'none';
+      const brandInput = document.getElementById('prodBrand');
+      brandInput.value = '';
+      brandInput.style.display = 'none';
+
       document.getElementById('brandPresetSelect').value = '';
-
       populateCategorySelect();
+      renderPhotosManagerGrid();
+
       document.getElementById('formModalTitle').textContent = 'Cadastrar Novo Equipamento';
       document.getElementById('formModal').classList.add('active');
     }
@@ -1529,7 +1826,6 @@
 
       document.getElementById('prodId').value = prod.id;
       populateCategorySelect(prod.categoria);
-      document.getElementById('prodBrand').value = prod.marca;
       document.getElementById('prodName').value = prod.nome;
 
       let specsText = '';
@@ -1538,66 +1834,37 @@
       }
       document.getElementById('prodSpecs').value = specsText;
 
+      // Ajuste de Marca
+      const brandInput = document.getElementById('prodBrand');
+      const brandSelect = document.getElementById('brandPresetSelect');
       const foundPreset = marcas.find(p => p.name.toLowerCase() === (prod.marca || '').toLowerCase());
+
       if (foundPreset) {
-        document.getElementById('brandPresetSelect').value = foundPreset.name;
+        brandSelect.value = foundPreset.name;
+        brandInput.value = foundPreset.name;
+        brandInput.style.display = 'none';
       } else {
-        document.getElementById('brandPresetSelect').value = '__custom__';
+        brandSelect.value = '__custom__';
+        brandInput.value = prod.marca || '';
+        brandInput.style.display = 'block';
       }
 
-      editCurrentBrandLogo = prod.logoMarca || '';
-      const brandLogoContainer = document.getElementById('brandLogoCurrentContainer');
-      const brandLogoImg = document.getElementById('brandLogoPreviewImg');
-      const brandLogoPresetName = document.getElementById('brandLogoPresetName');
-
-      if (editCurrentBrandLogo) {
-        brandLogoImg.src = editCurrentBrandLogo;
-        brandLogoPresetName.textContent = foundPreset ? `Padrão: ${foundPreset.name}` : 'Logo Vinculada';
-        brandLogoContainer.style.display = 'flex';
+      // Logotipo
+      if (prod.logoMarca) {
+        setBrandLogoPreview(prod.logoMarca, foundPreset ? `Padrão: ${foundPreset.name}` : 'Logo Vinculada');
       } else {
-        brandLogoContainer.style.display = 'none';
+        removeBrandLogo();
       }
 
-      editCurrentPhotos = [...(prod.imagens || [])];
-      renderExistingPhotos();
+      // Preenche lista ativa de fotos
+      formActivePhotos = (prod.imagens || []).map(url => ({
+        type: 'url',
+        src: url
+      }));
+      renderPhotosManagerGrid();
 
       document.getElementById('formModalTitle').textContent = 'Editar Equipamento';
       document.getElementById('formModal').classList.add('active');
-    }
-
-    function removeBrandLogo() {
-      editCurrentBrandLogo = '';
-      document.getElementById('brandLogoCurrentContainer').style.display = 'none';
-      document.getElementById('brandLogoPreviewImg').src = '';
-      document.getElementById('prodBrandLogoInput').value = '';
-    }
-
-    function renderExistingPhotos() {
-      const container = document.getElementById('existingPhotosContainer');
-      const group = document.getElementById('existingPhotosGroup');
-
-      if (editCurrentPhotos.length === 0) {
-        group.style.display = 'none';
-        container.innerHTML = '';
-        return;
-      }
-
-      group.style.display = 'block';
-      container.innerHTML = '';
-      editCurrentPhotos.forEach((photoUrl, idx) => {
-        const thumb = document.createElement('div');
-        thumb.className = 'photo-thumb-edit';
-        thumb.innerHTML = `
-          <img src="${photoUrl}">
-          <button type="button" class="btn-remove-photo" onclick="removePhotoFromEdit(${idx})">✕</button>
-        `;
-        container.appendChild(thumb);
-      });
-    }
-
-    function removePhotoFromEdit(index) {
-      editCurrentPhotos.splice(index, 1);
-      renderExistingPhotos();
     }
 
     function closeFormModal() {
@@ -1616,11 +1883,17 @@
       e.preventDefault();
       const id = document.getElementById('prodId').value || `prod-${Date.now()}`;
       const categoria = document.getElementById('prodCategory').value;
-      const marca = document.getElementById('prodBrand').value;
+      const brandSelect = document.getElementById('brandPresetSelect').value;
+      const brandManual = document.getElementById('prodBrand').value.trim();
+      const marca = brandSelect === '__custom__' ? brandManual : brandSelect;
       const nome = document.getElementById('prodName').value;
       const specsText = document.getElementById('prodSpecs').value;
-      const fileInput = document.getElementById('prodFileInput');
       const logoInput = document.getElementById('prodBrandLogoInput');
+
+      if (!marca) {
+        alert('Por favor, defina a Marca/Fabricante do equipamento.');
+        return;
+      }
 
       const specs = {};
       specsText.split('\n').forEach(line => {
@@ -1631,27 +1904,27 @@
       });
 
       let logoFinal = editCurrentBrandLogo;
-      if (logoInput.files.length > 0) {
+      if (logoInput.files && logoInput.files.length > 0) {
         const logoFile = logoInput.files[0];
         const previewLogoUrl = await fileToDataUrl(logoFile);
         logoFinal = previewLogoUrl;
         pendingUploadQueue.push({ type: 'logo', prodId: id, file: logoFile, previewUrl: previewLogoUrl });
       }
 
-      let novasFotosPreview = [];
-      if (fileInput.files.length > 0) {
-        for (let file of fileInput.files) {
-          const previewUrl = await fileToDataUrl(file);
-          novasFotosPreview.push(previewUrl);
-          pendingUploadQueue.push({ type: 'image', prodId: id, file: file, previewUrl: previewUrl });
+      // Constrói ordem final das imagens e agenda uploads das fotos novas
+      const fotosFinais = [];
+      for (let item of formActivePhotos) {
+        if (item.type === 'file') {
+          fotosFinais.push(item.src);
+          pendingUploadQueue.push({ type: 'image', prodId: id, file: item.file, previewUrl: item.src });
+        } else {
+          fotosFinais.push(item.src);
         }
       }
 
-      const fotosFinais = [...editCurrentPhotos, ...novasFotosPreview];
       const existingIdx = produtos.findIndex(p => p.id === id);
 
       if (existingIdx >= 0) {
-        // Encontra fotos que foram excluídas neste produto e agenda para limpeza física
         const fotosAntigas = produtos[existingIdx].imagens || [];
         fotosAntigas.forEach(antigaUrl => {
           if (!fotosFinais.includes(antigaUrl)) {
@@ -1680,14 +1953,12 @@
         });
       }
 
+      initBrandPresetsUI();
       notifyLocalChange();
       closeFormModal();
       renderCatalog();
     }
 
-    // ==========================================
-    // UPLOAD EXCLUSIVO PARA A PASTA /logos
-    // ==========================================
     async function uploadLogoToLogosFolder(file, token) {
       const cleanFileName = file.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\.\-_]/g, '');
       const filePath = `logos/${cleanFileName}`;
@@ -1727,7 +1998,6 @@
       return filePath;
     }
 
-    // Função acionada pelo botão no Modo Gestor
     async function promptUploadLogoFabricante() {
       const token = localStorage.getItem('gh_pat_infinity');
       if (!token) {
@@ -1769,7 +2039,6 @@
       if (!prod) return;
       if (!confirm(`Remover "${prod.nome}" do catálogo? (Fotos vinculadas também serão excluídas do repositório ao publicar)`)) return;
 
-      // Agenda as fotos do produto para limpeza física do GitHub
       if (prod.imagens && prod.imagens.length > 0) {
         prod.imagens.forEach(img => {
           if (img.startsWith('fotos/')) pendingDeletionsQueue.push(img);
@@ -1781,9 +2050,6 @@
       renderCatalog();
     }
 
-    // ==========================================
-    // MODAL DE FABRICANTE / LOGO
-    // ==========================================
     function openBrandModal() {
       document.getElementById('brandForm').reset();
       document.getElementById('newBrandPreviewContainer').style.display = 'none';
@@ -1839,9 +2105,6 @@
       alert(`Fabricante "${brandName}" preparado para inclusão! Clique em "Publicar Alterações" para salvar no repositório.`);
     }
 
-    // ==========================================
-    // CATEGORIAS
-    // ==========================================
     function openCategoryModal() {
       resetCategoryForm();
       renderCategoriesManager();
