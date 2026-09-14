@@ -147,14 +147,10 @@
       "nome": "HP Multi Mono 42540",
       "ativo": true,
       "imagens": [
-        "fotos/1789400390584_425403.jpg",
         "fotos/1789400391954_42540.jpg",
         "fotos/1789400393040_425402.jpg",
         "fotos/1789400394071_425401.jpg",
-        "fotos/1789400395216_425403.jpg",
-        "fotos/1789400396257_42540.jpg",
-        "fotos/1789400397187_425402.jpg",
-        "fotos/1789400398168_425401.jpg"
+        "fotos/1789400395216_425403.jpg"
       ],
       "specs": {
         "Velocidade": ": Até 40 a 42 (ppm)",
