@@ -51,7 +51,7 @@
       "id": "prod-1788523510340",
       "categoria": "print",
       "marca": "HP",
-      "nome": "Multi Mono 4003",
+      "nome": "Mono 4003",
       "ativo": true,
       "imagens": [
         "fotos/1789399727450_40031.jpg",
@@ -66,26 +66,25 @@
       "logoMarca": "fotos/1788525660810_LogoHP.png"
     },
     {
-      "id": "hp-4003",
+      "id": "prod-1789404569242",
       "categoria": "print",
       "marca": "HP",
-      "nome": "Multi  Mono  4103",
+      "nome": "Mono 50145",
       "ativo": true,
       "imagens": [
-        "fotos/1788524251640_428_2.jpg",
-        "fotos/1789399729778_41032.jpg",
-        "fotos/1789399730886_41031.jpg",
-        "fotos/1789399732221_4103.jpg"
+        "fotos/1789404638353_50145.jpg",
+        "fotos/1789404636055_50145p.jpg",
+        "fotos/1789404637254_50145t.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 40 ppm",
-        "Painel": "Touch colorido de 2,7'",
-        "ADF": "50 folhas",
-        "Resolução de impressão": "Até 1200 x 1200 dpi",
-        "Impressão frente e verso (Duplex)": "Automática.",
-        "Conectividade": "USB 2.0, RJ45 Gigabit, Wi-Fi 802.11b/g/n, Bluetooth e Wi-Fi Direct"
+        "Velocidade": "Até 43 ppm",
+        "Painel": "Touch colorido de 10,9 cm (4,3')",
+        "Resolução": "Até 1200 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automática",
+        "Primeira página": "Cerca de 5,9 segundos",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000"
       },
-      "logoMarca": "fotos/1788525509551_LogoHP.png"
+      "logoMarca": "logos/hp.png"
     },
     {
       "id": "brother-ads4700",
@@ -140,26 +139,26 @@
       "logoMarca": "logos/dell.png"
     },
     {
-      "id": "prod-1789400359192",
+      "id": "hp-4003",
       "categoria": "print",
       "marca": "HP",
-      "nome": "HP Multi Mono 42540",
+      "nome": "Multi  Mono  4103",
       "ativo": true,
       "imagens": [
-        "fotos/1789400391954_42540.jpg",
-        "fotos/1789400393040_425402.jpg",
-        "fotos/1789400394071_425401.jpg"
+        "fotos/1788524251640_428_2.jpg",
+        "fotos/1789399729778_41032.jpg",
+        "fotos/1789399730886_41031.jpg",
+        "fotos/1789399732221_4103.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 40 a 42 (ppm)",
-        "Painel": "Touch colorido de 10,9 cm (4,3')",
-        "Impressão Duplex": "Automática",
+        "Velocidade": "Até 40 ppm",
+        "Painel": "Touch colorido de 2,7'",
+        "ADF": "50 folhas",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
-        "Conectividade": "Portas USB e RJ45 LAN (10/100/1000)",
-        "ADF": "50 páginas com digitalização duplex de passagem única",
-        "Memória e Armazenamento": "2 GB de memória RAM e 16 GB de eMMC"
+        "Impressão frente e verso (Duplex)": "Automática.",
+        "Conectividade": "USB 2.0, RJ45 Gigabit, Wi-Fi 802.11b/g/n, Bluetooth e Wi-Fi Direct"
       },
-      "logoMarca": "logos/hp.png"
+      "logoMarca": "fotos/1788525509551_LogoHP.png"
     },
     {
       "id": "prod-1788529606080",
@@ -180,23 +179,24 @@
       "logoMarca": "fotos/1788529610862_logosamsung.jpg"
     },
     {
-      "id": "prod-1789404569242",
+      "id": "prod-1789400359192",
       "categoria": "print",
       "marca": "HP",
-      "nome": "HP Mono 50145",
+      "nome": "Multi Mono 42540",
       "ativo": true,
       "imagens": [
-        "fotos/1789404638353_50145.jpg",
-        "fotos/1789404636055_50145p.jpg",
-        "fotos/1789404637254_50145t.jpg"
+        "fotos/1789400391954_42540.jpg",
+        "fotos/1789400393040_425402.jpg",
+        "fotos/1789400394071_425401.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 43 ppm",
+        "Velocidade": "Até 40 a 42 (ppm)",
         "Painel": "Touch colorido de 10,9 cm (4,3')",
-        "Resolução": "Até 1200 x 1200 dpi",
-        "Impressão frente e verso (Duplex)": "Automática",
-        "Primeira página": "Cerca de 5,9 segundos",
-        "Conectividade": "USB 2.0, RJ45 10/100/1000"
+        "Impressão Duplex": "Automática",
+        "Resolução de impressão": "Até 1200 x 1200 dpi",
+        "Conectividade": "Portas USB e RJ45 LAN (10/100/1000)",
+        "ADF": "50 páginas com digitalização duplex de passagem única",
+        "Memória e Armazenamento": "2 GB de memória RAM e 16 GB de eMMC"
       },
       "logoMarca": "logos/hp.png"
     },
