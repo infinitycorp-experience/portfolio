@@ -492,7 +492,7 @@
       ],
       "specs": {
         "Velocidade": "Até 25 ppm",
-        "Painel": "Touch colorido 7'",
+        "Painel": "Touch colorido de 7'",
         "Resolução": "Até 1200 x 1200 dpi",
         "Papel Suportado": "Até o formato A3 (incluindo A4, A5, A5R, A6, envelopes)",
         "Gramatura de Papel": "Suporta até 300 g/m² na bandeja manual/multiuso",
@@ -543,6 +543,39 @@
         "Conectividade": "Wi-Fi, RJ45 e USB 2.0"
       },
       "logoMarca": "logos/epson.png"
+    },
+    {
+      "id": "prod-1789416622069",
+      "categoria": "print",
+      "marca": "Ricoh",
+      "nome": "3710 DN",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789416681700_3710dn2.jpg",
+        "fotos/1789416682771_3710dn1.jpg",
+        "fotos/1789416683687_3710dn.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 34 ppm",
+        "Resolução": "1200 x 1200 dpi",
+        "Primeira Página": "Menos de 7,1 a 7,5 segundos",
+        "Impressão Duplex (Frente e Verso)": "Automática",
+        "Bandeja": "250 folhas + Bandeja manual de 50 folhas (total de 300 folhas)",
+        "Conectividade": "RJ45 10/100 e USB 2.0",
+        "Processador": "350 MHz",
+        "Memória": "128 MB"
+      },
+      "logoMarca": "logos/ricoh.png"
+    },
+    {
+      "id": "prod-1789416673686",
+      "categoria": "print",
+      "marca": "Ricoh",
+      "nome": "3710 SF",
+      "ativo": true,
+      "imagens": [],
+      "specs": {},
+      "logoMarca": "logos/ricoh.png"
     }
   ],
   "marcas": [
