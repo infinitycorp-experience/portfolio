@@ -153,7 +153,7 @@
       ],
       "specs": {
         "Velocidade": "Até 40 a 42 (ppm)",
-        "Painel": "Tela Touch colorida de 4,3",
+        "Painel": "Touch colorido de 10,9 cm (4,3')",
         "Impressão Duplex": "Automática",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
         "Conectividade": "Portas USB e RJ45 LAN (10/100/1000)",
@@ -189,11 +189,14 @@
       "imagens": [
         "fotos/1789404638353_50145.jpg",
         "fotos/1789404636055_50145p.jpg",
-        "fotos/1789404637254_50145t.jpg"
+        "fotos/1789404637254_50145t.jpg",
+        "fotos/1789404639511_50145p.jpg",
+        "fotos/1789404640600_50145t.jpg",
+        "fotos/1789404641733_50145.jpg"
       ],
       "specs": {
         "Velocidade": "Até 43 ppm",
-        "Painel": "Touch colorida de 10,9 cm (4,3')",
+        "Painel": "Touch colorido de 10,9 cm (4,3')",
         "Resolução": "Até 1200 x 1200 dpi",
         "Impressão frente e verso (Duplex)": "Automática",
         "Primeira página": "Cerca de 5,9 segundos",
