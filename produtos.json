@@ -359,9 +359,12 @@
         "fotos/1788524557905_c7000.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 20 ppm",
-        "1ª Página": "~8,1s",
-        "Tipo": "Laser Colorido A3"
+        "Velocidade": "Até 20/25/30 ppm",
+        "Painel": "Touch colorida de 7'",
+        "Resolução": "Até 1200 x 2400 dpi.",
+        "Formatos de Papel Suportados": "A3, A4, B4, B5",
+        "Impressão Frente e Verso (Duplex)": "Automática",
+        "Conectividade": "Ethernet 10/100/1000, USB 3.0 e NFC opcional"
       },
       "logoMarca": "fotos/1788525690206_LogoXerox.png"
     }
