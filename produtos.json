@@ -616,6 +616,48 @@
         "Disco Rígido (HD)": "128 GB"
       },
       "logoMarca": "logos/ricoh.png"
+    },
+    {
+      "id": "prod-1789417893000",
+      "categoria": "print",
+      "marca": "Kyocera",
+      "nome": "ECOSYS MA5500",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789418050089_ma5500.jpg",
+        "fotos/1789418051341_ma55001.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 55 páginas ppm",
+        "Painel": "Touch colorido de 7'",
+        "Frente e verso (Duplex)": "Automática",
+        "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
+        "Digitalização": "Dupla em uma única passagem (DADF)",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000"
+      },
+      "logoMarca": "logos/kyocera.png"
+    },
+    {
+      "id": "prod-1789418037306",
+      "categoria": "print",
+      "marca": "Kyocera",
+      "nome": "ECOSYS PA5500",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789418052219_pa55001.jpg",
+        "fotos/1789418053459_pa5500.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 55 páginas ppm",
+        "Painel": "Touch colorido de 7'",
+        "Frente e verso (Duplex)": "Automática",
+        "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
+        "Digitalização": "Dupla em uma única passagem (DADF)",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000",
+        "Processador": "ARM Cortex-A53 Dual Core 1,4 GHz",
+        "Memória": "512 MB RAM (expansível até 2,5 GB)."
+      },
+      "logoMarca": "logos/kyocera.png"
     }
   ],
   "marcas": [
