@@ -54,6 +54,7 @@
       "nome": "Multi Mono 4003",
       "ativo": true,
       "imagens": [
+        "fotos/1789399726021_40032.jpg",
         "fotos/1789399727450_40031.jpg",
         "fotos/1789399728626_4003.jpg"
       ],
@@ -394,6 +395,28 @@
         "Conectividade": "RJ45 10/100/1000, USB 3.0 e NFC Opcional"
       },
       "logoMarca": "fotos/1788525690206_LogoXerox.png"
+    },
+    {
+      "id": "prod-1789408659803",
+      "categoria": "print",
+      "marca": "HP",
+      "nome": "X57945",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789408684730_579451.jpg",
+        "fotos/1789408685943_57945.jpg",
+        "fotos/1789408686838_579451.jpg",
+        "fotos/1789408687801_57945.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 45 ppm (preto e colorido)",
+        "Painel": "Touch colorido de 8' ou 10,1'",
+        "Resolução": "Até 1200 x 1200 dpi",
+        "Velocidade de digitalização (AAD)": "Até 120 ipm",
+        "Alimentador automático (AAD)": "100 páginas com digitalização duplex de passada única",
+        "Conectividade": "USB 3.0, RJ45 10/100/1000"
+      },
+      "logoMarca": "logos/hp.png"
     }
   ],
   "marcas": [
