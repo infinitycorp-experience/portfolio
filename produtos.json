@@ -573,8 +573,23 @@
       "marca": "Ricoh",
       "nome": "3710 SF",
       "ativo": true,
-      "imagens": [],
-      "specs": {},
+      "imagens": [
+        "fotos/1789416881434_3710sf1.jpg",
+        "fotos/1789416882659_3710sf3.jpg",
+        "fotos/1789416883515_3710sf2.jpg",
+        "fotos/1789416884503_3710sf.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 34 ppm",
+        "Painel": "Touch colorido de 4,3'",
+        "Resolução": "1200 x 1200 dpi",
+        "Primeira Página": "Menos de 7,1 a 7,5 segundos",
+        "Impressão Duplex (Frente e Verso)": "Automática",
+        "Bandeja": "250 folhas + Bandeja manual de 50 folhas (total de 300 folhas)",
+        "Conectividade": "RJ45 10/100 e USB 2.0",
+        "Processador": "350 MHz",
+        "Memória": "256 MB"
+      },
       "logoMarca": "logos/ricoh.png"
     }
   ],
