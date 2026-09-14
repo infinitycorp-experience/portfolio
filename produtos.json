@@ -521,6 +521,29 @@
         "ADF": "Capacidade para até 30 folhas (simplex)"
       },
       "logoMarca": "logos/epson.png"
+    },
+    {
+      "id": "prod-1789416187645",
+      "categoria": "print",
+      "marca": "Epson",
+      "nome": "WorkForce Pro WF-C5810",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789416198638_5810.jpg",
+        "fotos/1789416199940_58103.jpg",
+        "fotos/1789416201212_58102.jpg",
+        "fotos/1789416202264_58101.jpg"
+      ],
+      "specs": {
+        "Velocidade": "24 a 25 ppm em preto/cor",
+        "Painel": "Touch colorido de 4,3'",
+        "Resolução": "Até 4800 x 1200 dpi",
+        "Impressão Duplex": "Automática",
+        "ADF": "Capacidade para 50 folhas",
+        "Bandeja": "Principal de 250 folhas + bandeja traseira de 80 folhas",
+        "Conectividade": "Wi-Fi, RJ45 e USB 2.0"
+      },
+      "logoMarca": "logos/epson.png"
     }
   ],
   "marcas": [
