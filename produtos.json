@@ -141,24 +141,31 @@
       "logoMarca": "logos/dell.png"
     },
     {
-      "id": "prod-1788533573286",
+      "id": "prod-1789400359192",
       "categoria": "print",
       "marca": "HP",
-      "nome": "Multi Mono E52645DN",
+      "nome": "HP Multi Mono 42540",
       "ativo": true,
       "imagens": [
-        "fotos/1788533820035_HP_LASERJET_E52645DN.png"
+        "fotos/1789400390584_425403.jpg",
+        "fotos/1789400391954_42540.jpg",
+        "fotos/1789400393040_425402.jpg",
+        "fotos/1789400394071_425401.jpg",
+        "fotos/1789400395216_425403.jpg",
+        "fotos/1789400396257_42540.jpg",
+        "fotos/1789400397187_425402.jpg",
+        "fotos/1789400398168_425401.jpg"
       ],
       "specs": {
-        "Velocidade": "45 ppm",
-        "1ª Página": "5,9 segundos",
-        "Resolução": "Até 1200 x 1200 dpi",
-        "Impressão frente e verso": "Duplex automático padrão",
-        "ADF": "Capacidade para até 100 folhas",
-        "Conectividade": "USB 2.0 e Ethernet",
-        "Rendimento do toner": "Até 23.000"
+        "Velocidade": ": Até 40 a 42 (ppm)",
+        "Painel": "Tela Touch colorida de 4,3",
+        "Impressão Duplex": "Automática",
+        "Resolução de impressão": "Até 1200 x 1200 dpi",
+        "Conectividade": "Portas USB e RJ45 LAN (10/100/1000)",
+        "ADF": "50 páginas com digitalização duplex de passagem única",
+        "Memória e Armazenamento": "2 GB de memória RAM e 16 GB de eMMC"
       },
-      "logoMarca": "fotos/1788533821335_LogoHP.png"
+      "logoMarca": "logos/hp.png"
     },
     {
       "id": "prod-1788529606080",
@@ -179,21 +186,24 @@
       "logoMarca": "fotos/1788529610862_logosamsung.jpg"
     },
     {
-      "id": "xerox-c7020",
+      "id": "prod-1788533573286",
       "categoria": "print",
-      "marca": "Xerox",
-      "nome": "VersaLink C7020/25/30",
+      "marca": "HP",
+      "nome": "Multi Mono E52645DN",
       "ativo": true,
       "imagens": [
-        "fotos/1788524556626_7020.jpg",
-        "fotos/1788524557905_c7000.jpg"
+        "fotos/1788533820035_HP_LASERJET_E52645DN.png"
       ],
       "specs": {
-        "Velocidade": "Até 20 ppm",
-        "1ª Página": "~8,1s",
-        "Tipo": "Laser Colorido A3"
+        "Velocidade": "45 ppm",
+        "1ª Página": "5,9 segundos",
+        "Resolução": "Até 1200 x 1200 dpi",
+        "Impressão frente e verso": "Duplex automático padrão",
+        "ADF": "Capacidade para até 100 folhas",
+        "Conectividade": "USB 2.0 e Ethernet",
+        "Rendimento do toner": "Até 23.000"
       },
-      "logoMarca": "fotos/1788525690206_LogoXerox.png"
+      "logoMarca": "fotos/1788533821335_LogoHP.png"
     },
     {
       "id": "prod-1788533804721",
@@ -342,6 +352,23 @@
         "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e apenas 2 portas Thunderbolt 4 (USB-C)"
       },
       "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "xerox-c7020",
+      "categoria": "print",
+      "marca": "Xerox",
+      "nome": "VersaLink C7020/25/30",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788524556626_7020.jpg",
+        "fotos/1788524557905_c7000.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 20 ppm",
+        "1ª Página": "~8,1s",
+        "Tipo": "Laser Colorido A3"
+      },
+      "logoMarca": "fotos/1788525690206_LogoXerox.png"
     }
   ],
   "marcas": [
