@@ -500,7 +500,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin-bottom: 16px;
+      align-items: start;
     }
     @media (max-width: 640px) {
       .form-row { grid-template-columns: 1fr; }
@@ -510,11 +510,13 @@
     .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
     .form-control {
       width: 100%;
-      padding: 10px 14px;
+      height: 44px;
+      padding: 0 14px;
       border-radius: 8px;
       border: 1px solid var(--card-border);
       font-size: 0.9rem;
       outline: none;
+      background: #FFFFFF;
     }
     .form-control:focus { border-color: var(--primary); }
     .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
@@ -538,22 +540,107 @@
       cursor: pointer;
     }
 
-    /* Caixa Compacta do Logotipo */
-    .brand-logo-compact-box {
-      border: 1px dashed var(--card-border);
-      background: #F8FAFC;
+    /* Balões / Pills de Categorias no Modal */
+    .category-pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .cat-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
+      user-select: none;
+      background: #F1F5F9;
+      color: #475569;
+    }
+    .cat-pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      filter: brightness(0.97);
+    }
+    .cat-pill-btn.selected {
+      transform: scale(1.03);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+      border-color: currentColor !important;
+      outline: 2px solid currentColor;
+      outline-offset: 1px;
+    }
+
+    /* Bloco Redesenhado e Fixo do Logotipo do Fabricante */
+    .brand-logo-control-box {
+      height: 44px;
+      border: 1px solid var(--card-border);
+      background: #FFFFFF;
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 4px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 44px;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+    .brand-logo-info-side {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      flex: 1;
     }
     .brand-logo-preview-thumb {
-      height: 30px;
-      max-width: 90px;
+      height: 26px;
+      max-width: 70px;
       object-fit: contain;
+      flex-shrink: 0;
     }
+    .brand-logo-label-text {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-logo-actions-side {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .btn-logo-action {
+      height: 32px;
+      padding: 0 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      background: #F8FAFC;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: 0.2s;
+    }
+    .btn-logo-action:hover { background: #0F172A; color: white; }
+    .btn-logo-del {
+      height: 32px;
+      width: 32px;
+      padding: 0;
+      color: var(--danger);
+      border-color: #FECDD3;
+      background: #FFF;
+    }
+    .btn-logo-del:hover { background: var(--danger); color: white; border-color: var(--danger); }
 
     /* Gerenciador de Fotos e Reordenação */
     .photos-manager-grid {
@@ -711,7 +798,7 @@
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
 
-    <!-- (1 e 2) BARRA DE BUSCA GLOBAL E FILTRO DE MARCA INTEGRADO -->
+    <!-- Barra de Busca Global e Filtro de Marca Integrado -->
     <div class="search-filter-wrapper">
       <div class="search-box-inner">
         <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -769,12 +856,14 @@
       <form id="productCrudForm" onsubmit="handleFormSubmit(event)">
         <input type="hidden" id="prodId">
 
+        <!-- CATEGORIAS COMO BALÕES/PILLS COLORIDOS -->
         <div class="form-group">
-          <label>Categoria</label>
-          <select id="prodCategory" class="form-control" required></select>
+          <label>Categoria do Equipamento</label>
+          <input type="hidden" id="prodCategory" required>
+          <div class="category-pills-container" id="categoryPillsContainer"></div>
         </div>
 
-        <!-- (3 e 4) FABRICANTE / MARCA E LOGOTIPO LADO A LADO SEM REPETIÇÃO -->
+        <!-- FABRICANTE E LOGOTIPO ALINHADOS E COM BOTÕES REFINADOS -->
         <div class="form-row">
           <div class="form-group" style="margin-bottom: 0;">
             <label>Fabricante / Marca</label>
@@ -782,24 +871,23 @@
               <option value="">-- Selecione a Marca --</option>
               <option value="__custom__">Outra Marca / Digitar...</option>
             </select>
-            <!-- Campo manual exibido apenas se escolher "Outra Marca" -->
             <input type="text" id="prodBrand" class="form-control" style="margin-top: 8px; display: none;" placeholder="Digite o nome do fabricante">
           </div>
 
-          <!-- (5) LOGOTIPO DO FABRICANTE COMPACTO COM BOTOES INTEGRADOS -->
+          <!-- LOGOTIPO EM CONTAINER FIXO SEM DESCONFIGURAÇÃO -->
           <div class="form-group" style="margin-bottom: 0;">
             <label>Logotipo do Fabricante</label>
-            <div class="brand-logo-compact-box">
-              <div id="brandLogoPreviewContainer" style="display: flex; align-items: center; gap: 8px;">
+            <div class="brand-logo-control-box">
+              <div class="brand-logo-info-side">
                 <img id="brandLogoPreviewImg" class="brand-logo-preview-thumb" src="" style="display: none;">
-                <span id="brandLogoTextState" style="font-size: 0.75rem; color: var(--text-muted);">Sem logotipo</span>
+                <span id="brandLogoTextState" class="brand-logo-label-text">Sem logotipo</span>
               </div>
-              <div style="display: flex; gap: 6px;">
-                <label for="prodBrandLogoInput" class="btn-action" style="padding: 4px 8px; cursor: pointer;" title="Enviar novo logo PNG">
+              <div class="brand-logo-actions-side">
+                <label for="prodBrandLogoInput" class="btn-logo-action" title="Selecionar novo arquivo PNG">
                   📁 Trocar Logo
                 </label>
                 <input type="file" id="prodBrandLogoInput" accept="image/png, image/webp" style="display: none;" onchange="handleBrandLogoFileInput(this)">
-                <button type="button" class="btn-action btn-del" id="btnRemoveLogo" style="padding: 4px 8px; display: none;" onclick="removeBrandLogo()">✕</button>
+                <button type="button" class="btn-logo-action btn-logo-del" id="btnRemoveLogo" style="display: none;" onclick="removeBrandLogo()" title="Remover logotipo">✕</button>
               </div>
             </div>
           </div>
@@ -810,20 +898,20 @@
           <input type="text" id="prodName" class="form-control" required placeholder="Ex: Xerox VersaLink C7020/25/30">
         </div>
 
-        <!-- (6) ÁREA DE FOTOS DO EQUIPAMENTO COM REORDENAÇÃO DINÂMICA (DRAG & DROP E SETAS) -->
+        <!-- Fotos com Reordenação -->
         <div class="form-group">
           <label>Fotos do Equipamento (Arraste para ordenar ou use as setas ◀ ▶)</label>
           <div class="photos-manager-grid" id="photosGridContainer"></div>
           
           <div style="margin-top: 8px;">
-            <input type="file" id="prodFileInput" class="form-control" accept="image/*" multiple onchange="handleNewPhotosInput(this)">
+            <input type="file" id="prodFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" multiple onchange="handleNewPhotosInput(this)">
             <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">Você pode carregar várias fotos simultâneas e alterar suas ordens livremente acima.</span>
           </div>
         </div>
 
         <div class="form-group">
           <label>Especificações Técnicas (Formato: Chave: Valor, uma por linha)</label>
-          <textarea id="prodSpecs" class="form-control" rows="4" placeholder="Velocidade: Até 20 ppm&#10;1ª Página: ~8,1s&#10;Tipo: Multifuncional Colorida"></textarea>
+          <textarea id="prodSpecs" class="form-control" style="height: auto;" rows="4" placeholder="Velocidade: Até 20 ppm&#10;1ª Página: ~8,1s&#10;Tipo: Multifuncional Colorida"></textarea>
         </div>
 
         <div class="form-actions">
@@ -850,7 +938,7 @@
 
         <div class="form-group">
           <label>Arquivo do Logotipo (PNG transparente recomendado)</label>
-          <input type="file" id="newBrandFileInput" class="form-control" accept="image/*" required onchange="previewNewBrandLogo(this)">
+          <input type="file" id="newBrandFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" required onchange="previewNewBrandLogo(this)">
         </div>
 
         <div id="newBrandPreviewContainer" style="display: none; align-items: center; justify-content: center; background: #F8FAFC; border: 1px dashed var(--card-border); border-radius: 8px; padding: 15px; margin-bottom: 16px;">
@@ -899,8 +987,8 @@
           </div>
 
           <div style="display: flex; gap: 6px;">
-            <button class="btn-submit" id="btnSaveCategory" onclick="handleCategorySave()" style="white-space: nowrap; height: 41px;">Adicionar</button>
-            <button class="btn-cancel" id="btnCancelCategoryEdit" onclick="resetCategoryForm()" style="white-space: nowrap; height: 41px; display: none;">Cancelar</button>
+            <button class="btn-submit" id="btnSaveCategory" onclick="handleCategorySave()" style="white-space: nowrap; height: 44px;">Adicionar</button>
+            <button class="btn-cancel" id="btnCancelCategoryEdit" onclick="resetCategoryForm()" style="white-space: nowrap; height: 44px; display: none;">Cancelar</button>
           </div>
         </div>
       </div>
@@ -1049,12 +1137,10 @@
     let modalImages = [];
     let modalCurrentIdx = 0;
     
-    // Lista unificada para gerenciar as fotos no formulário (existentes + novas)
-    let formActivePhotos = []; // { type: 'url' | 'file', src: string, file?: File }
+    let formActivePhotos = [];
     let editCurrentBrandLogo = '';
     let draggedPhotoIdx = null;
 
-    // Inicializa Filtros de Marcas (Top Hero & Modal de Cadastro)
     function initBrandPresetsUI() {
       const select = document.getElementById('brandPresetSelect');
       const globalBrandSelect = document.getElementById('globalBrandFilter');
@@ -1091,7 +1177,6 @@
       }
     }
 
-    // (3) Trata a seleção da marca no formulário
     function handleBrandPresetChange(val) {
       const brandInput = document.getElementById('prodBrand');
       if (!val) {
@@ -1109,7 +1194,6 @@
         return;
       }
 
-      // Se for selecionada uma marca da lista, oculta o campo manual e define o nome
       brandInput.style.display = 'none';
       brandInput.value = val;
 
@@ -1151,11 +1235,10 @@
       if (input.files && input.files[0]) {
         const file = input.files[0];
         const previewUrl = await fileToDataUrl(file);
-        setBrandLogoPreview(previewUrl, 'Novo PNG selecionado');
+        setBrandLogoPreview(previewUrl, 'Novo PNG');
       }
     }
 
-    // (1 e 2) Controle da Busca e Filtros Globais
     function handleSearchFilterChange() {
       const searchVal = document.getElementById('globalSearchInput').value.trim();
       const btnClear = document.getElementById('btnClearSearch');
@@ -1242,7 +1325,6 @@
       renderCatalog();
     }
 
-    // Renderização do Catálogo com Filtro Dinâmico
     function renderCatalog() {
       const isAdmin = checkIsAdmin();
       document.body.classList.toggle('admin-mode', isAdmin);
@@ -1261,7 +1343,6 @@
         let produtosDaCat = produtos.filter(p => p.categoria === cat.id);
         let produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
 
-        // Aplica Busca e Filtro de Marca
         if (selectedBrand) {
           produtosVisiveis = produtosVisiveis.filter(p => (p.marca || '').toLowerCase() === selectedBrand);
         }
@@ -1709,19 +1790,43 @@
       }, 1000);
     }
 
-    function populateCategorySelect(selectedId = '') {
-      const select = document.getElementById('prodCategory');
-      select.innerHTML = '';
-      categorias.forEach(cat => {
-        const opt = document.createElement('option');
-        opt.value = cat.id;
-        opt.textContent = cat.title;
-        if (cat.id === selectedId) opt.selected = true;
-        select.appendChild(opt);
+    // RENDERIZADOR DE BALÕES/PILLS DE CATEGORIA NO MODAL
+    function renderCategoryPills(selectedId = '') {
+      const container = document.getElementById('categoryPillsContainer');
+      const hiddenInput = document.getElementById('prodCategory');
+      container.innerHTML = '';
+
+      if (!selectedId && categorias.length > 0) {
+        selectedId = categorias[0].id;
+      }
+      hiddenInput.value = selectedId;
+
+      categorias.forEach((cat, idx) => {
+        const iconKey = cat.icon || cat.id;
+        const color = CATEGORY_COLORS[idx % CATEGORY_COLORS.length];
+        const isSelected = cat.id === selectedId;
+
+        const pill = document.createElement('div');
+        pill.className = `cat-pill-btn ${isSelected ? 'selected' : ''}`;
+        pill.style.backgroundColor = color.bg;
+        pill.style.color = color.text;
+        pill.style.borderColor = color.border;
+
+        pill.innerHTML = `
+          ${getCategorySvg(iconKey, 'icon-svg')}
+          <span>${cat.title.split(' ')[0]}</span>
+        `;
+
+        pill.onclick = () => {
+          document.querySelectorAll('.cat-pill-btn').forEach(btn => btn.classList.remove('selected'));
+          pill.classList.add('selected');
+          hiddenInput.value = cat.id;
+        };
+
+        container.appendChild(pill);
       });
     }
 
-    // (6) Manipulação de Fotos no Cadastro / Edição
     async function handleNewPhotosInput(input) {
       if (!input.files || input.files.length === 0) return;
       for (let file of input.files) {
@@ -1751,7 +1856,6 @@
         thumb.draggable = true;
         thumb.dataset.index = idx;
 
-        // Suporte Drag & Drop nativo
         thumb.addEventListener('dragstart', (e) => {
           draggedPhotoIdx = idx;
           thumb.classList.add('dragging');
@@ -1813,7 +1917,7 @@
       brandInput.style.display = 'none';
 
       document.getElementById('brandPresetSelect').value = '';
-      populateCategorySelect();
+      renderCategoryPills();
       renderPhotosManagerGrid();
 
       document.getElementById('formModalTitle').textContent = 'Cadastrar Novo Equipamento';
@@ -1825,7 +1929,7 @@
       if (!prod) return;
 
       document.getElementById('prodId').value = prod.id;
-      populateCategorySelect(prod.categoria);
+      renderCategoryPills(prod.categoria);
       document.getElementById('prodName').value = prod.nome;
 
       let specsText = '';
@@ -1834,7 +1938,6 @@
       }
       document.getElementById('prodSpecs').value = specsText;
 
-      // Ajuste de Marca
       const brandInput = document.getElementById('prodBrand');
       const brandSelect = document.getElementById('brandPresetSelect');
       const foundPreset = marcas.find(p => p.name.toLowerCase() === (prod.marca || '').toLowerCase());
@@ -1849,14 +1952,12 @@
         brandInput.style.display = 'block';
       }
 
-      // Logotipo
       if (prod.logoMarca) {
         setBrandLogoPreview(prod.logoMarca, foundPreset ? `Padrão: ${foundPreset.name}` : 'Logo Vinculada');
       } else {
         removeBrandLogo();
       }
 
-      // Preenche lista ativa de fotos
       formActivePhotos = (prod.imagens || []).map(url => ({
         type: 'url',
         src: url
@@ -1890,6 +1991,11 @@
       const specsText = document.getElementById('prodSpecs').value;
       const logoInput = document.getElementById('prodBrandLogoInput');
 
+      if (!categoria) {
+        alert('Por favor, selecione uma categoria.');
+        return;
+      }
+
       if (!marca) {
         alert('Por favor, defina a Marca/Fabricante do equipamento.');
         return;
@@ -1911,7 +2017,6 @@
         pendingUploadQueue.push({ type: 'logo', prodId: id, file: logoFile, previewUrl: previewLogoUrl });
       }
 
-      // Constrói ordem final das imagens e agenda uploads das fotos novas
       const fotosFinais = [];
       for (let item of formActivePhotos) {
         if (item.type === 'file') {
