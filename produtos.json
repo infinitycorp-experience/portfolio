@@ -531,11 +531,10 @@
       "imagens": [
         "fotos/1789416198638_5810.jpg",
         "fotos/1789416199940_58103.jpg",
-        "fotos/1789416201212_58102.jpg",
-        "fotos/1789416202264_58101.jpg"
+        "fotos/1789416201212_58102.jpg"
       ],
       "specs": {
-        "Velocidade": "24 a 25 ppm em preto/cor",
+        "Velocidade": "Até 24 a 25 ppm preto/cor",
         "Painel": "Touch colorido de 4,3'",
         "Resolução": "Até 4800 x 1200 dpi",
         "Impressão Duplex": "Automática",
