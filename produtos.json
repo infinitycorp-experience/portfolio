@@ -404,7 +404,9 @@
       "ativo": true,
       "imagens": [
         "fotos/1789408684730_579451.jpg",
-        "fotos/1789408685943_57945.jpg"
+        "fotos/1789408685943_57945.jpg",
+        "fotos/1789408686838_579451.jpg",
+        "fotos/1789408687801_57945.jpg"
       ],
       "specs": {
         "Velocidade": "Até 45 ppm (preto e colorido)",
@@ -415,6 +417,66 @@
         "Conectividade": "USB 3.0, RJ45 10/100/1000"
       },
       "logoMarca": "logos/hp.png"
+    },
+    {
+      "id": "prod-1789409034307",
+      "categoria": "print",
+      "marca": "Canon",
+      "nome": "imageRUNNER 1643iF",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789409801050_16433.jpg",
+        "fotos/1789409802130_16432.jpg",
+        "fotos/1789409803224_16431.jpg",
+        "fotos/1789409804310_1643.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 43 ppm",
+        "Painel": "Touch colorido de 5'",
+        "Frente e verso": "Automático (Duplex)",
+        "Bandeja": "Padrão de 650 folhas, expansível até 2.300 folhas",
+        "Conectividade": "RJ45 10/100/1000, Wi-Fi, Wi-Fi Direct e USB"
+      },
+      "logoMarca": "logos/canon.png"
+    },
+    {
+      "id": "prod-1789409489301",
+      "categoria": "print",
+      "marca": "Canon",
+      "nome": " imageRUNNER C3225 ",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789409805430_3225.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 25 ppm",
+        "Painel": "Touch colorido 7'",
+        "Resolução": "Até 1200 x 1200 dpi",
+        "Papel Suportado": "Até o formato A3 (incluindo A4, A5, A5R, A6, envelopes)",
+        "Gramatura de Papel": "Suporta até 300 g/m² na bandeja manual/multiuso",
+        "Conectividade": "RJ45, USB e Wi-Fi opcional"
+      },
+      "logoMarca": "logos/canon.png"
+    },
+    {
+      "id": "prod-1789409798572",
+      "categoria": "print",
+      "marca": "Canon",
+      "nome": "Maxify GX6010",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789409807611_60002.jpg",
+        "fotos/1789409808663_60001.jpg",
+        "fotos/1789409809875_6000.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 45 ppm",
+        "Painel": "Touch colorido + botões físicos",
+        "Resolução de Impressão": "Até 600 x 1200 dpi",
+        "Impressão Frente e Verso (Duplex)": "Automática (A4/Carta)",
+        "Capacidade de Papel": "Cassete frontal para 250 folhas"
+      },
+      "logoMarca": "logos/canon.png"
     }
   ],
   "marcas": [
