@@ -476,6 +476,30 @@
         "Capacidade de Papel": "Cassete frontal para 250 folhas"
       },
       "logoMarca": "logos/canon.png"
+    },
+    {
+      "id": "prod-1789410979194",
+      "categoria": "print",
+      "marca": "Xerox",
+      "nome": "Altalink c8045",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789411050199_80452.jpg",
+        "fotos/1789411051134_80451.jpg",
+        "fotos/1789411052321_8045.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 45 ppm",
+        "Painel": "Touch colorido de 10.1'",
+        "Impressão": "Até 1200 x 2400 dpi",
+        "Cópia": "Até 600 x 600 dpi",
+        "Processador": "Intel Atom Quad-Core de 1,91 GHz",
+        "Memória": "8 GB do sistema.",
+        "Bandeja Bypass": "100 folhas",
+        "Bandejas 1 e 2": "520 folhas cada",
+        "Alimentador automático duplex (DADF) de passagem única": "130 folhas (velocidade de até 139 ipm em duplex)"
+      },
+      "logoMarca": "logos/xerox.png"
     }
   ],
   "marcas": [
