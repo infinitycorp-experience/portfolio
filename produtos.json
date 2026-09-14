@@ -499,6 +499,28 @@
         "Conectividade": "RJ45, USB e Wi-Fi opcional"
       },
       "logoMarca": "logos/canon.png"
+    },
+    {
+      "id": "prod-1789412126991",
+      "categoria": "print",
+      "marca": "Epson",
+      "nome": "EcoTank L6191",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789412141456_61911.jpg",
+        "fotos/1789412142640_6191.jpg"
+      ],
+      "specs": {
+        "Velocidade": "33 ppm preto e 20 ppm cores",
+        "Painel": "Touch colorido de 2,4'",
+        "Velocidade de impressão ISO": "15 ppm em preto e 8 ppm em cores (modo normal)",
+        "Tecnologia de impressão": "Jato de tinta de 4 cores (CMYK)",
+        "Resolução máxima de impressão": "Até 4800 x 1200 dpi de resolução otimizada",
+        "Impressão frente e verso (Duplex)": "Automática",
+        "Bandeija de papel": "Até 250 folhas de papel normal",
+        "ADF": "Capacidade para até 30 folhas (simplex)"
+      },
+      "logoMarca": "logos/epson.png"
     }
   ],
   "marcas": [
