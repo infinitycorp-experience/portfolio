@@ -51,17 +51,18 @@
       "id": "prod-1788523510340",
       "categoria": "print",
       "marca": "HP",
-      "nome": "Multi Mono 428",
+      "nome": "Multi Mono 4003",
       "ativo": true,
       "imagens": [
-        "fotos/1788523510340_428.jpg",
-        "fotos/1788523511965_428_1.jpg",
-        "fotos/1788523513106_428_2.jpg"
+        "fotos/1789399726021_40032.jpg",
+        "fotos/1789399727450_40031.jpg",
+        "fotos/1789399728626_4003.jpg"
       ],
       "specs": {
         "Velocidade": "40ppm",
         "Bandeja": "500 Folhas",
-        "ADF": "2 Faces Automático"
+        "Frente e verso": "Duplex automático",
+        "Resolução": "Até 1200 x 1200 dpi"
       },
       "logoMarca": "fotos/1788525660810_LogoHP.png"
     },
@@ -69,16 +70,18 @@
       "id": "hp-4003",
       "categoria": "print",
       "marca": "HP",
-      "nome": "Multi  Mono  4003",
+      "nome": "Multi  Mono  4103",
       "ativo": true,
       "imagens": [
-        "fotos/1788524251640_428_2.jpg"
+        "fotos/1788524251640_428_2.jpg",
+        "fotos/1789399729778_41032.jpg",
+        "fotos/1789399730886_41031.jpg",
+        "fotos/1789399732221_4103.jpg"
       ],
       "specs": {
         "Velocidade": "Até 40 ppm",
-        "1ª Página": "~6,3s",
-        "Tipo": "Laser Monocromático",
-        "Uso": "Pequenos e Médios Grupos"
+        "Resolução de impressão": "Até 1200 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automática."
       },
       "logoMarca": "fotos/1788525509551_LogoHP.png"
     },
