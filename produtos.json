@@ -618,26 +618,6 @@
       "logoMarca": "logos/ricoh.png"
     },
     {
-      "id": "prod-1789417893000",
-      "categoria": "print",
-      "marca": "Kyocera",
-      "nome": "ECOSYS MA5500",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789418050089_ma5500.jpg",
-        "fotos/1789418051341_ma55001.jpg"
-      ],
-      "specs": {
-        "Velocidade": "Até 55 páginas ppm",
-        "Painel": "Touch colorido de 7'",
-        "Frente e verso (Duplex)": "Automática",
-        "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
-        "Digitalização": "Dupla em uma única passagem (DADF)",
-        "Conectividade": "USB 2.0, RJ45 10/100/1000"
-      },
-      "logoMarca": "logos/kyocera.png"
-    },
-    {
       "id": "prod-1789418037306",
       "categoria": "print",
       "marca": "Kyocera",
@@ -658,6 +638,46 @@
         "Memória": "512 MB RAM (expansível até 2,5 GB)."
       },
       "logoMarca": "logos/kyocera.png"
+    },
+    {
+      "id": "prod-1789417893000",
+      "categoria": "print",
+      "marca": "Kyocera",
+      "nome": "ECOSYS MA5500",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789418050089_ma5500.jpg",
+        "fotos/1789418051341_ma55001.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 55 páginas ppm",
+        "Painel": "Touch colorido de 7'",
+        "Frente e verso (Duplex)": "Automática",
+        "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
+        "Digitalização": "Dupla em uma única passagem (DADF)",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000"
+      },
+      "logoMarca": "logos/kyocera.png"
+    },
+    {
+      "id": "prod-1789418308955",
+      "categoria": "print",
+      "marca": "Brother",
+      "nome": "HL-L6202DW",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789418314795_62021.jpg",
+        "fotos/1789418315929_6202.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 48 ppm",
+        "Resolução": "Até 1200 x 1200 dpi",
+        "Impressão Duplex (frente e verso)": "Automática",
+        "Primeira página": "Menos de 7,5 segundos",
+        "Bandeja": "520 folhas + bandeja multiuso de 50 folhas",
+        "Conectividade": "RJ45 10/100/1000,  Wi-Fi, USB 2.0 e Wi-Fi Direct"
+      },
+      "logoMarca": "logos/brother.png"
     }
   ],
   "marcas": [
