@@ -19,6 +19,12 @@
       "ativa": true
     },
     {
+      "id": "monitor",
+      "title": "Monitores",
+      "ativa": true,
+      "icon": "monitor"
+    },
+    {
       "id": "mobile",
       "title": "Tablets",
       "ativa": true,
@@ -39,11 +45,6 @@
       "title": "Térmicas de Etiquetas",
       "ativa": true,
       "icon": "thermal"
-    },
-    {
-      "id": "monitor",
-      "title": "Monitores Profissionais",
-      "ativa": false
     }
   ],
   "produtos": [
@@ -755,6 +756,29 @@
         "Conectividade": "USB 2.0"
       },
       "logoMarca": "logos/canon.png"
+    },
+    {
+      "id": "prod-1789470709050",
+      "categoria": "monitor",
+      "marca": "Dell",
+      "nome": "Pro P2425",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789470720244_24251.jpg",
+        "fotos/1789470721412_24252.jpg",
+        "fotos/1789470722255_2425.jpg"
+      ],
+      "specs": {
+        "Tela": "24 polegadas",
+        "Resolução": "WUXGA (1920 x 1200)",
+        "Proporção": "16:10 (oferece mais espaço vertical que o Full HD tradicional)",
+        "Painel": "Tecnologia IPS (In-Plane Switching)",
+        "Taxa de Atualização": "100 Hz",
+        "Contraste Nativo": "1.500:1.",
+        "Gama de Cores": "99% sRGB",
+        "Conforto Visual": "Tela antirreflexo e certificação TÜV"
+      },
+      "logoMarca": "logos/dell.png"
     }
   ],
   "marcas": [
