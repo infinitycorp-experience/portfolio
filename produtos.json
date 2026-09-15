@@ -758,6 +758,31 @@
       "logoMarca": "logos/canon.png"
     },
     {
+      "id": "prod-1789471860084",
+      "categoria": "monitor",
+      "marca": "Dell",
+      "nome": "SE 2225HM",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789472033428_2225.webp",
+        "fotos/1789472034318_22252.jpg",
+        "fotos/1789472035281_22251.jpg"
+      ],
+      "specs": {
+        "Tela": "21,5 polegadas",
+        "Resolução": "Full HD (1920 x 1080)",
+        "Atualização": "100 Hz (via HDMI)",
+        "Painel": "VA (Alinhamento Vertical)",
+        "Contraste": "3.000",
+        "Brilho": "250 cd/m² (nits)",
+        "Tempo de Resposta": "5 ms (modo rápido) / 8 ms (modo normal)",
+        "Conectividade": "1 porta HDMI (1.4) e 1 porta VGA",
+        "Ajustes de Posição": "Apenas ajuste de inclinação (tilt)",
+        "Furação VESA": "Sim (100 x 100 mm)"
+      },
+      "logoMarca": "logos/dell.png"
+    },
+    {
       "id": "prod-1789470709050",
       "categoria": "monitor",
       "marca": "Dell",
@@ -802,6 +827,28 @@
         "Proteção Ocular": "Tecnologia ComfortView Plus"
       },
       "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789471690592",
+      "categoria": "monitor",
+      "marca": "Samsung",
+      "nome": "Gamer Essential S3",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789472031316_s31.jpg",
+        "fotos/1789472032528_s32.png"
+      ],
+      "specs": {
+        "Tela": "24 polegadas",
+        "Resolução": "Full HD (1920 x 1080)",
+        "Painel": "IPS (ângulo de visão de 178°/178°)",
+        "Taxa de atualização": "Até 100 Hz ou 120 Hz",
+        "Tempo de resposta": "5ms (GTG)",
+        "Brilho": "250 cd/m²",
+        "Contraste": "1000",
+        "Proporção de tela": "16:9"
+      },
+      "logoMarca": "logos/samsung.png"
     },
     {
       "id": "prod-1789471382008",
