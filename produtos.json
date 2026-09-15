@@ -732,6 +732,29 @@
         "Duplex": "Frente e verso automático em passada única."
       },
       "logoMarca": "logos/brother.png"
+    },
+    {
+      "id": "prod-1789469522138",
+      "categoria": "scanner",
+      "marca": "Canon",
+      "nome": "DR C240",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789469766400_240.jpg",
+        "fotos/1789469768790_2402.jpg",
+        "fotos/1789469771278_2403.jpg",
+        "fotos/1789469773684_2401.jpg"
+      ],
+      "specs": {
+        "Velocidade": "45 ppm / 90 ipm",
+        "ADF": "Até 60 folhas",
+        "Resolução": "600 dpi",
+        "Papel": "L 50,8 mm a 216 mm e C 54 mm a 356 mm",
+        "Suporte": "Documentos longos de até 3.000 mm",
+        "Gramatura": "27 a 209 g/m²",
+        "Conectividade": "USB 2.0"
+      },
+      "logoMarca": "logos/canon.png"
     }
   ],
   "marcas": [
