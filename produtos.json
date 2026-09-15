@@ -807,7 +807,7 @@
       "id": "prod-1789471382008",
       "categoria": "monitor",
       "marca": "Samsung",
-      "nome": "GAMER ESSENTIAL S3",
+      "nome": "Gamer Essential S3",
       "ativo": true,
       "imagens": [
         "fotos/1789471396724_s31.jpg",
@@ -815,7 +815,7 @@
         "fotos/1789471398624_s33.jpg"
       ],
       "specs": {
-        "Tela": "27 polegadas (plana)",
+        "Tela": "27 polegadas",
         "Resolução": "Full HD (1920 x 1080)",
         "Painel": "IPS (ângulo de visão de 178°/178°)",
         "Taxa de atualização": "Até 100 Hz ou 120 Hz",
