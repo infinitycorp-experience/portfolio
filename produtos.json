@@ -1127,6 +1127,10 @@
     {
       "name": "Zebra",
       "logo": "logos/zebra.png"
+    },
+    {
+      "name": "Apple",
+      "logo": "logos/apple.png"
     }
   ]
 }
