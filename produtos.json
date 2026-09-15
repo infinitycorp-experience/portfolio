@@ -891,6 +891,49 @@
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
       },
       "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789473015351",
+      "categoria": "desktops",
+      "marca": "Dell",
+      "nome": "Pro Slim",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789473198944_slim1.jpg",
+        "fotos/1789473200167_slim2.jpg",
+        "fotos/1789473201263_slim3.jpg",
+        "fotos/1789473202360_slim.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 14ª Gen",
+        "Memória RAM": "8 - 16 - 32 - 64 GB DDR5",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics (Suporte a placa dedicada)",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
+        "Gabinete": "Formato Slim (SFF - Small Form Factor)"
+      },
+      "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789473196660",
+      "categoria": "desktops",
+      "marca": "Dell",
+      "nome": "XPS 8950",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789473203343_89501.jpg",
+        "fotos/1789473204375_89502.jpg",
+        "fotos/1789473205433_8950.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 12ª Gen",
+        "Memória RAM": "8 - 16 - 32 - 64 GB DDR4",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics (Suporte a placa dedicada)",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
+        "Gabinete": "Padrão"
+      },
+      "logoMarca": "logos/dell.png"
     }
   ],
   "marcas": [
