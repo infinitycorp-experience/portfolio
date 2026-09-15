@@ -227,7 +227,7 @@
       align-items: center;
       gap: 8px;
       height: 48px;
-      padding: 0 20px;
+      padding: 0 18px;
       border-radius: 12px;
       font-size: 0.85rem;
       font-weight: 800;
@@ -252,11 +252,22 @@
       background: var(--primary);
       color: #FFFFFF;
       box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+      position: relative;
     }
     .btn-quote-trigger:hover {
       background: var(--primary-hover);
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
+    }
+    .quote-badge-counter {
+      background: #FFFFFF;
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-left: 2px;
+      transition: transform 0.2s ease;
     }
 
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
@@ -293,6 +304,7 @@
     }
     .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08); border-color: var(--primary); }
     .prod-card.item-oculto { opacity: 0.5; border-style: dashed; }
+    .prod-card.in-quote { border-color: var(--primary); background: #FAFDFE; }
 
     .thumb-slider-container {
       position: relative;
@@ -374,6 +386,42 @@
     .spec-row { display: flex; justify-content: space-between; align-items: center; }
     .spec-row span { color: var(--text-muted); font-weight: 500; }
     .spec-row strong { color: var(--text-main); font-weight: 700; }
+
+    /* Botão de Cotação nos Cards */
+    .card-footer-action-row {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid #F1F5F9;
+    }
+    .btn-toggle-cart {
+      flex: 1;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--primary);
+      background: #F0F9FF;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-toggle-cart:hover {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+    .btn-toggle-cart.active {
+      background: #10B981;
+      border-color: #10B981;
+      color: #FFFFFF;
+    }
 
     .admin-card-actions {
       display: none;
@@ -626,7 +674,7 @@
     }
     .btn-cancel:hover { background: #CBD5E1; }
 
-    /* BALÕES / PILLS REFINADOS */
+    /* BALÕES / PILLS REFINADOS NO CADASTRO */
     .category-pills-container {
       display: flex;
       flex-wrap: wrap;
@@ -662,33 +710,249 @@
       outline-offset: 1px;
     }
 
-    /* Tags / Chips do Modal de Cotação */
-    .quote-pills-wrapper {
+    /* ESTILOS REFINADOS DO MODAL DE COTAÇÃO MULTI-ITENS / CARRINHO */
+    .quote-modal-box {
+      max-width: 860px;
+      padding: 28px;
+      border-radius: 20px;
+    }
+    .quote-search-wrapper {
+      position: relative;
+      margin: 12px 0 16px;
+    }
+    .quote-search-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 36px 0 38px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: #F8FAFC;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s;
+    }
+    .quote-search-input:focus {
+      background: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+    }
+    .quote-search-icon {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      color: var(--primary);
+    }
+    .quote-search-clear {
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      background: none;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+    }
+
+    /* Resumo dos Itens Selecionados no Topo do Modal */
+    .quote-selected-summary {
+      background: #F0F9FF;
+      border: 1px solid #BAE6FD;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+    .quote-summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .quote-summary-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #0369A1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .quote-selected-chips-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 4px;
+      max-height: 120px;
+      overflow-y: auto;
     }
-    .quote-pill {
-      font-size: 0.78rem;
-      padding: 6px 12px;
-      border-radius: 20px;
+    .quote-chip {
+      background: #FFFFFF;
       border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .quote-chip-qty {
+      background: #E0F2FE;
+      color: var(--primary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+    }
+    .quote-chip-remove {
+      color: var(--danger);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 1;
+    }
+    .quote-chip-remove:hover { opacity: 0.7; }
+
+    /* Acordeão por Categoria */
+    .quote-categories-accordion {
+      max-height: 280px;
+      overflow-y: auto;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 20px;
+      background: #FFFFFF;
+    }
+    .quote-cat-block {
+      margin-bottom: 4px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #F1F5F9;
+    }
+    .quote-cat-header {
       background: #F8FAFC;
-      color: #475569;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       cursor: pointer;
       user-select: none;
-      transition: all 0.15s ease;
-      font-weight: 600;
+      transition: background 0.15s ease;
     }
-    .quote-pill:hover {
-      background: #F1F5F9;
-      border-color: #94A3B8;
+    .quote-cat-header:hover { background: #F1F5F9; }
+    .quote-cat-title-side {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-main);
     }
-    .quote-pill.selected {
-      background: var(--primary);
-      color: #FFFFFF;
-      border-color: var(--primary);
+    .quote-cat-count-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #E2E8F0;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .quote-cat-arrow {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+    .quote-cat-block.expanded .quote-cat-arrow {
+      transform: rotate(90deg);
+    }
+
+    /* Lista de Itens dentro do Acordeão */
+    .quote-cat-items-list {
+      display: none;
+      padding: 4px 8px;
+      background: #FFFFFF;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .quote-cat-block.expanded .quote-cat-items-list {
+      display: flex;
+    }
+    .quote-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .quote-item-row:hover { background: #F8FAFC; }
+    .quote-item-label-side {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      cursor: pointer;
+    }
+    .quote-item-checkbox {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .quote-item-thumb {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #FFF;
+      border: 1px solid #E2E8F0;
+      flex-shrink: 0;
+    }
+    .quote-item-name {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .quote-item-brand-tag {
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      background: #E0F2FE;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+
+    .quote-item-qty-control {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .quote-qty-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
+      background: #F8FAFC;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quote-qty-btn:hover { background: #0F172A; color: white; }
+    .quote-qty-display {
+      font-size: 0.75rem;
+      font-weight: 800;
+      min-width: 20px;
+      text-align: center;
     }
 
     /* Mensagem de Feedback do Web3Forms */
@@ -919,12 +1183,12 @@
         transform: rotate(-10deg) scale(1.05);
       }
 
-      /* Ocultar elementos desnecessários na impressão */
       .top-navbar,
       .hero,
       .admin-bar,
       .modal-overlay,
       .admin-card-actions,
+      .card-footer-action-row,
       .carousel-btn,
       .carousel-dots,
       footer {
@@ -936,7 +1200,6 @@
         max-width: 100% !important;
       }
 
-      /* Cabeçalho da Impressão */
       .print-header {
         display: flex !important;
         align-items: center;
@@ -950,7 +1213,6 @@
       .print-header-meta h2 { font-size: 1.15rem; font-weight: 900; color: #0284C7; }
       .print-header-meta p { font-size: 0.75rem; color: #64748B; font-weight: 600; }
 
-      /* Cards no PDF */
       .section-header {
         margin: 25px 0 15px !important;
         padding-bottom: 6px !important;
@@ -982,7 +1244,6 @@
         border: 1px solid #E2E8F0 !important;
       }
 
-      /* Rodapé Institucional da Impressão / PDF */
       .print-footer {
         display: block !important;
         margin-top: 40px;
@@ -1049,10 +1310,11 @@
         </div>
       </div>
 
-      <!-- Botão Solicitar Cotação Web3Forms -->
-      <button type="button" class="btn-quote-trigger" onclick="abrirModalCotacao()" title="Solicitar Cotação / Proposta Comercial">
+      <!-- Botão Solicitar Cotação com Contador de Itens Selecionados -->
+      <button type="button" class="btn-quote-trigger" onclick="abrirModalCotacao()" title="Solicitar Cotação dos equipamentos selecionados">
         <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
         <span>Solicitar Cotação</span>
+        <span class="quote-badge-counter" id="quoteBadgeCount">0</span>
       </button>
 
       <!-- Botão Exportar Catálogo / PDF -->
@@ -1065,7 +1327,6 @@
 
   <!-- Conteúdo Principal -->
   <main class="main-content">
-    <!-- Cabeçalho Exclusivo para PDF / Impressão -->
     <div class="print-header">
       <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
       <div class="print-header-meta">
@@ -1077,7 +1338,6 @@
     <!-- Div Dinâmica onde as seções são montadas -->
     <div id="dynamicSectionsContainer"></div>
 
-    <!-- Rodapé Exclusivo para Impressão / PDF -->
     <div class="print-footer">
       <p style="font-size: 0.85rem; font-weight: 800; color: #0284C7; margin-bottom: 4px;">INFINITY CORP • SOLUÇÕES INTELIGENTES EM TI & OUTSOURCING</p>
       <p style="font-size: 0.72rem; color: #64748B;">Facilitando o dia a dia corporativo com agilidade, tecnologia de ponta e suporte especializado.</p>
@@ -1125,55 +1385,54 @@
         <h3 class="modal-title" id="modalTitle">Título do Modelo</h3>
         <ul class="modal-details" id="modalSpecsList"></ul>
 
-        <!-- Botão de Ação: Cotar Este Modelo Direto -->
+        <!-- Botão de Ação rápida no modal de zoom -->
         <div class="modal-zoom-actions">
-          <button type="button" class="btn-cotar-item" id="btnCotarItemModal" onclick="cotarEquipamentoAtual()">
+          <button type="button" class="btn-cotar-item" id="btnZoomModalAddToCart" onclick="toggleCartFromModal()">
             <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            Solicitar Proposta deste Equipamento
+            <span>+ Adicionar à Cotação</span>
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL DE COTAÇÃO / PROPOSTA COMERCIAL (Web3Forms) -->
+  <!-- MODAL DE COTAÇÃO MULTI-ITENS / CARRINHO (Web3Forms) -->
   <div class="modal-overlay" id="quoteModal">
-    <div class="modal-box" style="max-width: 620px; padding: 28px;">
-      <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px;">
+    <div class="modal-box quote-modal-box">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between;">
         <div>
-          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Solicitar Cotação / Proposta</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Envie sua necessidade e nosso time comercial responderá prontamente.</p>
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Solicitar Cotação de Equipamentos</h3>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Pesquise ou selecione abaixo os modelos desejados do nosso portfólio.</p>
         </div>
         <button type="button" class="modal-close-btn" style="position: static; width: 34px; height: 34px;" onclick="fecharModalCotacao()">✕</button>
       </div>
 
-      <form id="formCotacaoWeb3" onsubmit="enviarCotacaoWeb3Forms(event)" style="margin-top: 12px;">
-        <!-- Pills Categoria -->
-        <div class="form-group">
-          <label>Categoria de Interesse:</label>
-          <div class="quote-pills-wrapper" id="quoteGroupCategoria">
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Multifuncional P&B</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Multifuncional Color</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Impressora Térmica</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Scanner de Rede</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Computador / Notebook</span>
-          </div>
-        </div>
+      <!-- Campo de Pesquisa Rápida Interna do Modal -->
+      <div class="quote-search-wrapper">
+        <svg class="icon-svg quote-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="quoteModalSearchInput" class="quote-search-input" placeholder="Filtrar equipamentos por modelo ou fabricante..." oninput="handleQuoteModalSearch()">
+        <button type="button" id="btnQuoteClearSearch" class="quote-search-clear" onclick="clearQuoteModalSearch()">✕</button>
+      </div>
 
-        <!-- Pills Marca -->
-        <div class="form-group">
-          <label>Marca de Preferência:</label>
-          <div class="quote-pills-wrapper" id="quoteGroupMarca">
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Ricoh</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Kyocera</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Brother</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">HP</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Epson</span>
-            <span class="quote-pill" onclick="toggleQuotePill(this)">Sem Preferência</span>
-          </div>
+      <!-- Resumo dos Equipamentos Selecionados -->
+      <div class="quote-selected-summary" id="quoteSummaryBox">
+        <div class="quote-summary-header">
+          <span class="quote-summary-title">
+            <svg class="icon-svg" style="width:14px; height:14px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Itens Selecionados (<span id="quoteSummaryCount">0</span>)
+          </span>
+          <button type="button" onclick="limparTodoCarrinho()" style="background:none; border:none; color:var(--danger); font-size:0.72rem; font-weight:700; cursor:pointer;">Limpar Seleção</button>
         </div>
+        <div class="quote-selected-chips-grid" id="quoteChipsContainer">
+          <span style="font-size:0.75rem; color:var(--text-muted); font-style:italic;">Nenhum equipamento selecionado ainda. Marque nas listas abaixo.</span>
+        </div>
+      </div>
 
-        <!-- Campos de Contato -->
+      <!-- Lista Retrátil por Categoria (Accordion) -->
+      <div class="quote-categories-accordion" id="quoteAccordionContainer"></div>
+
+      <!-- Formulário de Contato -->
+      <form id="formCotacaoWeb3" onsubmit="enviarCotacaoWeb3Forms(event)">
         <div class="form-row">
           <div class="form-group" style="margin-bottom: 12px;">
             <label for="quoteNome">Seu Nome *</label>
@@ -1197,16 +1456,16 @@
         </div>
 
         <div class="form-group" style="margin-bottom: 12px;">
-          <label for="quoteMensagem">Detalhes da Necessidade (Volume mensal estimado, cidades, modelos, etc.):</label>
-          <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="3" placeholder="Ex: Precisamos de 2 multifuncionais para faturamento com franquia de 10.000 páginas..."></textarea>
+          <label for="quoteMensagem">Informações Adicionais (Volume mensal estimado, prazo, local de entrega):</label>
+          <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="2" placeholder="Ex: Franquia de 15.000 páginas/mês para escritório em São Paulo..."></textarea>
         </div>
 
         <div id="quoteFeedbackBox" class="quote-feedback"></div>
 
-        <div class="form-actions" style="margin-top: 18px;">
-          <button type="button" class="btn-cancel" onclick="fecharModalCotacao()">Cancelar</button>
+        <div class="form-actions" style="margin-top: 14px;">
+          <button type="button" class="btn-cancel" onclick="fecharModalCotacao()">Fechar</button>
           <button type="submit" id="btnSubmitCotacao" class="btn-submit" style="display: inline-flex; align-items: center; gap: 8px;">
-            <span>Solicitar Proposta</span>
+            <span>Enviar Solicitação de Proposta</span>
           </button>
         </div>
       </form>
@@ -1221,14 +1480,12 @@
       <form id="productCrudForm" onsubmit="handleFormSubmit(event)">
         <input type="hidden" id="prodId">
 
-        <!-- CATEGORIAS COMO BALÕES/PILLS COMPACTOS E REFINADOS -->
         <div class="form-group">
           <label>Categoria do Equipamento</label>
           <input type="hidden" id="prodCategory" required>
           <div class="category-pills-container" id="categoryPillsContainer"></div>
         </div>
 
-        <!-- FABRICANTE E LOGOTIPO ALINHADOS -->
         <div class="form-row">
           <div class="form-group" style="margin-bottom: 0;">
             <label>Fabricante / Marca</label>
@@ -1239,7 +1496,6 @@
             <input type="text" id="prodBrand" class="form-control" style="margin-top: 8px; display: none;" placeholder="Digite o nome do fabricante">
           </div>
 
-          <!-- LOGOTIPO EM CONTAINER FIXO -->
           <div class="form-group" style="margin-bottom: 0;">
             <label>Logotipo do Fabricante</label>
             <div class="brand-logo-control-box">
@@ -1263,7 +1519,6 @@
           <input type="text" id="prodName" class="form-control" required placeholder="Ex: Xerox VersaLink C7020/25/30">
         </div>
 
-        <!-- Fotos com Reordenação -->
         <div class="form-group">
           <label>Fotos do Equipamento (Arraste para ordenar ou use as setas ◀ ▶)</label>
           <div class="photos-manager-grid" id="photosGridContainer"></div>
@@ -1532,11 +1787,15 @@
 
     let modalImages = [];
     let modalCurrentIdx = 0;
-    let currentSelectedProductForQuote = null;
+    let currentSelectedProductForModal = null;
     
     let formActivePhotos = [];
     let editCurrentBrandLogo = '';
     let draggedPhotoIdx = null;
+
+    /* CARRINHO DE COTAÇÃO MULTI-ITENS */
+    // Map de id -> { id, nome, marca, categoria, qtd }
+    const carrinhoCotacao = new Map();
 
     function initBrandPresetsUI() {
       const select = document.getElementById('brandPresetSelect');
@@ -1792,7 +2051,8 @@
         const grid = section.querySelector(`#grid-${cat.id}`);
         produtosVisiveis.forEach(prod => {
           const card = document.createElement('div');
-          card.className = `prod-card ${!prod.ativo ? 'item-oculto' : ''}`;
+          const isSelectedInCart = carrinhoCotacao.has(prod.id);
+          card.className = `prod-card ${!prod.ativo ? 'item-oculto' : ''} ${isSelectedInCart ? 'in-quote' : ''}`;
           card.onclick = () => openProductModal(prod);
 
           let mediaHtml = '';
@@ -1829,6 +2089,14 @@
             </div>
             <div class="prod-name">${prod.nome}</div>
             <div class="specs-list">${specsHtml}</div>
+
+            <!-- Botão de Seleção para Cotação no Card -->
+            <div class="card-footer-action-row" onclick="event.stopPropagation()">
+              <button type="button" class="btn-toggle-cart ${isSelectedInCart ? 'active' : ''}" onclick="toggleProdutoCarrinho('${prod.id}')">
+                ${isSelectedInCart ? '✓ Na Cotação' : '+ Cotação'}
+              </button>
+            </div>
+
             <div class="admin-card-actions" onclick="event.stopPropagation()">
               <div class="admin-card-buttons-row">
                 <button class="btn-action btn-order" title="Mover para a esquerda" onclick="moveProductOrder('${prod.id}', -1)">◀</button>
@@ -1844,15 +2112,64 @@
       });
     }
 
-    /* GESTÃO DO MODAL DE COTAÇÃO WEB3FORMS */
-    function abrirModalCotacao(prefillInfo = '') {
-      const modal = document.getElementById('quoteModal');
-      const feedback = document.getElementById('quoteFeedbackBox');
-      feedback.style.display = 'none';
+    /* GESTÃO DO CARRINHO / COTAÇÃO */
+    function toggleProdutoCarrinho(prodId, forceQty = null) {
+      const prod = produtos.find(p => p.id === prodId);
+      if (!prod) return;
 
-      if (prefillInfo) {
-        document.getElementById('quoteMensagem').value = `Olá! Gostaria de uma cotação/proposta comercial referente ao equipamento: ${prefillInfo}.\n`;
+      if (carrinhoCotacao.has(prodId) && forceQty === null) {
+        carrinhoCotacao.delete(prodId);
+      } else {
+        const currentQty = carrinhoCotacao.get(prodId)?.qtd || 1;
+        const newQty = forceQty !== null ? Math.max(1, forceQty) : currentQty;
+        carrinhoCotacao.set(prodId, {
+          id: prod.id,
+          nome: prod.nome,
+          marca: prod.marca,
+          categoria: prod.categoria,
+          imagem: prod.imagens?.[0] || '',
+          qtd: newQty
+        });
       }
+
+      atualizarBadgeCarrinho();
+      renderCatalog();
+      renderQuoteModalState();
+    }
+
+    function alterarQtdCarrinho(prodId, delta) {
+      if (!carrinhoCotacao.has(prodId)) return;
+      const item = carrinhoCotacao.get(prodId);
+      item.qtd = Math.max(1, item.qtd + delta);
+      carrinhoCotacao.set(prodId, item);
+      renderQuoteModalState();
+    }
+
+    function limparTodoCarrinho() {
+      carrinhoCotacao.clear();
+      atualizarBadgeCarrinho();
+      renderCatalog();
+      renderQuoteModalState();
+    }
+
+    function atualizarBadgeCarrinho() {
+      const badge = document.getElementById('quoteBadgeCount');
+      if (badge) {
+        const total = carrinhoCotacao.size;
+        badge.textContent = total;
+        badge.style.transform = 'scale(1.25)';
+        setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+      }
+    }
+
+    function abrirModalCotacao() {
+      const modal = document.getElementById('quoteModal');
+      document.getElementById('quoteFeedbackBox').style.display = 'none';
+      document.getElementById('quoteModalSearchInput').value = '';
+      document.getElementById('btnQuoteClearSearch').style.display = 'none';
+
+      renderQuoteModalAccordion();
+      renderQuoteModalState();
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -1862,20 +2179,155 @@
       const modal = document.getElementById('quoteModal');
       modal.classList.remove('active');
       document.body.style.overflow = 'auto';
-      document.getElementById('formCotacaoWeb3').reset();
-      document.querySelectorAll('.quote-pill.selected').forEach(el => el.classList.remove('selected'));
       document.getElementById('quoteFeedbackBox').style.display = 'none';
     }
 
-    function toggleQuotePill(el) {
-      el.classList.toggle('selected');
+    function handleQuoteModalSearch() {
+      const query = document.getElementById('quoteModalSearchInput').value.trim();
+      const clearBtn = document.getElementById('btnQuoteClearSearch');
+      clearBtn.style.display = query.length > 0 ? 'inline-block' : 'none';
+      renderQuoteModalAccordion(query);
     }
 
-    function cotarEquipamentoAtual() {
-      if (!currentSelectedProductForQuote) return;
-      const nomeEquipamento = `${currentSelectedProductForQuote.marca} - ${currentSelectedProductForQuote.nome}`;
-      closeModal();
-      abrirModalCotacao(nomeEquipamento);
+    function clearQuoteModalSearch() {
+      document.getElementById('quoteModalSearchInput').value = '';
+      document.getElementById('btnQuoteClearSearch').style.display = 'none';
+      renderQuoteModalAccordion('');
+    }
+
+    function toggleQuoteCatAccordion(blockEl) {
+      blockEl.classList.toggle('expanded');
+    }
+
+    function renderQuoteModalAccordion(searchQuery = '') {
+      const container = document.getElementById('quoteAccordionContainer');
+      container.innerHTML = '';
+      const filter = searchQuery.toLowerCase().trim();
+
+      categorias.forEach(cat => {
+        let prodsCat = produtos.filter(p => p.categoria === cat.id && p.ativo);
+
+        if (filter) {
+          prodsCat = prodsCat.filter(p => 
+            p.nome.toLowerCase().includes(filter) || 
+            (p.marca && p.marca.toLowerCase().includes(filter))
+          );
+        }
+
+        if (prodsCat.length === 0 && filter) return;
+
+        const block = document.createElement('div');
+        block.className = `quote-cat-block ${filter ? 'expanded' : ''}`;
+
+        const header = document.createElement('div');
+        header.className = 'quote-cat-header';
+        header.onclick = () => toggleQuoteCatAccordion(block);
+
+        header.innerHTML = `
+          <div class="quote-cat-title-side">
+            ${getCategorySvg(cat.icon || cat.id, 'icon-svg-sm')}
+            <span>${cat.title}</span>
+            <span class="quote-cat-count-badge">${prodsCat.length}</span>
+          </div>
+          <span class="quote-cat-arrow">▶</span>
+        `;
+        block.appendChild(header);
+
+        const list = document.createElement('div');
+        list.className = 'quote-cat-items-list';
+
+        prodsCat.forEach(prod => {
+          const isSelected = carrinhoCotacao.has(prod.id);
+          const currentItem = carrinhoCotacao.get(prod.id);
+          const currentQty = currentItem ? currentItem.qtd : 1;
+
+          const row = document.createElement('div');
+          row.className = 'quote-item-row';
+
+          const thumbSrc = prod.imagens && prod.imagens.length > 0 ? prod.imagens[0] : 'https://placehold.co/40x40?text=Foto';
+
+          row.innerHTML = `
+            <label class="quote-item-label-side" onclick="event.stopPropagation()">
+              <input type="checkbox" class="quote-item-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleProdutoCarrinho('${prod.id}')">
+              <img src="${thumbSrc}" class="quote-item-thumb" alt="${prod.nome}">
+              <div>
+                <span class="quote-item-brand-tag">${prod.marca}</span>
+                <span class="quote-item-name">${prod.nome}</span>
+              </div>
+            </label>
+
+            <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};">
+              <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
+              <span class="quote-qty-display">${currentQty}</span>
+              <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', 1)">+</button>
+            </div>
+          `;
+          list.appendChild(row);
+        });
+
+        block.appendChild(list);
+        container.appendChild(block);
+      });
+    }
+
+    function renderQuoteModalState() {
+      // 1. Resumo superior dos chips selecionados
+      const chipsContainer = document.getElementById('quoteChipsContainer');
+      const countEl = document.getElementById('quoteSummaryCount');
+      chipsContainer.innerHTML = '';
+
+      countEl.textContent = carrinhoCotacao.size;
+
+      if (carrinhoCotacao.size === 0) {
+        chipsContainer.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); font-style:italic;">Nenhum equipamento selecionado ainda. Marque nas listas abaixo.</span>`;
+      } else {
+        carrinhoCotacao.forEach(item => {
+          const chip = document.createElement('div');
+          chip.className = 'quote-chip';
+          chip.innerHTML = `
+            <span>${item.marca} ${item.nome}</span>
+            <span class="quote-chip-qty">${item.qtd} un</span>
+            <button type="button" class="quote-chip-remove" onclick="toggleProdutoCarrinho('${item.id}')" title="Remover item">✕</button>
+          `;
+          chipsContainer.appendChild(chip);
+        });
+      }
+
+      // 2. Atualizar checkboxes da lista no acordeão
+      document.querySelectorAll('.quote-item-row').forEach(row => {
+        const checkbox = row.querySelector('.quote-item-checkbox');
+        const qtyControl = row.querySelector('.quote-item-qty-control');
+        const qtyDisplay = row.querySelector('.quote-qty-display');
+
+        if (checkbox) {
+          const prodId = checkbox.getAttribute('onchange')?.match(/'([^']+)'/)?.[1];
+          if (prodId && carrinhoCotacao.has(prodId)) {
+            checkbox.checked = true;
+            if (qtyControl) qtyControl.style.display = 'flex';
+            if (qtyDisplay) qtyDisplay.textContent = carrinhoCotacao.get(prodId).qtd;
+          } else {
+            checkbox.checked = false;
+            if (qtyControl) qtyControl.style.display = 'none';
+          }
+        }
+      });
+
+      // 3. Atualizar botão de zoom se estiver aberto
+      if (currentSelectedProductForModal) {
+        const btnZoom = document.getElementById('btnZoomModalAddToCart');
+        if (btnZoom) {
+          const isSelected = carrinhoCotacao.has(currentSelectedProductForModal.id);
+          btnZoom.innerHTML = isSelected 
+            ? `<svg class="icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>✓ Remover da Cotação</span>` 
+            : `<svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> <span>+ Adicionar à Cotação</span>`;
+          btnZoom.style.background = isSelected ? '#10B981' : 'var(--primary)';
+        }
+      }
+    }
+
+    function toggleCartFromModal() {
+      if (!currentSelectedProductForModal) return;
+      toggleProdutoCarrinho(currentSelectedProductForModal.id);
     }
 
     async function enviarCotacaoWeb3Forms(e) {
@@ -1883,11 +2335,10 @@
       const btn = document.getElementById('btnSubmitCotacao');
       const feedback = document.getElementById('quoteFeedbackBox');
 
-      const categorias = Array.from(document.querySelectorAll('#quoteGroupCategoria .quote-pill.selected'))
-                              .map(p => p.textContent.trim()).join(', ') || 'Geral / Não especificado';
-
-      const marcas = Array.from(document.querySelectorAll('#quoteGroupMarca .quote-pill.selected'))
-                          .map(p => p.textContent.trim()).join(', ') || 'Sem preferência';
+      if (carrinhoCotacao.size === 0) {
+        alert('Por favor, selecione ao menos um equipamento para compor a sua cotação.');
+        return;
+      }
 
       const nome = document.getElementById('quoteNome').value.trim();
       const empresa = document.getElementById('quoteEmpresa').value.trim();
@@ -1895,17 +2346,25 @@
       const telefone = document.getElementById('quoteTelefone').value.trim();
       const mensagem = document.getElementById('quoteMensagem').value.trim();
 
+      // Montar tabela textual detalhada dos equipamentos
+      let itensFormatados = '';
+      let index = 1;
+      carrinhoCotacao.forEach(item => {
+        itensFormatados += `${index}. [${item.marca.toUpperCase()}] ${item.nome} — Qtd Estimada: ${item.qtd} unidade(s)\n`;
+        index++;
+      });
+
       const payload = {
         access_key: WEB3FORMS_KEY,
-        subject: `Nova Solicitação de Cotação - ${empresa ? empresa + ' (' + nome + ')' : nome}`,
-        from_name: 'Infinity Corp - Portfólio 2026',
+        subject: `Nova Cotação Infinity Corp - ${empresa ? empresa + ' (' + nome + ')' : nome} (${carrinhoCotacao.size} equipamentos)`,
+        from_name: 'Infinity Corp - Portfólio Comercial',
         nome_contato: nome,
         empresa: empresa || 'Não informada',
         email: email,
         telefone: telefone,
-        categorias_interesse: categorias,
-        marcas_preferencia: marcas,
-        detalhes: mensagem
+        equipamentos_selecionados: itensFormatados,
+        total_equipamentos: carrinhoCotacao.size,
+        observacoes: mensagem || 'Nenhuma observação adicional.'
       };
 
       btn.disabled = true;
@@ -1926,24 +2385,25 @@
 
         if (resData.success) {
           feedback.className = 'quote-feedback success';
-          feedback.innerText = '✓ Solicitação enviada com sucesso! Em instantes nosso time comercial entrará em contato.';
+          feedback.innerText = '✓ Solicitação enviada com sucesso! Nosso time comercial já recebeu a lista e entrará em contato em breve.';
           feedback.style.display = 'block';
+
+          limparTodoCarrinho();
           document.getElementById('formCotacaoWeb3').reset();
-          document.querySelectorAll('.quote-pill.selected').forEach(el => el.classList.remove('selected'));
 
           setTimeout(() => {
             fecharModalCotacao();
-          }, 3200);
+          }, 3500);
         } else {
           throw new Error(resData.message || 'Falha no envio.');
         }
       } catch (err) {
         feedback.className = 'quote-feedback error';
-        feedback.innerText = 'Ops! Não foi possível enviar no momento. Por favor, tente novamente ou contate pelo WhatsApp.';
+        feedback.innerText = 'Ops! Não foi possível enviar no momento. Por favor, tente novamente ou entre em contato via WhatsApp.';
         feedback.style.display = 'block';
       } finally {
         btn.disabled = false;
-        btn.innerHTML = `<span>Solicitar Proposta</span>`;
+        btn.innerHTML = `<span>Enviar Solicitação de Proposta</span>`;
       }
     }
 
@@ -2059,7 +2519,7 @@
     }
 
     function openProductModal(prod) {
-      currentSelectedProductForQuote = prod;
+      currentSelectedProductForModal = prod;
       modalImages = prod.imagens || [];
       modalCurrentIdx = 0;
 
@@ -2085,6 +2545,7 @@
         }
       }
 
+      renderQuoteModalState();
       renderModalGallery();
       document.getElementById('productModal').classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -2345,7 +2806,6 @@
       }, 1000);
     }
 
-    // BALÕES / PILLS REFINADOS NO MODAL DE CADASTRO
     function renderCategoryPills(selectedId = '') {
       const container = document.getElementById('categoryPillsContainer');
       const hiddenInput = document.getElementById('prodCategory');
