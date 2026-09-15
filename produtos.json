@@ -111,24 +111,25 @@
       "logoMarca": "fotos/1788529608454_LogoBrother.png"
     },
     {
-      "id": "totem-stand5",
+      "id": "prod-1789479688556",
       "categoria": "totem",
-      "marca": "ISD",
-      "nome": "Kiosk 21,5",
+      "marca": "ISD Tech",
+      "nome": "Movel 24",
       "ativo": true,
       "imagens": [
-        "fotos/1789477599745_Totem-kiosk-inf.png"
+        "fotos/1789479749231_totem-movel1-inf.png"
       ],
       "specs": {
-        "Tela": "Touch 21,5' polegadas",
-        "Processador": "Core i5",
-        "Leitor": "Código de barras e QR Code",
-        "Impressora": "Térmica Integrada",
-        "Memória": "4GB de RAM",
-        "Armazenamento": "128GB SSD",
-        "Conectividade": "Bluetooth e Wi-Fi"
+        "Tela": "24' polegadas",
+        "Memória": "6 GB de RAM",
+        "Armazenamento": "128 GB",
+        "Câmera": "Sim",
+        "Rotação": "90º graus",
+        "Ajustes": "Altura e Inclinação",
+        "Sistema": "Android",
+        "Bateria": "Aproximadamente 5 horas"
       },
-      "logoMarca": "fotos/1788529024415_logoISD2.png"
+      "logoMarca": "logos/isd-tech.png"
     },
     {
       "id": "prod-1788520245805",
@@ -1124,6 +1125,26 @@
         "Conectividade": "Wi-Fi 6, Bluetooth 5.3 e opção com suporte a redes 5G"
       },
       "logoMarca": "logos/apple.png"
+    },
+    {
+      "id": "totem-stand5",
+      "categoria": "totem",
+      "marca": "ISD Tech",
+      "nome": "Kiosk 21,5",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789477599745_Totem-kiosk-inf.png"
+      ],
+      "specs": {
+        "Tela": "Touch 21,5' polegadas",
+        "Processador": "Core i5",
+        "Leitor": "Código de barras e QR Code",
+        "Impressora": "Térmica Integrada",
+        "Memória": "4GB de RAM",
+        "Armazenamento": "128GB SSD",
+        "Conectividade": "Bluetooth e Wi-Fi"
+      },
+      "logoMarca": "logos/isd-tech.png"
     }
   ],
   "marcas": [
