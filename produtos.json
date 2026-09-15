@@ -1182,6 +1182,10 @@
     {
       "name": "Apple",
       "logo": "logos/apple.png"
+    },
+    {
+      "name": "ISD Tech",
+      "logo": "logos/isd-tech.png"
     }
   ]
 }
