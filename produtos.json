@@ -54,8 +54,8 @@
       "nome": "Mono 4003",
       "ativo": true,
       "imagens": [
-        "fotos/1789399727450_40031.jpg",
-        "fotos/1789399728626_4003.jpg"
+        "fotos/1789399728626_4003.jpg",
+        "fotos/1789399727450_40031.jpg"
       ],
       "specs": {
         "Velocidade": "40ppm",
@@ -145,10 +145,10 @@
       "nome": "Multi  Mono  4103",
       "ativo": true,
       "imagens": [
+        "fotos/1789399732221_4103.jpg",
         "fotos/1788524251640_428_2.jpg",
         "fotos/1789399729778_41032.jpg",
-        "fotos/1789399730886_41031.jpg",
-        "fotos/1789399732221_4103.jpg"
+        "fotos/1789399730886_41031.jpg"
       ],
       "specs": {
         "Velocidade": "Até 40 ppm",
@@ -424,8 +424,8 @@
       "nome": "Altalink C8035/45",
       "ativo": true,
       "imagens": [
-        "fotos/1789411051134_80451.jpg",
-        "fotos/1789411052321_8045.jpg"
+        "fotos/1789411052321_8045.jpg",
+        "fotos/1789411051134_80451.jpg"
       ],
       "specs": {
         "Velocidade": "Até 35/45 ppm",
@@ -447,8 +447,8 @@
       "nome": "Maxify GX6010",
       "ativo": true,
       "imagens": [
-        "fotos/1789409807611_60002.jpg",
         "fotos/1789409808663_60001.jpg",
+        "fotos/1789409807611_60002.jpg",
         "fotos/1789409809875_6000.jpg"
       ],
       "specs": {
@@ -467,10 +467,10 @@
       "nome": "imageRUNNER 1643iF",
       "ativo": true,
       "imagens": [
+        "fotos/1789409804310_1643.jpg",
         "fotos/1789409801050_16433.jpg",
-        "fotos/1789409802130_16432.jpg",
         "fotos/1789409803224_16431.jpg",
-        "fotos/1789409804310_1643.jpg"
+        "fotos/1789409802130_16432.jpg"
       ],
       "specs": {
         "Velocidade": "Até 43 ppm",
@@ -507,8 +507,8 @@
       "nome": "EcoTank L6191",
       "ativo": true,
       "imagens": [
-        "fotos/1789412141456_61911.jpg",
-        "fotos/1789412142640_6191.jpg"
+        "fotos/1789412142640_6191.jpg",
+        "fotos/1789412141456_61911.jpg"
       ],
       "specs": {
         "Velocidade": "Até 33 (preto) e 20 ppm (cor)",
@@ -551,9 +551,9 @@
       "nome": "3710 DN",
       "ativo": true,
       "imagens": [
+        "fotos/1789416683687_3710dn.jpg",
         "fotos/1789416681700_3710dn2.jpg",
-        "fotos/1789416682771_3710dn1.jpg",
-        "fotos/1789416683687_3710dn.jpg"
+        "fotos/1789416682771_3710dn1.jpg"
       ],
       "specs": {
         "Velocidade": "Até 34 ppm",
