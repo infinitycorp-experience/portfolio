@@ -934,6 +934,70 @@
         "Gabinete": "Padrão"
       },
       "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789474142888",
+      "categoria": "desktops",
+      "marca": "Lenovo",
+      "nome": "ThinkCentre Neo 50q",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789474175809_50q.webp",
+        "fotos/1789474176722_50q1.jpg",
+        "fotos/1789474177597_50q2.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 - 13ª Gen",
+        "Memória RAM": "8 - 16 - 32 GB DDR4",
+        "Armazenamento": "SSD M.2 NVMe PCIe",
+        "Placa de Vídeo (GPU)": "Intel UHD Graphics integrada",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
+        "Gabinete": "Formato ultracompacto Tiny (chassi de aproximadamente 1L)"
+      },
+      "logoMarca": "logos/lenovo.png"
+    },
+    {
+      "id": "prod-1789473814090",
+      "categoria": "desktops",
+      "marca": "Lenovo",
+      "nome": "ThinkCentre Neo 30s",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789474174743_30s.jpg",
+        "fotos/1789474171711_30s3.jpg",
+        "fotos/1789474172602_30s2.jpg",
+        "fotos/1789474173612_30s1.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 13ª Gen",
+        "Memória RAM": "8 - 16 GB DDR5",
+        "Armazenamento": "SSD M.2 2280 PCIe Gen4 TLC Opal",
+        "Placa de Vídeo (GPU)": "Intel UHD Graphics integrada",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
+        "Gabinete": "Formato SFF (Small Form Factor)"
+      },
+      "logoMarca": "logos/lenovo.png"
+    },
+    {
+      "id": "prod-1789473611498",
+      "categoria": "desktops",
+      "marca": "Lenovo",
+      "nome": "ThinkCentre Neo 50s",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789474167617_50s.jpg",
+        "fotos/1789474168657_50s3.jpg",
+        "fotos/1789474169584_50s2.jpg",
+        "fotos/1789474170802_50s1.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 14ª Gen",
+        "Memória RAM": "16 - 32 - 64 GB DDR5",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Intel UHD Graphics integrada (710 ou 730)",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
+      },
+      "logoMarca": "logos/lenovo.png"
     }
   ],
   "marcas": [
