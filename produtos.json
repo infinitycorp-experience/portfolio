@@ -93,11 +93,19 @@
       "nome": "ADS-4700W",
       "ativo": true,
       "imagens": [
-        "fotos/1788529609660_SCANNER_BROTHER_ADS4700W.png"
+        "fotos/1789468714372_47002.jpg",
+        "fotos/1788529609660_SCANNER_BROTHER_ADS4700W.png",
+        "fotos/1789468715750_47001.jpg",
+        "fotos/1789468716705_4700.jpg"
       ],
       "specs": {
-        "Velocidade": "40 ppm / 80 ipm",
-        "ADF": "80 Folhas"
+        "Velocidade": "Até 40 ppm / 80 ipm em duplex",
+        "ADF": "Até 80 folhas",
+        "Resolução": "Óptica de até 600 x 600 dpi e interpolada de até 1200 x 1200 dpi",
+        "Painel": "Touch colorido de 4,3' com 56 atalhos personalizáveis",
+        "Conectividade": "Wi-Fi (2.4GHz), RJ45 e USB",
+        "Profundidade de Cor": "Processamento de cor de 48 bits (entrada) e 24 bits (saída)",
+        "Gramatura de Papel": "Compatível com papéis de 40 a 200 g/m²."
       },
       "logoMarca": "fotos/1788529608454_LogoBrother.png"
     },
