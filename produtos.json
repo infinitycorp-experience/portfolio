@@ -624,11 +624,11 @@
       "nome": "ECOSYS PA5500",
       "ativo": true,
       "imagens": [
-        "fotos/1789418052219_pa55001.jpg",
-        "fotos/1789418053459_pa5500.jpg"
+        "fotos/1789418053459_pa5500.jpg",
+        "fotos/1789418052219_pa55001.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 55 páginas ppm",
+        "Velocidade": "Até 55 ppm",
         "Painel": "Touch colorido de 7'",
         "Frente e verso (Duplex)": "Automática",
         "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
@@ -650,7 +650,7 @@
         "fotos/1789418051341_ma55001.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 55 páginas ppm",
+        "Velocidade": "Até 55 ppm",
         "Painel": "Touch colorido de 7'",
         "Frente e verso (Duplex)": "Automática",
         "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
@@ -666,8 +666,8 @@
       "nome": "HL-L6202DW",
       "ativo": true,
       "imagens": [
-        "fotos/1789418314795_62021.jpg",
-        "fotos/1789418315929_6202.jpg"
+        "fotos/1789418315929_6202.jpg",
+        "fotos/1789418314795_62021.jpg"
       ],
       "specs": {
         "Velocidade": "Até 48 ppm",
