@@ -173,17 +173,21 @@
       "id": "prod-1788529606080",
       "categoria": "mobile",
       "marca": "Samsung",
-      "nome": "Tablet A7 LITE",
+      "nome": "A7 Lite",
       "ativo": true,
       "imagens": [
+        "fotos/1789475269183_a7.jpg",
         "fotos/1788529611767_TABLET_SAMSUNG_T220_A7_LITE_32GB.png"
       ],
       "specs": {
-        "Tela": "8,7'",
-        "Processador": "Octa-Core",
+        "Tela": "8,7 polegadas",
+        "Resolução": "HD+ (800 x 1340)",
+        "Processador": "MediaTek Helio P22T (Octa-core de até 2,3 GHz)",
         "Câmeras": "Traseira de 8 MP e frontal de 2 MP",
         "Memória": "3 GB ou 4 GB",
-        "Armazenamento": "32 GB ou 64 GB"
+        "Armazenamento": "32 GB ou 64 GB",
+        "Bateria": "5.100 mAh",
+        "Conectividade": "Versões apenas com Wi-Fi (SM-T220) ou Wi-Fi + 4G/LTE (SM-T225), além de Bluetooth e GPS"
       },
       "logoMarca": "fotos/1788529610862_logosamsung.jpg"
     },
@@ -998,6 +1002,77 @@
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
       },
       "logoMarca": "logos/lenovo.png"
+    },
+    {
+      "id": "prod-1789474570686",
+      "categoria": "mobile",
+      "marca": "Samsung",
+      "nome": "Tab A9 Enterprise Edition",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789475267138_a9.jpg",
+        "fotos/1789475268237_a91.jpg"
+      ],
+      "specs": {
+        "Tela": "8,7 polegadas",
+        "Resolução": "WXGA+ (1340 x 800)",
+        "Processador": "Octa-Core (MediaTek Helio G99 de 2.2 GHz e 2 GHz)",
+        "Memória": "4 GB",
+        "Armazenamento": "64 GB (expansível com cartão MicroSD de até 1 TB)",
+        "Câmera Traseira": "8.0 MP com foco automático",
+        "Câmera Frontal": "2.0 MP",
+        "Conectividade": "4G LTE, Wi-Fi (2.4G+5GHz) e Bluetooth v5.3",
+        "Bateria": "5.100 mAh"
+      },
+      "logoMarca": "logos/samsung.png"
+    },
+    {
+      "id": "prod-1789474955375",
+      "categoria": "mobile",
+      "marca": "Samsung",
+      "nome": "Galaxy Tab S6 Lite",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789475270209_s6.jpg",
+        "fotos/1789475271234_s62.jpg",
+        "fotos/1789475272293_s61.jpg"
+      ],
+      "specs": {
+        "Tela": "10,4 polegadas",
+        "Resolução": "WUXGA+ (2000 x 1200)",
+        "Armazenamento": "128 GB (expansível via cartão microSD de até 1 TB)",
+        "Memória RAM": "4 GB",
+        "Câmera Traseira": "8 MP (gravação em Full HD)",
+        "Câmera Frontal": "5 MPBateria: 7.040 mAh",
+        "Conectividade": "Wi-Fi (e versões com opção 4G/LTE dependendo do ano/modelo específico)",
+        "Acessório Incluso": "Caneta S Pen"
+      },
+      "logoMarca": "logos/samsung.png"
+    },
+    {
+      "id": "prod-1789475247971",
+      "categoria": "mobile",
+      "marca": "Samsung",
+      "nome": "Galaxy Tab S9 FE",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789475273321_s9.jpg",
+        "fotos/1789475274261_s91.jpg"
+      ],
+      "specs": {
+        "Tela": "10,9 polegadas",
+        "Resolução": "WUXGA+ (2304 x 1440)",
+        "Taxa de atualização": "de até 90 Hz",
+        "Processador": "Samsung Exynos 1380 (octa-core de até 2.4 GHz)",
+        "Memória RAM": "6 GB ou 8 GB",
+        "Armazenamento interno": "128 GB ou 256 GB (expansível via cartão microSD de até 1 TB)",
+        "Câmera traseira": "8 MP",
+        "Câmera frontal": "12 MP ultra-wide (larga)",
+        "Conectividade": "Wi-Fi 6, Bluetooth e versões opcionais com 5G / celular",
+        "Resistência": "Certificação IP68 (resistência à água e poeira, aplicável também à S Pen)",
+        "Bateria": "8.000 mAh com suporte a carregamento rápido"
+      },
+      "logoMarca": "logos/samsung.png"
     }
   ],
   "marcas": [
