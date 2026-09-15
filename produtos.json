@@ -120,9 +120,10 @@
         "fotos/1789477599745_Totem-kiosk-inf.png"
       ],
       "specs": {
-        "Tela": "21,5” Touch Screen",
+        "Tela": "Touch 21,5' polegadas",
         "Processador": "Core i5",
-        "Leitor": "Código de barras e QR CodeImpressora: Integrada",
+        "Leitor": "Código de barras e QR Code",
+        "Impressora": "Térmica Integrada",
         "Memória": "4GB de RAM",
         "Armazenamento": "128GB SSD",
         "Conectividade": "Bluetooth e Wi-Fi"
