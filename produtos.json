@@ -1145,6 +1145,23 @@
         "Conectividade": "Bluetooth e Wi-Fi"
       },
       "logoMarca": "logos/isd-tech.png"
+    },
+    {
+      "id": "prod-1789480475675",
+      "categoria": "totem",
+      "marca": "ISD Tech",
+      "nome": "Tela Interativa 75",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789480490560_telainterativa.png"
+      ],
+      "specs": {
+        "Tela": "65´polegadas",
+        "Resolução": "UHD 4K",
+        "Sistema": "Windows 11",
+        "Operação": "18/7"
+      },
+      "logoMarca": "logos/isd-tech.png"
     }
   ],
   "marcas": [
