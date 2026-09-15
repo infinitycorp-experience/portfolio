@@ -1228,6 +1228,103 @@
         "Velocidade": "Até 12 polegadas por segundo (ips) a 203 dpi e 8 ips a 300 dpi"
       },
       "logoMarca": "logos/zebra.png"
+    },
+    {
+      "id": "prod-1789498108972",
+      "categoria": "thermal",
+      "marca": "ISD Tech",
+      "nome": "ISD 12",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789499182842_isd12.jpg",
+        "fotos/1789499183888_isd121.jpg"
+      ],
+      "specs": {
+        "Resolução": "203 dpi",
+        "Velocidade": "Até 160 mm/s",
+        "Método": "Térmica direta por linha (dispensa tinta ou fita)",
+        "Largura": "72 mm (largura efetiva) / bobinas de até 80 mm",
+        "Conectividade": "Interfaces USB e RJ45",
+        "Compatibilidade": "Windows, Linux, Mac, Android e iOS",
+        "Linguagens": "Compatível com CPCL, TSPL e ESC/POS",
+        "Conexão para Gaveta": "DC 24V, 1A via conector RJ-11 (6 pinos)",
+        "Cabeça de Impressão": "150 km",
+        "Vida Útil do Cortador Automático": "1.500.000 cortes"
+      },
+      "logoMarca": "logos/isd-tech.png"
+    },
+    {
+      "id": "prod-1789498237016",
+      "categoria": "thermal",
+      "marca": "ISD Tech",
+      "nome": "ISD 15",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789499184847_isd15.webp",
+        "fotos/1789499185928_isd151.jpg"
+      ],
+      "specs": {
+        "Resolução": "203 DPI",
+        "Velocidade": "152 mm/s (6 pol/s)",
+        "Método": "Térmica direta (não usa tinta ou ribbon)",
+        "Largura": "108 mm (4,25”)",
+        "Comprimento": "Até 1778 mm (70”)",
+        "Conectividade": "USB, RJ45 e Wi-Fi 2.4 GHz",
+        "Memória": "8 MB Flash e 8 MB SDRAM (expansível até 4 GB)",
+        "Emulação/Linguagens": "TSPL, EPL, ZPL e DPL",
+        "Dimensões e Peso": "215 mm x 178 mm x 149,5 mm",
+        "Cabeça de Impressão": "30 km (Vida útil estimada)"
+      },
+      "logoMarca": "logos/isd-tech.png"
+    },
+    {
+      "id": "prod-1789498369617",
+      "categoria": "thermal",
+      "marca": "ISD Tech",
+      "nome": "ISD 17",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789499187474_isd17.webp",
+        "fotos/1789499188391_isd172.jpg",
+        "fotos/1789499189329_isd171.webp"
+      ],
+      "specs": {
+        "Resolução": "203 DPI",
+        "Velocidade": "Até 152 mm/s",
+        "Método de Impressão": "Térmica Direta e Transferência Térmica (uso com ribbon)",
+        "Largura": "Até 104 mm / 108 mm",
+        "Conectividade / Interfaces": "USB, RJ45 e Wi-Fi (2.4 GHz) integrado",
+        "Memória": "8 MB Flash e 8 MB SDRAM (expansível).",
+        "Processador": "CPU de 32 bits",
+        "Linguagens de Emulação": "TSPL, EPL, ZPL, DPL",
+        "Sensores": "Sensor de folga, abertura de tampa, marca preta e sensor de ribbon"
+      },
+      "logoMarca": "logos/isd-tech.png"
+    },
+    {
+      "id": "prod-1789498562620",
+      "categoria": "thermal",
+      "marca": "ISD Tech",
+      "nome": "ISD 19",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789499190326_isd19.jpg",
+        "fotos/1789499191601_isd191.jpg"
+      ],
+      "specs": {
+        "Resolução": "300 DPI",
+        "Velocidade Máxima": "Até 152 mm/s",
+        "Método": "Transferência térmica e térmica direta",
+        "Largura": "106 mm.",
+        "Comprimento": "889 mm",
+        "Conectividade": "USB, Serial e RJ45",
+        "Memória": "128 MB Flash e 128 MB SDRAM (expansível até 4 GB via Flash)",
+        "Suporte de Ribbon": "Comprimento máximo de 600 m e largura máxima de 110 mm",
+        "Largura da Mídia (Etiquetas)": "De 20 mm a 120 mm",
+        "Emulações/Linguagens": "TSPL, EPL, ZPL, DPL",
+        "Dimensões do Equipamento": "504 mm (D) x 257 mm (L) x 297 mm"
+      },
+      "logoMarca": "logos/isd-tech.png"
     }
   ],
   "marcas": [
