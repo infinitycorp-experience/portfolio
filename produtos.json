@@ -218,24 +218,26 @@
       "logoMarca": "logos/hp.png"
     },
     {
-      "id": "prod-1789496980704",
+      "id": "prod-1789497540428",
       "categoria": "thermal",
-      "marca": "Zebra",
-      "nome": "ZD220",
+      "marca": "Dascom",
+      "nome": "DL-210",
       "ativo": true,
       "imagens": [
-        "fotos/1789497051743_zd220.webp",
-        "fotos/1789497052703_zd2201.webp",
-        "fotos/1789497053939_zd2202.jpg"
+        "fotos/1789497565364_2101.jpg",
+        "fotos/1789497566405_210.jpg"
       ],
       "specs": {
-        "Resolução": "203 dpi / 8 pontos por mm",
-        "Velocidade": "4 polegadas ou 102 mm por segundo",
-        "Impressão": "4,09 polegadas / 104 mm",
-        "Memória": "128 MB de Flash e 128 MB de SDRAM",
-        "Conectividade": "USB"
+        "Resolução": "203 dpi",
+        "Velocidade": "Até 6 polegadas por segundo (152 mm/s)",
+        "Impressão": "Até 108 mm",
+        "Suprimentos": "Suporta ribbons de até 300 ou 360 metros",
+        "Rolos de etiquetas": "Diâmetro de até 127 mm",
+        "Emulações": "ZPL II (Zebra), EPL (Eltron) e TSC",
+        "Conectividade": "USB padrão",
+        "Opcionais": "RJ45 (10/100), Wi-Fi, Bluetooth, Serial RS232, Cortador (cutter)"
       },
-      "logoMarca": "logos/zebra.png"
+      "logoMarca": "logos/dascom.png"
     },
     {
       "id": "prod-1788541591157",
@@ -1162,6 +1164,26 @@
       "logoMarca": "logos/isd-tech.png"
     },
     {
+      "id": "prod-1789496980704",
+      "categoria": "thermal",
+      "marca": "Zebra",
+      "nome": "ZD220",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789497051743_zd220.webp",
+        "fotos/1789497052703_zd2201.webp",
+        "fotos/1789497053939_zd2202.jpg"
+      ],
+      "specs": {
+        "Resolução": "203 dpi / 8 pontos por mm",
+        "Velocidade": "4 polegadas ou 102 mm por segundo",
+        "Impressão": "4,09 polegadas / 104 mm",
+        "Memória": "128 MB de Flash e 128 MB de SDRAM",
+        "Conectividade": "USB"
+      },
+      "logoMarca": "logos/zebra.png"
+    },
+    {
       "id": "prod-1788533804721",
       "categoria": "thermal",
       "marca": "Zebra",
@@ -1268,6 +1290,10 @@
     {
       "name": "ISD Tech",
       "logo": "logos/isd-tech.png"
+    },
+    {
+      "name": "Dascom",
+      "logo": "logos/dascom.png"
     }
   ]
 }
