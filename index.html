@@ -134,13 +134,13 @@
     }
     .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 20px; }
 
-    /* Barra de Ações do Hero: Busca + Filtro + Botões */
+    /* Barra de Ações do Hero: Ajustada para visual mais refinado */
     .hero-actions-container {
       max-width: 980px;
       margin: 0 auto 25px;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
       align-items: center;
     }
@@ -150,16 +150,17 @@
       min-width: 320px;
       display: flex;
       gap: 8px;
-      padding: 5px;
+      padding: 4px;
       background: #FFFFFF;
       border: 1px solid rgba(226, 232, 240, 0.9);
-      border-radius: 14px;
-      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
       transition: all 0.3s ease;
+      height: 42px;
     }
     .search-filter-wrapper:focus-within {
       border-color: var(--primary);
-      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.12);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.12);
     }
 
     .search-box-inner {
@@ -167,14 +168,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 0 12px;
+      padding: 0 10px;
     }
-    .search-box-inner .icon-svg { color: var(--primary); flex-shrink: 0; }
+    .search-box-inner .icon-svg { color: var(--primary); flex-shrink: 0; width: 16px; height: 16px; }
     .search-input-field {
       width: 100%;
       border: none;
       outline: none;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: var(--text-main);
       background: transparent;
@@ -186,11 +187,11 @@
       border: none;
       color: #94A3B8;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 4px;
+      padding: 2px;
     }
     .btn-clear-search:hover { color: var(--danger); }
 
@@ -199,59 +200,60 @@
       align-items: center;
       background: #F8FAFC;
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 0 10px;
-      min-width: 160px;
+      border-radius: 8px;
+      padding: 0 8px;
+      min-width: 145px;
     }
     .brand-filter-box:hover { border-color: var(--primary); background: #FFFFFF; }
-    .brand-filter-box .icon-svg { color: var(--text-muted); margin-right: 6px; }
+    .brand-filter-box .icon-svg { color: var(--text-muted); margin-right: 4px; width: 14px; height: 14px; }
     .brand-filter-select {
       border: none;
       outline: none;
       background: transparent;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--text-main);
       width: 100%;
       cursor: pointer;
-      padding: 8px 0;
+      padding: 6px 0;
     }
 
+    /* Botões do topo mais discretos e harmoniosos */
     .btn-export-trigger,
     .btn-quote-trigger {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      height: 48px;
-      padding: 0 18px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      font-weight: 800;
+      gap: 6px;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
       border: none;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
       white-space: nowrap;
     }
     .btn-export-trigger {
       background: #0F172A;
       color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
     }
-    .btn-export-trigger:hover { background: #1E293B; transform: translateY(-2px); }
+    .btn-export-trigger:hover { background: #1E293B; transform: translateY(-1px); }
 
     .btn-quote-trigger {
       background: var(--primary);
       color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.2);
     }
-    .btn-quote-trigger:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .btn-quote-trigger:hover { background: var(--primary-hover); transform: translateY(-1px); }
     .quote-badge-counter {
       background: #FFFFFF;
       color: var(--primary);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 900;
-      padding: 2px 8px;
-      border-radius: 12px;
+      padding: 2px 7px;
+      border-radius: 10px;
       margin-left: 2px;
       transition: transform 0.2s ease;
     }
@@ -373,20 +375,20 @@
     .spec-row span { color: var(--text-muted); font-weight: 500; }
     .spec-row strong { color: var(--text-main); font-weight: 700; }
 
-    /* NOVO: Barra de Ações Discreta no Rodapé do Card (Alinhada da Esquerda) */
+    /* Barra de Ações: ALINHADA DA DIREITA PARA ESQUERDA */
     .card-actions-bar {
       margin-top: 12px;
       padding-top: 10px;
       border-top: 1px solid #F1F5F9;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: flex-end;
       gap: 8px;
     }
     .btn-card-view-eye {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
       border: 1px solid var(--card-border);
       background: #F8FAFC;
       color: var(--text-muted);
@@ -403,18 +405,18 @@
       border-color: #0F172A;
     }
     .btn-card-cart-toggle {
-      height: 34px;
-      padding: 0 14px;
-      border-radius: 8px;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 7px;
       border: 1px solid var(--primary);
       background: #F0F9FF;
       color: var(--primary);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       transition: all 0.2s;
     }
     .btn-card-cart-toggle:hover {
@@ -605,28 +607,31 @@
     .modal-details span { color: var(--text-muted); font-weight: 500; }
     .modal-details strong { color: var(--text-main); }
 
+    /* Botão interno do modal de detalhes padronizado e discreto */
     .modal-zoom-actions {
-      margin-top: 24px;
-      padding-top: 18px;
+      margin-top: 20px;
+      padding-top: 16px;
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: flex-end;
     }
-    .btn-cotar-item {
-      background: var(--primary);
-      color: #FFFFFF;
-      border: none;
-      padding: 11px 22px;
-      border-radius: 10px;
+    .btn-zoom-cart-toggle {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 8px;
+      border: 1px solid var(--primary);
+      background: #F0F9FF;
+      color: var(--primary);
+      font-size: 0.8rem;
       font-weight: 800;
-      font-size: 0.9rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       transition: all 0.2s;
     }
-    .btn-cotar-item:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .btn-zoom-cart-toggle:hover { background: var(--primary); color: #FFFFFF; }
+    .btn-zoom-cart-toggle.active { background: #10B981; border-color: #10B981; color: #FFFFFF; }
 
     /* Formulários Gerais */
     .form-row {
@@ -658,7 +663,7 @@
       background: var(--primary);
       color: white;
       border: none;
-      padding: 11px 22px;
+      padding: 10px 20px;
       border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
@@ -669,13 +674,13 @@
       background: #E2E8F0;
       color: var(--text-main);
       border: none;
-      padding: 11px 20px;
+      padding: 10px 18px;
       border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
     }
 
-    /* ETAPA 1: MODAL DE SELEÇÃO AMPLO E ESPAÇOSO */
+    /* ETAPA 1: MODAL DE SELEÇÃO AMPLO */
     .quote-selection-modal-box {
       max-width: 900px;
       padding: 28px;
@@ -721,7 +726,6 @@
       display: none;
     }
 
-    /* Resumo dos Itens Selecionados */
     .quote-selected-summary {
       background: #F0F9FF;
       border: 1px solid #BAE6FD;
@@ -781,7 +785,6 @@
       line-height: 1;
     }
 
-    /* Acordeão Amplo e sem ficar apertado */
     .quote-categories-accordion {
       min-height: 280px;
       max-height: 420px;
@@ -888,10 +891,12 @@
       border-radius: 4px;
       margin-right: 6px;
     }
+
+    /* CONTROLE DE QUANTIDADE COM CAMPO DIGITÁVEL */
     .quote-item-qty-control {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       flex-shrink: 0;
     }
     .quote-qty-btn {
@@ -902,39 +907,41 @@
       background: #F8FAFC;
       cursor: pointer;
       font-weight: 800;
-      font-size: 12px;
+      font-size: 13px;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--text-main);
     }
     .quote-qty-btn:hover { background: #0F172A; color: white; }
-    .quote-qty-display {
-      font-size: 0.78rem;
-      font-weight: 800;
-      min-width: 20px;
+    .quote-qty-input {
+      width: 44px;
+      height: 24px;
       text-align: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      background: #FFFFFF;
+      outline: none;
+      -moz-appearance: textfield;
+    }
+    .quote-qty-input::-webkit-outer-spin-button,
+    .quote-qty-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .quote-qty-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(2,132,199,0.15);
     }
 
-    /* ETAPA 2: SUBMODAL DE CONTATO EXCLUSIVO */
+    /* ETAPA 2: SUBMODAL CLEAN COM DADOS DE CONTATO */
     .lead-modal-box {
-      max-width: 540px;
-      padding: 30px;
-      border-radius: 22px;
-    }
-    .lead-summary-box {
-      background: #F8FAFC;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 18px;
-      font-size: 0.8rem;
-    }
-    .lead-summary-title {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+      max-width: 500px;
+      padding: 28px;
+      border-radius: 20px;
     }
     .quote-feedback {
       padding: 12px;
@@ -1203,7 +1210,7 @@
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
 
-    <!-- Barra de Busca + Filtro + Botões de Ação -->
+    <!-- Barra de Busca + Filtro + Botões de Ação Harmonizados -->
     <div class="hero-actions-container">
       <div class="search-filter-wrapper">
         <div class="search-box-inner">
@@ -1220,7 +1227,7 @@
         </div>
       </div>
 
-      <!-- Botão Solicitar Cotação com Contador Dinâmico -->
+      <!-- Botão Solicitar Cotação -->
       <button type="button" class="btn-quote-trigger" onclick="abrirModalSelecaoCotacao()" title="Solicitar Cotação dos equipamentos selecionados">
         <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
         <span>Solicitar Cotação</span>
@@ -1295,11 +1302,10 @@
         <h3 class="modal-title" id="modalTitle">Título do Modelo</h3>
         <ul class="modal-details" id="modalSpecsList"></ul>
 
-        <!-- Botão de Ação rápida no modal de zoom -->
+        <!-- Botão interno agora idêntico ao do card: discreto e elegante -->
         <div class="modal-zoom-actions">
-          <button type="button" class="btn-cotar-item" id="btnZoomModalAddToCart" onclick="toggleCartFromModal()">
-            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            <span>+ Adicionar à Cotação</span>
+          <button type="button" class="btn-zoom-cart-toggle" id="btnZoomModalAddToCart" onclick="toggleCartFromModal()">
+            + Cotar
           </button>
         </div>
       </div>
@@ -1351,21 +1357,15 @@
     </div>
   </div>
 
-  <!-- ETAPA 2: SUBMODAL COM OS DADOS DE CONTATO DO CLIENTE -->
+  <!-- ETAPA 2: SUBMODAL COM OS DADOS DE CONTATO DO CLIENTE (CLEAN) -->
   <div class="modal-overlay" id="leadContactModal">
     <div class="modal-box lead-modal-box">
-      <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px;">
         <div>
           <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main);">Finalizar Solicitação</h3>
-          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Informe seus dados para envio da proposta personalizada.</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Preencha seus dados para envio da proposta comercial.</p>
         </div>
         <button type="button" class="modal-close-btn" style="position: static; width: 34px; height: 34px;" onclick="fecharSubmodalLead()">✕</button>
-      </div>
-
-      <!-- Resumo rápido dos itens que estão indo na proposta -->
-      <div class="lead-summary-box">
-        <div class="lead-summary-title">Equipamentos inclusos nesta proposta:</div>
-        <div id="leadSelectedListPreview" style="font-weight: 700; color: var(--primary);"></div>
       </div>
 
       <form id="formCotacaoWeb3" onsubmit="enviarCotacaoWeb3Forms(event)">
@@ -1392,12 +1392,12 @@
 
         <div class="form-group" style="margin-bottom: 12px;">
           <label for="quoteMensagem">Informações Adicionais (Volume de páginas, prazo, endereço de entrega):</label>
-          <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="2" placeholder="Ex: Franquia de 10.000 páginas/mês para escritório em SP..."></textarea>
+          <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="3" placeholder="Ex: Franquia de 10.000 páginas/mês para escritório em SP..."></textarea>
         </div>
 
         <div id="quoteFeedbackBox" class="quote-feedback"></div>
 
-        <div class="form-actions" style="margin-top: 18px;">
+        <div class="form-actions" style="margin-top: 20px;">
           <button type="button" class="btn-cancel" onclick="voltarParaSelecaoModal()">← Voltar aos Itens</button>
           <button type="submit" id="btnSubmitCotacao" class="btn-submit" style="display: inline-flex; align-items: center; gap: 8px;">
             <span>Enviar Solicitação de Cotação</span>
@@ -2024,7 +2024,7 @@
             <div class="prod-name">${prod.nome}</div>
             <div class="specs-list">${specsHtml}</div>
 
-            <!-- NOVA BARRA DISCRETA NO CANTO ESQUERDO DO CARD -->
+            <!-- BARRA DE AÇÕES ALINHADA DA DIREITA PARA ESQUERDA -->
             <div class="card-actions-bar" onclick="event.stopPropagation()">
               <button type="button" class="btn-card-view-eye" title="Visualizar Detalhes" onclick="openProductModalDirect('${prod.id}')">
                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -2078,6 +2078,16 @@
       if (!carrinhoCotacao.has(prodId)) return;
       const item = carrinhoCotacao.get(prodId);
       item.qtd = Math.max(1, item.qtd + delta);
+      carrinhoCotacao.set(prodId, item);
+      renderQuoteModalState();
+    }
+
+    function definirQtdDigitadaCarrinho(prodId, val) {
+      if (!carrinhoCotacao.has(prodId)) return;
+      let qtd = parseInt(val, 10);
+      if (isNaN(qtd) || qtd < 1) qtd = 1;
+      const item = carrinhoCotacao.get(prodId);
+      item.qtd = qtd;
       carrinhoCotacao.set(prodId, item);
       renderQuoteModalState();
     }
@@ -2191,9 +2201,10 @@
               </div>
             </label>
 
-            <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};">
+            <!-- QUANTIDADE COM BOTÕES E INPUT DIGITÁVEL -->
+            <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
               <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
-              <span class="quote-qty-display">${currentQty}</span>
+              <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)" onkeyup="if(event.key==='Enter') definirQtdDigitadaCarrinho('${prod.id}', this.value)">
               <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', 1)">+</button>
             </div>
           `;
@@ -2230,14 +2241,14 @@
       document.querySelectorAll('.quote-item-row').forEach(row => {
         const checkbox = row.querySelector('.quote-item-checkbox');
         const qtyControl = row.querySelector('.quote-item-qty-control');
-        const qtyDisplay = row.querySelector('.quote-qty-display');
+        const qtyInput = row.querySelector('.quote-qty-input');
 
         if (checkbox) {
           const prodId = checkbox.getAttribute('onchange')?.match(/'([^']+)'/)?.[1];
           if (prodId && carrinhoCotacao.has(prodId)) {
             checkbox.checked = true;
             if (qtyControl) qtyControl.style.display = 'flex';
-            if (qtyDisplay) qtyDisplay.textContent = carrinhoCotacao.get(prodId).qtd;
+            if (qtyInput) qtyInput.value = carrinhoCotacao.get(prodId).qtd;
           } else {
             checkbox.checked = false;
             if (qtyControl) qtyControl.style.display = 'none';
@@ -2245,19 +2256,18 @@
         }
       });
 
+      // Atualiza o botão do modal de detalhes se estiver aberto
       if (currentSelectedProductForModal) {
         const btnZoom = document.getElementById('btnZoomModalAddToCart');
         if (btnZoom) {
           const isSelected = carrinhoCotacao.has(currentSelectedProductForModal.id);
-          btnZoom.innerHTML = isSelected 
-            ? `<svg class="icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>✓ Remover da Cotação</span>` 
-            : `<svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> <span>+ Adicionar à Cotação</span>`;
-          btnZoom.style.background = isSelected ? '#10B981' : 'var(--primary)';
+          btnZoom.textContent = isSelected ? '✓ Na Cotação' : '+ Cotar';
+          btnZoom.className = `btn-zoom-cart-toggle ${isSelected ? 'active' : ''}`;
         }
       }
     }
 
-    /* ETAPA 2: SUBMODAL DE CONTATO DO LEAD */
+    /* ETAPA 2: SUBMODAL DE CONTATO DO LEAD (CLEAN) */
     function avancarParaDadosLead() {
       if (carrinhoCotacao.size === 0) {
         alert('Por favor, selecione ao menos 1 equipamento antes de prosseguir.');
@@ -2265,12 +2275,6 @@
       }
 
       fecharModalSelecaoCotacao();
-
-      // Monta preview dos itens escolhidos no topo do formulário
-      const preview = document.getElementById('leadSelectedListPreview');
-      const itensResumo = Array.from(carrinhoCotacao.values()).map(it => `${it.marca} ${it.nome} (${it.qtd}x)`).join(', ');
-      preview.textContent = itensResumo;
-
       document.getElementById('quoteFeedbackBox').style.display = 'none';
       document.getElementById('leadContactModal').classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -2990,7 +2994,7 @@
       });
 
       let logoFinal = editCurrentBrandLogo;
-      if (logoInput.files && logoInput.files[0]) {
+      if (logoInput.files && logoInput.files.length > 0) {
         const logoFile = logoInput.files[0];
         const previewLogoUrl = await fileToDataUrl(logoFile);
         logoFinal = previewLogoUrl;
