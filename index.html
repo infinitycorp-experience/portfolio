@@ -75,7 +75,17 @@
       gap: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
-    .brand-logo { display: flex; align-items: center; }
+    .brand-logo { 
+      display: flex; 
+      align-items: center; 
+      text-decoration: none; 
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+    .brand-logo:hover { 
+      transform: scale(1.02);
+      opacity: 0.9;
+    }
     .brand-logo img { height: 58px; width: auto; object-fit: contain; }
 
     .nav-menu {
@@ -127,9 +137,9 @@
     }
     .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 20px; }
 
-    /* Container de Ações: Busca + Filtro + Botão Exportar */
+    /* Container de Ações: Busca + Filtro + Botões */
     .hero-actions-container {
-      max-width: 880px;
+      max-width: 980px;
       margin: 0 auto 25px;
       display: flex;
       flex-wrap: wrap;
@@ -210,8 +220,9 @@
       padding: 8px 0;
     }
 
-    /* Botão de Exportar / Imprimir */
-    .btn-export-trigger {
+    /* Botões de Ação do Hero */
+    .btn-export-trigger,
+    .btn-quote-trigger {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -220,18 +231,32 @@
       border-radius: 12px;
       font-size: 0.85rem;
       font-weight: 800;
-      background: #0F172A;
-      color: #FFFFFF;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
       transition: all 0.25s ease;
       white-space: nowrap;
     }
+
+    .btn-export-trigger {
+      background: #0F172A;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+    }
     .btn-export-trigger:hover {
-      background: var(--primary);
+      background: #1E293B;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+    }
+
+    .btn-quote-trigger {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+    }
+    .btn-quote-trigger:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
     }
 
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
@@ -496,6 +521,7 @@
       align-items: center;
       justify-content: center;
       z-index: 20;
+      transition: background 0.2s, color 0.2s;
     }
     .modal-close-btn:hover { background: var(--danger); color: white; }
 
@@ -527,6 +553,30 @@
     .modal-details span { color: var(--text-muted); font-weight: 500; }
     .modal-details strong { color: var(--text-main); }
 
+    /* Botão de Ação rápida no modal de zoom */
+    .modal-zoom-actions {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: flex-end;
+    }
+    .btn-cotar-item {
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-cotar-item:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
     /* Formulários e Grid Lado a Lado */
     .form-row {
       display: grid;
@@ -549,6 +599,7 @@
       font-size: 0.9rem;
       outline: none;
       background: #FFFFFF;
+      transition: border-color 0.2s;
     }
     .form-control:focus { border-color: var(--primary); }
     .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
@@ -560,6 +611,7 @@
       border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
+      transition: background 0.2s;
     }
     .btn-submit:hover { background: var(--primary-hover); }
     .btn-cancel {
@@ -570,9 +622,11 @@
       border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
+      transition: background 0.2s;
     }
+    .btn-cancel:hover { background: #CBD5E1; }
 
-    /* BALÕES / PILLS REFINADOS: MENORES, MAIS ELEGANTES E DISCRETOS */
+    /* BALÕES / PILLS REFINADOS */
     .category-pills-container {
       display: flex;
       flex-wrap: wrap;
@@ -583,9 +637,9 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 5px 10px; /* Mais compacto */
+      padding: 5px 10px;
       border-radius: 8px;
-      font-size: 0.74rem; /* Proporção ideal */
+      font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -594,10 +648,7 @@
       background: #F1F5F9;
       color: #475569;
     }
-    .cat-pill-btn .icon-svg {
-      width: 14px;
-      height: 14px;
-    }
+    .cat-pill-btn .icon-svg { width: 14px; height: 14px; }
     .cat-pill-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
@@ -610,6 +661,48 @@
       outline: 2px solid currentColor;
       outline-offset: 1px;
     }
+
+    /* Tags / Chips do Modal de Cotação */
+    .quote-pills-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .quote-pill {
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+      color: #475569;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+      font-weight: 600;
+    }
+    .quote-pill:hover {
+      background: #F1F5F9;
+      border-color: #94A3B8;
+    }
+    .quote-pill.selected {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    /* Mensagem de Feedback do Web3Forms */
+    .quote-feedback {
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 14px;
+      text-align: center;
+      display: none;
+    }
+    .quote-feedback.success { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+    .quote-feedback.error { background: #FEE2E2; color: #991B1B; border: 1px solid #FECDD3; }
 
     /* Bloco Redesenhado e Fixo do Logotipo do Fabricante */
     .brand-logo-control-box {
@@ -928,9 +1021,9 @@
 
   <!-- Topbar -->
   <header class="top-navbar">
-    <div class="brand-logo">
+    <a href="https://infinitycorp.com.br" target="_blank" rel="noopener noreferrer" class="brand-logo" title="Acessar infinitycorp.com.br">
       <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
-    </div>
+    </a>
     <nav class="nav-menu" id="dynamicNavMenu"></nav>
   </header>
 
@@ -939,7 +1032,7 @@
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
 
-    <!-- Barra de Busca + Filtro + Botão de Exportar / PDF -->
+    <!-- Barra de Busca + Filtro + Botões de Ação -->
     <div class="hero-actions-container">
       <div class="search-filter-wrapper">
         <div class="search-box-inner">
@@ -955,6 +1048,12 @@
           </select>
         </div>
       </div>
+
+      <!-- Botão Solicitar Cotação Web3Forms -->
+      <button type="button" class="btn-quote-trigger" onclick="abrirModalCotacao()" title="Solicitar Cotação / Proposta Comercial">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span>Solicitar Cotação</span>
+      </button>
 
       <!-- Botão Exportar Catálogo / PDF -->
       <button type="button" class="btn-export-trigger" onclick="openExportModal()" title="Exportar catálogo selecionado em PDF ou imprimir">
@@ -1025,7 +1124,92 @@
         </div>
         <h3 class="modal-title" id="modalTitle">Título do Modelo</h3>
         <ul class="modal-details" id="modalSpecsList"></ul>
+
+        <!-- Botão de Ação: Cotar Este Modelo Direto -->
+        <div class="modal-zoom-actions">
+          <button type="button" class="btn-cotar-item" id="btnCotarItemModal" onclick="cotarEquipamentoAtual()">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Solicitar Proposta deste Equipamento
+          </button>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE COTAÇÃO / PROPOSTA COMERCIAL (Web3Forms) -->
+  <div class="modal-overlay" id="quoteModal">
+    <div class="modal-box" style="max-width: 620px; padding: 28px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px;">
+        <div>
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Solicitar Cotação / Proposta</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Envie sua necessidade e nosso time comercial responderá prontamente.</p>
+        </div>
+        <button type="button" class="modal-close-btn" style="position: static; width: 34px; height: 34px;" onclick="fecharModalCotacao()">✕</button>
+      </div>
+
+      <form id="formCotacaoWeb3" onsubmit="enviarCotacaoWeb3Forms(event)" style="margin-top: 12px;">
+        <!-- Pills Categoria -->
+        <div class="form-group">
+          <label>Categoria de Interesse:</label>
+          <div class="quote-pills-wrapper" id="quoteGroupCategoria">
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Multifuncional P&B</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Multifuncional Color</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Impressora Térmica</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Scanner de Rede</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Computador / Notebook</span>
+          </div>
+        </div>
+
+        <!-- Pills Marca -->
+        <div class="form-group">
+          <label>Marca de Preferência:</label>
+          <div class="quote-pills-wrapper" id="quoteGroupMarca">
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Ricoh</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Kyocera</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Brother</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">HP</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Epson</span>
+            <span class="quote-pill" onclick="toggleQuotePill(this)">Sem Preferência</span>
+          </div>
+        </div>
+
+        <!-- Campos de Contato -->
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="quoteNome">Seu Nome *</label>
+            <input type="text" id="quoteNome" name="name" class="form-control" required placeholder="Nome completo">
+          </div>
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="quoteEmpresa">Nome da Empresa</label>
+            <input type="text" id="quoteEmpresa" name="empresa" class="form-control" placeholder="Empresa solicitante">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="quoteEmail">E-mail Corporativo *</label>
+            <input type="email" id="quoteEmail" name="email" class="form-control" required placeholder="seu@empresa.com.br">
+          </div>
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="quoteTelefone">WhatsApp / Telefone *</label>
+            <input type="tel" id="quoteTelefone" name="telefone" class="form-control" required placeholder="(11) 99999-9999">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label for="quoteMensagem">Detalhes da Necessidade (Volume mensal estimado, cidades, modelos, etc.):</label>
+          <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="3" placeholder="Ex: Precisamos de 2 multifuncionais para faturamento com franquia de 10.000 páginas..."></textarea>
+        </div>
+
+        <div id="quoteFeedbackBox" class="quote-feedback"></div>
+
+        <div class="form-actions" style="margin-top: 18px;">
+          <button type="button" class="btn-cancel" onclick="fecharModalCotacao()">Cancelar</button>
+          <button type="submit" id="btnSubmitCotacao" class="btn-submit" style="display: inline-flex; align-items: center; gap: 8px;">
+            <span>Solicitar Proposta</span>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -1269,7 +1453,9 @@
   <!-- Rodapé -->
   <footer>
     <div class="brand-logo" style="justify-content: center; margin-bottom: 12px;">
-      <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
+      <a href="https://infinitycorp.com.br" target="_blank" rel="noopener noreferrer" title="Visitar site Infinity Corp">
+        <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
+      </a>
     </div>
     <p>Facilitando o dia a dia com soluções ágeis de infraestrutura de TI.</p>
     <div class="footer-links">
@@ -1285,6 +1471,7 @@
     const JSON_PATH     = 'produtos.json';
     const GITHUB_BRANCH = 'main';
     const SENHA_MESTRE  = 'InfinityCorp2026';
+    const WEB3FORMS_KEY = 'e8f03456-563e-4a72-9e74-208b73929ba8';
 
     const DEFAULT_PRESET_LOGOS = [
       { name: 'Avell', logo: 'logos/avell.png' },
@@ -1345,6 +1532,7 @@
 
     let modalImages = [];
     let modalCurrentIdx = 0;
+    let currentSelectedProductForQuote = null;
     
     let formActivePhotos = [];
     let editCurrentBrandLogo = '';
@@ -1656,6 +1844,109 @@
       });
     }
 
+    /* GESTÃO DO MODAL DE COTAÇÃO WEB3FORMS */
+    function abrirModalCotacao(prefillInfo = '') {
+      const modal = document.getElementById('quoteModal');
+      const feedback = document.getElementById('quoteFeedbackBox');
+      feedback.style.display = 'none';
+
+      if (prefillInfo) {
+        document.getElementById('quoteMensagem').value = `Olá! Gostaria de uma cotação/proposta comercial referente ao equipamento: ${prefillInfo}.\n`;
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharModalCotacao() {
+      const modal = document.getElementById('quoteModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      document.getElementById('formCotacaoWeb3').reset();
+      document.querySelectorAll('.quote-pill.selected').forEach(el => el.classList.remove('selected'));
+      document.getElementById('quoteFeedbackBox').style.display = 'none';
+    }
+
+    function toggleQuotePill(el) {
+      el.classList.toggle('selected');
+    }
+
+    function cotarEquipamentoAtual() {
+      if (!currentSelectedProductForQuote) return;
+      const nomeEquipamento = `${currentSelectedProductForQuote.marca} - ${currentSelectedProductForQuote.nome}`;
+      closeModal();
+      abrirModalCotacao(nomeEquipamento);
+    }
+
+    async function enviarCotacaoWeb3Forms(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmitCotacao');
+      const feedback = document.getElementById('quoteFeedbackBox');
+
+      const categorias = Array.from(document.querySelectorAll('#quoteGroupCategoria .quote-pill.selected'))
+                              .map(p => p.textContent.trim()).join(', ') || 'Geral / Não especificado';
+
+      const marcas = Array.from(document.querySelectorAll('#quoteGroupMarca .quote-pill.selected'))
+                          .map(p => p.textContent.trim()).join(', ') || 'Sem preferência';
+
+      const nome = document.getElementById('quoteNome').value.trim();
+      const empresa = document.getElementById('quoteEmpresa').value.trim();
+      const email = document.getElementById('quoteEmail').value.trim();
+      const telefone = document.getElementById('quoteTelefone').value.trim();
+      const mensagem = document.getElementById('quoteMensagem').value.trim();
+
+      const payload = {
+        access_key: WEB3FORMS_KEY,
+        subject: `Nova Solicitação de Cotação - ${empresa ? empresa + ' (' + nome + ')' : nome}`,
+        from_name: 'Infinity Corp - Portfólio 2026',
+        nome_contato: nome,
+        empresa: empresa || 'Não informada',
+        email: email,
+        telefone: telefone,
+        categorias_interesse: categorias,
+        marcas_preferencia: marcas,
+        detalhes: mensagem
+      };
+
+      btn.disabled = true;
+      btn.innerHTML = `<span>Enviando proposta...</span>`;
+      feedback.style.display = 'none';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const resData = await response.json();
+
+        if (resData.success) {
+          feedback.className = 'quote-feedback success';
+          feedback.innerText = '✓ Solicitação enviada com sucesso! Em instantes nosso time comercial entrará em contato.';
+          feedback.style.display = 'block';
+          document.getElementById('formCotacaoWeb3').reset();
+          document.querySelectorAll('.quote-pill.selected').forEach(el => el.classList.remove('selected'));
+
+          setTimeout(() => {
+            fecharModalCotacao();
+          }, 3200);
+        } else {
+          throw new Error(resData.message || 'Falha no envio.');
+        }
+      } catch (err) {
+        feedback.className = 'quote-feedback error';
+        feedback.innerText = 'Ops! Não foi possível enviar no momento. Por favor, tente novamente ou contate pelo WhatsApp.';
+        feedback.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Solicitar Proposta</span>`;
+      }
+    }
+
     /* SISTEMA DE EXPORTAÇÃO / IMPRESSÃO EM PDF */
     function openExportModal() {
       const container = document.getElementById('exportCategoriesList');
@@ -1694,7 +1985,6 @@
         return;
       }
 
-      // Ocultar seções que não foram marcadas
       const allSections = document.querySelectorAll('.catalog-section');
       allSections.forEach(sec => {
         if (!selectedCatIds.includes(sec.dataset.catId)) {
@@ -1706,10 +1996,8 @@
 
       closeExportModal();
 
-      // Dispara a caixa de impressão/PDF do navegador
       setTimeout(() => {
         window.print();
-        // Restaura exibição na tela após fechar a caixa de impressão
         allSections.forEach(sec => sec.style.removeProperty('display'));
       }, 350);
     }
@@ -1771,6 +2059,7 @@
     }
 
     function openProductModal(prod) {
+      currentSelectedProductForQuote = prod;
       modalImages = prod.imagens || [];
       modalCurrentIdx = 0;
 
