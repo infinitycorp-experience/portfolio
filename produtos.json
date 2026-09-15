@@ -761,12 +761,12 @@
       "id": "prod-1789470709050",
       "categoria": "monitor",
       "marca": "Dell",
-      "nome": "Pro P2425",
+      "nome": "Pro P2425H",
       "ativo": true,
       "imagens": [
-        "fotos/1789470720244_24251.jpg",
+        "fotos/1789470722255_2425.jpg",
         "fotos/1789470721412_24252.jpg",
-        "fotos/1789470722255_2425.jpg"
+        "fotos/1789470720244_24251.jpg"
       ],
       "specs": {
         "Tela": "24 polegadas",
@@ -779,6 +779,52 @@
         "Conforto Visual": "Tela antirreflexo e certificação TÜV"
       },
       "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789471087004",
+      "categoria": "monitor",
+      "marca": "Dell",
+      "nome": "Pro P2725H Plus",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789471393426_2725.jpg",
+        "fotos/1789471394488_27251.jpg",
+        "fotos/1789471395645_27252.jpg"
+      ],
+      "specs": {
+        "Tela": "27 polegadas",
+        "Resolução": "Full HD (1920 x 1080)",
+        "Painel": "Tecnologia IPS (In-Plane Switching), antirreflexo com dureza 3H",
+        "Taxa de Atualização": "Até 100 Hz",
+        "Tempo de Resposta": "5 ms (modo rápido)",
+        "Brilho": "300 nits",
+        "Contraste": "1500:1.Cobertura de Cores: 99% sRGB",
+        "Proteção Ocular": "Tecnologia ComfortView Plus"
+      },
+      "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789471382008",
+      "categoria": "monitor",
+      "marca": "Samsung",
+      "nome": "GAMER ESSENTIAL S3",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789471396724_s31.jpg",
+        "fotos/1789471397780_s32.png",
+        "fotos/1789471398624_s33.jpg"
+      ],
+      "specs": {
+        "Tela": "27 polegadas (plana)",
+        "Resolução": "Full HD (1920 x 1080)",
+        "Painel": "IPS (ângulo de visão de 178°/178°)",
+        "Taxa de atualização": "Até 100 Hz ou 120 Hz",
+        "Tempo de resposta": "5ms (GTG)",
+        "Brilho": "250 cd/m²",
+        "Contraste": "1000",
+        "Proporção de tela": "16:9"
+      },
+      "logoMarca": "logos/samsung.png"
     }
   ],
   "marcas": [
