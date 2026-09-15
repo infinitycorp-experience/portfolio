@@ -285,7 +285,7 @@
       ],
       "specs": {
         "Processador": "Intel Core  i5 / i7- 11ª / 12ª Gen",
-        "Memória RAM": "8 GB  - 16 GB - 32 GB",
+        "Memória RAM": "8 - 16 - 32 GB DDR4",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
@@ -872,6 +872,26 @@
         "Proporção de tela": "16:9"
       },
       "logoMarca": "logos/samsung.png"
+    },
+    {
+      "id": "prod-1789472512754",
+      "categoria": "desktops",
+      "marca": "Dell",
+      "nome": "Pro Micro",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789472549905_micro.webp",
+        "fotos/1789472551352_micro2.webp",
+        "fotos/1789472552489_micro1.webp"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 14ª Gen",
+        "Memória RAM": "8 - 16 - 32 GB DDR5",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
+      },
+      "logoMarca": "logos/dell.png"
     }
   ],
   "marcas": [
