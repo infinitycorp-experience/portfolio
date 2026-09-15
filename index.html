@@ -112,12 +112,12 @@
       filter: brightness(0.96);
     }
 
-    /* Hero Section */
+    /* Hero Section Clean */
     .hero {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 45px 20px 15px;
+      padding: 45px 20px 20px;
       background: radial-gradient(circle at center top, rgba(2, 132, 199, 0.08) 0%, transparent 70%);
     }
     .hero h1 { 
@@ -132,35 +132,33 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 20px; }
+    .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 24px; }
 
-    /* Barra de Ações do Hero: Ajustada para visual mais refinado */
+    /* Barra de Busca + Filtro Centralizada e Leve */
     .hero-actions-container {
-      max-width: 980px;
-      margin: 0 auto 25px;
+      max-width: 760px;
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
 
     .search-filter-wrapper {
       flex: 1;
-      min-width: 320px;
       display: flex;
       gap: 8px;
       padding: 4px;
       background: #FFFFFF;
       border: 1px solid rgba(226, 232, 240, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
       transition: all 0.3s ease;
-      height: 42px;
+      height: 46px;
     }
     .search-filter-wrapper:focus-within {
       border-color: var(--primary);
-      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.12);
+      box-shadow: 0 6px 22px rgba(2, 132, 199, 0.12);
     }
 
     .search-box-inner {
@@ -168,14 +166,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 0 10px;
+      padding: 0 12px;
     }
-    .search-box-inner .icon-svg { color: var(--primary); flex-shrink: 0; width: 16px; height: 16px; }
+    .search-box-inner .icon-svg { color: var(--primary); flex-shrink: 0; width: 18px; height: 18px; }
     .search-input-field {
       width: 100%;
       border: none;
       outline: none;
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--text-main);
       background: transparent;
@@ -187,7 +185,7 @@
       border: none;
       color: #94A3B8;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 14px;
       display: none;
       align-items: center;
       justify-content: center;
@@ -200,9 +198,9 @@
       align-items: center;
       background: #F8FAFC;
       border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 0 8px;
-      min-width: 145px;
+      border-radius: 10px;
+      padding: 0 10px;
+      min-width: 155px;
     }
     .brand-filter-box:hover { border-color: var(--primary); background: #FFFFFF; }
     .brand-filter-box .icon-svg { color: var(--text-muted); margin-right: 4px; width: 14px; height: 14px; }
@@ -218,47 +216,164 @@
       padding: 6px 0;
     }
 
-    /* Botões do topo mais discretos e harmoniosos */
-    .btn-export-trigger,
-    .btn-quote-trigger {
+    /* Botão Exportar / Imprimir Discreto e Sofisticado */
+    .btn-export-discreet {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      height: 42px;
-      padding: 0 14px;
-      border-radius: 10px;
-      font-size: 0.8rem;
+      gap: 7px;
+      height: 46px;
+      padding: 0 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      border-radius: 12px;
+      font-size: 0.82rem;
       font-weight: 700;
-      border: none;
       cursor: pointer;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
       transition: all 0.2s ease;
       white-space: nowrap;
     }
-    .btn-export-trigger {
-      background: #0F172A;
-      color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+    .btn-export-discreet .icon-svg { color: var(--text-muted); }
+    .btn-export-discreet:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+      color: var(--primary);
+      transform: translateY(-1px);
     }
-    .btn-export-trigger:hover { background: #1E293B; transform: translateY(-1px); }
+    .btn-export-discreet:hover .icon-svg { color: var(--primary); }
 
-    .btn-quote-trigger {
+    @media (max-width: 768px) {
+      .hero-actions-container { flex-direction: column; width: 100%; }
+      .search-filter-wrapper { width: 100%; }
+      .btn-export-discreet { width: 100%; justify-content: center; }
+    }
+
+    /* ========================================================
+       BARRA FLUTUANTE DE PROPOSTA (OPÇÃO 1)
+    ======================================================== */
+    .floating-quote-bar {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      z-index: 1400;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(14px);
+      padding: 10px 14px 10px 20px;
+      border-radius: 50px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      max-width: 90vw;
+    }
+    .floating-quote-bar.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .floating-quote-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #FFFFFF;
+      user-select: none;
+    }
+    .floating-quote-icon-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
       background: var(--primary);
       color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
     }
-    .btn-quote-trigger:hover { background: var(--primary-hover); transform: translateY(-1px); }
-    .quote-badge-counter {
-      background: #FFFFFF;
-      color: var(--primary);
-      font-size: 0.72rem;
+    .floating-quote-counter {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: #10B981;
+      color: #FFFFFF;
+      font-size: 0.7rem;
       font-weight: 900;
-      padding: 2px 7px;
+      min-width: 18px;
+      height: 18px;
       border-radius: 10px;
-      margin-left: 2px;
-      transition: transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #0F172A;
+    }
+    .floating-quote-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+    .floating-quote-text strong {
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .floating-quote-text span {
+      font-size: 0.72rem;
+      color: #94A3B8;
+    }
+    .floating-quote-btn-action {
+      background: linear-gradient(135deg, #0284C7, #0369A1);
+      color: #FFFFFF;
+      border: none;
+      height: 42px;
+      padding: 0 20px;
+      border-radius: 40px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    }
+    .floating-quote-btn-action:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+    .floating-quote-btn-clear {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: color 0.2s;
+    }
+    .floating-quote-btn-clear:hover { color: #FECDD3; }
+
+    @media (max-width: 600px) {
+      .floating-quote-bar {
+        bottom: 16px;
+        padding: 8px 10px 8px 14px;
+        gap: 10px;
+        width: 94vw;
+        border-radius: 16px;
+      }
+      .floating-quote-text span { display: none; }
+      .floating-quote-btn-action { height: 38px; padding: 0 14px; font-size: 0.78rem; }
     }
 
-    .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; }
+    /* Conteúdo Principal */
+    .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 100px; }
 
     .section-header {
       display: flex;
@@ -375,7 +490,7 @@
     .spec-row span { color: var(--text-muted); font-weight: 500; }
     .spec-row strong { color: var(--text-main); font-weight: 700; }
 
-    /* Barra de Ações: ALINHADA DA DIREITA PARA ESQUERDA */
+    /* Barra de Ações do Card */
     .card-actions-bar {
       margin-top: 12px;
       padding-top: 10px;
@@ -607,7 +722,6 @@
     .modal-details span { color: var(--text-muted); font-weight: 500; }
     .modal-details strong { color: var(--text-main); }
 
-    /* Botão interno do modal de detalhes padronizado e discreto */
     .modal-zoom-actions {
       margin-top: 20px;
       padding-top: 16px;
@@ -680,7 +794,7 @@
       cursor: pointer;
     }
 
-    /* ETAPA 1: MODAL DE SELEÇÃO AMPLO */
+    /* MODAL DE SELEÇÃO DE EQUIPAMENTOS */
     .quote-selection-modal-box {
       max-width: 900px;
       padding: 28px;
@@ -892,7 +1006,7 @@
       margin-right: 6px;
     }
 
-    /* CONTROLE DE QUANTIDADE COM CAMPO DIGITÁVEL */
+    /* Controle de Quantidade */
     .quote-item-qty-control {
       display: flex;
       align-items: center;
@@ -937,7 +1051,7 @@
       box-shadow: 0 0 0 2px rgba(2,132,199,0.15);
     }
 
-    /* ETAPA 2: SUBMODAL CLEAN COM DADOS DE CONTATO */
+    /* Submodal de Contato */
     .lead-modal-box {
       max-width: 500px;
       padding: 28px;
@@ -955,7 +1069,7 @@
     .quote-feedback.success { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
     .quote-feedback.error { background: #FEE2E2; color: #991B1B; border: 1px solid #FECDD3; }
 
-    /* Pills de Categorias no Cadastro */
+    /* Pills de Categorias */
     .category-pills-container {
       display: flex;
       flex-wrap: wrap;
@@ -986,7 +1100,7 @@
       outline-offset: 1px;
     }
 
-    /* Logotipo do Fabricante no Cadastro */
+    /* Logotipo Fabricante */
     .brand-logo-control-box {
       height: 44px;
       border: 1px solid var(--card-border);
@@ -1153,14 +1267,14 @@
     .export-category-item input[type="checkbox"] { width: 17px; height: 17px; cursor: pointer; accent-color: var(--primary); }
     .export-category-item span { font-size: 0.82rem; font-weight: 700; color: var(--text-main); }
 
-    /* Elementos Exclusivos para a Impressão / PDF */
+    /* Print Styles */
     .print-header, .print-footer { display: none; }
 
     @media print {
       @page { size: A4 portrait; margin: 14mm 10mm 15mm 10mm; }
       body { background: #FFFFFF !important; color: #0F172A !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       body::before { display: none; }
-      .top-navbar, .hero, .admin-bar, .modal-overlay, .admin-card-actions, .card-actions-bar, .carousel-btn, .carousel-dots, footer { display: none !important; }
+      .top-navbar, .hero, .admin-bar, .modal-overlay, .admin-card-actions, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, footer { display: none !important; }
       .main-content { padding: 0 !important; max-width: 100% !important; }
       .print-header { display: flex !important; align-items: center; justify-content: space-between; padding-bottom: 15px; margin-bottom: 25px; border-bottom: 2px solid #0284C7; }
       .print-header img { height: 50px; width: auto; object-fit: contain; }
@@ -1205,12 +1319,11 @@
     <nav class="nav-menu" id="dynamicNavMenu"></nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section Equilibrado e Limpo -->
   <section class="hero">
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
 
-    <!-- Barra de Busca + Filtro + Botões de Ação Harmonizados -->
     <div class="hero-actions-container">
       <div class="search-filter-wrapper">
         <div class="search-box-inner">
@@ -1227,17 +1340,10 @@
         </div>
       </div>
 
-      <!-- Botão Solicitar Cotação -->
-      <button type="button" class="btn-quote-trigger" onclick="abrirModalSelecaoCotacao()" title="Solicitar Cotação dos equipamentos selecionados">
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        <span>Solicitar Cotação</span>
-        <span class="quote-badge-counter" id="quoteBadgeCount">0</span>
-      </button>
-
-      <!-- Botão Exportar Catálogo / PDF -->
-      <button type="button" class="btn-export-trigger" onclick="openExportModal()" title="Exportar catálogo selecionado em PDF ou imprimir">
+      <!-- Botão de Exportar / Imprimir Discreto -->
+      <button type="button" class="btn-export-discreet" onclick="openExportModal()" title="Exportar catálogo em PDF ou imprimir">
         <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-        <span>Exportar / Imprimir</span>
+        <span>Exportar / PDF</span>
       </button>
     </div>
   </section>
@@ -1252,7 +1358,6 @@
       </div>
     </div>
 
-    <!-- Div Dinâmica onde as seções são montadas -->
     <div id="dynamicSectionsContainer"></div>
 
     <div class="print-footer">
@@ -1274,6 +1379,30 @@
       </div>
     </div>
   </main>
+
+  <!-- ========================================================
+       BARRA FLUTUANTE DE PROPOSTA (SÓ APARECE COM ITENS)
+  ======================================================== -->
+  <div class="floating-quote-bar" id="floatingQuoteBar">
+    <div class="floating-quote-info">
+      <div class="floating-quote-icon-badge">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span class="floating-quote-counter" id="floatingQuoteCounter">0</span>
+      </div>
+      <div class="floating-quote-text">
+        <strong><span id="floatingQuoteCountText">0</span> equipamento(s) selecionado(s)</strong>
+        <span>Pronto para orçar com nossa equipe</span>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button type="button" class="floating-quote-btn-clear" onclick="limparTodoCarrinho()" title="Remover todos">Limpar</button>
+      <button type="button" class="floating-quote-btn-action" onclick="abrirModalSelecaoCotacao()">
+        <span>Revisar Proposta</span>
+        <svg class="icon-svg-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+  </div>
 
   <!-- Barra Flutuante de Administração -->
   <div class="admin-bar">
@@ -1302,7 +1431,6 @@
         <h3 class="modal-title" id="modalTitle">Título do Modelo</h3>
         <ul class="modal-details" id="modalSpecsList"></ul>
 
-        <!-- Botão interno agora idêntico ao do card: discreto e elegante -->
         <div class="modal-zoom-actions">
           <button type="button" class="btn-zoom-cart-toggle" id="btnZoomModalAddToCart" onclick="toggleCartFromModal()">
             + Cotar
@@ -1312,7 +1440,7 @@
     </div>
   </div>
 
-  <!-- ETAPA 1: MODAL DE SELEÇÃO DE EQUIPAMENTOS (AMPLO E ESPAÇOSO) -->
+  <!-- ETAPA 1: MODAL DE SELEÇÃO DE EQUIPAMENTOS -->
   <div class="modal-overlay" id="quoteSelectionModal">
     <div class="modal-box quote-selection-modal-box">
       <div style="display: flex; align-items: flex-start; justify-content: space-between;">
@@ -1323,14 +1451,12 @@
         <button type="button" class="modal-close-btn" style="position: static; width: 34px; height: 34px;" onclick="fecharModalSelecaoCotacao()">✕</button>
       </div>
 
-      <!-- Barra de Pesquisa Rápida Interna -->
       <div class="quote-search-wrapper">
         <svg class="icon-svg quote-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <input type="text" id="quoteModalSearchInput" class="quote-search-input" placeholder="Buscar por modelo ou fabricante..." oninput="handleQuoteModalSearch()">
         <button type="button" id="btnQuoteClearSearch" class="quote-search-clear" onclick="clearQuoteModalSearch()">✕</button>
       </div>
 
-      <!-- Resumo dos Equipamentos Selecionados -->
       <div class="quote-selected-summary" id="quoteSummaryBox">
         <div class="quote-summary-header">
           <span class="quote-summary-title">
@@ -1344,10 +1470,8 @@
         </div>
       </div>
 
-      <!-- Lista Retrátil por Categoria (Accordion com Altura Generosa) -->
       <div class="quote-categories-accordion" id="quoteAccordionContainer"></div>
 
-      <!-- Ações da Etapa 1 -->
       <div class="form-actions" style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
         <button type="button" class="btn-cancel" onclick="fecharModalSelecaoCotacao()">Fechar</button>
         <button type="button" class="btn-submit" onclick="avancarParaDadosLead()" style="display: inline-flex; align-items: center; gap: 8px;">
@@ -1357,7 +1481,7 @@
     </div>
   </div>
 
-  <!-- ETAPA 2: SUBMODAL COM OS DADOS DE CONTATO DO CLIENTE (CLEAN) -->
+  <!-- ETAPA 2: SUBMODAL COM OS DADOS DE CONTATO -->
   <div class="modal-overlay" id="leadContactModal">
     <div class="modal-box lead-modal-box">
       <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px;">
@@ -1477,7 +1601,7 @@
     </div>
   </div>
 
-  <!-- MODAL EXCLUSIVO DE EXPORTAÇÃO / IMPRESSÃO EM PDF -->
+  <!-- MODAL DE EXPORTAÇÃO / IMPRESSÃO EM PDF -->
   <div class="modal-overlay" id="exportModal">
     <div class="modal-box export-modal-box">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
@@ -1505,7 +1629,7 @@
     </div>
   </div>
 
-  <!-- Modal de Cadastro Rápido de Fabricante -->
+  <!-- Modal Fabricante -->
   <div class="modal-overlay" id="brandModal">
     <div class="modal-box" style="padding: 30px; max-width: 480px;">
       <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Cadastrar Fabricante</h3>
@@ -1536,7 +1660,7 @@
     </div>
   </div>
 
-  <!-- Modal de Gestão de Categorias -->
+  <!-- Modal Categorias -->
   <div class="modal-overlay" id="categoryModal">
     <div class="modal-box" style="padding: 30px;">
       <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;">Gerenciar Categorias</h3>
@@ -1585,7 +1709,7 @@
     </div>
   </div>
 
-  <!-- Modal de Login -->
+  <!-- Modal Login -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal-box" style="max-width: 420px; padding: 30px 24px; text-align: center; border-radius: 20px;">
       <div style="width: 56px; height: 56px; border-radius: 50%; background: #E0F2FE; color: var(--primary); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
@@ -1728,7 +1852,7 @@
     let editCurrentBrandLogo = '';
     let draggedPhotoIdx = null;
 
-    /* CARRINHO DE COTAÇÃO MULTI-ITENS */
+    /* CARRINHO DE COTAÇÃO */
     const carrinhoCotacao = new Map();
 
     function initBrandPresetsUI() {
@@ -1876,6 +2000,7 @@
         originalSnapshot = JSON.stringify({ categorias, produtos, marcas });
         initBrandPresetsUI();
         renderCatalog();
+        atualizarBarraFlutuante();
       } catch (err) {
         console.error('Erro ao ler JSON:', err);
       }
@@ -2024,7 +2149,6 @@
             <div class="prod-name">${prod.nome}</div>
             <div class="specs-list">${specsHtml}</div>
 
-            <!-- BARRA DE AÇÕES ALINHADA DA DIREITA PARA ESQUERDA -->
             <div class="card-actions-bar" onclick="event.stopPropagation()">
               <button type="button" class="btn-card-view-eye" title="Visualizar Detalhes" onclick="openProductModalDirect('${prod.id}')">
                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -2049,7 +2173,7 @@
       });
     }
 
-    /* GESTÃO DO CARRINHO / COTAÇÃO */
+    /* GESTÃO DO CARRINHO & BARRA FLUTUANTE */
     function toggleProdutoCarrinho(prodId, forceQty = null) {
       const prod = produtos.find(p => p.id === prodId);
       if (!prod) return;
@@ -2069,7 +2193,7 @@
         });
       }
 
-      atualizarBadgeCarrinho();
+      atualizarBarraFlutuante();
       renderCatalog();
       renderQuoteModalState();
     }
@@ -2079,6 +2203,7 @@
       const item = carrinhoCotacao.get(prodId);
       item.qtd = Math.max(1, item.qtd + delta);
       carrinhoCotacao.set(prodId, item);
+      atualizarBarraFlutuante();
       renderQuoteModalState();
     }
 
@@ -2089,26 +2214,35 @@
       const item = carrinhoCotacao.get(prodId);
       item.qtd = qtd;
       carrinhoCotacao.set(prodId, item);
+      atualizarBarraFlutuante();
       renderQuoteModalState();
     }
 
     function limparTodoCarrinho() {
       carrinhoCotacao.clear();
-      atualizarBadgeCarrinho();
+      atualizarBarraFlutuante();
       renderCatalog();
       renderQuoteModalState();
     }
 
-    function atualizarBadgeCarrinho() {
-      const badge = document.getElementById('quoteBadgeCount');
-      if (badge) {
-        badge.textContent = carrinhoCotacao.size;
-        badge.style.transform = 'scale(1.25)';
-        setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+    /* ATUALIZA BARRA FLUTUANTE DINAMICAMENTE */
+    function atualizarBarraFlutuante() {
+      const floatingBar = document.getElementById('floatingQuoteBar');
+      const counterEl = document.getElementById('floatingQuoteCounter');
+      const countTextEl = document.getElementById('floatingQuoteCountText');
+      const count = carrinhoCotacao.size;
+
+      if (counterEl) counterEl.textContent = count;
+      if (countTextEl) countTextEl.textContent = count;
+
+      if (count > 0) {
+        floatingBar.classList.add('active');
+      } else {
+        floatingBar.classList.remove('active');
       }
     }
 
-    /* ETAPA 1: MODAL DE SELEÇÃO */
+    /* MODAL DE SELEÇÃO */
     function abrirModalSelecaoCotacao() {
       const modal = document.getElementById('quoteSelectionModal');
       document.getElementById('quoteModalSearchInput').value = '';
@@ -2201,7 +2335,6 @@
               </div>
             </label>
 
-            <!-- QUANTIDADE COM BOTÕES E INPUT DIGITÁVEL -->
             <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
               <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
               <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)" onkeyup="if(event.key==='Enter') definirQtdDigitadaCarrinho('${prod.id}', this.value)">
@@ -2256,7 +2389,6 @@
         }
       });
 
-      // Atualiza o botão do modal de detalhes se estiver aberto
       if (currentSelectedProductForModal) {
         const btnZoom = document.getElementById('btnZoomModalAddToCart');
         if (btnZoom) {
@@ -2267,7 +2399,7 @@
       }
     }
 
-    /* ETAPA 2: SUBMODAL DE CONTATO DO LEAD (CLEAN) */
+    /* SUBMODAL LEAD */
     function avancarParaDadosLead() {
       if (carrinhoCotacao.size === 0) {
         alert('Por favor, selecione ao menos 1 equipamento antes de prosseguir.');
@@ -2376,7 +2508,7 @@
       }
     }
 
-    /* SISTEMA DE EXPORTAÇÃO / IMPRESSÃO EM PDF */
+    /* EXPORTAÇÃO / IMPRESSÃO */
     function openExportModal() {
       const container = document.getElementById('exportCategoriesList');
       container.innerHTML = '';
