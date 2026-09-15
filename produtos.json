@@ -229,9 +229,9 @@
       ],
       "specs": {
         "Resolução": "203 dpi",
-        "Velocidade": "Até 6 polegadas por segundo (152 mm/s)",
+        "Velocidade": "Até 6 pol/s (152 mm/s)",
         "Impressão": "Até 108 mm",
-        "Suprimentos": "Suporta ribbons de até 300 ou 360 metros",
+        "Suprimentos": "Ribbons de até 300 ou 360 metros",
         "Rolos de etiquetas": "Diâmetro de até 127 mm",
         "Emulações": "ZPL II (Zebra), EPL (Eltron) e TSC",
         "Conectividade": "USB padrão",
@@ -1176,8 +1176,8 @@
       ],
       "specs": {
         "Resolução": "203 dpi / 8 pontos por mm",
-        "Velocidade": "4 polegadas ou 102 mm por segundo",
-        "Impressão": "4,09 polegadas / 104 mm",
+        "Velocidade": "4 pol ou 102 mm por segundo",
+        "Impressão": "4,09 pol / 104 mm",
         "Memória": "128 MB de Flash e 128 MB de SDRAM",
         "Conectividade": "USB"
       },
@@ -1219,7 +1219,7 @@
       ],
       "specs": {
         "Resolução": "203 dpi ou 300 dpi",
-        "Painel": "Touch  colorido de 4,3' polegadas",
+        "Painel": "Touch  colorido de 4,3'",
         "Memória": "256 MB SDRAM e 256 MB",
         "Conectividade": "USB, RJ45 10/100 e Serial",
         "Conectividade opcional": "Wi-Fi 5",
