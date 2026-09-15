@@ -218,24 +218,24 @@
       "logoMarca": "logos/hp.png"
     },
     {
-      "id": "prod-1788533804721",
+      "id": "prod-1789496980704",
       "categoria": "thermal",
       "marca": "Zebra",
-      "nome": "ZT230",
+      "nome": "ZD220",
       "ativo": true,
       "imagens": [
-        "fotos/1788533824605_ZEBRA_ZT230.png",
-        "fotos/1788533825746_ZEBRA_ZT231.png"
+        "fotos/1789497051743_zd220.webp",
+        "fotos/1789497052703_zd2201.webp",
+        "fotos/1789497053939_zd2202.jpg"
       ],
       "specs": {
-        "Resolução": "203 dpi ou 300 dpi",
-        "Conectividade": "USB e Serial",
-        "Tecnologia": "Transferência térmica (com ribbon) e térmica direta (sem ribbon)",
-        "Painel": "Interface gráfica com visor LCD e botões de navegação",
-        "Construção": "Gabinete resistente em metal",
-        "Opcionais": "Ethernet (RJ45)"
+        "Resolução": "203 dpi / 8 pontos por mm",
+        "Velocidade": "4 polegadas ou 102 mm por segundo",
+        "Impressão": "4,09 polegadas / 104 mm",
+        "Memória": "128 MB de Flash e 128 MB de SDRAM",
+        "Conectividade": "USB"
       },
-      "logoMarca": "fotos/1788533823542_logozebra.png"
+      "logoMarca": "logos/zebra.png"
     },
     {
       "id": "prod-1788541591157",
@@ -1160,6 +1160,52 @@
         "Operação": "18/7"
       },
       "logoMarca": "logos/isd-tech.png"
+    },
+    {
+      "id": "prod-1788533804721",
+      "categoria": "thermal",
+      "marca": "Zebra",
+      "nome": "ZT230",
+      "ativo": true,
+      "imagens": [
+        "fotos/1788533824605_ZEBRA_ZT230.png",
+        "fotos/1789497046703_zebra1.jpg",
+        "fotos/1789497047880_zebra.jpg"
+      ],
+      "specs": {
+        "Resolução": "203 dpi ou 300 dpi",
+        "Painel": "LCD e botões de navegação",
+        "Memória": "128 MB SDRAM e 128 MB",
+        "Conectividade": "USB e Serial",
+        "Opcionais": "RJ45",
+        "Tecnologia": "Transferência térmica (com ribbon) e térmica direta (sem ribbon)",
+        "Construção": "Gabinete resistente em metal",
+        "Velocidade": "Até 152 mm/s (6 pol/s)"
+      },
+      "logoMarca": "fotos/1788533823542_logozebra.png"
+    },
+    {
+      "id": "prod-1789496793112",
+      "categoria": "thermal",
+      "marca": "Zebra",
+      "nome": "ZT231",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789497048819_zt231.webp",
+        "fotos/1789497049822_zt2312.jpg",
+        "fotos/1789497050789_zt2311.webp"
+      ],
+      "specs": {
+        "Resolução": "203 dpi ou 300 dpi",
+        "Painel": "Touch  colorido de 4,3' polegadas",
+        "Memória": "256 MB SDRAM e 256 MB",
+        "Conectividade": "USB, RJ45 10/100 e Serial",
+        "Conectividade opcional": "Wi-Fi 5",
+        "Tecnologia": "Transferência térmica (com ribbon) e térmica direta (sem ribbon)",
+        "Construção": "Gabinete resistente em metal",
+        "Velocidade": "Até 12 polegadas por segundo (ips) a 203 dpi e 8 ips a 300 dpi"
+      },
+      "logoMarca": "logos/zebra.png"
     }
   ],
   "marcas": [
