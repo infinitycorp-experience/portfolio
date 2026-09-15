@@ -1325,6 +1325,53 @@
         "Dimensões do Equipamento": "504 mm (D) x 257 mm (L) x 297 mm"
       },
       "logoMarca": "logos/isd-tech.png"
+    },
+    {
+      "id": "prod-1789502638984",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Pro 14",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789502863631_dell14.jpg",
+        "fotos/1789502864709_dell141.jpg",
+        "fotos/1789502865829_dell143.jpg",
+        "fotos/1789502866804_dell142.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core /  Ultra 5 / 7",
+        "Tela": "14,0 polegadas",
+        "Memória": "8 / 16 / 32 GB DDR5 / LPDDR5x",
+        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
+        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
+        "Sistema": "Windows 11 Pro",
+        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
+      },
+      "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789502850761",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Pro 16",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789502867805_dell161.jpg",
+        "fotos/1789502868749_dell162.jpg",
+        "fotos/1789502869928_dell163.jpg",
+        "fotos/1789502871044_dell16.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core /  Ultra 5 / 7",
+        "Tela": "16,0 polegadas",
+        "Resolução": "FHD+ (1920 x 1200)",
+        "Memória": "16 / 32 GB DDR5 / LPDDR5x",
+        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
+        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
+        "Sistema": "Windows 11 Pro",
+        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
+      },
+      "logoMarca": "logos/dell.png"
     }
   ],
   "marcas": [
