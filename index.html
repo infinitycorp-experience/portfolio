@@ -249,9 +249,7 @@
       .btn-export-discreet { width: 100%; justify-content: center; }
     }
 
-    /* ========================================================
-       BARRA FLUTUANTE DE PROPOSTA (OPÇÃO 1)
-    ======================================================== */
+    /* BARRA FLUTUANTE DE PROPOSTA */
     .floating-quote-bar {
       position: fixed;
       bottom: 24px;
@@ -539,8 +537,8 @@
       color: #FFFFFF;
     }
     .btn-card-cart-toggle.active {
-      background: #10B981;
-      border-color: #10B981;
+      background: var(--primary);
+      border-color: var(--primary);
       color: #FFFFFF;
     }
 
@@ -729,7 +727,7 @@
       display: flex;
       justify-content: flex-end;
     }
-          .btn-zoom-cart-toggle {
+    .btn-zoom-cart-toggle {
       height: 32px;
       padding: 0 12px;
       border-radius: 7px;
@@ -880,7 +878,7 @@
       background: #FFFFFF;
       border: 1px solid #CBD5E1;
       border-radius: 8px;
-      padding: 3px 8px;
+      padding: 4px 8px;
       font-size: 0.74rem;
       font-weight: 700;
       color: var(--text-main);
@@ -895,6 +893,14 @@
       padding: 1px 6px;
       border-radius: 4px;
       font-size: 0.68rem;
+    }
+    .quote-chip-specs {
+      background: #F1F5F9;
+      color: #475569;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.66rem;
+      font-weight: 600;
     }
     .quote-chip-remove {
       color: var(--danger);
@@ -964,6 +970,7 @@
       gap: 4px;
     }
     .quote-cat-block.expanded .quote-cat-items-list { display: flex; }
+    
     .quote-item-row {
       display: flex;
       align-items: center;
@@ -1011,6 +1018,47 @@
       padding: 2px 6px;
       border-radius: 4px;
       margin-right: 6px;
+    }
+
+    /* Opcionais do Notebook e Controles à Direita */
+    .quote-item-right-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .quote-notebook-options {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #F1F5F9;
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+    .quote-opt-select-group {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .quote-opt-select-group label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #64748B;
+      text-transform: uppercase;
+    }
+    .quote-opt-select {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 2px 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+    }
+    .quote-opt-select:focus {
+      border-color: var(--primary);
     }
 
     /* Controle de Quantidade */
@@ -1072,6 +1120,7 @@
       margin-top: 14px;
       text-align: center;
       display: none;
+      line-height: 1.4;
     }
     .quote-feedback.success { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
     .quote-feedback.error { background: #FEE2E2; color: #991B1B; border: 1px solid #FECDD3; }
@@ -1387,9 +1436,7 @@
     </div>
   </main>
 
-  <!-- ========================================================
-       BARRA FLUTUANTE DE PROPOSTA (SÓ APARECE COM ITENS)
-  ======================================================== -->
+  <!-- BARRA FLUTUANTE DE PROPOSTA -->
   <div class="floating-quote-bar" id="floatingQuoteBar">
     <div class="floating-quote-info">
       <div class="floating-quote-icon-badge">
@@ -1628,7 +1675,7 @@
 
       <div class="form-actions" style="margin-top: 10px;">
         <button type="button" class="btn-cancel" onclick="closeExportModal()">Cancelar</button>
-        <button type="button" class="btn-submit" onclick="executePrint()" style="display: inline-flex; align-items: center; gap: 8px;">
+        <button type="submit" class="btn-submit" onclick="executePrint()" style="display: inline-flex; align-items: center; gap: 8px;">
           <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
           Gerar PDF / Imprimir
         </button>
@@ -1840,6 +1887,21 @@
     function getCategorySvg(iconKey, className = "icon-svg") {
       const inner = ICONS_MAP[iconKey] || ICONS_MAP.menu;
       return `<svg class="${className}" viewBox="0 0 24 24">${inner}</svg>`;
+    }
+
+    function isNotebookCategory(catId) {
+      if (!catId) return false;
+      const lower = catId.toLowerCase();
+      if (lower.includes('notebook') || lower.includes('laptop')) return true;
+      const catObj = categorias.find(c => c.id === catId);
+      if (catObj) {
+        const catTitleLower = (catObj.title || '').toLowerCase();
+        const catIconLower = (catObj.icon || '').toLowerCase();
+        if (catTitleLower.includes('notebook') || catTitleLower.includes('laptop') || catIconLower === 'laptop' || catIconLower === 'notebook') {
+          return true;
+        }
+      }
+      return false;
     }
 
     let categorias = [];
@@ -2188,15 +2250,23 @@
       if (carrinhoCotacao.has(prodId) && forceQty === null) {
         carrinhoCotacao.delete(prodId);
       } else {
-        const currentQty = carrinhoCotacao.get(prodId)?.qtd || 1;
+        const itemExistente = carrinhoCotacao.get(prodId);
+        const currentQty = itemExistente?.qtd || 1;
         const newQty = forceQty !== null ? Math.max(1, forceQty) : currentQty;
+        
+        // Mantém a escolha feita pelo usuário ou seta padrão
+        const ram = itemExistente?.ram || '8GB';
+        const ssd = itemExistente?.ssd || '256GB';
+
         carrinhoCotacao.set(prodId, {
           id: prod.id,
           nome: prod.nome,
           marca: prod.marca,
           categoria: prod.categoria,
           imagem: prod.imagens?.[0] || '',
-          qtd: newQty
+          qtd: newQty,
+          ram: ram,
+          ssd: ssd
         });
       }
 
@@ -2223,6 +2293,15 @@
       carrinhoCotacao.set(prodId, item);
       atualizarBarraFlutuante();
       renderQuoteModalState();
+    }
+
+    function definirOpcaoNotebook(prodId, tipo, val) {
+      if (!carrinhoCotacao.has(prodId)) return;
+      const item = carrinhoCotacao.get(prodId);
+      if (tipo === 'ram') item.ram = val;
+      if (tipo === 'ssd') item.ssd = val;
+      carrinhoCotacao.set(prodId, item);
+      renderQuoteModalState(); // Agora atualiza os chips visíveis no topo imediatamente
     }
 
     function limparTodoCarrinho() {
@@ -2302,6 +2381,7 @@
 
         if (prodsCat.length === 0 && filter) return;
 
+        const isNotebookCat = isNotebookCategory(cat.id);
         const block = document.createElement('div');
         block.className = `quote-cat-block ${filter ? 'expanded' : ''}`;
 
@@ -2326,11 +2406,38 @@
           const isSelected = carrinhoCotacao.has(prod.id);
           const currentItem = carrinhoCotacao.get(prod.id);
           const currentQty = currentItem ? currentItem.qtd : 1;
+          const currentRam = currentItem?.ram || '8GB';
+          const currentSsd = currentItem?.ssd || '256GB';
 
           const row = document.createElement('div');
           row.className = 'quote-item-row';
+          row.dataset.prodId = prod.id;
 
           const thumbSrc = prod.imagens && prod.imagens.length > 0 ? prod.imagens[0] : 'https://placehold.co/40x40?text=Foto';
+
+          let notebookOptionsHtml = '';
+          if (isNotebookCat) {
+            notebookOptionsHtml = `
+              <div class="quote-notebook-options" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
+                <div class="quote-opt-select-group">
+                  <label>RAM:</label>
+                  <select class="quote-opt-select quote-ram-select" onchange="definirOpcaoNotebook('${prod.id}', 'ram', this.value)">
+                    <option value="8GB" ${currentRam === '8GB' ? 'selected' : ''}>8GB</option>
+                    <option value="16GB" ${currentRam === '16GB' ? 'selected' : ''}>16GB</option>
+                    <option value="32GB" ${currentRam === '32GB' ? 'selected' : ''}>32GB</option>
+                  </select>
+                </div>
+                <div class="quote-opt-select-group">
+                  <label>SSD:</label>
+                  <select class="quote-opt-select quote-ssd-select" onchange="definirOpcaoNotebook('${prod.id}', 'ssd', this.value)">
+                    <option value="256GB" ${currentSsd === '256GB' ? 'selected' : ''}>256GB</option>
+                    <option value="512GB" ${currentSsd === '512GB' ? 'selected' : ''}>512GB</option>
+                    <option value="1TB" ${currentSsd === '1TB' ? 'selected' : ''}>1TB</option>
+                  </select>
+                </div>
+              </div>
+            `;
+          }
 
           row.innerHTML = `
             <label class="quote-item-label-side" onclick="event.stopPropagation()">
@@ -2342,10 +2449,13 @@
               </div>
             </label>
 
-            <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
-              <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
-              <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)" onkeyup="if(event.key==='Enter') definirQtdDigitadaCarrinho('${prod.id}', this.value)">
-              <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', 1)">+</button>
+            <div class="quote-item-right-controls">
+              ${notebookOptionsHtml}
+              <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
+                <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
+                <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)" onkeyup="if(event.key==='Enter') definirQtdDigitadaCarrinho('${prod.id}', this.value)">
+                <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', 1)">+</button>
+              </div>
             </div>
           `;
           list.appendChild(row);
@@ -2369,8 +2479,12 @@
         carrinhoCotacao.forEach(item => {
           const chip = document.createElement('div');
           chip.className = 'quote-chip';
+          const isNotebook = isNotebookCategory(item.categoria);
+          const specsBadge = isNotebook ? `<span class="quote-chip-specs">${item.ram || '8GB'} | ${item.ssd || '256GB'}</span>` : '';
+
           chip.innerHTML = `
             <span>${item.marca} ${item.nome}</span>
+            ${specsBadge}
             <span class="quote-chip-qty">${item.qtd} un</span>
             <button type="button" class="quote-chip-remove" onclick="toggleProdutoCarrinho('${item.id}')" title="Remover item">✕</button>
           `;
@@ -2379,20 +2493,28 @@
       }
 
       document.querySelectorAll('.quote-item-row').forEach(row => {
+        const prodId = row.dataset.prodId;
         const checkbox = row.querySelector('.quote-item-checkbox');
         const qtyControl = row.querySelector('.quote-item-qty-control');
         const qtyInput = row.querySelector('.quote-qty-input');
+        const notebookOptions = row.querySelector('.quote-notebook-options');
+        const ramSelect = row.querySelector('.quote-ram-select');
+        const ssdSelect = row.querySelector('.quote-ssd-select');
 
-        if (checkbox) {
-          const prodId = checkbox.getAttribute('onchange')?.match(/'([^']+)'/)?.[1];
-          if (prodId && carrinhoCotacao.has(prodId)) {
-            checkbox.checked = true;
-            if (qtyControl) qtyControl.style.display = 'flex';
-            if (qtyInput) qtyInput.value = carrinhoCotacao.get(prodId).qtd;
-          } else {
-            checkbox.checked = false;
-            if (qtyControl) qtyControl.style.display = 'none';
+        if (prodId && carrinhoCotacao.has(prodId)) {
+          const item = carrinhoCotacao.get(prodId);
+          if (checkbox) checkbox.checked = true;
+          if (qtyControl) qtyControl.style.display = 'flex';
+          if (qtyInput) qtyInput.value = item.qtd;
+          if (notebookOptions) {
+            notebookOptions.style.display = 'flex';
+            if (ramSelect) ramSelect.value = item.ram || '8GB';
+            if (ssdSelect) ssdSelect.value = item.ssd || '256GB';
           }
+        } else {
+          if (checkbox) checkbox.checked = false;
+          if (qtyControl) qtyControl.style.display = 'none';
+          if (notebookOptions) notebookOptions.style.display = 'none';
         }
       });
 
@@ -2434,7 +2556,7 @@
       if (prod) openProductModal(prod);
     }
 
-        function toggleCartFromModal() {
+    function toggleCartFromModal() {
       if (!currentSelectedProductForModal) return;
       const prodId = currentSelectedProductForModal.id;
       const isAdding = !carrinhoCotacao.has(prodId);
@@ -2442,19 +2564,20 @@
       // Adiciona ou remove do carrinho
       toggleProdutoCarrinho(prodId);
 
-      // Se foi adicionado, dá feedback visual e fecha automaticamente
+      // Se foi adicionado, dá feedback e fecha suavemente
       if (isAdding) {
         const btnZoom = document.getElementById('btnZoomModalAddToCart');
         if (btnZoom) {
-          btnZoom.textContent = '✓ Adicionado à Cotação!';
-          btnZoom.style.backgroundColor = '#10B981';
-          btnZoom.style.borderColor = '#10B981';
-          btnZoom.style.transform = 'scale(1.05)';
+          btnZoom.textContent = '✓ Adicionado!';
+          btnZoom.style.backgroundColor = 'var(--primary)';
+          btnZoom.style.borderColor = 'var(--primary)';
+          btnZoom.style.color = '#FFFFFF';
+          btnZoom.style.transform = 'scale(1.04)';
         }
 
         setTimeout(() => {
           closeModal();
-        }, 450);
+        }, 400);
       }
     }
 
@@ -2477,7 +2600,9 @@
       let itensFormatados = '';
       let index = 1;
       carrinhoCotacao.forEach(item => {
-        itensFormatados += `${index}. [${item.marca.toUpperCase()}] ${item.nome} — Qtd Estimada: ${item.qtd} unidade(s)\n`;
+        const isNotebook = isNotebookCategory(item.categoria);
+        const opcionaisText = isNotebook ? ` (RAM: ${item.ram || '8GB'}, SSD: ${item.ssd || '256GB'})` : '';
+        itensFormatados += `${index}. [${item.marca.toUpperCase()}] ${item.nome}${opcionaisText} — Qtd Estimada: ${item.qtd} unidade(s)\n`;
         index++;
       });
 
@@ -2512,14 +2637,15 @@
 
         if (resData.success) {
           feedback.className = 'quote-feedback success';
-          feedback.innerText = '✓ Solicitação enviada com sucesso! Nosso time comercial já recebeu sua lista e entrará em contato em breve.';
+          feedback.innerHTML = '<strong>✓ Muito obrigado! Recebemos sua solicitação.</strong><br>Nosso time analisará as especificações e retornará o contato o mais breve possível.';
           feedback.style.display = 'block';
 
           limparTodoCarrinho();
           document.getElementById('formCotacaoWeb3').reset();
 
+          // Aguarda 3,5 segundos exibindo a confirmação e recarrega a página
           setTimeout(() => {
-            fecharSubmodalLead();
+            location.reload();
           }, 3500);
         } else {
           throw new Error(resData.message || 'Falha no envio.');
@@ -2528,7 +2654,6 @@
         feedback.className = 'quote-feedback error';
         feedback.innerText = 'Ops! Não foi possível enviar no momento. Por favor, tente novamente ou entre em contato pelo WhatsApp.';
         feedback.style.display = 'block';
-      } finally {
         btn.disabled = false;
         btn.innerHTML = `<span>Enviar Solicitação de Cotação</span>`;
       }
