@@ -624,8 +624,8 @@
       "nome": "ECOSYS PA5500",
       "ativo": true,
       "imagens": [
-        "fotos/1789418053459_pa5500.jpg",
-        "fotos/1789418052219_pa55001.jpg"
+        "fotos/1789418052219_pa55001.jpg",
+        "fotos/1789418053459_pa5500.jpg"
       ],
       "specs": {
         "Velocidade": "Até 55 ppm",
@@ -676,6 +676,29 @@
         "Primeira página": "Menos de 7,5 segundos",
         "Bandeja": "520 folhas + bandeja multiuso de 50 folhas",
         "Conectividade": "RJ45 10/100/1000,  Wi-Fi, USB 2.0 e Wi-Fi Direct"
+      },
+      "logoMarca": "logos/brother.png"
+    },
+    {
+      "id": "prod-1789468105142",
+      "categoria": "print",
+      "marca": "Brother",
+      "nome": "DCP-L5652DN ",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789468119798_56521.jpg",
+        "fotos/1789468120947_56523.jpg",
+        "fotos/1789468121943_56522.jpg"
+      ],
+      "specs": {
+        "Velocidade": "Até 40 ppm",
+        "Painel": "Touch colorido de 3,7'",
+        "Resolução Máxima": "Até 1200 x 1200 dpi (impressão) e 1200 x 600 dpi (cópia)",
+        "Impressão Frente e Verso (Duplex)": "Automática",
+        "ADF": "70 folhas e cópia e digitalização com passagem única",
+        "Bandeja": "250 folhas + bandeja multiuso 50 folhas",
+        "Bandeja de saída": "150 folhas",
+        "Conectividade": "RJ45 10/100/1000 e USB 2.0 (com porta USB frontal para impressão/digitalização direta"
       },
       "logoMarca": "logos/brother.png"
     }
