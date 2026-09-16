@@ -31,6 +31,12 @@
       "icon": "mobile"
     },
     {
+      "id": "celulares",
+      "title": "Celulares",
+      "icon": "mobile",
+      "ativa": true
+    },
+    {
       "id": "totem",
       "title": "Totens de Autoatendimento",
       "ativa": true
@@ -1442,6 +1448,91 @@
         "Atividade": "Monitora e gerencia impressão, cópia, digitalização e fax"
       },
       "logoMarca": "logos/papercut.png"
+    },
+    {
+      "id": "prod-1789562069354",
+      "categoria": "celulares",
+      "marca": "Samsung",
+      "nome": "Galaxy A17",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789562513051_a171.jpg",
+        "fotos/1789562514478_a17.jpg",
+        "fotos/1789562515550_a171.webp"
+      ],
+      "specs": {
+        "Tela": "Super AMOLED de 6,7\"",
+        "Processador": "Exynos 1330",
+        "Resolução": "FHD+ e 90 Hz",
+        "Memória": "4 GB a 8 GB de RAM",
+        "Armazenamento": "128 GB ou 256 GB (expansível via MicroSD até 2 TB)",
+        "Câmeras": "Traseira tripla de 50 MP (principal) + 5 MP (ultra wide) + 2 MP (macro) frontal de 13 MP",
+        "Bateria": "5.000 mAh com carregamento de 25 W",
+        "Recursos extras": "Proteção IP54 contra água e poeira, NFC para pagamentos por aproximação e ferramentas de inteligência artificial"
+      },
+      "logoMarca": "logos/samsung.png"
+    },
+    {
+      "id": "prod-1789561767261",
+      "categoria": "celulares",
+      "marca": "Samsung",
+      "nome": "Galaxy S25",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789562510032_s25.jpg",
+        "fotos/1789562511067_s252.webp",
+        "fotos/1789562511969_s251.webp"
+      ],
+      "specs": {
+        "Tela": "AMOLED 2X de 6,2\" de 120Hz",
+        "Processador": "Snapdragon 8 Elite",
+        "Memória RAM": "12 GB",
+        "Armazenamento": "Opções de 128 GB, 256 GB ou 512 GB",
+        "Câmeras Traseiras": "Principal de 50 MP, Ultra Wide de 12 MP e Teleobjetiva de 10 MP",
+        "Bateria": "4.000 mAh carregamento de 25W",
+        "Resistência": "Certificação IP68 contra água e poeira"
+      },
+      "logoMarca": "logos/samsung.png"
+    },
+    {
+      "id": "prod-1789562202005",
+      "categoria": "celulares",
+      "marca": "Apple",
+      "nome": "IPhone 16",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789562516696_i16.jpg",
+        "fotos/1789562517811_i162.jpg",
+        "fotos/1789562518656_i161.jpg"
+      ],
+      "specs": {
+        "Tela": "Super Retina XDR OLED de 6,1\"",
+        "Processador": "Apple A18",
+        "Câmeras": "Principal de 48 MP e ultrawide de 12 MP com suporte a macro",
+        "Construção": "Alumínio aeroespacial e vidro traseiro infundido com cor, protegido por Ceramic Shield",
+        "Recursos extras": "Botão de Ação, Controle de Câmera dedicado e suporte a recursos de inteligência artificial."
+      },
+      "logoMarca": "logos/apple.png"
+    },
+    {
+      "id": "prod-1789562480930",
+      "categoria": "celulares",
+      "marca": "Apple",
+      "nome": "IPhone 17",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789562519887_i17.jpg",
+        "fotos/1789562520919_i171.jpg"
+      ],
+      "specs": {
+        "Tela": "SRetina XDR OLED de 6,3\" de 120 Hz",
+        "Processador": "Apple A19",
+        "Memória RAM": "8 GB e suporte ao Apple Intelligence",
+        "Câmeras": "Traseiro dupla com sensor principal de 48 MP e ultrawide de 12 MP; câmera frontal de 18 MP",
+        "Bateria": "Autonomia de até 30 horas  e recarga rápida de 50% em 20 minutos",
+        "Construção": "Peso de 177 gramas com certificação IP68 e Ceramic Shield 2"
+      },
+      "logoMarca": "logos/apple.png"
     }
   ],
   "marcas": [
