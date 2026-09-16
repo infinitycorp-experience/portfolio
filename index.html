@@ -89,27 +89,58 @@
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding: 4px 0;
+      padding: 4px 2px;
       scrollbar-width: none;
     }
     .nav-menu::-webkit-scrollbar { display: none; }
 
+    /* NOVO ESTILO DOS ATALHOS: CLEAN (BRANCO) -> HOVER COLORIDO -> ACTIVE PREENCHIDO */
     .nav-item {
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      padding: 7px 12px;
-      border-radius: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
       white-space: nowrap;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      background: #FFFFFF;
+      color: #64748B;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+      user-select: none;
     }
+    .nav-item .icon-svg {
+      color: #94A3B8;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    
+    /* Hover: texto e ícone pegam a cor da categoria, fundo ganha tom pastel leve */
     .nav-item:hover { 
       transform: translateY(-2px); 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
-      filter: brightness(0.96);
+      background: var(--cat-bg, #F8FAFC);
+      color: var(--cat-color, var(--primary));
+      border-color: var(--cat-border, #BAE6FD);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08); 
+    }
+    .nav-item:hover .icon-svg {
+      color: var(--cat-color, var(--primary));
+      transform: scale(1.08);
+    }
+
+    /* Active: preenchido 100% com a cor vibrante e texto branco */
+    .nav-item.active {
+      background: var(--cat-color, var(--primary)) !important;
+      color: #FFFFFF !important;
+      border-color: var(--cat-color, var(--primary)) !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.18);
+      transform: translateY(-1px);
+    }
+    .nav-item.active .icon-svg {
+      color: #FFFFFF !important;
+      transform: scale(1.05);
     }
 
     /* Hero Section Clean */
@@ -410,7 +441,7 @@
       }
     }
 
-    /* BOTÃO FLUTUANTE DE INDICAÇÃO / HINT (Estilo Clean Azul Bebê) */
+    /* BOTÃO FLUTUANTE DE INDICAÇÃO / HINT */
     .floating-quote-hint {
       position: fixed;
       bottom: 24px;
@@ -419,12 +450,12 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      background: rgba(240, 249, 255, 0.92); /* Azul bebê bem claro e suave */
+      background: rgba(240, 249, 255, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding: 6px 6px 6px 18px;
       border-radius: 50px;
-      border: 1px solid #BAE6FD; /* Borda sutil combinando */
+      border: 1px solid #BAE6FD;
       box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
       cursor: pointer;
       opacity: 0;
@@ -447,14 +478,14 @@
     .floating-quote-hint .hint-lead-text {
       font-size: 0.82rem;
       font-weight: 800;
-      color: #0369A1; /* Azul escuro corporativo para boa leitura */
+      color: #0369A1;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       letter-spacing: -0.01em;
     }
     .floating-quote-hint .hint-button {
-      background: linear-gradient(135deg, #0284C7, #0369A1); /* Mesmo azul da barra principal */
+      background: linear-gradient(135deg, #0284C7, #0369A1);
       color: #FFFFFF;
       border: none;
       height: 38px;
@@ -1557,7 +1588,7 @@
     </div>
   </main>
 
-  <!-- DICA FLUTUANTE DE COTAÇÃO (APARECE NO SCROLL SE NADA ESTIVER SELECIONADO) -->
+  <!-- DICA FLUTUANTE DE COTAÇÃO -->
   <div class="floating-quote-hint" id="floatingQuoteHint" onclick="abrirModalSelecaoCotacao()" title="Clique para montar sua proposta">
     <span class="hint-lead-text">
       Monte sua proposta 
@@ -1771,7 +1802,7 @@
           
           <div style="margin-top: 8px;">
             <input type="file" id="prodFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" multiple onchange="handleNewPhotosInput(this)">
-            <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">Carregue várias fotos simultâneamente e altere a orden livremente acima.</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">Carregue várias fotos simultaneamente e altere a ordem livremente acima.</span>
           </div>
         </div>
 
@@ -1990,15 +2021,16 @@
       { name: 'Zebra', logo: 'logos/zebra.png' }
     ];
 
+    /* Paleta vibrante e moderna com bom contraste para preenchimento ativo */
     const CATEGORY_COLORS = [
-      { bg: '#E0F2FE', text: '#0369A1', border: '#BAE6FD' },
-      { bg: '#DCFCE7', text: '#15803D', border: '#BBF7D0' },
-      { bg: '#FEF3C7', text: '#B45309', border: '#FDE68A' },
-      { bg: '#EDE9FE', text: '#6D28D9', border: '#DDD6FE' },
-      { bg: '#FFE4E6', text: '#BE123C', border: '#FECDD3' },
-      { bg: '#CCFBF1', text: '#0F766E', border: '#99F6E4' },
-      { bg: '#FFEDD5', text: '#C2410C', border: '#FED7AA' },
-      { bg: '#F1F5F9', text: '#334155', border: '#CBD5E1' }
+      { bg: '#E0F2FE', text: '#0284C7', border: '#BAE6FD' }, // Azul Infinity
+      { bg: '#DCFCE7', text: '#10B981', border: '#BBF7D0' }, // Verde Esmeralda
+      { bg: '#FEF3C7', text: '#D97706', border: '#FDE68A' }, // Âmbar Dourado
+      { bg: '#EDE9FE', text: '#7C3AED', border: '#DDD6FE' }, // Roxo Corporativo
+      { bg: '#FFE4E6', text: '#E11D48', border: '#FECDD3' }, // Carmesim / Rosa
+      { bg: '#CCFBF1', text: '#0D9488', border: '#99F6E4' }, // Ciano / Teal
+      { bg: '#FFEDD5', text: '#EA580C', border: '#FED7AA' }, // Laranja
+      { bg: '#F1F5F9', text: '#475569', border: '#CBD5E1' }  // Cinza Slate
     ];
 
     const ICONS_MAP = {
@@ -2242,6 +2274,36 @@
       renderCatalog();
     }
 
+    function setActiveCategoryNav(catId) {
+      const navLinks = document.querySelectorAll('.nav-menu .nav-item');
+      navLinks.forEach(item => {
+        if (item.dataset.catTarget === catId) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    function initNavScrollspy() {
+      const sections = document.querySelectorAll('.catalog-section');
+      if (!sections.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.dataset.catId;
+            setActiveCategoryNav(id);
+          }
+        });
+      }, {
+        rootMargin: '-20% 0px -65% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(sec => observer.observe(sec));
+    }
+
     function renderCatalog() {
       const isAdmin = checkIsAdmin();
       document.body.classList.toggle('admin-mode', isAdmin);
@@ -2254,6 +2316,8 @@
       const sectionsContainer = document.getElementById('dynamicSectionsContainer');
       navContainer.innerHTML = '';
       sectionsContainer.innerHTML = '';
+
+      let firstRenderedCatId = null;
 
       categorias.forEach((cat, catIdx) => {
         const iconKey = cat.icon || cat.id;
@@ -2276,19 +2340,29 @@
         if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) return;
         if (searchKeyword && produtosVisiveis.length === 0) return;
 
+        if (!firstRenderedCatId) firstRenderedCatId = cat.id;
+
         const color = CATEGORY_COLORS[catIdx % CATEGORY_COLORS.length];
 
         const navItem = document.createElement('a');
         navItem.href = `#${cat.id}`;
         navItem.className = 'nav-item';
-        navItem.style.backgroundColor = color.bg;
-        navItem.style.color = color.text;
-        navItem.style.border = `1px solid ${color.border}`;
+        navItem.dataset.catTarget = cat.id;
+
+        // Injeta as variáveis de cor para acionamento no hover e no active
+        navItem.style.setProperty('--cat-color', color.text);
+        navItem.style.setProperty('--cat-bg', color.bg);
+        navItem.style.setProperty('--cat-border', color.border);
 
         navItem.innerHTML = `
           ${getCategorySvg(iconKey, 'icon-svg')}
-          ${cat.title.split(' ')[0]} ${!cat.ativa ? '(Oculta)' : ''}
+          <span>${cat.title.split(' ')[0]} ${!cat.ativa ? '(Oculta)' : ''}</span>
         `;
+
+        navItem.onclick = () => {
+          setActiveCategoryNav(cat.id);
+        };
+
         navContainer.appendChild(navItem);
 
         const section = document.createElement('section');
@@ -2373,6 +2447,12 @@
           grid.appendChild(card);
         });
       });
+
+      if (firstRenderedCatId) {
+        setActiveCategoryNav(firstRenderedCatId);
+      }
+
+      initNavScrollspy();
     }
 
     /* CONTROLE DA DICA FLUTUANTE DE COTAÇÃO */
@@ -2479,7 +2559,6 @@
         floatingBar.classList.remove('active');
       }
 
-      // Atualiza também a dica flutuante de incentivo
       verificarDicaFlutuante();
     }
 
@@ -3179,7 +3258,7 @@
 
         pendingChangesCount = 0;
         pendingUploadQueue = [];
-                pendingDeletionsQueue = [];
+        pendingDeletionsQueue = [];
         originalSnapshot = JSON.stringify({ categorias, produtos, marcas });
         updateAdminBarUI();
       } catch (err) {
@@ -3753,5 +3832,3 @@
 
 </body>
 </html>
-
-
