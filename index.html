@@ -2374,7 +2374,9 @@
     function verificarDicaFlutuante() {
       const hintEl = document.getElementById('floatingQuoteHint');
       if (!hintEl) return;
-      const scrollSuficiente = window.scrollY > 250;
+      
+      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      const scrollSuficiente = scrollPos > 180;
       const semItensSelecionados = carrinhoCotacao.size === 0;
 
       if (scrollSuficiente && semItensSelecionados) {
@@ -3741,8 +3743,9 @@
 
     window.addEventListener('DOMContentLoaded', loadCatalog);
     window.addEventListener('resize', atualizarBarraFlutuante);
-
+    window.addEventListener('scroll', verificarDicaFlutuante, { passive: true });
   </script>
+
 </body>
 </html>
 
