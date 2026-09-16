@@ -1499,16 +1499,6 @@
     </div>
   </div>
 
-
-    <div style="display:flex; align-items:center; gap:8px;">
-      <button type="button" class="floating-quote-btn-clear" onclick="limparTodoCarrinho()" title="Remover todos">Limpar</button>
-      <button type="button" class="floating-quote-btn-action" onclick="abrirModalSelecaoCotacao()">
-        <span>Revisar Proposta</span>
-        <svg class="icon-svg-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </button>
-    </div>
-  </div>
-
   <!-- Barra Flutuante de Administração -->
   <div class="admin-bar">
     <span id="adminStatusText">🔒 Modo Gestor Ativo</span>
@@ -3651,6 +3641,8 @@
     }
 
     window.addEventListener('DOMContentLoaded', loadCatalog);
+    window.addEventListener('resize', atualizarBarraFlutuante);
+
   </script>
 </body>
 </html>
