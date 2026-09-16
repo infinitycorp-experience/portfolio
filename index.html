@@ -1477,7 +1477,7 @@
   </main>
 
  
-  <!-- BARRA FLUTUANTE DE PROPOSTA RESPONSIVA -->
+    <!-- BARRA FLUTUANTE DE PROPOSTA RESPONSIVA -->
   <div class="floating-quote-bar" id="floatingQuoteBar">
     <div class="floating-quote-info">
       <div class="floating-quote-icon-badge">
@@ -1485,7 +1485,7 @@
         <span class="floating-quote-counter" id="floatingQuoteCounter">0</span>
       </div>
       <div class="floating-quote-text">
-        <strong><span id="floatingQuoteCountText">0</span> selec.</strong>
+        <strong id="floatingQuoteCountText">0 equipamento(s) selecionado(s)</strong>
         <span>Pronto para orçar com nossa equipe</span>
       </div>
     </div>
@@ -1493,11 +1493,12 @@
     <div class="floating-quote-actions-group">
       <button type="button" class="floating-quote-btn-clear" onclick="limparTodoCarrinho()" title="Remover todos">Limpar</button>
       <button type="button" class="floating-quote-btn-action" onclick="abrirModalSelecaoCotacao()">
-        <span>Revisar</span>
+        <span>Revisar Proposta</span>
         <svg class="icon-svg-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
     </div>
   </div>
+
 
     <div style="display:flex; align-items:center; gap:8px;">
       <button type="button" class="floating-quote-btn-clear" onclick="limparTodoCarrinho()" title="Remover todos">Limpar</button>
@@ -2361,8 +2362,7 @@
       renderQuoteModalState();
     }
 
-    /* ATUALIZA BARRA FLUTUANTE DINAMICAMENTE */
-      function atualizarBarraFlutuante() {
+        function atualizarBarraFlutuante() {
       const floatingBar = document.getElementById('floatingQuoteBar');
       const counterEl = document.getElementById('floatingQuoteCounter');
       const countTextEl = document.getElementById('floatingQuoteCountText');
@@ -2370,9 +2370,11 @@
 
       if (counterEl) counterEl.textContent = count;
       if (countTextEl) {
-        // Se for tela de celular (< 600px), exibe abreviado "X item(ns)" para caber com folga
+        // No celular encurta para caber com folga, no computador mostra completo
         const isMobile = window.innerWidth <= 600;
-        countTextEl.innerHTML = isMobile ? `${count} item(ns)` : `${count} equipamento(s) selecionado(s)`;
+        countTextEl.textContent = isMobile 
+          ? `${count} item(ns) selec.` 
+          : `${count} equipamento(s) selecionado(s)`;
       }
 
       if (count > 0) {
@@ -2381,7 +2383,6 @@
         floatingBar.classList.remove('active');
       }
     }
-
 
     /* MODAL DE SELEÇÃO */
     function abrirModalSelecaoCotacao() {
