@@ -358,16 +358,56 @@
     }
     .floating-quote-btn-clear:hover { color: #FECDD3; }
 
+        /* AJUSTE RESPONSIVO DA BARRA FLUTUANTE DE PROPOSTA */
     @media (max-width: 600px) {
       .floating-quote-bar {
-        bottom: 16px;
-        padding: 8px 10px 8px 14px;
-        gap: 10px;
-        width: 94vw;
-        border-radius: 16px;
+        bottom: 12px;
+        padding: 6px 10px;
+        gap: 8px;
+        width: 95vw;
+        max-width: 95vw;
+        border-radius: 18px;
+        justify-content: space-between;
       }
-      .floating-quote-text span { display: none; }
-      .floating-quote-btn-action { height: 38px; padding: 0 14px; font-size: 0.78rem; }
+      .floating-quote-info {
+        gap: 8px;
+        min-width: 0;
+        flex: 1 1 auto;
+      }
+      .floating-quote-icon-badge {
+        width: 32px;
+        height: 32px;
+      }
+      .floating-quote-counter {
+        font-size: 0.65rem;
+        min-width: 16px;
+        height: 16px;
+      }
+      .floating-quote-text strong {
+        font-size: 0.78rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .floating-quote-text span {
+        display: none !important;
+      }
+      .floating-quote-actions-group {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+      .floating-quote-btn-clear {
+        padding: 4px 6px;
+        font-size: 0.68rem;
+      }
+      .floating-quote-btn-action {
+        height: 36px;
+        padding: 0 12px;
+        font-size: 0.74rem;
+        gap: 5px;
+      }
     }
 
     /* Conteúdo Principal */
@@ -1397,7 +1437,7 @@
       </div>
 
       <!-- Botão de Exportar / Imprimir Discreto -->
-      <button type="button" class="btn-export-discreet" onclick="openExportModal()" title="Exportar catálogo em PDF ou imprimir">
+      <button type="button" class="btn-export-discreet" onclick="openExportModal()" title="Exportar portfólio em PDF ou imprimir">
         <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
         <span>Exportar / PDF</span>
       </button>
@@ -1409,7 +1449,7 @@
     <div class="print-header">
       <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
       <div class="print-header-meta">
-        <h2>PORTFÓLIO DE SOLUÇÕES & HARDWARE 2026</h2>
+        <h2>PORTFÓLIO DE HARDWARE 2026</h2>
         <p>Apresentação Comercial Exclusiva • Infinity Corp</p>
       </div>
     </div>
@@ -1418,7 +1458,7 @@
 
     <div class="print-footer">
       <p style="font-size: 0.85rem; font-weight: 800; color: #0284C7; margin-bottom: 4px;">INFINITY CORP • SOLUÇÕES INTELIGENTES EM TI & OUTSOURCING</p>
-      <p style="font-size: 0.72rem; color: #64748B;">Facilitando o dia a dia corporativo com agilidade, tecnologia de ponta e suporte especializado.</p>
+      <p style="font-size: 0.72rem; color: #64748B;">Facilitando o dia a dia corporativo com agilidade, tecnologia e suporte especializado.</p>
       <div class="print-footer-grid">
         <div class="print-footer-item">
           <span>Telefone / WhatsApp:</span>
@@ -1436,7 +1476,8 @@
     </div>
   </main>
 
-  <!-- BARRA FLUTUANTE DE PROPOSTA -->
+ 
+  <!-- BARRA FLUTUANTE DE PROPOSTA RESPONSIVA -->
   <div class="floating-quote-bar" id="floatingQuoteBar">
     <div class="floating-quote-info">
       <div class="floating-quote-icon-badge">
@@ -1444,10 +1485,19 @@
         <span class="floating-quote-counter" id="floatingQuoteCounter">0</span>
       </div>
       <div class="floating-quote-text">
-        <strong><span id="floatingQuoteCountText">0</span> equipamento(s) selecionado(s)</strong>
+        <strong><span id="floatingQuoteCountText">0</span> selec.</strong>
         <span>Pronto para orçar com nossa equipe</span>
       </div>
     </div>
+
+    <div class="floating-quote-actions-group">
+      <button type="button" class="floating-quote-btn-clear" onclick="limparTodoCarrinho()" title="Remover todos">Limpar</button>
+      <button type="button" class="floating-quote-btn-action" onclick="abrirModalSelecaoCotacao()">
+        <span>Revisar</span>
+        <svg class="icon-svg-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+  </div>
 
     <div style="display:flex; align-items:center; gap:8px;">
       <button type="button" class="floating-quote-btn-clear" onclick="limparTodoCarrinho()" title="Remover todos">Limpar</button>
@@ -1500,7 +1550,7 @@
       <div style="display: flex; align-items: flex-start; justify-content: space-between;">
         <div>
           <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Montar Proposta de Equipamentos</h3>
-          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Selecione abaixo os modelos do nosso catálogo que deseja orçar.</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Selecione abaixo os modelos do nosso portfólio que deseja orçar.</p>
         </div>
         <button type="button" class="modal-close-btn" style="position: static; width: 34px; height: 34px;" onclick="fecharModalSelecaoCotacao()">✕</button>
       </div>
@@ -1549,18 +1599,18 @@
       <form id="formCotacaoWeb3" onsubmit="enviarCotacaoWeb3Forms(event)">
         <div class="form-group" style="margin-bottom: 12px;">
           <label for="quoteNome">Seu Nome *</label>
-          <input type="text" id="quoteNome" name="name" class="form-control" required placeholder="Nome completo">
+          <input type="text" id="quoteNome" name="name" class="form-control" required placeholder="Digite seu nome">
         </div>
 
         <div class="form-group" style="margin-bottom: 12px;">
           <label for="quoteEmpresa">Nome da Empresa</label>
-          <input type="text" id="quoteEmpresa" name="empresa" class="form-control" placeholder="Empresa solicitante">
+          <input type="text" id="quoteEmpresa" name="empresa" class="form-control" placeholder="Digite o nome da sua empresa">
         </div>
 
         <div class="form-row">
           <div class="form-group" style="margin-bottom: 12px;">
             <label for="quoteEmail">E-mail Corporativo *</label>
-            <input type="email" id="quoteEmail" name="email" class="form-control" required placeholder="seu@empresa.com.br">
+            <input type="email" id="quoteEmail" name="email" class="form-control" required placeholder="email@empresa.com.br">
           </div>
           <div class="form-group" style="margin-bottom: 12px;">
             <label for="quoteTelefone">WhatsApp / Telefone *</label>
@@ -1569,8 +1619,8 @@
         </div>
 
         <div class="form-group" style="margin-bottom: 12px;">
-          <label for="quoteMensagem">Informações Adicionais (Volume de páginas, prazo, endereço de entrega):</label>
-          <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="3" placeholder="Ex: Franquia de 10.000 páginas/mês para escritório em SP..."></textarea>
+          <label for="quoteMensagem">Informações Adicionais (Volume de páginas, prazo e etc.):</label>
+          <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="3" placeholder="Ex: Franquia, prazo de entrega, localidades..."></textarea>
         </div>
 
         <div id="quoteFeedbackBox" class="quote-feedback"></div>
@@ -1638,7 +1688,7 @@
           
           <div style="margin-top: 8px;">
             <input type="file" id="prodFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" multiple onchange="handleNewPhotosInput(this)">
-            <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">Você pode carregar várias fotos simultâneas e alterar suas ordens livremente acima.</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">Carregue várias fotos simultâneamente e altere a orden livremente acima.</span>
           </div>
         </div>
 
@@ -1663,7 +1713,7 @@
         <button type="button" class="modal-close-btn" style="position: static; width: 32px; height: 32px;" onclick="closeExportModal()">✕</button>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
-        Selecione as categorias que deseja incluir no documento oficial para impressão ou salvar em PDF:
+        Selecione as categorias que deseja imprimir ou salvar em PDF:
       </p>
 
       <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px;">
@@ -1770,7 +1820,7 @@
         <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </div>
       <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px;">Acesso Restrito</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Área exclusiva para gestão do catálogo InfinityCorp.</p>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Área exclusiva para gestão do portfólio da InfinityCorp.</p>
       
       <form onsubmit="handleLoginSubmit(event)">
         <div class="form-group" style="text-align: left;">
@@ -1806,7 +1856,7 @@
         <h3 style="font-size: 1.3rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Publicação Enviada com Sucesso!</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">
           As mudanças estão sendo compiladas.<br>
-          Aguarde a atualização automática para visualizar todas as mudanças online:
+          Aguarde a atualização automática para visualizar todas as mudanças:
         </p>
         <div style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 10px; overflow: hidden; margin-top: 18px;">
           <div style="height: 100%; width: 0%; background: linear-gradient(90deg, #10B981, #0284C7); transition: width 1s linear;" id="deployProgressBar"></div>
@@ -2312,14 +2362,18 @@
     }
 
     /* ATUALIZA BARRA FLUTUANTE DINAMICAMENTE */
-    function atualizarBarraFlutuante() {
+      function atualizarBarraFlutuante() {
       const floatingBar = document.getElementById('floatingQuoteBar');
       const counterEl = document.getElementById('floatingQuoteCounter');
       const countTextEl = document.getElementById('floatingQuoteCountText');
       const count = carrinhoCotacao.size;
 
       if (counterEl) counterEl.textContent = count;
-      if (countTextEl) countTextEl.textContent = count;
+      if (countTextEl) {
+        // Se for tela de celular (< 600px), exibe abreviado "X item(ns)" para caber com folga
+        const isMobile = window.innerWidth <= 600;
+        countTextEl.innerHTML = isMobile ? `${count} item(ns)` : `${count} equipamento(s) selecionado(s)`;
+      }
 
       if (count > 0) {
         floatingBar.classList.add('active');
@@ -2327,6 +2381,7 @@
         floatingBar.classList.remove('active');
       }
     }
+
 
     /* MODAL DE SELEÇÃO */
     function abrirModalSelecaoCotacao() {
@@ -2879,7 +2934,7 @@
 
     function logoutAdmin() {
       if (pendingChangesCount > 0) {
-        if (!confirm('Você tem alterações não salvas no GitHub! Se sair agora, elas serão perdidas. Deseja sair mesmo assim?')) return;
+        if (!confirm('Você tem alterações não salvas no repositório! Se sair agora, elas serão perdidas. Deseja sair mesmo assim?')) return;
       }
       localStorage.removeItem('infinity_admin_logged');
       location.reload();
@@ -3019,7 +3074,7 @@
           })
         });
 
-        if (!putRes.ok) throw new Error('Erro ao gravar arquivo no GitHub.');
+        if (!putRes.ok) throw new Error('Erro ao gravar arquivo no repositório.');
 
         phaseUpload.style.display = 'none';
         phaseCountdown.style.display = 'block';
@@ -3033,7 +3088,7 @@
       } catch (err) {
         console.error(err);
         deployModal.classList.remove('active');
-        alert('Erro ao publicar alterações no GitHub. Verifique seu token e tente novamente.');
+        alert('Erro ao publicar alterações no servidor. Verifique seu token e tente novamente.');
       }
     }
 
@@ -3384,7 +3439,7 @@
         if (!input.files || !input.files[0]) return;
         const file = input.files[0];
 
-        const confirmUpload = confirm(`Deseja enviar o logo "${file.name}" diretamente para a pasta logos/ no GitHub?`);
+        const confirmUpload = confirm(`Deseja enviar o logo "${file.name}" diretamente para a pasta logos/ no repositório?`);
         if (!confirmUpload) return;
 
         try {
