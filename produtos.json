@@ -45,6 +45,18 @@
       "title": "Térmicas de Etiquetas",
       "ativa": true,
       "icon": "thermal"
+    },
+    {
+      "id": "acessrios",
+      "title": "Acessórios",
+      "icon": "network",
+      "ativa": true
+    },
+    {
+      "id": "softwares",
+      "title": "Softwares",
+      "icon": "shield",
+      "ativa": true
     }
   ],
   "produtos": [
@@ -1374,6 +1386,21 @@
         "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
       },
       "logoMarca": "logos/dell.png"
+    },
+    {
+      "id": "prod-1789559680594",
+      "categoria": "acessrios",
+      "marca": "DMZ Connection",
+      "nome": "Leitor RFID",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789559921558_dmz.jpg"
+      ],
+      "specs": {
+        "Frequência": "125 kHz, 134 kHz e 13,56 MHz",
+        "Conectividade": "USB"
+      },
+      "logoMarca": "logos/dmz-connection.png"
     }
   ],
   "marcas": [
@@ -1440,6 +1467,10 @@
     {
       "name": "Dascom",
       "logo": "logos/dascom.png"
+    },
+    {
+      "name": "DMZ Connection",
+      "logo": "logos/dmz-connection.png"
     }
   ]
 }
