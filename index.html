@@ -410,7 +410,7 @@
       }
     }
 
-    /* BOTÃO FLUTUANTE DE INDICAÇÃO / HINT */
+    /* BOTÃO FLUTUANTE DE INDICAÇÃO / HINT (Estilo Clean Azul Bebê) */
     .floating-quote-hint {
       position: fixed;
       bottom: 24px;
@@ -419,13 +419,13 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(240, 249, 255, 0.92); /* Azul bebê bem claro e suave */
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding: 6px 6px 6px 18px;
       border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+      border: 1px solid #BAE6FD; /* Borda sutil combinando */
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
       cursor: pointer;
       opacity: 0;
       transform: translateY(20px) scale(0.96);
@@ -439,22 +439,22 @@
       pointer-events: auto;
     }
     .floating-quote-hint:hover {
-      background: rgba(15, 23, 42, 0.95);
-      border-color: rgba(16, 185, 129, 0.4);
+      background: #E0F2FE;
+      border-color: #7DD3FC;
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 35px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.2);
     }
     .floating-quote-hint .hint-lead-text {
       font-size: 0.82rem;
       font-weight: 800;
-      color: #10B981;
+      color: #0369A1; /* Azul escuro corporativo para boa leitura */
       display: inline-flex;
       align-items: center;
       gap: 6px;
       letter-spacing: -0.01em;
     }
     .floating-quote-hint .hint-button {
-      background: linear-gradient(135deg, #10B981, #0284C7);
+      background: linear-gradient(135deg, #0284C7, #0369A1); /* Mesmo azul da barra principal */
       color: #FFFFFF;
       border: none;
       height: 38px;
@@ -466,7 +466,12 @@
       align-items: center;
       gap: 7px;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+      transition: all 0.2s ease;
+    }
+    .floating-quote-hint:hover .hint-button {
+      filter: brightness(1.08);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
     }
 
     @media (max-width: 600px) {
