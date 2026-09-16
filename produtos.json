@@ -1401,6 +1401,47 @@
         "Conectividade": "USB"
       },
       "logoMarca": "logos/dmz-connection.png"
+    },
+    {
+      "id": "prod-1789560323802",
+      "categoria": "acessrios",
+      "marca": "DMZ Connection",
+      "nome": " Mini Leitor Bio Reader SR",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789561318026_biodmz.png"
+      ],
+      "specs": {
+        "Impressão Segura": "Biometria",
+        "RFID": "125 kHz e 13,56 MHz",
+        "Cartões": "Mifare, EM4002/4100",
+        "Conectividade": "USB",
+        "Compatibilidade": "Funciona com soluções como PaperCut MF"
+      },
+      "logoMarca": "logos/dmz-connection.png"
+    },
+    {
+      "id": "prod-1789561225838",
+      "categoria": "softwares",
+      "marca": "Papercut",
+      "nome": "Papercut MF",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789561320577_ppc1.jpg",
+        "fotos/1789561321586_ppc5.png",
+        "fotos/1789561322419_ppc4.png",
+        "fotos/1789561323253_ppc3.jpg",
+        "fotos/1789561324182_ppc.jpg"
+      ],
+      "specs": {
+        "Controle": "Custo, Cotas ou Equipamentos",
+        "Autenticação": "Crachá, PIN e senha",
+        "Impressão Segura": "Find-Me",
+        "Sustentabilidade": "Políticas ecológicas e programas de plantio de árvores",
+        "Mobilidade": "Suporta impressão BYOD de celulares, tablets",
+        "Atividade": "Monitora e gerencia impressão, cópia, digitalização e fax"
+      },
+      "logoMarca": "logos/papercut.png"
     }
   ],
   "marcas": [
@@ -1471,6 +1512,10 @@
     {
       "name": "DMZ Connection",
       "logo": "logos/dmz-connection.png"
+    },
+    {
+      "name": "Papercut",
+      "logo": "logos/papercut.png"
     }
   ]
 }
