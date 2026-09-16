@@ -79,7 +79,7 @@
       ],
       "specs": {
         "Velocidade": "Até 43 ppm",
-        "Painel": "Touch colorido de 10,9 cm (4,3')",
+        "Painel": "Touch colorido de 10,9 cm (4,3\")",
         "Resolução": "Até 1200 x 1200 dpi",
         "Impressão frente e verso (Duplex)": "Automática",
         "Primeira página": "Cerca de 5,9 segundos",
@@ -120,7 +120,7 @@
         "fotos/1789479749231_totem-movel1-inf.png"
       ],
       "specs": {
-        "Tela": "24' polegadas",
+        "Tela": "24\" polegadas",
         "Memória": "6 GB de RAM",
         "Armazenamento": "128 GB",
         "Câmera": "Sim",
@@ -144,9 +144,9 @@
       ],
       "specs": {
         "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
+        "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Tela": "15,6' - Full HD (1920 x 1080)",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "logos/dell.png"
@@ -165,7 +165,7 @@
       ],
       "specs": {
         "Velocidade": "Até 40 ppm",
-        "Painel": "Touch colorido de 2,7'",
+        "Painel": "Touch colorido de 2,7\"",
         "ADF": "50 folhas",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
         "Impressão frente e verso (Duplex)": "Automática.",
@@ -208,10 +208,10 @@
       ],
       "specs": {
         "Velocidade": "Até 40 a 42 (ppm)",
-        "Painel": "Touch colorido de 10,9 cm (4,3')",
+        "Painel": "Touch colorido de 10,9 cm (4,3\")",
         "Impressão Duplex": "Automática",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
-        "Conectividade": "Portas USB e RJ45 LAN (10/100/1000)",
+        "Conectividade": "Portas USB e RJ45  (10/100/1000)",
         "ADF": "50 páginas com digitalização duplex de passagem única",
         "Memória e Armazenamento": "2 GB de memória RAM e 16 GB de eMMC"
       },
@@ -252,9 +252,9 @@
       ],
       "specs": {
         "Processador": "Intel Core  i5 - 10ª Gen",
+        "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Tela": "15,6' - Full HD (1920 x 1080)",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "fotos/1788542042460_LogoLenovo.png"
@@ -273,11 +273,11 @@
       ],
       "specs": {
         "Processador": "Intel Core i5-1235U",
+        "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD de 256 / 512 GB M.2 NVMe",
         "Placa de Vídeo": "Intel Iris Xe Graphics G7 integrada",
-        "Tela": "LCD de 15.6\"",
-        "Resolução": "Full HD (1920x1080),  de 60 Hz e abertura de até 180°",
+        "Tx Atualização": "60 Hz e abertura de até 180°",
         "Teclado": "Padrão ABNT2, retroiluminado e com teclado numérico dedicado",
         "Portas e Conexões": "Wi-Fi 6, Bluetooth 5.2, 1x USB-C, 1x USB 3.2, 1x USB 2.0, HDMI 2.0, RJ45 e leitor de cartões de memória"
       },
@@ -315,9 +315,9 @@
       ],
       "specs": {
         "Processador": "Intel Core  i5 - 10ª / 11ª Gen",
+        "Tela": "14\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Tela": "14' - Full HD (1920 x 1080)",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "fotos/1788542048564_LogoDell.png"
@@ -338,9 +338,9 @@
       ],
       "specs": {
         "Processador": "Intel Core 5 /  7",
+        "Tela": "16' WQXGA (2560 x 1600), 120 Hz",
         "Memória": "16/32/64GB DDR5  (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Tela": "16' WQXGA (2560 x 1600), de 120 Hz e 100% de cobertura sRGB",
         "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050",
         "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
       },
@@ -358,8 +358,8 @@
       ],
       "specs": {
         "Processador": "Intel Core Ultra 7 256V/258V",
-        "Memória": "16/32 GB LPDDR5X (8533 MT/s)",
         "NPU": "47 TOPS para recursos de IA",
+        "Memória": "16/32 GB LPDDR5X (8533 MT/s)",
         "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
         "Placa de Vídeo": "Intel Arc Graphics 140V",
         "Tela": "OLED 3K (2880x1800): Touchscreen, 400 nits / FHD+ (1920x1200): Sem toque, 500 nits",
@@ -380,7 +380,7 @@
       ],
       "specs": {
         "Velocidade": "Até 43 a 48 ppm",
-        "Painel": "Touch colorido de 10'",
+        "Painel": "Touch colorido de 10\"",
         "1ª Página": "5,9 segundos",
         "Resolução": "Até 1200 x 1200 dpi",
         "Impressão frente e verso": "Duplex automático padrão",
@@ -406,7 +406,7 @@
       ],
       "specs": {
         "Velocidade": "Até 45 ppm (preto e colorido)",
-        "Painel": "Touch colorido de 8' ou 10,1'",
+        "Painel": "Touch colorido de 8\" ou 10,1\"",
         "Resolução": "Até 1200 x 1200 dpi",
         "Velocidade de digitalização (AAD)": "Até 120 ipm",
         "Alimentador automático (AAD)": "100 páginas com digitalização duplex de passada única",
@@ -428,7 +428,7 @@
       ],
       "specs": {
         "Velocidade": "Até 20/25/30 ppm",
-        "Painel": "Touch colorido de 7'",
+        "Painel": "Touch colorido de 7\"",
         "Resolução Máxima": "Até 1200 x 2400 dpi",
         "Tamanhos de Papel": "A3, A4, B4, B5 e Ofício",
         "Impressão Frente e Verso (Duplex)": "Automática",
@@ -448,7 +448,7 @@
       ],
       "specs": {
         "Velocidade": "Até 35/45 ppm",
-        "Painel": "Touch colorido de 10.1'",
+        "Painel": "Touch colorido de 10.1\"",
         "Impressão": "Até 1200 x 2400 dpi",
         "Cópia": "Até 600 x 600 dpi",
         "Processador": "Intel Atom Quad-Core de 1,91 GHz",
@@ -493,7 +493,7 @@
       ],
       "specs": {
         "Velocidade": "Até 43 ppm",
-        "Painel": "Touch colorido de 5'",
+        "Painel": "Touch colorido de 5\"",
         "Frente e verso": "Automático (Duplex)",
         "Bandeja": "Padrão de 650 folhas, expansível até 2.300 folhas",
         "Conectividade": "RJ45 10/100/1000, Wi-Fi, Wi-Fi Direct e USB"
@@ -511,7 +511,7 @@
       ],
       "specs": {
         "Velocidade": "Até 25 ppm",
-        "Painel": "Touch colorido de 7'",
+        "Painel": "Touch colorido de 7\"",
         "Resolução": "Até 1200 x 1200 dpi",
         "Papel Suportado": "Até o formato A3 (incluindo A4, A5, A5R, A6, envelopes)",
         "Gramatura de Papel": "Suporta até 300 g/m² na bandeja manual/multiuso",
@@ -531,7 +531,7 @@
       ],
       "specs": {
         "Velocidade": "Até 33 (preto) e 20 ppm (cor)",
-        "Painel": "Touch colorido de 2,4'",
+        "Painel": "Touch colorido de 2,4\"",
         "Velocidade de impressão ISO": "15 ppm em preto e 8 ppm em cores (modo normal)",
         "Tecnologia de impressão": "Jato de tinta de 4 cores (CMYK)",
         "Resolução máxima de impressão": "Até 4800 x 1200 dpi de resolução otimizada",
@@ -554,7 +554,7 @@
       ],
       "specs": {
         "Velocidade": "Até 24 a 25 ppm preto/cor",
-        "Painel": "Touch colorido de 4,3'",
+        "Painel": "Touch colorido de 4,3\"",
         "Resolução": "Até 4800 x 1200 dpi",
         "Impressão Duplex": "Automática",
         "ADF": "Capacidade para 50 folhas",
@@ -600,7 +600,7 @@
       ],
       "specs": {
         "Velocidade": "Até 34 ppm",
-        "Painel": "Touch colorido de 4,3'",
+        "Painel": "Touch colorido de 4,3\"",
         "Resolução": "1200 x 1200 dpi",
         "Primeira Página": "Menos de 7,1 a 7,5 segundos",
         "Impressão Duplex (Frente e Verso)": "Automática",
@@ -623,7 +623,7 @@
       ],
       "specs": {
         "Velocidade": "Até 47 a 50 ppm",
-        "Painel": "Touch colorido de 9' / 10.1'",
+        "Painel": "Touch colorido de 9\" / 10.1\"",
         "Resolução Máxima": "1200 x 600 dpi",
         "Primeira Página": "Cerca de 7,5 segundos",
         "Bandeja": "550 folhas + Alimentação manual para 100 folhas (total de 650 folhas)",
@@ -648,7 +648,7 @@
       ],
       "specs": {
         "Velocidade": "Até 55 ppm",
-        "Painel": "Touch colorido de 7'",
+        "Painel": "LCD de 5 linhas com botões físicos",
         "Frente e verso (Duplex)": "Automática",
         "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
         "Digitalização": "Dupla em uma única passagem (DADF)",
@@ -670,7 +670,7 @@
       ],
       "specs": {
         "Velocidade": "Até 55 ppm",
-        "Painel": "Touch colorido de 7'",
+        "Painel": "Touch colorido de 7\"",
         "Frente e verso (Duplex)": "Automática",
         "Bandeja": "500 folhas + bandeja multiuso de 100 folhas, expansível até 2.600 folhas",
         "Digitalização": "Dupla em uma única passagem (DADF)",
@@ -711,7 +711,7 @@
       ],
       "specs": {
         "Velocidade": "Até 40 ppm",
-        "Painel": "Touch colorido de 3,7'",
+        "Painel": "Touch colorido de 3,7\"",
         "Resolução Máxima": "Até 1200 x 1200 dpi (impressão) e 1200 x 600 dpi (cópia)",
         "Impressão Frente e Verso (Duplex)": "Automática",
         "ADF": "70 folhas e cópia e digitalização com passagem única",
@@ -1136,7 +1136,7 @@
         "fotos/1789477599745_Totem-kiosk-inf.png"
       ],
       "specs": {
-        "Tela": "Touch 21,5' polegadas",
+        "Tela": "Touch 21,5\" polegadas",
         "Processador": "Core i5",
         "Leitor": "Código de barras e QR Code",
         "Impressora": "Térmica Integrada",
@@ -1156,8 +1156,11 @@
         "fotos/1789480490560_telainterativa.png"
       ],
       "specs": {
-        "Tela": "65´polegadas",
+        "Tela": "65\" polegadas",
         "Resolução": "UHD 4K",
+        "Painel": "Touch",
+        "Processador": "Core I5",
+        "Armazenamento": "SSD 120GB",
         "Sistema": "Windows 11",
         "Operação": "18/7"
       },
@@ -1219,7 +1222,7 @@
       ],
       "specs": {
         "Resolução": "203 dpi ou 300 dpi",
-        "Painel": "Touch  colorido de 4,3'",
+        "Painel": "Touch  colorido de 4,3\"",
         "Memória": "256 MB SDRAM e 256 MB",
         "Conectividade": "USB, RJ45 10/100 e Serial",
         "Conectividade opcional": "Wi-Fi 5",
@@ -1340,7 +1343,7 @@
       ],
       "specs": {
         "Processador": "Intel Core /  Ultra 5 / 7",
-        "Tela": "14,0 polegadas",
+        "Tela": "14\" - Full HD+ (1920 x 1200)",
         "Memória": "8 / 16 / 32 GB DDR5 / LPDDR5x",
         "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
         "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
@@ -1363,8 +1366,7 @@
       ],
       "specs": {
         "Processador": "Intel Core /  Ultra 5 / 7",
-        "Tela": "16,0 polegadas",
-        "Resolução": "FHD+ (1920 x 1200)",
+        "Tela": "16\" - Full HD+ (1920 x 1200)",
         "Memória": "16 / 32 GB DDR5 / LPDDR5x",
         "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
         "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
