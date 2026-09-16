@@ -857,28 +857,6 @@
       "logoMarca": "logos/dell.png"
     },
     {
-      "id": "prod-1789471690592",
-      "categoria": "monitor",
-      "marca": "Samsung",
-      "nome": "Gamer Essential S3",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789472031316_s31.jpg",
-        "fotos/1789472032528_s32.png"
-      ],
-      "specs": {
-        "Tela": "24 polegadas",
-        "Resolução": "Full HD (1920 x 1080)",
-        "Painel": "IPS (ângulo de visão de 178°/178°)",
-        "Taxa de atualização": "Até 100 Hz ou 120 Hz",
-        "Tempo de resposta": "5ms (GTG)",
-        "Brilho": "250 cd/m²",
-        "Contraste": "1000",
-        "Proporção de tela": "16:9"
-      },
-      "logoMarca": "logos/samsung.png"
-    },
-    {
       "id": "prod-1789471382008",
       "categoria": "monitor",
       "marca": "Samsung",
@@ -890,7 +868,7 @@
         "fotos/1789471398624_s33.jpg"
       ],
       "specs": {
-        "Tela": "27 polegadas",
+        "Tela": "24 ou 27 polegadas",
         "Resolução": "Full HD (1920 x 1080)",
         "Painel": "IPS (ângulo de visão de 178°/178°)",
         "Taxa de atualização": "Até 100 Hz ou 120 Hz",
