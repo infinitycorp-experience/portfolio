@@ -358,7 +358,7 @@
     }
     .floating-quote-btn-clear:hover { color: #FECDD3; }
 
-        /* AJUSTE RESPONSIVO DA BARRA FLUTUANTE DE PROPOSTA */
+    /* AJUSTE RESPONSIVO DA BARRA FLUTUANTE DE PROPOSTA */
     @media (max-width: 600px) {
       .floating-quote-bar {
         bottom: 12px;
@@ -407,6 +407,82 @@
         padding: 0 12px;
         font-size: 0.74rem;
         gap: 5px;
+      }
+    }
+
+    /* BOTÃO FLUTUANTE DE INDICAÇÃO / HINT */
+    .floating-quote-hint {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1350;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 6px 6px 6px 18px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+    .floating-quote-hint.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .floating-quote-hint:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(16, 185, 129, 0.4);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(2, 132, 199, 0.25);
+    }
+    .floating-quote-hint .hint-lead-text {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #10B981;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: -0.01em;
+    }
+    .floating-quote-hint .hint-button {
+      background: linear-gradient(135deg, #10B981, #0284C7);
+      color: #FFFFFF;
+      border: none;
+      height: 38px;
+      padding: 0 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      .floating-quote-hint {
+        bottom: 16px;
+        right: 12px;
+        padding: 5px 5px 5px 12px;
+        gap: 8px;
+      }
+      .floating-quote-hint .hint-lead-text {
+        font-size: 0.72rem;
+      }
+      .floating-quote-hint .hint-button {
+        height: 34px;
+        padding: 0 10px;
+        font-size: 0.74rem;
       }
     }
 
@@ -1370,7 +1446,7 @@
       @page { size: A4 portrait; margin: 14mm 10mm 15mm 10mm; }
       body { background: #FFFFFF !important; color: #0F172A !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       body::before { display: none; }
-      .top-navbar, .hero, .admin-bar, .modal-overlay, .admin-card-actions, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, footer { display: none !important; }
+      .top-navbar, .hero, .admin-bar, .modal-overlay, .admin-card-actions, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { display: none !important; }
       .main-content { padding: 0 !important; max-width: 100% !important; }
       .print-header { display: flex !important; align-items: center; justify-content: space-between; padding-bottom: 15px; margin-bottom: 25px; border-bottom: 2px solid #0284C7; }
       .print-header img { height: 50px; width: auto; object-fit: contain; }
@@ -1476,8 +1552,19 @@
     </div>
   </main>
 
- 
-    <!-- BARRA FLUTUANTE DE PROPOSTA RESPONSIVA -->
+  <!-- DICA FLUTUANTE DE COTAÇÃO (APARECE NO SCROLL SE NADA ESTIVER SELECIONADO) -->
+  <div class="floating-quote-hint" id="floatingQuoteHint" onclick="abrirModalSelecaoCotacao()" title="Clique para montar sua proposta">
+    <span class="hint-lead-text">
+      Monte sua proposta 
+      <svg class="icon-svg-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </span>
+    <button type="button" class="hint-button">
+      <svg class="icon-svg-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      <span>Cotar Agora</span>
+    </button>
+  </div>
+
+  <!-- BARRA FLUTUANTE DE PROPOSTA RESPONSIVA -->
   <div class="floating-quote-bar" id="floatingQuoteBar">
     <div class="floating-quote-info">
       <div class="floating-quote-icon-badge">
@@ -2283,6 +2370,20 @@
       });
     }
 
+    /* CONTROLE DA DICA FLUTUANTE DE COTAÇÃO */
+    function verificarDicaFlutuante() {
+      const hintEl = document.getElementById('floatingQuoteHint');
+      if (!hintEl) return;
+      const scrollSuficiente = window.scrollY > 250;
+      const semItensSelecionados = carrinhoCotacao.size === 0;
+
+      if (scrollSuficiente && semItensSelecionados) {
+        hintEl.classList.add('active');
+      } else {
+        hintEl.classList.remove('active');
+      }
+    }
+
     /* GESTÃO DO CARRINHO & BARRA FLUTUANTE */
     function toggleProdutoCarrinho(prodId, forceQty = null) {
       const prod = produtos.find(p => p.id === prodId);
@@ -2295,7 +2396,6 @@
         const currentQty = itemExistente?.qtd || 1;
         const newQty = forceQty !== null ? Math.max(1, forceQty) : currentQty;
         
-        // Mantém a escolha feita pelo usuário ou seta padrão
         const ram = itemExistente?.ram || '8GB';
         const ssd = itemExistente?.ssd || '256GB';
 
@@ -2342,7 +2442,7 @@
       if (tipo === 'ram') item.ram = val;
       if (tipo === 'ssd') item.ssd = val;
       carrinhoCotacao.set(prodId, item);
-      renderQuoteModalState(); // Agora atualiza os chips visíveis no topo imediatamente
+      renderQuoteModalState();
     }
 
     function limparTodoCarrinho() {
@@ -2352,7 +2452,7 @@
       renderQuoteModalState();
     }
 
-        function atualizarBarraFlutuante() {
+    function atualizarBarraFlutuante() {
       const floatingBar = document.getElementById('floatingQuoteBar');
       const counterEl = document.getElementById('floatingQuoteCounter');
       const countTextEl = document.getElementById('floatingQuoteCountText');
@@ -2360,7 +2460,6 @@
 
       if (counterEl) counterEl.textContent = count;
       if (countTextEl) {
-        // No celular encurta para caber com folga, no computador mostra completo
         const isMobile = window.innerWidth <= 600;
         countTextEl.textContent = isMobile 
           ? `${count} item(ns) selec.` 
@@ -2372,6 +2471,9 @@
       } else {
         floatingBar.classList.remove('active');
       }
+
+      // Atualiza também a dica flutuante de incentivo
+      verificarDicaFlutuante();
     }
 
     /* MODAL DE SELEÇÃO */
@@ -2607,10 +2709,8 @@
       const prodId = currentSelectedProductForModal.id;
       const isAdding = !carrinhoCotacao.has(prodId);
 
-      // Adiciona ou remove do carrinho
       toggleProdutoCarrinho(prodId);
 
-      // Se foi adicionado, dá feedback e fecha suavemente
       if (isAdding) {
         const btnZoom = document.getElementById('btnZoomModalAddToCart');
         if (btnZoom) {
@@ -2689,7 +2789,6 @@
           limparTodoCarrinho();
           document.getElementById('formCotacaoWeb3').reset();
 
-          // Aguarda 3,5 segundos exibindo a confirmação e recarrega a página
           setTimeout(() => {
             location.reload();
           }, 3500);
@@ -3073,7 +3172,7 @@
 
         pendingChangesCount = 0;
         pendingUploadQueue = [];
-        pendingDeletionsQueue = [];
+                pendingDeletionsQueue = [];
         originalSnapshot = JSON.stringify({ categorias, produtos, marcas });
         updateAdminBarUI();
       } catch (err) {
@@ -3646,3 +3745,5 @@
   </script>
 </body>
 </html>
+
+
