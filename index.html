@@ -1485,13 +1485,14 @@
         ? `🛒 ${qtdSobrouCarrinho} modelo(s) no carrinho` 
         : `🛒 Carrinho finalizado vazio`;
 
-      // Montagem do Detalhe formatado
+            // Montagem do Detalhe formatado
       const detalheFormatado = 
-`Tempo: ~${minutos} min 
-👀 Vistos: [${listaVistos}] 
+`
+⏳ Tempo: ~${minutos} min
+👀 Vistos: [${listaVistos}]
 📈 Na Cotação: ${listaCotados}
 📂 Exportou: [${exportouStatus}]
-🫰🏻 Proposta (${textoCarrinhoSobrou})`;
+🫰🏻 Proposta (${textoCarrinhoSobrou})`.trim();
 
       // Envia evento consolidado
       sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs ⏱️`, detalheFormatado);
