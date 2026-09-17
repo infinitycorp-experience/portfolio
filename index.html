@@ -94,7 +94,6 @@
     }
     .nav-menu::-webkit-scrollbar { display: none; }
 
-    /* NOVO ESTILO DOS ATALHOS: CLEAN (BRANCO) -> HOVER COLORIDO -> ACTIVE PREENCHIDO */
     .nav-item {
       text-decoration: none;
       font-size: 0.82rem;
@@ -117,7 +116,6 @@
       transition: color 0.2s ease, transform 0.2s ease;
     }
     
-    /* Hover: texto e ícone pegam a cor da categoria, fundo ganha tom pastel leve */
     .nav-item:hover { 
       transform: translateY(-2px); 
       background: var(--cat-bg, #F8FAFC);
@@ -130,7 +128,6 @@
       transform: scale(1.08);
     }
 
-    /* Active: preenchido 100% com a cor vibrante e texto branco */
     .nav-item.active {
       background: var(--cat-color, var(--primary)) !important;
       color: #FFFFFF !important;
@@ -143,7 +140,7 @@
       transform: scale(1.05);
     }
 
-    /* Hero Section Clean */
+    /* Hero Section */
     .hero {
       position: relative;
       z-index: 1;
@@ -165,7 +162,6 @@
     }
     .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 24px; }
 
-    /* Barra de Busca + Filtro Centralizada e Leve */
     .hero-actions-container {
       max-width: 760px;
       margin: 0 auto;
@@ -247,7 +243,6 @@
       padding: 6px 0;
     }
 
-    /* Botão Exportar / Imprimir Discreto e Sofisticado */
     .btn-export-discreet {
       display: inline-flex;
       align-items: center;
@@ -272,7 +267,6 @@
       color: var(--primary);
       transform: translateY(-1px);
     }
-    .btn-export-discreet:hover .icon-svg { color: var(--primary); }
 
     @media (max-width: 768px) {
       .hero-actions-container { flex-direction: column; width: 100%; }
@@ -280,7 +274,7 @@
       .btn-export-discreet { width: 100%; justify-content: center; }
     }
 
-    /* BARRA FLUTUANTE DE PROPOSTA */
+    /* Barra Flutuante de Proposta */
     .floating-quote-bar {
       position: fixed;
       bottom: 24px;
@@ -389,59 +383,25 @@
     }
     .floating-quote-btn-clear:hover { color: #FECDD3; }
 
-    /* AJUSTE RESPONSIVO DA BARRA FLUTUANTE DE PROPOSTA */
     @media (max-width: 600px) {
       .floating-quote-bar {
         bottom: 12px;
         padding: 6px 10px;
         gap: 8px;
         width: 95vw;
-        max-width: 95vw;
         border-radius: 18px;
         justify-content: space-between;
       }
-      .floating-quote-info {
-        gap: 8px;
-        min-width: 0;
-        flex: 1 1 auto;
-      }
-      .floating-quote-icon-badge {
-        width: 32px;
-        height: 32px;
-      }
-      .floating-quote-counter {
-        font-size: 0.65rem;
-        min-width: 16px;
-        height: 16px;
-      }
-      .floating-quote-text strong {
-        font-size: 0.78rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .floating-quote-text span {
-        display: none !important;
-      }
-      .floating-quote-actions-group {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        flex-shrink: 0;
-      }
-      .floating-quote-btn-clear {
-        padding: 4px 6px;
-        font-size: 0.68rem;
-      }
-      .floating-quote-btn-action {
-        height: 36px;
-        padding: 0 12px;
-        font-size: 0.74rem;
-        gap: 5px;
-      }
+      .floating-quote-info { gap: 8px; min-width: 0; flex: 1 1 auto; }
+      .floating-quote-icon-badge { width: 32px; height: 32px; }
+      .floating-quote-counter { font-size: 0.65rem; min-width: 16px; height: 16px; }
+      .floating-quote-text strong { font-size: 0.78rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+      .floating-quote-text span { display: none !important; }
+      .floating-quote-actions-group { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+      .floating-quote-btn-clear { padding: 4px 6px; font-size: 0.68rem; }
+      .floating-quote-btn-action { height: 36px; padding: 0 12px; font-size: 0.74rem; gap: 5px; }
     }
 
-    /* BOTÃO FLUTUANTE DE INDICAÇÃO / HINT */
     .floating-quote-hint {
       position: fixed;
       bottom: 24px;
@@ -452,7 +412,6 @@
       gap: 12px;
       background: rgba(240, 249, 255, 0.92);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       padding: 6px 6px 6px 18px;
       border-radius: 50px;
       border: 1px solid #BAE6FD;
@@ -464,26 +423,9 @@
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       user-select: none;
     }
-    .floating-quote-hint.active {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-    .floating-quote-hint:hover {
-      background: #E0F2FE;
-      border-color: #7DD3FC;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.2);
-    }
-    .floating-quote-hint .hint-lead-text {
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: #0369A1;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: -0.01em;
-    }
+    .floating-quote-hint.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .floating-quote-hint:hover { background: #E0F2FE; border-color: #7DD3FC; transform: translateY(-2px) scale(1.02); }
+    .floating-quote-hint .hint-lead-text { font-size: 0.82rem; font-weight: 800; color: #0369A1; display: inline-flex; align-items: center; gap: 6px; }
     .floating-quote-hint .hint-button {
       background: linear-gradient(135deg, #0284C7, #0369A1);
       color: #FFFFFF;
@@ -498,33 +440,10 @@
       gap: 7px;
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
-      transition: all 0.2s ease;
-    }
-    .floating-quote-hint:hover .hint-button {
-      filter: brightness(1.08);
-      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
     }
 
-    @media (max-width: 600px) {
-      .floating-quote-hint {
-        bottom: 16px;
-        right: 12px;
-        padding: 5px 5px 5px 12px;
-        gap: 8px;
-      }
-      .floating-quote-hint .hint-lead-text {
-        font-size: 0.72rem;
-      }
-      .floating-quote-hint .hint-button {
-        height: 34px;
-        padding: 0 10px;
-        font-size: 0.74rem;
-      }
-    }
-
-    /* Conteúdo Principal */
+    /* Grid & Cards */
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 100px; }
-
     .section-header {
       display: flex;
       align-items: center;
@@ -537,12 +456,7 @@
     .section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
     .badge-count { font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: #E0F2FE; color: var(--primary); border: 1px solid #BAE6FD; }
 
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 24px;
-    }
-
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
     .prod-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -573,7 +487,7 @@
       margin-bottom: 16px;
     }
     .thumb-slider-container img { max-width: 92%; max-height: 92%; object-fit: contain; }
-    .placeholder-text { color: #94A3B8; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; text-align: center; padding: 10px; }
+    .placeholder-text { color: #94A3B8; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; text-align: center; }
 
     .carousel-btn {
       position: absolute;
@@ -592,37 +506,16 @@
       font-size: 13px;
       font-weight: bold;
       z-index: 5;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .carousel-btn:hover { background: #0F172A; color: white; }
     .carousel-btn.prev { left: 8px; }
     .carousel-btn.next { right: 8px; }
-
     .carousel-dots { position: absolute; bottom: 8px; display: flex; gap: 6px; z-index: 5; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(15, 23, 42, 0.2); }
     .dot.active { background: #0F172A; width: 14px; border-radius: 4px; }
 
-    .brand-header-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 6px;
-      min-height: 24px;
-      gap: 8px;
-    }
-    .brand-sub { 
-      font-size: 0.74rem; 
-      font-weight: 800; 
-      text-transform: uppercase; 
-      color: var(--primary); 
-      letter-spacing: 0.03em;
-    }
-    .brand-inline-logo {
-      height: 20px;
-      max-width: 75px;
-      object-fit: contain;
-    }
-
+    .brand-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; min-height: 24px; }
+    .brand-sub { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; color: var(--primary); }
+    .brand-inline-logo { height: 20px; max-width: 75px; object-fit: contain; }
     .prod-name { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
 
     .specs-list {
@@ -640,7 +533,6 @@
     .spec-row span { color: var(--text-muted); font-weight: 500; }
     .spec-row strong { color: var(--text-main); font-weight: 700; }
 
-    /* Barra de Ações do Card */
     .card-actions-bar {
       margin-top: 12px;
       padding-top: 10px;
@@ -661,14 +553,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
-      flex-shrink: 0;
     }
-    .btn-card-view-eye:hover {
-      background: #0F172A;
-      color: #FFFFFF;
-      border-color: #0F172A;
-    }
+    .btn-card-view-eye:hover { background: #0F172A; color: #FFFFFF; }
+    
     .btn-card-cart-toggle {
       height: 32px;
       padding: 0 12px;
@@ -682,30 +569,12 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      transition: all 0.2s;
     }
-    .btn-card-cart-toggle:hover {
-      background: var(--primary);
-      color: #FFFFFF;
-    }
-    .btn-card-cart-toggle.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #FFFFFF;
-    }
+    .btn-card-cart-toggle:hover, .btn-card-cart-toggle.active { background: var(--primary); color: #FFFFFF; }
 
-    .admin-card-actions {
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid var(--card-border);
-    }
+    .admin-card-actions { display: none; flex-direction: column; gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--card-border); }
     body.admin-mode .admin-card-actions { display: flex; }
-    
     .admin-card-buttons-row { display: flex; gap: 6px; }
-
     .btn-action {
       flex: 1;
       padding: 6px 8px;
@@ -715,22 +584,13 @@
       border: 1px solid var(--card-border);
       background: #FFFFFF;
       cursor: pointer;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
     }
     .btn-action:hover { background: #0F172A; color: white; }
     .btn-action.btn-del { color: var(--danger); border-color: #FECDD3; }
     .btn-action.btn-del:hover { background: var(--danger); color: white; }
-    .btn-order {
-      flex: 0 0 32px;
-      background: #F1F5F9;
-      color: #334155;
-      font-size: 0.85rem;
-    }
+    .btn-order { flex: 0 0 32px; background: #F1F5F9; color: #334155; }
 
-    /* Barra Fixa Flutuante do Admin */
+    /* Admin Bar */
     .admin-bar {
       display: none;
       position: fixed;
@@ -768,7 +628,6 @@
       font-size: 0.82rem;
       cursor: pointer;
       display: none;
-      animation: pulse 2s infinite;
     }
     .admin-btn-discard {
       background: transparent;
@@ -779,11 +638,6 @@
       font-size: 0.75rem;
       cursor: pointer;
       display: none;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
     .admin-btn-logout {
       background: transparent;
@@ -840,7 +694,6 @@
       align-items: center;
       justify-content: center;
       z-index: 20;
-      transition: 0.2s;
     }
     .modal-close-btn:hover { background: var(--danger); color: white; }
 
@@ -857,13 +710,7 @@
     .modal-gallery-area img { max-width: 92%; max-height: 92%; object-fit: contain; }
 
     .modal-body { padding: 30px; }
-    .modal-brand-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
+    .modal-brand-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
     .modal-brand { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--primary); }
     .modal-brand-inline-logo { height: 28px; max-width: 110px; object-fit: contain; }
     .modal-title { font-size: 1.7rem; font-weight: 800; margin: 4px 0 18px; color: var(--text-main); }
@@ -872,13 +719,7 @@
     .modal-details span { color: var(--text-muted); font-weight: 500; }
     .modal-details strong { color: var(--text-main); }
 
-    .modal-zoom-actions {
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid var(--card-border);
-      display: flex;
-      justify-content: flex-end;
-    }
+    .modal-zoom-actions { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--card-border); display: flex; justify-content: flex-end; }
     .btn-zoom-cart-toggle {
       height: 32px;
       padding: 0 12px;
@@ -889,32 +730,12 @@
       font-size: 0.76rem;
       font-weight: 800;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .btn-zoom-cart-toggle:hover { 
-      background: var(--primary); 
-      color: #FFFFFF; 
-    }
-    .btn-zoom-cart-toggle.active { 
-      background: var(--primary); 
-      border-color: var(--primary); 
-      color: #FFFFFF; 
-    }
+    .btn-zoom-cart-toggle:hover, .btn-zoom-cart-toggle.active { background: var(--primary); color: #FFFFFF; }
 
-    /* Formulários Gerais */
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-    @media (max-width: 640px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-
+    /* Formulários */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
     .form-control {
@@ -926,7 +747,6 @@
       font-size: 0.9rem;
       outline: none;
       background: #FFFFFF;
-      transition: border-color 0.2s;
     }
     .form-control:focus { border-color: var(--primary); }
     .form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
@@ -938,9 +758,7 @@
       border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s;
     }
-    .btn-submit:hover { background: var(--primary-hover); }
     .btn-cancel {
       background: #E2E8F0;
       color: var(--text-main);
@@ -951,16 +769,9 @@
       cursor: pointer;
     }
 
-    /* MODAL DE SELEÇÃO DE EQUIPAMENTOS */
-    .quote-selection-modal-box {
-      max-width: 900px;
-      padding: 28px;
-      border-radius: 22px;
-    }
-    .quote-search-wrapper {
-      position: relative;
-      margin: 12px 0 14px;
-    }
+    /* Modal de Cotação */
+    .quote-selection-modal-box { max-width: 900px; padding: 28px; border-radius: 22px; }
+    .quote-search-wrapper { position: relative; margin: 12px 0 14px; }
     .quote-search-input {
       width: 100%;
       height: 44px;
@@ -972,60 +783,14 @@
       font-weight: 600;
       color: var(--text-main);
       outline: none;
-      transition: all 0.2s;
     }
-    .quote-search-input:focus {
-      background: #FFFFFF;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
-    }
-    .quote-search-icon {
-      position: absolute;
-      left: 12px;
-      top: 13px;
-      color: var(--primary);
-    }
-    .quote-search-clear {
-      position: absolute;
-      right: 12px;
-      top: 12px;
-      background: none;
-      border: none;
-      color: #94A3B8;
-      cursor: pointer;
-      font-size: 14px;
-      display: none;
-    }
+    .quote-search-icon { position: absolute; left: 12px; top: 13px; color: var(--primary); }
+    .quote-search-clear { position: absolute; right: 12px; top: 12px; background: none; border: none; color: #94A3B8; cursor: pointer; font-size: 14px; display: none; }
 
-    .quote-selected-summary {
-      background: #F0F9FF;
-      border: 1px solid #BAE6FD;
-      border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 14px;
-    }
-    .quote-summary-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-    .quote-summary-title {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: #0369A1;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .quote-selected-chips-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      max-height: 90px;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
+    .quote-selected-summary { background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; }
+    .quote-summary-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .quote-summary-title { font-size: 0.8rem; font-weight: 800; color: #0369A1; display: flex; align-items: center; gap: 6px; }
+    .quote-selected-chips-grid { display: flex; flex-wrap: wrap; gap: 6px; max-height: 90px; overflow-y: auto; }
     .quote-chip {
       background: #FFFFFF;
       border: 1px solid #CBD5E1;
@@ -1033,257 +798,47 @@
       padding: 4px 8px;
       font-size: 0.74rem;
       font-weight: 700;
-      color: var(--text-main);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .quote-chip-qty {
-      background: #E0F2FE;
-      color: var(--primary);
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-size: 0.68rem;
-    }
-    .quote-chip-specs {
-      background: #F1F5F9;
-      color: #475569;
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-size: 0.66rem;
-      font-weight: 600;
-    }
-    .quote-chip-remove {
-      color: var(--danger);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: bold;
-      line-height: 1;
-    }
+    .quote-chip-qty { background: #E0F2FE; color: var(--primary); padding: 1px 6px; border-radius: 4px; font-size: 0.68rem; }
+    .quote-chip-specs { background: #F1F5F9; color: #475569; padding: 1px 6px; border-radius: 4px; font-size: 0.66rem; font-weight: 600; }
+    .quote-chip-remove { color: var(--danger); background: none; border: none; cursor: pointer; font-size: 13px; font-weight: bold; }
 
-    .quote-categories-accordion {
-      min-height: 280px;
-      max-height: 420px;
-      overflow-y: auto;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 6px;
-      margin-bottom: 20px;
-      background: #FFFFFF;
-    }
-    .quote-cat-block {
-      margin-bottom: 6px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #F1F5F9;
-    }
-    .quote-cat-header {
-      background: #F8FAFC;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.15s ease;
-    }
-    .quote-cat-header:hover { background: #F1F5F9; }
-    .quote-cat-title-side {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.84rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-    .quote-cat-count-badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      background: #E2E8F0;
-      padding: 2px 8px;
-      border-radius: 10px;
-    }
-    .quote-cat-arrow {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      transition: transform 0.2s ease;
-    }
+    .quote-categories-accordion { min-height: 280px; max-height: 420px; overflow-y: auto; border: 1px solid var(--card-border); border-radius: 12px; padding: 6px; margin-bottom: 20px; }
+    .quote-cat-block { margin-bottom: 6px; border-radius: 10px; overflow: hidden; border: 1px solid #F1F5F9; }
+    .quote-cat-header { background: #F8FAFC; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+    .quote-cat-title-side { display: flex; align-items: center; gap: 10px; font-size: 0.84rem; font-weight: 800; }
+    .quote-cat-count-badge { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); background: #E2E8F0; padding: 2px 8px; border-radius: 10px; }
+    .quote-cat-arrow { font-size: 0.72rem; color: var(--text-muted); transition: transform 0.2s ease; }
     .quote-cat-block.expanded .quote-cat-arrow { transform: rotate(90deg); }
 
-    .quote-cat-items-list {
-      display: none;
-      padding: 6px 12px;
-      background: #FFFFFF;
-      flex-direction: column;
-      gap: 4px;
-    }
+    .quote-cat-items-list { display: none; padding: 6px 12px; background: #FFFFFF; flex-direction: column; gap: 4px; }
     .quote-cat-block.expanded .quote-cat-items-list { display: flex; }
-    
-    .quote-item-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      transition: background 0.15s;
-    }
-    .quote-item-row:hover { background: #F8FAFC; }
-    .quote-item-label-side {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-      cursor: pointer;
-    }
-    .quote-item-checkbox {
-      width: 17px;
-      height: 17px;
-      accent-color: var(--primary);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .quote-item-thumb {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      border-radius: 4px;
-      background: #FFF;
-      border: 1px solid #E2E8F0;
-      flex-shrink: 0;
-    }
-    .quote-item-name {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .quote-item-brand-tag {
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: var(--primary);
-      text-transform: uppercase;
-      background: #E0F2FE;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-right: 6px;
-    }
+    .quote-item-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 10px; border-radius: 8px; }
+    .quote-item-label-side { display: flex; align-items: center; gap: 10px; flex: 1; cursor: pointer; }
+    .quote-item-checkbox { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; }
+    .quote-item-thumb { width: 32px; height: 32px; object-fit: contain; border-radius: 4px; background: #FFF; border: 1px solid #E2E8F0; }
+    .quote-item-name { font-size: 0.8rem; font-weight: 700; }
+    .quote-item-brand-tag { font-size: 0.68rem; font-weight: 800; color: var(--primary); text-transform: uppercase; background: #E0F2FE; padding: 2px 6px; border-radius: 4px; margin-right: 6px; }
 
-    /* Opcionais do Notebook e Controles à Direita */
-    .quote-item-right-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-    .quote-notebook-options {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #F1F5F9;
-      padding: 3px 8px;
-      border-radius: 8px;
-    }
-    .quote-opt-select-group {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .quote-opt-select-group label {
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: #64748B;
-      text-transform: uppercase;
-    }
-    .quote-opt-select {
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      border-radius: 6px;
-      padding: 2px 4px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--text-main);
-      outline: none;
-      cursor: pointer;
-    }
-    .quote-opt-select:focus {
-      border-color: var(--primary);
-    }
+    .quote-item-right-controls { display: flex; align-items: center; gap: 8px; }
+    .quote-notebook-options { display: flex; align-items: center; gap: 6px; background: #F1F5F9; padding: 3px 8px; border-radius: 8px; }
+    .quote-opt-select-group { display: flex; align-items: center; gap: 3px; }
+    .quote-opt-select-group label { font-size: 0.65rem; font-weight: 800; color: #64748B; }
+    .quote-opt-select { background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px; padding: 2px 4px; font-size: 0.72rem; font-weight: 700; }
 
-    /* Controle de Quantidade */
-    .quote-item-qty-control {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex-shrink: 0;
-    }
-    .quote-qty-btn {
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
-      border: 1px solid var(--card-border);
-      background: #F8FAFC;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-main);
-    }
-    .quote-qty-btn:hover { background: #0F172A; color: white; }
-    .quote-qty-input {
-      width: 44px;
-      height: 24px;
-      text-align: center;
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--text-main);
-      border: 1px solid var(--card-border);
-      border-radius: 4px;
-      background: #FFFFFF;
-      outline: none;
-      -moz-appearance: textfield;
-    }
-    .quote-qty-input::-webkit-outer-spin-button,
-    .quote-qty-input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    .quote-qty-input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(2,132,199,0.15);
-    }
+    .quote-item-qty-control { display: flex; align-items: center; gap: 4px; }
+    .quote-qty-btn { width: 24px; height: 24px; border-radius: 4px; border: 1px solid var(--card-border); background: #F8FAFC; cursor: pointer; font-weight: 800; }
+    .quote-qty-input { width: 44px; height: 24px; text-align: center; font-size: 0.8rem; font-weight: 800; border: 1px solid var(--card-border); border-radius: 4px; }
 
-    /* Submodal de Contato */
-    .lead-modal-box {
-      max-width: 500px;
-      padding: 28px;
-      border-radius: 20px;
-    }
-    .quote-feedback {
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-top: 14px;
-      text-align: center;
-      display: none;
-      line-height: 1.4;
-    }
+    .lead-modal-box { max-width: 500px; padding: 28px; border-radius: 20px; }
+    .quote-feedback { padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-top: 14px; text-align: center; display: none; }
     .quote-feedback.success { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
     .quote-feedback.error { background: #FEE2E2; color: #991B1B; border: 1px solid #FECDD3; }
 
-    /* Pills de Categorias */
-    .category-pills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
+    .category-pills-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
     .cat-pill-btn {
       display: inline-flex;
       align-items: center;
@@ -1293,213 +848,50 @@
       font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       border: 1px solid transparent;
       user-select: none;
       background: #F1F5F9;
       color: #475569;
     }
-    .cat-pill-btn .icon-svg { width: 14px; height: 14px; }
-    .cat-pill-btn:hover { transform: translateY(-1px); filter: brightness(0.97); }
-    .cat-pill-btn.selected {
-      transform: scale(1.02);
-      border-color: currentColor !important;
-      outline: 2px solid currentColor;
-      outline-offset: 1px;
-    }
+    .cat-pill-btn.selected { transform: scale(1.02); border-color: currentColor !important; outline: 2px solid currentColor; }
 
-    /* Logotipo Fabricante */
-    .brand-logo-control-box {
-      height: 44px;
-      border: 1px solid var(--card-border);
-      background: #FFFFFF;
-      border-radius: 8px;
-      padding: 4px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      box-sizing: border-box;
-    }
-    .brand-logo-info-side {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      overflow: hidden;
-      flex: 1;
-    }
-    .brand-logo-preview-thumb {
-      height: 26px;
-      max-width: 70px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-    .brand-logo-label-text {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .brand-logo-actions-side {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-    .btn-logo-action {
-      height: 32px;
-      padding: 0 10px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      border-radius: 6px;
-      border: 1px solid var(--card-border);
-      background: #F8FAFC;
-      color: var(--text-main);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: 0.2s;
-    }
-    .btn-logo-action:hover { background: #0F172A; color: white; }
-    .btn-logo-del {
-      height: 32px;
-      width: 32px;
-      padding: 0;
-      color: var(--danger);
-      border-color: #FECDD3;
-      background: #FFF;
-    }
-    .btn-logo-del:hover { background: var(--danger); color: white; border-color: var(--danger); }
+    .brand-logo-control-box { height: 44px; border: 1px solid var(--card-border); background: #FFFFFF; border-radius: 8px; padding: 4px 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .brand-logo-info-side { display: flex; align-items: center; gap: 8px; overflow: hidden; flex: 1; }
+    .brand-logo-preview-thumb { height: 26px; max-width: 70px; object-fit: contain; }
+    .brand-logo-label-text { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+    .brand-logo-actions-side { display: flex; align-items: center; gap: 6px; }
+    .btn-logo-action { height: 32px; padding: 0 10px; font-size: 0.75rem; font-weight: 700; border-radius: 6px; border: 1px solid var(--card-border); background: #F8FAFC; cursor: pointer; }
+    .btn-logo-del { width: 32px; padding: 0; color: var(--danger); border-color: #FECDD3; }
 
-    /* Gerenciador de Fotos */
-    .photos-manager-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-      margin-bottom: 15px;
-    }
-    .photo-thumb-edit {
-      position: relative;
-      width: 90px;
-      height: 90px;
-      border-radius: 8px;
-      border: 1px solid var(--card-border);
-      background: #FFF;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 4px;
-      cursor: grab;
-      user-select: none;
-      transition: all 0.2s;
-    }
-    .photo-thumb-edit.dragging { opacity: 0.4; border: 2px dashed var(--primary); }
-    .photo-thumb-edit img { max-width: 100%; max-height: 60px; object-fit: contain; pointer-events: none; }
-    
-    .btn-remove-photo {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: var(--danger);
-      color: white;
-      border: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      z-index: 10;
-    }
-    .photo-reorder-nav {
-      position: absolute;
-      bottom: 2px;
-      display: flex;
-      gap: 4px;
-      width: 100%;
-      justify-content: center;
-      background: rgba(255,255,255,0.85);
-      border-radius: 0 0 6px 6px;
-      padding: 2px 0;
-    }
-    .btn-photo-nav {
-      background: #E2E8F0;
-      border: none;
-      color: #334155;
-      font-size: 10px;
-      font-weight: bold;
-      width: 22px;
-      height: 18px;
-      border-radius: 4px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .btn-photo-nav:hover { background: #0F172A; color: white; }
+    .photos-manager-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 10px 0 15px; }
+    .photo-thumb-edit { position: relative; width: 90px; height: 90px; border-radius: 8px; border: 1px solid var(--card-border); background: #FFF; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4px; cursor: grab; }
+    .photo-thumb-edit img { max-width: 100%; max-height: 60px; object-fit: contain; }
+    .btn-remove-photo { position: absolute; top: -6px; right: -6px; background: var(--danger); color: white; border: none; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; font-size: 11px; }
+    .photo-reorder-nav { position: absolute; bottom: 2px; display: flex; gap: 4px; width: 100%; justify-content: center; background: rgba(255,255,255,0.85); border-radius: 0 0 6px 6px; }
+    .btn-photo-nav { background: #E2E8F0; border: none; font-size: 10px; font-weight: bold; width: 22px; height: 18px; border-radius: 4px; cursor: pointer; }
 
-    /* Modal de Exportação / Impressão */
     .export-modal-box { max-width: 580px; padding: 30px; border-radius: 20px; }
-    .export-categories-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 16px 0 24px;
-      max-height: 260px;
-      overflow-y: auto;
-      padding-right: 6px;
-    }
-    @media (max-width: 540px) { .export-categories-list { grid-template-columns: 1fr; } }
-    .export-category-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #F8FAFC;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 10px 12px;
-      cursor: pointer;
-      transition: 0.2s;
-      user-select: none;
-    }
-    .export-category-item:hover { background: #FFFFFF; border-color: var(--primary); }
-    .export-category-item input[type="checkbox"] { width: 17px; height: 17px; cursor: pointer; accent-color: var(--primary); }
-    .export-category-item span { font-size: 0.82rem; font-weight: 700; color: var(--text-main); }
+    .export-categories-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 24px; max-height: 260px; overflow-y: auto; }
+    .export-category-item { display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+    .export-category-item input { width: 17px; height: 17px; }
+    .export-category-item span { font-size: 0.82rem; font-weight: 700; }
 
-    /* Print Styles */
     .print-header, .print-footer { display: none; }
 
     @media print {
       @page { size: A4 portrait; margin: 14mm 10mm 15mm 10mm; }
-      body { background: #FFFFFF !important; color: #0F172A !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      body::before { display: none; }
-      .top-navbar, .hero, .admin-bar, .modal-overlay, .admin-card-actions, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { display: none !important; }
+      body { background: #FFFFFF !important; color: #0F172A !important; }
+      body::before, .top-navbar, .hero, .admin-bar, .modal-overlay, .admin-card-actions, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { display: none !important; }
       .main-content { padding: 0 !important; max-width: 100% !important; }
-      .print-header { display: flex !important; align-items: center; justify-content: space-between; padding-bottom: 15px; margin-bottom: 25px; border-bottom: 2px solid #0284C7; }
-      .print-header img { height: 50px; width: auto; object-fit: contain; }
-      .print-header-meta { text-align: right; }
-      .print-header-meta h2 { font-size: 1.15rem; font-weight: 900; color: #0284C7; }
-      .print-header-meta p { font-size: 0.75rem; color: #64748B; font-weight: 600; }
-      .section-header { margin: 25px 0 15px !important; padding-bottom: 6px !important; page-break-after: avoid; }
+      .print-header { display: flex !important; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 2px solid #0284C7; }
+      .print-header img { height: 50px; }
+      .print-header-meta h2 { font-size: 1.15rem; color: #0284C7; font-weight: 900; }
+      .section-header { margin: 25px 0 15px !important; }
       .products-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 16px !important; }
-      .prod-card { page-break-inside: avoid !important; border: 1px solid #CBD5E1 !important; box-shadow: none !important; padding: 12px !important; border-radius: 12px !important; }
-      .thumb-slider-container { height: 180px !important; border: 1px solid #E2E8F0 !important; margin-bottom: 10px !important; }
-      .thumb-slider-container img { max-height: 90% !important; }
-      .prod-name { font-size: 0.95rem !important; margin-bottom: 8px !important; }
-      .specs-list { padding: 8px !important; font-size: 0.72rem !important; background: #F8FAFC !important; border: 1px solid #E2E8F0 !important; }
-      .print-footer { display: block !important; margin-top: 40px; padding-top: 18px; border-top: 2px solid #0284C7; page-break-inside: avoid; text-align: center; }
-      .print-footer-grid { display: flex; justify-content: space-around; align-items: center; gap: 15px; margin-top: 10px; }
-      .print-footer-item { font-size: 0.8rem; font-weight: 700; color: #0F172A; }
-      .print-footer-item span { color: #64748B; font-size: 0.7rem; display: block; font-weight: 500; }
+      .prod-card { page-break-inside: avoid !important; border: 1px solid #CBD5E1 !important; box-shadow: none !important; padding: 12px !important; }
+      .thumb-slider-container { height: 180px !important; }
+      .print-footer { display: block !important; margin-top: 40px; border-top: 2px solid #0284C7; text-align: center; }
+      .print-footer-grid { display: flex; justify-content: space-around; margin-top: 10px; }
     }
 
     footer {
@@ -1527,7 +919,7 @@
     <nav class="nav-menu" id="dynamicNavMenu"></nav>
   </header>
 
-  <!-- Hero Section Equilibrado e Limpo -->
+  <!-- Hero Section -->
   <section class="hero">
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
@@ -1548,7 +940,6 @@
         </div>
       </div>
 
-      <!-- Botão de Exportar / Imprimir Discreto -->
       <button type="button" class="btn-export-discreet" onclick="openExportModal()" title="Exportar portfólio em PDF ou imprimir">
         <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
         <span>Exportar / PDF</span>
@@ -1588,7 +979,7 @@
     </div>
   </main>
 
-  <!-- DICA FLUTUANTE DE COTAÇÃO -->
+  <!-- Dica Flutuante de Cotação -->
   <div class="floating-quote-hint" id="floatingQuoteHint" onclick="abrirModalSelecaoCotacao()" title="Clique para montar sua proposta">
     <span class="hint-lead-text">
       Monte sua proposta 
@@ -1600,7 +991,7 @@
     </button>
   </div>
 
-  <!-- BARRA FLUTUANTE DE PROPOSTA RESPONSIVA -->
+  <!-- Barra Flutuante de Proposta -->
   <div class="floating-quote-bar" id="floatingQuoteBar">
     <div class="floating-quote-info">
       <div class="floating-quote-icon-badge">
@@ -1658,7 +1049,7 @@
     </div>
   </div>
 
-  <!-- ETAPA 1: MODAL DE SELEÇÃO DE EQUIPAMENTOS -->
+  <!-- ETAPA 1: Modal de Seleção de Equipamentos -->
   <div class="modal-overlay" id="quoteSelectionModal">
     <div class="modal-box quote-selection-modal-box">
       <div style="display: flex; align-items: flex-start; justify-content: space-between;">
@@ -1699,7 +1090,7 @@
     </div>
   </div>
 
-  <!-- ETAPA 2: SUBMODAL COM OS DADOS DE CONTATO -->
+  <!-- ETAPA 2: Submodal de Contato -->
   <div class="modal-overlay" id="leadContactModal">
     <div class="modal-box lead-modal-box">
       <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px;">
@@ -1733,7 +1124,7 @@
         </div>
 
         <div class="form-group" style="margin-bottom: 12px;">
-          <label for="quoteMensagem">Informações Adicionais (Volume de páginas, prazo e etc.):</label>
+          <label for="quoteMensagem">Informações Adicionais:</label>
           <textarea id="quoteMensagem" name="message" class="form-control" style="height: auto;" rows="3" placeholder="Ex: Franquia, prazo de entrega, localidades..."></textarea>
         </div>
 
@@ -1749,7 +1140,7 @@
     </div>
   </div>
 
-  <!-- Modal do Formulário de Produto (Cadastrar / Editar) -->
+  <!-- Modal Formulário Produto -->
   <div class="modal-overlay" id="formModal">
     <div class="modal-box" style="padding: 30px;">
       <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;" id="formModalTitle">Cadastrar Equipamento</h3>
@@ -1797,12 +1188,11 @@
         </div>
 
         <div class="form-group">
-          <label>Fotos do Equipamento (Arraste para ordenar ou use as setas ◀ ▶)</label>
+          <label>Fotos do Equipamento</label>
           <div class="photos-manager-grid" id="photosGridContainer"></div>
           
           <div style="margin-top: 8px;">
             <input type="file" id="prodFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" multiple onchange="handleNewPhotosInput(this)">
-            <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 4px;">Carregue várias fotos simultaneamente e altere a ordem livremente acima.</span>
           </div>
         </div>
 
@@ -1819,7 +1209,7 @@
     </div>
   </div>
 
-  <!-- MODAL DE EXPORTAÇÃO / IMPRESSÃO EM PDF -->
+  <!-- Modal Exportação -->
   <div class="modal-overlay" id="exportModal">
     <div class="modal-box export-modal-box">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
@@ -1851,25 +1241,18 @@
   <div class="modal-overlay" id="brandModal">
     <div class="modal-box" style="padding: 30px; max-width: 480px;">
       <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Cadastrar Fabricante</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
-        O logotipo será salvo na pasta <code>logos/</code> e ficará disponível permanentemente para seleção.
-      </p>
-
       <form id="brandForm" onsubmit="handleBrandSubmit(event)">
         <div class="form-group">
           <label>Nome do Fabricante / Marca</label>
           <input type="text" id="newBrandName" class="form-control" required placeholder="Ex: Avell, Positivo, Elgin">
         </div>
-
         <div class="form-group">
-          <label>Arquivo do Logotipo (PNG transparente recomendado)</label>
+          <label>Arquivo do Logotipo</label>
           <input type="file" id="newBrandFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" required onchange="previewNewBrandLogo(this)">
         </div>
-
         <div id="newBrandPreviewContainer" style="display: none; align-items: center; justify-content: center; background: #F8FAFC; border: 1px dashed var(--card-border); border-radius: 8px; padding: 15px; margin-bottom: 16px;">
           <img id="newBrandPreviewImg" src="" style="max-height: 48px; max-width: 140px; object-fit: contain;">
         </div>
-
         <div class="form-actions">
           <button type="button" class="btn-cancel" onclick="closeBrandModal()">Cancelar</button>
           <button type="submit" class="btn-submit">Salvar Fabricante</button>
@@ -1930,23 +1313,18 @@
   <!-- Modal Login -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal-box" style="max-width: 420px; padding: 30px 24px; text-align: center; border-radius: 20px;">
-      <div style="width: 56px; height: 56px; border-radius: 50%; background: #E0F2FE; color: var(--primary); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-      </div>
       <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px;">Acesso Restrito</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Área exclusiva para gestão do portfólio da InfinityCorp.</p>
-      
       <form onsubmit="handleLoginSubmit(event)">
         <div class="form-group" style="text-align: left;">
           <label>Senha de Gestor</label>
           <input type="password" id="adminPasswordInput" class="form-control" placeholder="••••••••••••" required autofocus>
         </div>
         <div class="form-group" id="patTokenGroup" style="text-align: left; display: none;">
-          <label>GitHub Personal Access Token (Primeiro acesso)</label>
+          <label>GitHub Personal Access Token</label>
           <input type="password" id="adminPatInput" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
         </div>
         <div id="loginErrorMessage" style="color: var(--danger); font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; display: none;">
-          Senha incorreta. Verifique e tente novamente.
+          Senha incorreta.
         </div>
         <div class="form-actions" style="justify-content: center;">
           <button type="button" class="btn-cancel" onclick="closeLoginModal()">Cancelar</button>
@@ -1967,16 +1345,10 @@
 
       <div id="deployPhaseCountdown" style="display: none;">
         <div style="width: 80px; height: 80px; border-radius: 50%; background: #ECFDF5; border: 3px solid #10B981; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: #059669; margin: 16px auto;" id="countdownNumber">30</div>
-        <h3 style="font-size: 1.3rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Publicação Enviada com Sucesso!</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.4;">
-          As mudanças estão sendo compiladas.<br>
-          Aguarde a atualização automática para visualizar todas as mudanças:
-        </p>
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Publicação Enviada!</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Aguarde a atualização automática:</p>
         <div style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 10px; overflow: hidden; margin-top: 18px;">
           <div style="height: 100%; width: 0%; background: linear-gradient(90deg, #10B981, #0284C7); transition: width 1s linear;" id="deployProgressBar"></div>
-        </div>
-        <div style="margin-top: 24px;">
-          <button class="btn-submit" style="background:#0F172A;" onclick="location.reload()">Atualizar Agora ↺</button>
         </div>
       </div>
     </div>
@@ -1985,7 +1357,7 @@
   <!-- Rodapé -->
   <footer>
     <div class="brand-logo" style="justify-content: center; margin-bottom: 12px;">
-      <a href="https://infinitycorp.com.br" target="_blank" rel="noopener noreferrer" title="Visitar site Infinity Corp">
+      <a href="https://infinitycorp.com.br" target="_blank" rel="noopener noreferrer">
         <img src="https://i.ibb.co/p6D7KfHF/LOGO-CORP-Letra-Preta-Img-ID1.png" alt="Infinity Corp">
       </a>
     </div>
@@ -1997,7 +1369,10 @@
     </div>
   </footer>
 
-  <script>
+    <script>
+    /* ==========================================================================
+       CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA
+       ========================================================================== */
     const GITHUB_OWNER  = 'infinitycorp-experience';
     const GITHUB_REPO   = 'portfolio';
     const JSON_PATH     = 'produtos.json';
@@ -2005,6 +1380,63 @@
     const SENHA_MESTRE  = 'InfinityCorp2026';
     const WEB3FORMS_KEY = 'e8f03456-563e-4a72-9e74-208b73929ba8';
 
+    // URL ATIVA DO GOOGLE APPS SCRIPT:
+    const TELEMETRY_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHEClDrFhwM1DBL0DSnjep3W-FZWrJKaLGVykRELisko2ajiY3KOZR_OK5PL6ot9vI/exec';
+
+    const sessionStartTime = Date.now();
+
+    function getLeadIdentification() {
+      const params = new URLSearchParams(window.location.search);
+      const leadUrl = params.get('lead') || params.get('cliente') || params.get('empresa') || params.get('c');
+      if (leadUrl) {
+        localStorage.setItem('infinity_lead_tracked', leadUrl);
+        return leadUrl;
+      }
+      return localStorage.getItem('infinity_lead_tracked') || 'Visitante Geral';
+    }
+
+    function sendTrackingEvent(eventType, detail = '', contactInfo = '') {
+      if (!TELEMETRY_SHEET_URL) return;
+
+      const lead = getLeadIdentification();
+      const tempoTotal = Math.round((Date.now() - sessionStartTime) / 1000);
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      const payload = {
+        lead: lead,
+        evento: eventType,
+        detalhe: typeof detail === 'object' ? JSON.stringify(detail) : detail,
+        tempoSegundos: tempoTotal,
+        dispositivo: isMobile ? 'Mobile' : 'Desktop',
+        contato: contactInfo,
+        origem: window.location.href
+      };
+
+      try {
+        fetch(TELEMETRY_SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        });
+      } catch (err) {
+        console.warn('Telemetria:', err);
+      }
+    }
+
+    // Dispara telemetria de entrada e saída
+    window.addEventListener('load', () => {
+      sendTrackingEvent('Acesso ao Portfólio', 'Entrou na página');
+    });
+
+    window.addEventListener('beforeunload', () => {
+      sendTrackingEvent('Saída do Portfólio', 'Encerrou a sessão');
+    });
+
+    /* ==========================================================================
+       DADOS BASE & CATÁLOGO
+       ========================================================================== */
     const DEFAULT_PRESET_LOGOS = [
       { name: 'Avell', logo: 'logos/avell.png' },
       { name: 'Brother', logo: 'logos/brother.png' },
@@ -2021,16 +1453,15 @@
       { name: 'Zebra', logo: 'logos/zebra.png' }
     ];
 
-    /* Paleta vibrante e moderna com bom contraste para preenchimento ativo */
     const CATEGORY_COLORS = [
-      { bg: '#E0F2FE', text: '#0284C7', border: '#BAE6FD' }, // Azul Infinity
-      { bg: '#DCFCE7', text: '#10B981', border: '#BBF7D0' }, // Verde Esmeralda
-      { bg: '#FEF3C7', text: '#D97706', border: '#FDE68A' }, // Âmbar Dourado
-      { bg: '#EDE9FE', text: '#7C3AED', border: '#DDD6FE' }, // Roxo Corporativo
-      { bg: '#FFE4E6', text: '#E11D48', border: '#FECDD3' }, // Carmesim / Rosa
-      { bg: '#CCFBF1', text: '#0D9488', border: '#99F6E4' }, // Ciano / Teal
-      { bg: '#FFEDD5', text: '#EA580C', border: '#FED7AA' }, // Laranja
-      { bg: '#F1F5F9', text: '#475569', border: '#CBD5E1' }  // Cinza Slate
+      { bg: '#E0F2FE', text: '#0284C7', border: '#BAE6FD' },
+      { bg: '#DCFCE7', text: '#10B981', border: '#BBF7D0' },
+      { bg: '#FEF3C7', text: '#D97706', border: '#FDE68A' },
+      { bg: '#EDE9FE', text: '#7C3AED', border: '#DDD6FE' },
+      { bg: '#FFE4E6', text: '#E11D48', border: '#FECDD3' },
+      { bg: '#CCFBF1', text: '#0D9488', border: '#99F6E4' },
+      { bg: '#FFEDD5', text: '#EA580C', border: '#FED7AA' },
+      { bg: '#F1F5F9', text: '#475569', border: '#CBD5E1' }
     ];
 
     const ICONS_MAP = {
@@ -2072,21 +1503,17 @@
     let categorias = [];
     let produtos = [];
     let marcas = [...DEFAULT_PRESET_LOGOS];
-    
     let pendingChangesCount = 0;
     let pendingUploadQueue = [];
     let pendingDeletionsQueue = [];
     let originalSnapshot = null;
-
     let modalImages = [];
     let modalCurrentIdx = 0;
     let currentSelectedProductForModal = null;
-    
     let formActivePhotos = [];
     let editCurrentBrandLogo = '';
     let draggedPhotoIdx = null;
 
-    /* CARRINHO DE COTAÇÃO */
     const carrinhoCotacao = new Map();
 
     function initBrandPresetsUI() {
@@ -2133,7 +1560,6 @@
         removeBrandLogo();
         return;
       }
-
       if (val === '__custom__') {
         brandInput.style.display = 'block';
         brandInput.value = '';
@@ -2141,7 +1567,6 @@
         removeBrandLogo();
         return;
       }
-
       brandInput.style.display = 'none';
       brandInput.value = val;
 
@@ -2158,7 +1583,6 @@
       const img = document.getElementById('brandLogoPreviewImg');
       const textState = document.getElementById('brandLogoTextState');
       const btnRemove = document.getElementById('btnRemoveLogo');
-
       img.src = logoSrc;
       img.style.display = 'inline-block';
       textState.textContent = text;
@@ -2171,7 +1595,6 @@
       const textState = document.getElementById('brandLogoTextState');
       const btnRemove = document.getElementById('btnRemoveLogo');
       const fileInput = document.getElementById('prodBrandLogoInput');
-
       img.style.display = 'none';
       img.src = '';
       textState.textContent = 'Sem logotipo';
@@ -2210,16 +1633,7 @@
           produtos = data;
         } else {
           produtos = data.produtos || [];
-          categorias = data.categorias || [
-            { id: 'print', title: 'Outsourcing de Impressão', icon: 'print', ativa: true },
-            { id: 'scanner', title: 'Scanners Profissionais', icon: 'scanner', ativa: true },
-            { id: 'thermal', title: 'Impressoras Térmicas de Etiquetas', icon: 'thermal', ativa: true },
-            { id: 'computer', title: 'Notebooks, Desktops & Periféricos', icon: 'computer', ativa: true },
-            { id: 'monitor', title: 'Monitores Profissionais', icon: 'monitor', ativa: true },
-            { id: 'mobile', title: 'Dispositivos Móveis & Tablets', icon: 'mobile', ativa: true },
-            { id: 'totem', title: 'Totens de Autoatendimento', icon: 'totem', ativa: true }
-          ];
-
+          categorias = data.categorias || [];
           if (data.marcas && Array.isArray(data.marcas) && data.marcas.length > 0) {
             const savedNames = new Set(data.marcas.map(m => m.name.toLowerCase()));
             marcas = [...data.marcas];
@@ -2261,7 +1675,7 @@
     }
 
     function discardPendingChanges() {
-      if (!confirm('Deseja descartar todas as alterações não publicadas e restaurar o catálogo do servidor?')) return;
+      if (!confirm('Deseja descartar todas as alterações não publicadas?')) return;
       const data = JSON.parse(originalSnapshot);
       categorias = data.categorias;
       produtos = data.produtos;
@@ -2275,8 +1689,7 @@
     }
 
     function setActiveCategoryNav(catId) {
-      const navLinks = document.querySelectorAll('.nav-menu .nav-item');
-      navLinks.forEach(item => {
+      document.querySelectorAll('.nav-menu .nav-item').forEach(item => {
         if (item.dataset.catTarget === catId) {
           item.classList.add('active');
         } else {
@@ -2292,14 +1705,10 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const id = entry.target.dataset.catId;
-            setActiveCategoryNav(id);
+            setActiveCategoryNav(entry.target.dataset.catId);
           }
         });
-      }, {
-        rootMargin: '-20% 0px -65% 0px',
-        threshold: 0
-      });
+      }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
 
       sections.forEach(sec => observer.observe(sec));
     }
@@ -2311,7 +1720,6 @@
 
       const searchKeyword = (document.getElementById('globalSearchInput')?.value || '').toLowerCase().trim();
       const selectedBrand = (document.getElementById('globalBrandFilter')?.value || '').toLowerCase().trim();
-
       const navContainer = document.getElementById('dynamicNavMenu');
       const sectionsContainer = document.getElementById('dynamicSectionsContainer');
       navContainer.innerHTML = '';
@@ -2348,8 +1756,6 @@
         navItem.href = `#${cat.id}`;
         navItem.className = 'nav-item';
         navItem.dataset.catTarget = cat.id;
-
-        // Injeta as variáveis de cor para acionamento no hover e no active
         navItem.style.setProperty('--cat-color', color.text);
         navItem.style.setProperty('--cat-bg', color.bg);
         navItem.style.setProperty('--cat-border', color.border);
@@ -2358,11 +1764,7 @@
           ${getCategorySvg(iconKey, 'icon-svg')}
           <span>${cat.title.split(' ')[0]} ${!cat.ativa ? '(Oculta)' : ''}</span>
         `;
-
-        navItem.onclick = () => {
-          setActiveCategoryNav(cat.id);
-        };
-
+        navItem.onclick = () => setActiveCategoryNav(cat.id);
         navContainer.appendChild(navItem);
 
         const section = document.createElement('section');
@@ -2448,41 +1850,33 @@
         });
       });
 
-      if (firstRenderedCatId) {
-        setActiveCategoryNav(firstRenderedCatId);
-      }
-
+      if (firstRenderedCatId) setActiveCategoryNav(firstRenderedCatId);
       initNavScrollspy();
     }
 
-    /* CONTROLE DA DICA FLUTUANTE DE COTAÇÃO */
     function verificarDicaFlutuante() {
       const hintEl = document.getElementById('floatingQuoteHint');
       if (!hintEl) return;
-      
       const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-      const scrollSuficiente = scrollPos > 180;
-      const semItensSelecionados = carrinhoCotacao.size === 0;
-
-      if (scrollSuficiente && semItensSelecionados) {
+      if (scrollPos > 180 && carrinhoCotacao.size === 0) {
         hintEl.classList.add('active');
       } else {
         hintEl.classList.remove('active');
       }
     }
 
-    /* GESTÃO DO CARRINHO & BARRA FLUTUANTE */
+    /* CARRINHO & TELEMETRIA */
     function toggleProdutoCarrinho(prodId, forceQty = null) {
       const prod = produtos.find(p => p.id === prodId);
       if (!prod) return;
 
       if (carrinhoCotacao.has(prodId) && forceQty === null) {
         carrinhoCotacao.delete(prodId);
+        sendTrackingEvent('Removeu Produto da Proposta', `${prod.marca} - ${prod.nome}`);
       } else {
         const itemExistente = carrinhoCotacao.get(prodId);
         const currentQty = itemExistente?.qtd || 1;
         const newQty = forceQty !== null ? Math.max(1, forceQty) : currentQty;
-        
         const ram = itemExistente?.ram || '8GB';
         const ssd = itemExistente?.ssd || '256GB';
 
@@ -2496,6 +1890,8 @@
           ram: ram,
           ssd: ssd
         });
+
+        sendTrackingEvent('Adicionou à Proposta', `${prod.marca} - ${prod.nome} (${newQty} un)`);
       }
 
       atualizarBarraFlutuante();
@@ -2548,9 +1944,7 @@
       if (counterEl) counterEl.textContent = count;
       if (countTextEl) {
         const isMobile = window.innerWidth <= 600;
-        countTextEl.textContent = isMobile 
-          ? `${count} item(ns) selec.` 
-          : `${count} equipamento(s) selecionado(s)`;
+        countTextEl.textContent = isMobile ? `${count} item(ns) selec.` : `${count} equipamento(s) selecionado(s)`;
       }
 
       if (count > 0) {
@@ -2558,11 +1952,9 @@
       } else {
         floatingBar.classList.remove('active');
       }
-
       verificarDicaFlutuante();
     }
 
-    /* MODAL DE SELEÇÃO */
     function abrirModalSelecaoCotacao() {
       const modal = document.getElementById('quoteSelectionModal');
       document.getElementById('quoteModalSearchInput').value = '';
@@ -2573,18 +1965,18 @@
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
+
+      sendTrackingEvent('Abriu Seleção de Proposta', `${carrinhoCotacao.size} modelos no carrinho`);
     }
 
     function fecharModalSelecaoCotacao() {
-      const modal = document.getElementById('quoteSelectionModal');
-      modal.classList.remove('active');
+      document.getElementById('quoteSelectionModal').classList.remove('active');
       document.body.style.overflow = 'auto';
     }
 
     function handleQuoteModalSearch() {
       const query = document.getElementById('quoteModalSearchInput').value.trim();
-      const clearBtn = document.getElementById('btnQuoteClearSearch');
-      clearBtn.style.display = query.length > 0 ? 'inline-block' : 'none';
+      document.getElementById('btnQuoteClearSearch').style.display = query.length > 0 ? 'inline-block' : 'none';
       renderQuoteModalAccordion(query);
     }
 
@@ -2605,14 +1997,11 @@
 
       categorias.forEach(cat => {
         let prodsCat = produtos.filter(p => p.categoria === cat.id && p.ativo);
-
         if (filter) {
           prodsCat = prodsCat.filter(p => 
-            p.nome.toLowerCase().includes(filter) || 
-            (p.marca && p.marca.toLowerCase().includes(filter))
+            p.nome.toLowerCase().includes(filter) || (p.marca && p.marca.toLowerCase().includes(filter))
           );
         }
-
         if (prodsCat.length === 0 && filter) return;
 
         const isNotebookCat = isNotebookCategory(cat.id);
@@ -2687,7 +2076,7 @@
               ${notebookOptionsHtml}
               <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
                 <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
-                <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)" onkeyup="if(event.key==='Enter') definirQtdDigitadaCarrinho('${prod.id}', this.value)">
+                <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)">
                 <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', 1)">+</button>
               </div>
             </div>
@@ -2704,7 +2093,6 @@
       const chipsContainer = document.getElementById('quoteChipsContainer');
       const countEl = document.getElementById('quoteSummaryCount');
       chipsContainer.innerHTML = '';
-
       countEl.textContent = carrinhoCotacao.size;
 
       if (carrinhoCotacao.size === 0) {
@@ -2762,13 +2150,11 @@
       }
     }
 
-    /* SUBMODAL LEAD */
     function avancarParaDadosLead() {
       if (carrinhoCotacao.size === 0) {
         alert('Por favor, selecione ao menos 1 equipamento antes de prosseguir.');
         return;
       }
-
       fecharModalSelecaoCotacao();
       document.getElementById('quoteFeedbackBox').style.display = 'none';
       document.getElementById('leadContactModal').classList.add('active');
@@ -2802,14 +2188,9 @@
         if (btnZoom) {
           btnZoom.textContent = '✓ Adicionado!';
           btnZoom.style.backgroundColor = 'var(--primary)';
-          btnZoom.style.borderColor = 'var(--primary)';
           btnZoom.style.color = '#FFFFFF';
-          btnZoom.style.transform = 'scale(1.04)';
         }
-
-        setTimeout(() => {
-          closeModal();
-        }, 400);
+        setTimeout(() => closeModal(), 400);
       }
     }
 
@@ -2828,6 +2209,9 @@
       const email = document.getElementById('quoteEmail').value.trim();
       const telefone = document.getElementById('quoteTelefone').value.trim();
       const mensagem = document.getElementById('quoteMensagem').value.trim();
+
+      // Salva nome da empresa como lead prioritário
+      if (empresa) localStorage.setItem('infinity_lead_tracked', empresa);
 
       let itensFormatados = '';
       let index = 1;
@@ -2856,18 +2240,20 @@
       feedback.style.display = 'none';
 
       try {
+        // Envia para o Web3Forms (Email)
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
         });
 
         const resData = await response.json();
 
         if (resData.success) {
+          // Dispara telemetria de proposta para a planilha e alerta no WhatsApp
+          const dadosContatoStr = `${nome} | ${empresa || 'Sem Empresa'} | Tel: ${telefone} | E-mail: ${email}`;
+          sendTrackingEvent('Cotação Enviada', itensFormatados.replace(/\n/g, ' // '), dadosContatoStr);
+
           feedback.className = 'quote-feedback success';
           feedback.innerHTML = '<strong>✓ Muito obrigado! Recebemos sua solicitação.</strong><br>Nosso time analisará as especificações e retornará o contato o mais breve possível.';
           feedback.style.display = 'block';
@@ -2875,9 +2261,7 @@
           limparTodoCarrinho();
           document.getElementById('formCotacaoWeb3').reset();
 
-          setTimeout(() => {
-            location.reload();
-          }, 3500);
+          setTimeout(() => location.reload(), 3500);
         } else {
           throw new Error(resData.message || 'Falha no envio.');
         }
@@ -2890,11 +2274,9 @@
       }
     }
 
-    /* EXPORTAÇÃO / IMPRESSÃO */
     function openExportModal() {
       const container = document.getElementById('exportCategoriesList');
       container.innerHTML = '';
-
       categorias.forEach(cat => {
         const item = document.createElement('label');
         item.className = 'export-category-item';
@@ -2905,7 +2287,6 @@
         `;
         container.appendChild(item);
       });
-
       document.getElementById('exportModal').classList.add('active');
     }
 
@@ -2924,9 +2305,11 @@
       const selectedCatIds = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
 
       if (selectedCatIds.length === 0) {
-        alert('Por favor, selecione ao menos uma categoria para exportar.');
+        alert('Selecione ao menos uma categoria.');
         return;
       }
+
+      sendTrackingEvent('Exportou Catálogo', `Categorias: ${selectedCatIds.join(', ')}`);
 
       const allSections = document.querySelectorAll('.catalog-section');
       allSections.forEach(sec => {
@@ -2948,21 +2331,16 @@
     function moveProductOrder(prodId, direction) {
       const prod = produtos.find(p => p.id === prodId);
       if (!prod) return;
-
       const catId = prod.categoria;
       const sameCatIndexes = [];
-      produtos.forEach((p, idx) => {
-        if (p.categoria === catId) sameCatIndexes.push(idx);
-      });
+      produtos.forEach((p, idx) => { if (p.categoria === catId) sameCatIndexes.push(idx); });
 
       const currentPosition = sameCatIndexes.findIndex(idx => produtos[idx].id === prodId);
       const targetPosition = currentPosition + direction;
-
       if (targetPosition < 0 || targetPosition >= sameCatIndexes.length) return;
 
       const idxA = sameCatIndexes[currentPosition];
       const idxB = sameCatIndexes[targetPosition];
-
       const temp = produtos[idxA];
       produtos[idxA] = produtos[idxB];
       produtos[idxB] = temp;
@@ -2974,11 +2352,9 @@
     function moveCategoryOrder(index, direction) {
       const newIndex = index + direction;
       if (newIndex < 0 || newIndex >= categorias.length) return;
-
       const temp = categorias[index];
       categorias[index] = categorias[newIndex];
       categorias[newIndex] = temp;
-
       notifyLocalChange();
       renderCategoriesManager();
       renderCatalog();
@@ -2989,14 +2365,10 @@
       const container = btn.closest('.thumb-slider-container');
       const images = JSON.parse(container.dataset.images);
       let idx = parseInt(container.dataset.index) + step;
-
       if (idx < 0) idx = images.length - 1;
       if (idx >= images.length) idx = 0;
-
       container.dataset.index = idx;
-      const img = container.querySelector('img');
-      img.src = images[idx];
-
+      container.querySelector('img').src = images[idx];
       const dots = container.querySelectorAll('.dot');
       dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
     }
@@ -3032,6 +2404,8 @@
       renderModalGallery();
       document.getElementById('productModal').classList.add('active');
       document.body.style.overflow = 'hidden';
+
+      sendTrackingEvent('Visualizou Detalhes do Produto', `${prod.marca} - ${prod.nome}`);
     }
 
     function renderModalGallery() {
@@ -3040,7 +2414,6 @@
         gallery.innerHTML = `<span style="color:var(--text-muted); font-weight:700;">[Sem Fotos]</span>`;
         return;
       }
-
       if (modalImages.length === 1) {
         gallery.innerHTML = `<img src="${modalImages[0]}" alt="Zoom">`;
       } else {
@@ -3110,7 +2483,7 @@
 
     function logoutAdmin() {
       if (pendingChangesCount > 0) {
-        if (!confirm('Você tem alterações não salvas no repositório! Se sair agora, elas serão perdidas. Deseja sair mesmo assim?')) return;
+        if (!confirm('Você tem alterações não salvas no repositório! Deseja sair mesmo assim?')) return;
       }
       localStorage.removeItem('infinity_admin_logged');
       location.reload();
@@ -3159,14 +2532,13 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: `Limpeza de foto excluída: ${filePath}`,
+            message: `Limpeza de foto: ${filePath}`,
             sha: sha,
             branch: GITHUB_BRANCH
           })
         });
         return delRes.ok;
       } catch (err) {
-        console.warn(`Erro ao excluir foto:`, err);
         return false;
       }
     }
@@ -3189,10 +2561,9 @@
 
       try {
         if (pendingDeletionsQueue.length > 0) {
-          statusMsg.textContent = 'Limpando fotos órfãs...';
+          statusMsg.textContent = 'Limpando fotos antigas...';
           const stillInUse = new Set();
           produtos.forEach(p => (p.imagens || []).forEach(img => stillInUse.add(img)));
-
           const toDelete = [...new Set(pendingDeletionsQueue)].filter(path => !stillInUse.has(path));
           for (const delPath of toDelete) {
             await deleteGithubFile(delPath, token);
@@ -3243,7 +2614,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: `Deploy Geral Infinity: ${pendingChangesCount} alterações aplicadas`,
+            message: `Deploy Geral Infinity: ${pendingChangesCount} alterações`,
             content: contentBase64,
             sha: sha || undefined,
             branch: GITHUB_BRANCH
@@ -3264,7 +2635,7 @@
       } catch (err) {
         console.error(err);
         deployModal.classList.remove('active');
-        alert('Erro ao publicar alterações no servidor. Verifique seu token e tente novamente.');
+        alert('Erro ao publicar alterações no servidor.');
       }
     }
 
@@ -3272,16 +2643,13 @@
       let remaining = seconds;
       const numberEl = document.getElementById('countdownNumber');
       const barEl = document.getElementById('deployProgressBar');
-
       numberEl.textContent = remaining;
       barEl.style.width = '0%';
 
       const interval = setInterval(() => {
         remaining--;
         numberEl.textContent = remaining;
-        const progress = ((seconds - remaining) / seconds) * 100;
-        barEl.style.width = `${progress}%`;
-
+        barEl.style.width = `${((seconds - remaining) / seconds) * 100}%`;
         if (remaining <= 0) {
           clearInterval(interval);
           location.reload();
@@ -3294,9 +2662,7 @@
       const hiddenInput = document.getElementById('prodCategory');
       container.innerHTML = '';
 
-      if (!selectedId && categorias.length > 0) {
-        selectedId = categorias[0].id;
-      }
+      if (!selectedId && categorias.length > 0) selectedId = categorias[0].id;
       hiddenInput.value = selectedId;
 
       categorias.forEach((cat, idx) => {
@@ -3310,17 +2676,12 @@
         pill.style.color = color.text;
         pill.style.borderColor = color.border;
 
-        pill.innerHTML = `
-          ${getCategorySvg(iconKey, 'icon-svg-sm')}
-          <span>${cat.title.split(' ')[0]}</span>
-        `;
-
+        pill.innerHTML = `${getCategorySvg(iconKey, 'icon-svg-sm')} <span>${cat.title.split(' ')[0]}</span>`;
         pill.onclick = () => {
           document.querySelectorAll('.cat-pill-btn').forEach(btn => btn.classList.remove('selected'));
           pill.classList.add('selected');
           hiddenInput.value = cat.id;
         };
-
         container.appendChild(pill);
       });
     }
@@ -3329,11 +2690,7 @@
       if (!input.files || input.files.length === 0) return;
       for (let file of input.files) {
         const previewUrl = await fileToDataUrl(file);
-        formActivePhotos.push({
-          type: 'file',
-          src: previewUrl,
-          file: file
-        });
+        formActivePhotos.push({ type: 'file', src: previewUrl, file: file });
       }
       input.value = '';
       renderPhotosManagerGrid();
@@ -3342,7 +2699,6 @@
     function renderPhotosManagerGrid() {
       const container = document.getElementById('photosGridContainer');
       container.innerHTML = '';
-
       if (formActivePhotos.length === 0) {
         container.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Nenhuma foto selecionada.</span>`;
         return;
@@ -3363,9 +2719,7 @@
           thumb.classList.remove('dragging');
           draggedPhotoIdx = null;
         });
-        thumb.addEventListener('dragover', (e) => {
-          e.preventDefault();
-        });
+        thumb.addEventListener('dragover', (e) => e.preventDefault());
         thumb.addEventListener('drop', (e) => {
           e.preventDefault();
           if (draggedPhotoIdx === null || draggedPhotoIdx === idx) return;
@@ -3374,16 +2728,13 @@
           renderPhotosManagerGrid();
         });
 
-        const isFirst = idx === 0;
-        const isLast = idx === formActivePhotos.length - 1;
-
         thumb.innerHTML = `
           <button type="button" class="btn-remove-photo" onclick="removePhotoFromActive(${idx})">✕</button>
           <img src="${item.src}">
           <div class="photo-reorder-nav">
-            <button type="button" class="btn-photo-nav" ${isFirst ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, -1)">◀</button>
+            <button type="button" class="btn-photo-nav" ${idx === 0 ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, -1)">◀</button>
             <span style="font-size:9px; font-weight:800; line-height:18px;">${idx + 1}</span>
-            <button type="button" class="btn-photo-nav" ${isLast ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, 1)">▶</button>
+            <button type="button" class="btn-photo-nav" ${idx === formActivePhotos.length - 1 ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, 1)">▶</button>
           </div>
         `;
         container.appendChild(thumb);
@@ -3409,15 +2760,11 @@
       document.getElementById('prodId').value = '';
       formActivePhotos = [];
       removeBrandLogo();
-
-      const brandInput = document.getElementById('prodBrand');
-      brandInput.value = '';
-      brandInput.style.display = 'none';
-
+      document.getElementById('prodBrand').value = '';
+      document.getElementById('prodBrand').style.display = 'none';
       document.getElementById('brandPresetSelect').value = '';
       renderCategoryPills();
       renderPhotosManagerGrid();
-
       document.getElementById('formModalTitle').textContent = 'Cadastrar Novo Equipamento';
       document.getElementById('formModal').classList.add('active');
     }
@@ -3456,10 +2803,7 @@
         removeBrandLogo();
       }
 
-      formActivePhotos = (prod.imagens || []).map(url => ({
-        type: 'url',
-        src: url
-      }));
+      formActivePhotos = (prod.imagens || []).map(url => ({ type: 'url', src: url }));
       renderPhotosManagerGrid();
 
       document.getElementById('formModalTitle').textContent = 'Editar Equipamento';
@@ -3489,22 +2833,13 @@
       const specsText = document.getElementById('prodSpecs').value;
       const logoInput = document.getElementById('prodBrandLogoInput');
 
-      if (!categoria) {
-        alert('Por favor, selecione uma categoria.');
-        return;
-      }
-
-      if (!marca) {
-        alert('Por favor, defina a Marca/Fabricante do equipamento.');
-        return;
-      }
+      if (!categoria) { alert('Selecione uma categoria.'); return; }
+      if (!marca) { alert('Defina a marca/fabricante.'); return; }
 
       const specs = {};
       specsText.split('\n').forEach(line => {
         const parts = line.split(':');
-        if (parts.length >= 2) {
-          specs[parts[0].trim()] = parts.slice(1).join(':').trim();
-        }
+        if (parts.length >= 2) specs[parts[0].trim()] = parts.slice(1).join(':').trim();
       });
 
       let logoFinal = editCurrentBrandLogo;
@@ -3526,17 +2861,13 @@
       }
 
       const existingIdx = produtos.findIndex(p => p.id === id);
-
       if (existingIdx >= 0) {
         const fotosAntigas = produtos[existingIdx].imagens || [];
         fotosAntigas.forEach(antigaUrl => {
-          if (!fotosFinais.includes(antigaUrl)) {
-            if (antigaUrl.startsWith('fotos/')) {
-              pendingDeletionsQueue.push(antigaUrl);
-            }
+          if (!fotosFinais.includes(antigaUrl) && antigaUrl.startsWith('fotos/')) {
+            pendingDeletionsQueue.push(antigaUrl);
           }
         });
-
         produtos[existingIdx].categoria = categoria;
         produtos[existingIdx].marca = marca;
         produtos[existingIdx].nome = nome;
@@ -3545,14 +2876,7 @@
         produtos[existingIdx].logoMarca = logoFinal;
       } else {
         produtos.push({
-          id,
-          categoria,
-          marca,
-          nome,
-          ativo: true,
-          imagens: fotosFinais,
-          specs,
-          logoMarca: logoFinal
+          id, categoria, marca, nome, ativo: true, imagens: fotosFinais, specs, logoMarca: logoFinal
         });
       }
 
@@ -3585,16 +2909,8 @@
 
       const res = await fetch(url, {
         method: 'PUT',
-        headers: {
-          Authorization: `token ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: `Upload de logo: ${filePath}`,
-          content: content,
-          sha: sha || undefined,
-          branch: GITHUB_BRANCH
-        })
+        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `Upload logo: ${filePath}`, content, sha: sha || undefined, branch: GITHUB_BRANCH })
       });
 
       if (!res.ok) throw new Error(`Falha ao enviar logo ${filePath}`);
@@ -3603,10 +2919,7 @@
 
     async function promptUploadLogoFabricante() {
       const token = localStorage.getItem('gh_pat_infinity');
-      if (!token) {
-        openLoginModal();
-        return;
-      }
+      if (!token) { openLoginModal(); return; }
 
       const input = document.createElement('input');
       input.type = 'file';
@@ -3614,16 +2927,14 @@
       input.onchange = async () => {
         if (!input.files || !input.files[0]) return;
         const file = input.files[0];
-
-        const confirmUpload = confirm(`Deseja enviar o logo "${file.name}" diretamente para a pasta logos/ no repositório?`);
-        if (!confirmUpload) return;
+        if (!confirm(`Deseja enviar "${file.name}" para a pasta logos/?`)) return;
 
         try {
-          alert('Enviando logo para a pasta logos/... Por favor, aguarde.');
+          alert('Enviando... aguarde.');
           const pathGravado = await uploadLogoToLogosFolder(file, token);
-          alert(`Logo gravado com sucesso em: ${pathGravado}\nEle já estará disponível para uso nos equipamentos!`);
+          alert(`Logo gravado em: ${pathGravado}`);
         } catch (err) {
-          alert('Erro ao enviar o logotipo: ' + err.message);
+          alert('Erro ao enviar logotipo: ' + err.message);
         }
       };
       input.click();
@@ -3640,14 +2951,13 @@
     function deleteProduct(id) {
       const prod = produtos.find(p => p.id === id);
       if (!prod) return;
-      if (!confirm(`Remover "${prod.nome}" do catálogo? (Fotos vinculadas também serão excluídas do repositório ao publicar)`)) return;
+      if (!confirm(`Remover "${prod.nome}"?`)) return;
 
       if (prod.imagens && prod.imagens.length > 0) {
         prod.imagens.forEach(img => {
           if (img.startsWith('fotos/')) pendingDeletionsQueue.push(img);
         });
       }
-
       produtos = produtos.filter(p => p.id !== id);
       notifyLocalChange();
       renderCatalog();
@@ -3676,11 +2986,7 @@
       e.preventDefault();
       const brandName = document.getElementById('newBrandName').value.trim();
       const fileInput = document.getElementById('newBrandFileInput');
-
-      if (!brandName || !fileInput.files[0]) {
-        alert('Informe o nome da marca e selecione um arquivo de logo.');
-        return;
-      }
+      if (!brandName || !fileInput.files[0]) return;
 
       const file = fileInput.files[0];
       const cleanFileName = brandName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\.\-_]/g, '') + '.png';
@@ -3688,11 +2994,7 @@
       const previewUrl = await fileToDataUrl(file);
 
       pendingUploadQueue.push({
-        type: 'brand_logo',
-        brandName: brandName,
-        targetPath: logoPath,
-        file: file,
-        previewUrl: previewUrl
+        type: 'brand_logo', brandName: brandName, targetPath: logoPath, file: file, previewUrl: previewUrl
       });
 
       const existingBrand = marcas.find(m => m.name.toLowerCase() === brandName.toLowerCase());
@@ -3705,7 +3007,7 @@
       initBrandPresetsUI();
       notifyLocalChange();
       closeBrandModal();
-      alert(`Fabricante "${brandName}" preparado para inclusão! Clique em "Publicar Alterações" para salvar no repositório.`);
+      alert(`Fabricante "${brandName}" configurado!`);
     }
 
     function openCategoryModal() {
@@ -3751,11 +3053,9 @@
     function prepareEditCategory(catId) {
       const cat = categorias.find(c => c.id === catId);
       if (!cat) return;
-
       document.getElementById('editCatId').value = cat.id;
       document.getElementById('catTitleInput').value = cat.title;
       document.getElementById('catIconSelect').value = cat.icon || 'menu';
-
       document.getElementById('catFormHeaderTitle').textContent = `Editar Categoria (${cat.title})`;
       document.getElementById('btnSaveCategory').textContent = 'Salvar Alteração';
       document.getElementById('btnCancelCategoryEdit').style.display = 'inline-block';
@@ -3766,7 +3066,6 @@
       document.getElementById('editCatId').value = '';
       document.getElementById('catTitleInput').value = '';
       document.getElementById('catIconSelect').value = 'menu';
-
       document.getElementById('catFormHeaderTitle').textContent = 'Adicionar Nova Categoria';
       document.getElementById('btnSaveCategory').textContent = 'Adicionar';
       document.getElementById('btnCancelCategoryEdit').style.display = 'none';
@@ -3776,23 +3075,15 @@
       const editId = document.getElementById('editCatId').value;
       const title = document.getElementById('catTitleInput').value.trim();
       const icon = document.getElementById('catIconSelect').value;
-
-      if (!title) {
-        alert('Por favor, informe um nome para a categoria.');
-        return;
-      }
+      if (!title) return;
 
       if (editId) {
         const cat = categorias.find(c => c.id === editId);
-        if (cat) {
-          cat.title = title;
-          cat.icon = icon;
-        }
+        if (cat) { cat.title = title; cat.icon = icon; }
       } else {
         let generatedId = title.toLowerCase().replace(/[^a-z0-9]/g, '');
         if (!generatedId) generatedId = `cat-${Date.now()}`;
-        
-        let finalId = generatedId;
+                let finalId = generatedId;
         let counter = 1;
         while (categorias.some(c => c.id === finalId)) {
           finalId = `${generatedId}-${counter++}`;
@@ -3832,3 +3123,4 @@
 
 </body>
 </html>
+
