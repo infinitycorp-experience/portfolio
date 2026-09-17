@@ -1383,7 +1383,9 @@
     // URL ATIVA DO GOOGLE APPS SCRIPT:
     const TELEMETRY_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHEClDrFhwM1DBL0DSnjep3W-FZWrJKaLGVykRELisko2ajiY3KOZR_OK5PL6ot9vI/exec';
 
-    const sessionStartTime = Date.now();
+        const sessionStartTime = Date.now();
+    const produtosVisualizados = new Set();
+    let resumoSaidaDisparado = false;
 
     function getLeadIdentification() {
       const params = new URLSearchParams(window.location.search);
@@ -1405,7 +1407,9 @@
       const payload = {
         lead: lead,
         evento: eventType,
+        acao: eventType, // Compatibilidade com o script do Apps Script
         detalhe: typeof detail === 'object' ? JSON.stringify(detail) : detail,
+        detalhes: typeof detail === 'object' ? JSON.stringify(detail) : detail,
         tempoSegundos: tempoTotal,
         dispositivo: isMobile ? 'Mobile' : 'Desktop',
         contato: contactInfo,
@@ -1425,14 +1429,43 @@
       }
     }
 
-    // Dispara telemetria de entrada e saída
+    // 1. Mensagem de Entrada (Ao carregar a página)
     window.addEventListener('load', () => {
       sendTrackingEvent('Acesso ao Portfólio', 'Entrou na página');
     });
 
-    window.addEventListener('beforeunload', () => {
-      sendTrackingEvent('Saída do Portfólio', 'Encerrou a sessão');
+    // 2. Mensagem Única Consolidada de Saída (Ao fechar ou sair da aba)
+    function dispararResumoSaida() {
+      if (resumoSaidaDisparado) return;
+      resumoSaidaDisparado = true;
+
+      const minutos = Math.max(1, Math.round((Date.now() - sessionStartTime) / 1000 / 60));
+      
+      // Coleta o que ele abriu para ver detalhes
+      const listaVistos = produtosVisualizados.size > 0 
+        ? Array.from(produtosVisualizados).join(', ') 
+        : 'Nenhum aberto em detalhes';
+
+      // Coleta o que ele chegou a adicionar no carrinho/cotação
+      const itensCarrinho = [];
+      carrinhoCotacao.forEach(item => {
+        itensCarrinho.push(`${item.marca} ${item.nome} (${item.qtd} un)`);
+      });
+      const listaCotados = itensCarrinho.length > 0 ? itensCarrinho.join(', ') : 'Nenhum item cotado';
+
+      const resumoFinal = `Tempo: ~${minutos} min | Vistos: [${listaVistos}] | Na Cotação: [${listaCotados}]`;
+
+      sendTrackingEvent('Resumo da Visita', resumoFinal);
+    }
+
+    // Captura o fechamento tanto em Desktop quanto em Mobile (troca de aba/app)
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        dispararResumoSaida();
+      }
     });
+    window.addEventListener('pagehide', dispararResumoSaida);
+
 
     /* ==========================================================================
        DADOS BASE & CATÁLOGO
@@ -2377,6 +2410,8 @@
       currentSelectedProductForModal = prod;
       modalImages = prod.imagens || [];
       modalCurrentIdx = 0;
+
+      produtosVisualizados.add(`${prod.marca} ${prod.nome}`);
 
       document.getElementById('modalBrand').textContent = prod.marca;
       document.getElementById('modalTitle').textContent = prod.nome;
