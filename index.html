@@ -1388,6 +1388,7 @@
 
     const produtosVisualizados = new Set();
     const catalogosExportados = new Set(); 
+    const historicoCotadosNaSessao = new Set(); // Guarda tudo o que já passou pelo carrinho
     let resumoSaidaDisparado = false;
 
     function getLeadIdentification() {
@@ -1446,37 +1447,56 @@
     });
 
     // 2. Grava o resumo final ao sair (dispara o WhatsApp único)
-    function dispararResumoSaida() {
+        function dispararResumoSaida() {
       if (resumoSaidaDisparado) return;
       resumoSaidaDisparado = true;
 
       const minutos = Math.max(1, Math.round((Date.now() - sessionStartTime) / 1000 / 60));
 
-      // Itens visualizados em detalhes
+      // Função auxiliar para atribuir ícones aos nomes dos equipamentos
+      const formatarComIcone = (texto) => {
+        const t = texto.toLowerCase();
+        if (t.includes('print') || t.includes('hp') || t.includes('ricoh') || t.includes('canon') || t.includes('lexmark') || t.includes('epson') || t.includes('xerox') || t.includes('brother') || t.includes('impressora')) return `🖨️ ${texto}`;
+        if (t.includes('lenovo') || t.includes('dell') || t.includes('notebook') || t.includes('laptop') || t.includes('avell')) return `💻 ${texto}`;
+        if (t.includes('apple') || t.includes('iphone') || t.includes('samsung') || t.includes('celular') || t.includes('mobile')) return `📱 ${texto}`;
+        if (t.includes('totem')) return `📟 ${texto}`;
+        if (t.includes('server') || t.includes('servidor')) return `🖥️ ${texto}`;
+        return `📦 ${texto}`;
+      };
+
+      // 1. Itens vistos em detalhes
       const listaVistos = produtosVisualizados.size > 0 
-        ? `${produtosVisualizados.size} em detalhes (${Array.from(produtosVisualizados).join(', ')})`
+        ? `${produtosVisualizados.size} em detalhes (${Array.from(produtosVisualizados).map(formatarComIcone).join(', ')})`
         : '0 em detalhes';
 
-      // Itens colocados na cotação
-      const itensCarrinho = [];
-      carrinhoCotacao.forEach(item => {
-        itensCarrinho.push(`${item.marca} ${item.nome} (${item.qtd} un)`);
-      });
-      const listaCotados = itensCarrinho.length > 0 
-        ? `${itensCarrinho.length} item(ns) cotado(s) [${itensCarrinho.join(', ')}]` 
-        : '0 item cotado';
+      // 2. Histórico de cotação (NUNCA ZERA, mesmo se remover do carrinho)
+      const listaCotados = historicoCotadosNaSessao.size > 0 
+        ? Array.from(historicoCotadosNaSessao).map(item => `[${formatarComIcone(item)}]`).join(' ')
+        : '[0 item cotado]';
 
-      // Exportação
+      // 3. Exportação de portfólio
       const exportouStatus = catalogosExportados.size > 0 
-        ? `Sim (${Array.from(catalogosExportados).join(', ')})` 
+        ? `Sim (${Array.from(catalogosExportados).map(formatarComIcone).join(', ')})` 
         : 'Não';
 
-      // Detalhe formatado único
-      const detalheFormatado = `Tempo: ~${minutos} min | Vistos: [${listaVistos}] | Na Cotação: [${listaCotados}] | Exportou: [${exportouStatus}]`;
+      // 4. Saldo que restou no carrinho no momento da saída
+      const qtdSobrouCarrinho = carrinhoCotacao.size;
+      const textoCarrinhoSobrou = qtdSobrouCarrinho > 0 
+        ? `🛒 ${qtdSobrouCarrinho} modelo(s) no carrinho` 
+        : `🛒 Carrinho finalizado vazio`;
 
-      // Evento com nome reconhecido pelo Google Apps Script
-      sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs`, detalheFormatado);
+      // Montagem do Detalhe formatado
+      const detalheFormatado = 
+`Tempo: ~${minutos} min 
+👀 Vistos: [${listaVistos}] 
+📈 Na Cotação: ${listaCotados}
+📂 Exportou: [${exportouStatus}]
+🫰🏻 Proposta (${textoCarrinhoSobrou})`;
+
+      // Envia evento consolidado
+      sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs ⏱️`, detalheFormatado);
     }
+
 
     // Captura o fechamento tanto em Desktop quanto em Mobile
     window.addEventListener('visibilitychange', () => {
@@ -1932,7 +1952,7 @@
         const ram = itemExistente?.ram || '8GB';
         const ssd = itemExistente?.ssd || '256GB';
 
-        carrinhoCotacao.set(prodId, {
+          carrinhoCotacao.set(prodId, {
           id: prod.id,
           nome: prod.nome,
           marca: prod.marca,
@@ -1943,7 +1963,11 @@
           ssd: ssd
         });
 
+        // Adiciona ao histórico persistente da sessão com o ícone adequado
+        historicoCotadosNaSessao.add(`${prod.marca} - ${prod.nome}`);
+
         sendTrackingEvent('Adicionou à Proposta', `${prod.marca} - ${prod.nome} (${newQty} un)`);
+
       }
 
       atualizarBarraFlutuante();
@@ -2349,7 +2373,7 @@
       });
     }
 
-    function executePrint() {
+        function executePrint() {
       const checkboxes = document.querySelectorAll('#exportCategoriesList input[type="checkbox"]');
       const selectedCatIds = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
 
@@ -2358,11 +2382,14 @@
         return;
       }
       
+      // Guarda na sessão para ir no resumo único de saída, sem disparar WhatsApp avulso:
       selectedCatIds.forEach(cat => catalogosExportados.add(cat));
 
-      sendTrackingEvent('Exportou Catálogo', `Categorias: ${selectedCatIds.join(', ')}`);
+      // COMENTADO para não mandar mensagem duplicada no WhatsApp:
+      // sendTrackingEvent('Exportou Catálogo', `Categorias: ${selectedCatIds.join(', ')}`);
 
       const allSections = document.querySelectorAll('.catalog-section');
+
       allSections.forEach(sec => {
         if (!selectedCatIds.includes(sec.dataset.catId)) {
           sec.style.setProperty('display', 'none', 'important');
