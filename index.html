@@ -1369,7 +1369,7 @@
     </div>
   </footer>
 
-    <script>
+  <script>
     /* ==========================================================================
        CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA
        ========================================================================== */
@@ -1384,6 +1384,8 @@
     const TELEMETRY_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHEClDrFhwM1DBL0DSnjep3W-FZWrJKaLGVykRELisko2ajiY3KOZR_OK5PL6ot9vI/exec';
 
     const sessionStartTime = Date.now();
+    const horaEntrada = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
     const produtosVisualizados = new Set();
     const catalogosExportados = new Set(); 
     let resumoSaidaDisparado = false;
@@ -1407,8 +1409,9 @@
 
       const payload = {
         lead: lead,
+        empresaUrl: lead,
         evento: eventType,
-        acao: eventType, // Compatibilidade com o script do Apps Script
+        acao: eventType,
         detalhe: typeof detail === 'object' ? JSON.stringify(detail) : detail,
         detalhes: typeof detail === 'object' ? JSON.stringify(detail) : detail,
         tempoSegundos: tempoTotal,
@@ -1417,62 +1420,71 @@
         origem: window.location.href
       };
 
+      const payloadString = JSON.stringify(payload);
+
       try {
-        fetch(TELEMETRY_SHEET_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          keepalive: true
-        });
+        if (navigator.sendBeacon) {
+          const blob = new Blob([payloadString], { type: 'text/plain;charset=UTF-8' });
+          navigator.sendBeacon(TELEMETRY_SHEET_URL, blob);
+        } else {
+          fetch(TELEMETRY_SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: payloadString,
+            keepalive: true
+          });
+        }
       } catch (err) {
         console.warn('Telemetria:', err);
       }
     }
 
-    // 1. Mensagem de Entrada (Ao carregar a página)
+    // 1. Grava o início da navegação na planilha (sem WhatsApp)
     window.addEventListener('load', () => {
-      sendTrackingEvent('Acesso ao Portfólio', 'Entrou na página');
+      sendTrackingEvent('Entrou no Portfólio', 'Início da sessão');
     });
 
-        // 2. Mensagem Única Consolidada de Saída (Ao fechar ou sair da aba)
+    // 2. Grava o resumo final ao sair (dispara o WhatsApp único)
     function dispararResumoSaida() {
       if (resumoSaidaDisparado) return;
       resumoSaidaDisparado = true;
 
       const minutos = Math.max(1, Math.round((Date.now() - sessionStartTime) / 1000 / 60));
-      
-      // Coleta o que ele abriu para ver detalhes
-      const listaVistos = produtosVisualizados.size > 0 
-        ? Array.from(produtosVisualizados).join(', ') 
-        : 'Nenhum aberto em detalhes';
 
-      // Coleta o que ele chegou a adicionar no carrinho/cotação
+      // Itens visualizados em detalhes
+      const listaVistos = produtosVisualizados.size > 0 
+        ? `${produtosVisualizados.size} em detalhes (${Array.from(produtosVisualizados).join(', ')})`
+        : '0 em detalhes';
+
+      // Itens colocados na cotação
       const itensCarrinho = [];
       carrinhoCotacao.forEach(item => {
         itensCarrinho.push(`${item.marca} ${item.nome} (${item.qtd} un)`);
       });
-      const listaCotados = itensCarrinho.length > 0 ? itensCarrinho.join(', ') : 'Nenhum item cotado';
+      const listaCotados = itensCarrinho.length > 0 
+        ? `${itensCarrinho.length} item(ns) cotado(s) [${itensCarrinho.join(', ')}]` 
+        : '0 item cotado';
 
-      // Coleta as categorias que ele exportou em PDF
-      const listaExportados = catalogosExportados.size > 0
-        ? Array.from(catalogosExportados).join(', ')
-        : 'Não exportou';
+      // Exportação
+      const exportouStatus = catalogosExportados.size > 0 
+        ? `Sim (${Array.from(catalogosExportados).join(', ')})` 
+        : 'Não';
 
-      const resumoFinal = `Tempo: ~${minutos} min | Vistos: [${listaVistos}] | Na Cotação: [${listaCotados}] | Exportou: [${listaExportados}]`;
+      // Detalhe formatado único
+      const detalheFormatado = `Tempo: ~${minutos} min | Vistos: [${listaVistos}] | Na Cotação: [${listaCotados}] | Exportou: [${exportouStatus}]`;
 
-      sendTrackingEvent('Resumo da Visita', resumoFinal);
+      // Evento com nome reconhecido pelo Google Apps Script
+      sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs`, detalheFormatado);
     }
 
-
-    // Captura o fechamento tanto em Desktop quanto em Mobile (troca de aba/app)
+    // Captura o fechamento tanto em Desktop quanto em Mobile
     window.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') {
         dispararResumoSaida();
       }
     });
     window.addEventListener('pagehide', dispararResumoSaida);
-
 
     /* ==========================================================================
        DADOS BASE & CATÁLOGO
@@ -2250,7 +2262,6 @@
       const telefone = document.getElementById('quoteTelefone').value.trim();
       const mensagem = document.getElementById('quoteMensagem').value.trim();
 
-      // Salva nome da empresa como lead prioritário
       if (empresa) localStorage.setItem('infinity_lead_tracked', empresa);
 
       let itensFormatados = '';
@@ -2280,7 +2291,6 @@
       feedback.style.display = 'none';
 
       try {
-        // Envia para o Web3Forms (Email)
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -2290,7 +2300,6 @@
         const resData = await response.json();
 
         if (resData.success) {
-          // Dispara telemetria de proposta para a planilha e alerta no WhatsApp
           const dadosContatoStr = `${nome} | ${empresa || 'Sem Empresa'} | Tel: ${telefone} | E-mail: ${email}`;
           sendTrackingEvent('Cotação Enviada', itensFormatados.replace(/\n/g, ' // '), dadosContatoStr);
 
@@ -2348,6 +2357,7 @@
         alert('Selecione ao menos uma categoria.');
         return;
       }
+      
       selectedCatIds.forEach(cat => catalogosExportados.add(cat));
 
       sendTrackingEvent('Exportou Catálogo', `Categorias: ${selectedCatIds.join(', ')}`);
@@ -3126,7 +3136,7 @@
       } else {
         let generatedId = title.toLowerCase().replace(/[^a-z0-9]/g, '');
         if (!generatedId) generatedId = `cat-${Date.now()}`;
-                let finalId = generatedId;
+        let finalId = generatedId;
         let counter = 1;
         while (categorias.some(c => c.id === finalId)) {
           finalId = `${generatedId}-${counter++}`;
@@ -3166,4 +3176,3 @@
 
 </body>
 </html>
-
