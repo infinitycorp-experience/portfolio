@@ -1383,8 +1383,9 @@
     // URL ATIVA DO GOOGLE APPS SCRIPT:
     const TELEMETRY_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHEClDrFhwM1DBL0DSnjep3W-FZWrJKaLGVykRELisko2ajiY3KOZR_OK5PL6ot9vI/exec';
 
-        const sessionStartTime = Date.now();
+    const sessionStartTime = Date.now();
     const produtosVisualizados = new Set();
+    const catalogosExportados = new Set(); 
     let resumoSaidaDisparado = false;
 
     function getLeadIdentification() {
@@ -1434,7 +1435,7 @@
       sendTrackingEvent('Acesso ao Portfólio', 'Entrou na página');
     });
 
-    // 2. Mensagem Única Consolidada de Saída (Ao fechar ou sair da aba)
+        // 2. Mensagem Única Consolidada de Saída (Ao fechar ou sair da aba)
     function dispararResumoSaida() {
       if (resumoSaidaDisparado) return;
       resumoSaidaDisparado = true;
@@ -1453,10 +1454,16 @@
       });
       const listaCotados = itensCarrinho.length > 0 ? itensCarrinho.join(', ') : 'Nenhum item cotado';
 
-      const resumoFinal = `Tempo: ~${minutos} min | Vistos: [${listaVistos}] | Na Cotação: [${listaCotados}]`;
+      // Coleta as categorias que ele exportou em PDF
+      const listaExportados = catalogosExportados.size > 0
+        ? Array.from(catalogosExportados).join(', ')
+        : 'Não exportou';
+
+      const resumoFinal = `Tempo: ~${minutos} min | Vistos: [${listaVistos}] | Na Cotação: [${listaCotados}] | Exportou: [${listaExportados}]`;
 
       sendTrackingEvent('Resumo da Visita', resumoFinal);
     }
+
 
     // Captura o fechamento tanto em Desktop quanto em Mobile (troca de aba/app)
     window.addEventListener('visibilitychange', () => {
@@ -2341,6 +2348,7 @@
         alert('Selecione ao menos uma categoria.');
         return;
       }
+      selectedCatIds.forEach(cat => catalogosExportados.add(cat));
 
       sendTrackingEvent('Exportou Catálogo', `Categorias: ${selectedCatIds.join(', ')}`);
 
