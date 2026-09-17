@@ -1447,57 +1447,59 @@
     });
 
     // 2. Grava o resumo final ao sair (dispara o WhatsApp único)
-        function dispararResumoSaida() {
-      if (resumoSaidaDisparado) return;
-      resumoSaidaDisparado = true;
+    function dispararResumoSaida() {
+  if (resumoSaidaDisparado) return;
+  resumoSaidaDisparado = true;
 
-      const minutos = Math.max(1, Math.round((Date.now() - sessionStartTime) / 1000 / 60));
+  const minutos = Math.max(1, Math.round((Date.now() - sessionStartTime) / 1000 / 60));
 
-      // Função auxiliar para atribuir ícones aos nomes dos equipamentos
-      const formatarComIcone = (texto) => {
-        const t = texto.toLowerCase();
-        if (t.includes('print') || t.includes('hp') || t.includes('ricoh') || t.includes('canon') || t.includes('lexmark') || t.includes('epson') || t.includes('xerox') || t.includes('brother') || t.includes('impressora')) return `🖨️ ${texto}`;
-        if (t.includes('lenovo') || t.includes('dell') || t.includes('notebook') || t.includes('laptop') || t.includes('avell')) return `💻 ${texto}`;
-        if (t.includes('apple') || t.includes('iphone') || t.includes('samsung') || t.includes('celular') || t.includes('mobile')) return `📱 ${texto}`;
-        if (t.includes('totem')) return `📟 ${texto}`;
-        if (t.includes('server') || t.includes('servidor')) return `🖥️ ${texto}`;
-        return `📦 ${texto}`;
-      };
+  // Função auxiliar para aplicar emojis aos modelos
+  const formatarItem = (str) => {
+    const s = str.toLowerCase();
+    if (s.includes('print') || s.includes('hp') || s.includes('ricoh') || s.includes('canon') || s.includes('lexmark') || s.includes('epson') || s.includes('xerox') || s.includes('brother') || s.includes('samsung')) return `🖨️ ${str}`;
+    if (s.includes('lenovo') || s.includes('dell') || s.includes('notebook') || s.includes('laptop') || s.includes('avell') || s.includes('thinkpad')) return `💻 ${str}`;
+    if (s.includes('apple') || s.includes('iphone') || s.includes('samsung') || s.includes('mobile')) return `📱 ${str}`;
+    return `📦 ${str}`;
+  };
 
-      // 1. Itens vistos em detalhes
-      const listaVistos = produtosVisualizados.size > 0 
-        ? `${produtosVisualizados.size} em detalhes (${Array.from(produtosVisualizados).map(formatarComIcone).join(', ')})`
-        : '0 em detalhes';
+  // 1. Vistos em detalhes (1 por linha)
+  let textoVistos = '0 em detalhes';
+  if (produtosVisualizados.size > 0) {
+    const itens = Array.from(produtosVisualizados).map(item => `  • ${formatarItem(item)}`).join('\n');
+    textoVistos = `${produtosVisualizados.size} em detalhes\n${itens}`;
+  }
 
-      // 2. Histórico de cotação (NUNCA ZERA, mesmo se remover do carrinho)
-      const listaCotados = historicoCotadosNaSessao.size > 0 
-        ? Array.from(historicoCotadosNaSessao).map(item => `[${formatarComIcone(item)}]`).join(' ')
-        : '[0 item cotado]';
+  // 2. Cotados (1 por linha)
+  let textoCotados = 'Nenhum item cotado';
+  if (historicoCotadosNaSessao.size > 0) {
+    textoCotados = '\n' + Array.from(historicoCotadosNaSessao).map(item => `  • ${formatarItem(item)}`).join('\n');
+  }
 
-      // 3. Exportação de portfólio
-      const exportouStatus = catalogosExportados.size > 0 
-        ? `Sim (${Array.from(catalogosExportados).map(formatarComIcone).join(', ')})` 
-        : 'Não';
+  // 3. Exportações (1 por linha se houver)
+  let textoExportou = 'Não';
+  if (catalogosExportados.size > 0) {
+    const cats = Array.from(catalogosExportados).map(cat => `  • ${formatarItem(cat)}`).join('\n');
+    textoExportou = `Sim\n${cats}`;
+  }
 
-      // 4. Saldo que restou no carrinho no momento da saída
-      const qtdSobrouCarrinho = carrinhoCotacao.size;
-      const textoCarrinhoSobrou = qtdSobrouCarrinho > 0 
-        ? `🛒 ${qtdSobrouCarrinho} modelo(s) no carrinho` 
-        : `🛒 Carrinho finalizado vazio`;
+  // 4. Carrinho
+  const qtdCarrinho = carrinhoCotacao.size;
+  const textoCarrinho = qtdCarrinho > 0 ? `🛒 ${qtdCarrinho} modelo(s) pendente(s)` : `🛒 Carrinho finalizado vazio`;
 
-            // Montagem do Detalhe formatado
-      const detalheFormatado = 
-`
-⏳ Tempo: ~${minutos} min
-👀 Vistos: [${listaVistos}]
-📈 Na Cotação: ${listaCotados}
-📂 Exportou: [${exportouStatus}]
-🫰🏻 Proposta (${textoCarrinhoSobrou})`.trim();
+  // Montagem limpa do Miolo (com quebras de linha duplas para respirar)
+  const detalheFormatado = 
+`⏳ Tempo: ~${minutos} min
 
-      // Envia evento consolidado
-      sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs ⏱️`, detalheFormatado);
-    }
+👀 Vistos: ${textoVistos}
 
+📈 Na Cotação: ${textoCotados}
+
+📂 Exportou: ${textoExportou}
+
+🫰🏻 Proposta (${textoCarrinho})`;
+
+  sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs ⏱️`, detalheFormatado);
+}
 
     // Captura o fechamento tanto em Desktop quanto em Mobile
     window.addEventListener('visibilitychange', () => {
