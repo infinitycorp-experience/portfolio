@@ -1371,7 +1371,7 @@
 
   <script>
     /* ==========================================================================
-       CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA
+       CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA AJUSTADA
        ========================================================================== */
     const GITHUB_OWNER  = 'infinitycorp-experience';
     const GITHUB_REPO   = 'portfolio';
@@ -1388,17 +1388,26 @@
 
     const produtosVisualizados = new Set();
     const catalogosExportados = new Set(); 
-    const historicoCotadosNaSessao = new Set(); // Guarda tudo o que já passou pelo carrinho
+    const historicoCotadosNaSessao = new Set();
     let resumoSaidaDisparado = false;
+    let entradaRegistrada = false;
 
+    // Helper para recuperar nome legível da categoria
+    function getNomeCategoria(catId) {
+      if (!catId) return 'Geral';
+      const c = categorias.find(cat => cat.id === catId);
+      return c ? c.title : catId;
+    }
+
+    // Isola o lead por ABA usando sessionStorage
     function getLeadIdentification() {
       const params = new URLSearchParams(window.location.search);
       const leadUrl = params.get('lead') || params.get('cliente') || params.get('empresa') || params.get('c');
       if (leadUrl) {
-        localStorage.setItem('infinity_lead_tracked', leadUrl);
+        sessionStorage.setItem('infinity_current_lead', leadUrl);
         return leadUrl;
       }
-      return localStorage.getItem('infinity_lead_tracked') || 'Visitante Geral';
+      return sessionStorage.getItem('infinity_current_lead') || 'Visitante Geral';
     }
 
     function sendTrackingEvent(eventType, detail = '', contactInfo = '') {
@@ -1418,7 +1427,7 @@
         tempoSegundos: tempoTotal,
         dispositivo: isMobile ? 'Mobile' : 'Desktop',
         contato: contactInfo,
-        origem: window.location.href
+        origem: window.location.href // Agora garantidamente atualizada via scrollspy
       };
 
       const payloadString = JSON.stringify(payload);
@@ -1441,53 +1450,76 @@
       }
     }
 
-    // 1. Grava o início da navegação na planilha (sem WhatsApp)
+    // 1. Evita rajadas ao abrir o navegador: aguarda 2.5s de permanência real na página
     window.addEventListener('load', () => {
-      sendTrackingEvent('Entrou no Portfólio', 'Início da sessão');
+      setTimeout(() => {
+        if (document.visibilityState !== 'hidden' && !resumoSaidaDisparado) {
+          entradaRegistrada = true;
+          sendTrackingEvent('Entrou no Portfólio', 'Início da sessão');
+        }
+      }, 2500);
     });
 
-    // 2. Grava o resumo final ao sair (dispara o WhatsApp único)
+    // 2. Classificador Inteligente de Ícones por Equipamento/Marca
+    function formatarItemComIcone(str) {
+      const s = str.toLowerCase();
+
+      if (s.includes('tab') || s.includes('ipad') || s.includes('iphone') || s.includes('galaxy') || s.includes('celular') || s.includes('mobile') || s.includes('a7 lite') || s.includes('a9')) {
+        return `📱 ${str}`;
+      }
+      if (s.includes('ideapad') || s.includes('thinkpad') || s.includes('notebook') || s.includes('laptop') || s.includes('dell') || s.includes('avell') || s.includes('desktop') || s.includes('computador')) {
+        return `💻 ${str}`;
+      }
+      if (s.includes('zebra') || s.includes('dascom') || s.includes('thermal') || s.includes('térmica') || s.includes('etiqueta')) {
+        return `🏷️ ${str}`;
+      }
+      if (s.includes('totem') || s.includes('kiosk') || s.includes('isd tech')) {
+        return `🖥️ ${str}`;
+      }
+      if (s.includes('papercut') || s.includes('software') || s.includes('licença')) {
+        return `💾 ${str}`;
+      }
+      if (s.includes('print') || s.includes('hp') || s.includes('ricoh') || s.includes('canon') || s.includes('lexmark') || s.includes('epson') || s.includes('xerox') || s.includes('brother') || s.includes('kyocera') || s.includes('mono') || s.includes('color')) {
+        return `🖨️ ${str}`;
+      }
+
+      return `📦 ${str}`;
+    }
+
+    // 3. Grava o resumo final ao sair
     function dispararResumoSaida() {
-  if (resumoSaidaDisparado) return;
-  resumoSaidaDisparado = true;
+      if (resumoSaidaDisparado) return;
+      
+      const tempoSegundos = Math.round((Date.now() - sessionStartTime) / 1000);
+      
+      if (tempoSegundos < 3 && produtosVisualizados.size === 0 && carrinhoCotacao.size === 0) {
+        return;
+      }
 
-  const minutos = Math.max(1, Math.round((Date.now() - sessionStartTime) / 1000 / 60));
+      resumoSaidaDisparado = true;
+      const minutos = Math.max(1, Math.round(tempoSegundos / 60));
 
-  // Função auxiliar para aplicar emojis aos modelos
-  const formatarItem = (str) => {
-    const s = str.toLowerCase();
-    if (s.includes('print') || s.includes('hp') || s.includes('ricoh') || s.includes('canon') || s.includes('lexmark') || s.includes('epson') || s.includes('xerox') || s.includes('brother') || s.includes('samsung')) return `🖨️ ${str}`;
-    if (s.includes('lenovo') || s.includes('dell') || s.includes('notebook') || s.includes('laptop') || s.includes('avell') || s.includes('thinkpad')) return `💻 ${str}`;
-    if (s.includes('apple') || s.includes('iphone') || s.includes('samsung') || s.includes('mobile')) return `📱 ${str}`;
-    return `📦 ${str}`;
-  };
+      let textoVistos = '0 em detalhes';
+      if (produtosVisualizados.size > 0) {
+        const itens = Array.from(produtosVisualizados).map(item => `  • ${formatarItemComIcone(item)}`).join('\n');
+        textoVistos = `${produtosVisualizados.size} em detalhes\n${itens}`;
+      }
 
-  // 1. Vistos em detalhes (1 por linha)
-  let textoVistos = '0 em detalhes';
-  if (produtosVisualizados.size > 0) {
-    const itens = Array.from(produtosVisualizados).map(item => `  • ${formatarItem(item)}`).join('\n');
-    textoVistos = `${produtosVisualizados.size} em detalhes\n${itens}`;
-  }
+      let textoCotados = 'Nenhum item cotado';
+      if (historicoCotadosNaSessao.size > 0) {
+        textoCotados = '\n' + Array.from(historicoCotadosNaSessao).map(item => `  • ${formatarItemComIcone(item)}`).join('\n');
+      }
 
-  // 2. Cotados (1 por linha)
-  let textoCotados = 'Nenhum item cotado';
-  if (historicoCotadosNaSessao.size > 0) {
-    textoCotados = '\n' + Array.from(historicoCotadosNaSessao).map(item => `  • ${formatarItem(item)}`).join('\n');
-  }
+      let textoExportou = 'Não';
+      if (catalogosExportados.size > 0) {
+        const cats = Array.from(catalogosExportados).map(cat => `  • ${formatarItemComIcone(cat)}`).join('\n');
+        textoExportou = `Sim\n${cats}`;
+      }
 
-  // 3. Exportações (1 por linha se houver)
-  let textoExportou = 'Não';
-  if (catalogosExportados.size > 0) {
-    const cats = Array.from(catalogosExportados).map(cat => `  • ${formatarItem(cat)}`).join('\n');
-    textoExportou = `Sim\n${cats}`;
-  }
+      const qtdCarrinho = carrinhoCotacao.size;
+      const textoCarrinho = qtdCarrinho > 0 ? `🛒 ${qtdCarrinho} modelo(s) pendente(s)` : `🛒 Carrinho finalizado vazio`;
 
-  // 4. Carrinho
-  const qtdCarrinho = carrinhoCotacao.size;
-  const textoCarrinho = qtdCarrinho > 0 ? `🛒 ${qtdCarrinho} modelo(s) pendente(s)` : `🛒 Carrinho finalizado vazio`;
-
-  // Montagem limpa do Miolo (com quebras de linha duplas para respirar)
-  const detalheFormatado = 
+      const detalheFormatado = 
 `⏳ Tempo: ~${minutos} min
 
 👀 Vistos: ${textoVistos}
@@ -1498,16 +1530,16 @@
 
 🫰🏻 Proposta (${textoCarrinho})`;
 
-  sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs ⏱️`, detalheFormatado);
-}
+      sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs ⏱️`, detalheFormatado);
+    }
 
-    // Captura o fechamento tanto em Desktop quanto em Mobile
     window.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') {
         dispararResumoSaida();
       }
     });
     window.addEventListener('pagehide', dispararResumoSaida);
+
 
     /* ==========================================================================
        DADOS BASE & CATÁLOGO
@@ -1773,6 +1805,7 @@
       });
     }
 
+    /* SCROLLSPY COM ATUALIZAÇÃO SILENCIOSA DE HASH NA URL */
     function initNavScrollspy() {
       const sections = document.querySelectorAll('.catalog-section');
       if (!sections.length) return;
@@ -1780,7 +1813,13 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            setActiveCategoryNav(entry.target.dataset.catId);
+            const catId = entry.target.dataset.catId;
+            setActiveCategoryNav(catId);
+            
+            // Atualiza silenciosamente a URL para incluir o hash da categoria atual
+            if (history.replaceState) {
+              history.replaceState(null, null, `#${catId}`);
+            }
           }
         });
       }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
@@ -1944,10 +1983,11 @@
     function toggleProdutoCarrinho(prodId, forceQty = null) {
       const prod = produtos.find(p => p.id === prodId);
       if (!prod) return;
+      const nomeCategoria = getNomeCategoria(prod.categoria);
 
       if (carrinhoCotacao.has(prodId) && forceQty === null) {
         carrinhoCotacao.delete(prodId);
-        sendTrackingEvent('Removeu Produto da Proposta', `${prod.marca} - ${prod.nome}`);
+        sendTrackingEvent('Removeu Produto da Proposta', `[${nomeCategoria}] ${prod.marca} - ${prod.nome}`);
       } else {
         const itemExistente = carrinhoCotacao.get(prodId);
         const currentQty = itemExistente?.qtd || 1;
@@ -1955,7 +1995,7 @@
         const ram = itemExistente?.ram || '8GB';
         const ssd = itemExistente?.ssd || '256GB';
 
-          carrinhoCotacao.set(prodId, {
+        carrinhoCotacao.set(prodId, {
           id: prod.id,
           nome: prod.nome,
           marca: prod.marca,
@@ -1966,11 +2006,8 @@
           ssd: ssd
         });
 
-        // Adiciona ao histórico persistente da sessão com o ícone adequado
         historicoCotadosNaSessao.add(`${prod.marca} - ${prod.nome}`);
-
-        sendTrackingEvent('Adicionou à Proposta', `${prod.marca} - ${prod.nome} (${newQty} un)`);
-
+        sendTrackingEvent('Adicionou à Proposta', `[${nomeCategoria}] ${prod.marca} - ${prod.nome} (${newQty} un)`);
       }
 
       atualizarBarraFlutuante();
@@ -2376,7 +2413,7 @@
       });
     }
 
-        function executePrint() {
+    function executePrint() {
       const checkboxes = document.querySelectorAll('#exportCategoriesList input[type="checkbox"]');
       const selectedCatIds = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
 
@@ -2385,11 +2422,7 @@
         return;
       }
       
-      // Guarda na sessão para ir no resumo único de saída, sem disparar WhatsApp avulso:
       selectedCatIds.forEach(cat => catalogosExportados.add(cat));
-
-      // COMENTADO para não mandar mensagem duplicada no WhatsApp:
-      // sendTrackingEvent('Exportou Catálogo', `Categorias: ${selectedCatIds.join(', ')}`);
 
       const allSections = document.querySelectorAll('.catalog-section');
 
@@ -2459,6 +2492,8 @@
       modalImages = prod.imagens || [];
       modalCurrentIdx = 0;
 
+      const nomeCategoria = getNomeCategoria(prod.categoria);
+
       produtosVisualizados.add(`${prod.marca} ${prod.nome}`);
 
       document.getElementById('modalBrand').textContent = prod.marca;
@@ -2488,7 +2523,8 @@
       document.getElementById('productModal').classList.add('active');
       document.body.style.overflow = 'hidden';
 
-      sendTrackingEvent('Visualizou Detalhes do Produto', `${prod.marca} - ${prod.nome}`);
+      // Agora envia explícito: [Nome da Categoria] Fabricante - Modelo
+      sendTrackingEvent('Visualizou Detalhes do Produto', `[${nomeCategoria}] ${prod.marca} - ${prod.nome}`);
     }
 
     function renderModalGallery() {
