@@ -472,7 +472,6 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     }
     .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08); border-color: var(--primary); }
-    .prod-card.item-oculto { opacity: 0.5; border-style: dashed; }
     .prod-card.in-quote { border-color: var(--primary); background: #FAFDFE; }
 
     .thumb-slider-container {
@@ -574,9 +573,6 @@
     }
     .btn-card-cart-toggle:hover, .btn-card-cart-toggle.active { background: var(--primary); color: #FFFFFF; }
 
-    .admin-card-actions { display: none; flex-direction: column; gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--card-border); }
-    body.admin-mode .admin-card-actions { display: flex; }
-    .admin-card-buttons-row { display: flex; gap: 6px; }
     .btn-action {
       flex: 1;
       padding: 6px 8px;
@@ -587,70 +583,7 @@
       background: #FFFFFF;
       cursor: pointer;
     }
-    .btn-action:hover { background: #0F172A; color: white; }
-    .btn-action.btn-del { color: var(--danger); border-color: #FECDD3; }
-    .btn-action.btn-del:hover { background: var(--danger); color: white; }
-    .btn-order { flex: 0 0 32px; background: #F1F5F9; color: #334155; }
-
-    /* Admin Bar */
-    .admin-bar {
-      display: none;
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #0F172A;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 50px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      z-index: 1500;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    body.admin-mode .admin-bar { display: flex; }
-    .admin-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 0.82rem;
-      cursor: pointer;
-    }
-    .admin-btn.secondary { background: #334155; }
-    .admin-btn-deploy {
-      background: var(--success);
-      color: white;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-weight: 800;
-      font-size: 0.82rem;
-      cursor: pointer;
-      display: none;
-    }
-    .admin-btn-discard {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #FECDD3;
-      padding: 8px 12px;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      display: none;
-    }
-    .admin-btn-logout {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      cursor: pointer;
-    }
-
+        
     /* Modais */
     .modal-overlay {
       position: fixed;
@@ -839,39 +772,6 @@
     .quote-feedback { padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-top: 14px; text-align: center; display: none; }
     .quote-feedback.success { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
     .quote-feedback.error { background: #FEE2E2; color: #991B1B; border: 1px solid #FECDD3; }
-
-    .category-pills-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-    .cat-pill-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      cursor: pointer;
-      border: 1px solid transparent;
-      user-select: none;
-      background: #F1F5F9;
-      color: #475569;
-    }
-    .cat-pill-btn.selected { transform: scale(1.02); border-color: currentColor !important; outline: 2px solid currentColor; }
-
-    .brand-logo-control-box { height: 44px; border: 1px solid var(--card-border); background: #FFFFFF; border-radius: 8px; padding: 4px 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .brand-logo-info-side { display: flex; align-items: center; gap: 8px; overflow: hidden; flex: 1; }
-    .brand-logo-preview-thumb { height: 26px; max-width: 70px; object-fit: contain; }
-    .brand-logo-label-text { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
-    .brand-logo-actions-side { display: flex; align-items: center; gap: 6px; }
-    .btn-logo-action { height: 32px; padding: 0 10px; font-size: 0.75rem; font-weight: 700; border-radius: 6px; border: 1px solid var(--card-border); background: #F8FAFC; cursor: pointer; }
-    .btn-logo-del { width: 32px; padding: 0; color: var(--danger); border-color: #FECDD3; }
-
-    .photos-manager-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 10px 0 15px; }
-    .photo-thumb-edit { position: relative; width: 90px; height: 90px; border-radius: 8px; border: 1px solid var(--card-border); background: #FFF; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4px; cursor: grab; }
-    .photo-thumb-edit img { max-width: 100%; max-height: 60px; object-fit: contain; }
-    .btn-remove-photo { position: absolute; top: -6px; right: -6px; background: var(--danger); color: white; border: none; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; font-size: 11px; }
-    .photo-reorder-nav { position: absolute; bottom: 2px; display: flex; gap: 4px; width: 100%; justify-content: center; background: rgba(255,255,255,0.85); border-radius: 0 0 6px 6px; }
-    .btn-photo-nav { background: #E2E8F0; border: none; font-size: 10px; font-weight: bold; width: 22px; height: 18px; border-radius: 4px; cursor: pointer; }
-
     .export-modal-box { max-width: 580px; padding: 30px; border-radius: 20px; }
     .export-categories-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 24px; max-height: 260px; overflow-y: auto; }
     .export-category-item { display: flex; align-items: center; gap: 10px; background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
@@ -883,7 +783,7 @@
     @media print {
       @page { size: A4 portrait; margin: 14mm 10mm 15mm 10mm; }
       body { background: #FFFFFF !important; color: #0F172A !important; }
-      body::before, .top-navbar, .hero, .admin-bar, .modal-overlay, .admin-card-actions, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { display: none !important; }
+      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { display: none !important; }
       .main-content { padding: 0 !important; max-width: 100% !important; }
       .print-header { display: flex !important; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 2px solid #0284C7; }
       .print-header img { height: 50px; }
@@ -1015,18 +915,6 @@
     </div>
   </div>
 
-  <!-- Barra Flutuante de Administração -->
-  <div class="admin-bar">
-    <span id="adminStatusText">🔒 Modo Gestor Ativo</span>
-    <button class="admin-btn" onclick="openProductForm()">+ Novo Equipamento</button>
-    <button class="admin-btn secondary" onclick="openCategoryModal()">Categorias</button>
-    <button class="admin-btn secondary" onclick="openBrandModal()">+ Fabricante</button>
-    <button class="admin-btn secondary" onclick="promptUploadLogoFabricante()">🖼️ Enviar Logo (/logos)</button>
-    <button class="admin-btn-deploy" id="btnPublishDeploy" onclick="publishAllChanges()">🚀 Publicar Alterações (<span id="pendingCount">0</span>)</button>
-    <button class="admin-btn-discard" id="btnDiscardChanges" onclick="discardPendingChanges()">Descartar Rascunho</button>
-    <button class="admin-btn-logout" onclick="logoutAdmin()">Sair</button>
-  </div>
-
   <!-- Modal de Zoom/Visualização de Produto -->
   <div class="modal-overlay" id="productModal" onclick="closeModalOnOutsideClick(event)">
     <div class="modal-box">
@@ -1142,75 +1030,7 @@
     </div>
   </div>
 
-  <!-- Modal Formulário Produto -->
-  <div class="modal-overlay" id="formModal">
-    <div class="modal-box" style="padding: 30px;">
-      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;" id="formModalTitle">Cadastrar Equipamento</h3>
-      
-      <form id="productCrudForm" onsubmit="handleFormSubmit(event)">
-        <input type="hidden" id="prodId">
-
-        <div class="form-group">
-          <label>Categoria do Equipamento</label>
-          <input type="hidden" id="prodCategory" required>
-          <div class="category-pills-container" id="categoryPillsContainer"></div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group" style="margin-bottom: 0;">
-            <label>Fabricante / Marca</label>
-            <select id="brandPresetSelect" class="form-control" onchange="handleBrandPresetChange(this.value)" required>
-              <option value="">-- Selecione a Marca --</option>
-              <option value="__custom__">Outra Marca / Digitar...</option>
-            </select>
-            <input type="text" id="prodBrand" class="form-control" style="margin-top: 8px; display: none;" placeholder="Digite o nome do fabricante">
-          </div>
-
-          <div class="form-group" style="margin-bottom: 0;">
-            <label>Logotipo do Fabricante</label>
-            <div class="brand-logo-control-box">
-              <div class="brand-logo-info-side">
-                <img id="brandLogoPreviewImg" class="brand-logo-preview-thumb" src="" style="display: none;">
-                <span id="brandLogoTextState" class="brand-logo-label-text">Sem logotipo</span>
-              </div>
-              <div class="brand-logo-actions-side">
-                <label for="prodBrandLogoInput" class="btn-logo-action" title="Selecionar novo arquivo PNG">
-                  📁 Trocar Logo
-                </label>
-                <input type="file" id="prodBrandLogoInput" accept="image/png, image/webp" style="display: none;" onchange="handleBrandLogoFileInput(this)">
-                <button type="button" class="btn-logo-action btn-logo-del" id="btnRemoveLogo" style="display: none;" onclick="removeBrandLogo()" title="Remover logotipo">✕</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group" style="margin-top: 16px;">
-          <label>Nome Completo do Modelo</label>
-          <input type="text" id="prodName" class="form-control" required placeholder="Ex: Xerox VersaLink C7020/25/30">
-        </div>
-
-        <div class="form-group">
-          <label>Fotos do Equipamento</label>
-          <div class="photos-manager-grid" id="photosGridContainer"></div>
-          
-          <div style="margin-top: 8px;">
-            <input type="file" id="prodFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" multiple onchange="handleNewPhotosInput(this)">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Especificações Técnicas (Formato: Chave: Valor, uma por linha)</label>
-          <textarea id="prodSpecs" class="form-control" style="height: auto;" rows="4" placeholder="Velocidade: Até 20 ppm&#10;1ª Página: ~8,1s&#10;Tipo: Multifuncional Colorida"></textarea>
-        </div>
-
-        <div class="form-actions">
-          <button type="button" class="btn-cancel" onclick="closeFormModal()">Cancelar</button>
-          <button type="submit" class="btn-submit" id="btnSaveProd">Salvar no Rascunho</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
+  
   <!-- Modal Exportação -->
   <div class="modal-overlay" id="exportModal">
     <div class="modal-box export-modal-box">
@@ -1239,123 +1059,6 @@
     </div>
   </div>
 
-  <!-- Modal Fabricante -->
-  <div class="modal-overlay" id="brandModal">
-    <div class="modal-box" style="padding: 30px; max-width: 480px;">
-      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Cadastrar Fabricante</h3>
-      <form id="brandForm" onsubmit="handleBrandSubmit(event)">
-        <div class="form-group">
-          <label>Nome do Fabricante / Marca</label>
-          <input type="text" id="newBrandName" class="form-control" required placeholder="Ex: Avell, Positivo, Elgin">
-        </div>
-        <div class="form-group">
-          <label>Arquivo do Logotipo</label>
-          <input type="file" id="newBrandFileInput" class="form-control" style="padding-top: 9px;" accept="image/*" required onchange="previewNewBrandLogo(this)">
-        </div>
-        <div id="newBrandPreviewContainer" style="display: none; align-items: center; justify-content: center; background: #F8FAFC; border: 1px dashed var(--card-border); border-radius: 8px; padding: 15px; margin-bottom: 16px;">
-          <img id="newBrandPreviewImg" src="" style="max-height: 48px; max-width: 140px; object-fit: contain;">
-        </div>
-        <div class="form-actions">
-          <button type="button" class="btn-cancel" onclick="closeBrandModal()">Cancelar</button>
-          <button type="submit" class="btn-submit">Salvar Fabricante</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modal Categorias -->
-  <div class="modal-overlay" id="categoryModal">
-    <div class="modal-box" style="padding: 30px;">
-      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px;">Gerenciar Categorias</h3>
-      
-      <div style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border);">
-        <h4 id="catFormHeaderTitle" style="font-size: 0.95rem; margin-bottom: 12px; font-weight: 800; color: var(--primary);">Adicionar Nova Categoria</h4>
-        <input type="hidden" id="editCatId" value="">
-
-        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
-          <div style="flex: 1; min-width: 220px;">
-            <label style="display:block; font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; color: var(--text-muted);">Nome da Categoria</label>
-            <input type="text" id="catTitleInput" class="form-control" placeholder="Ex: Notebooks Corporativos">
-          </div>
-          
-          <div style="width: 190px;">
-            <label style="display:block; font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; color: var(--text-muted);">Ícone Representativo</label>
-            <select id="catIconSelect" class="form-control">
-              <option value="menu">Padrão (Menu)</option>
-              <option value="laptop">Notebook / Laptop</option>
-              <option value="computer">Computador / Desktop</option>
-              <option value="monitor">Monitor Profissional</option>
-              <option value="print">Impressora / Multifuncional</option>
-              <option value="scanner">Scanner Profissional</option>
-              <option value="thermal">Impressora Térmica</option>
-              <option value="mobile">Móvel / Tablet</option>
-              <option value="totem">Totem</option>
-              <option value="server">Servidor</option>
-              <option value="network">Rede / Wi-Fi</option>
-              <option value="shield">Segurança</option>
-            </select>
-          </div>
-
-          <div style="display: flex; gap: 6px;">
-            <button class="btn-submit" id="btnSaveCategory" onclick="handleCategorySave()" style="white-space: nowrap; height: 44px;">Adicionar</button>
-            <button class="btn-cancel" id="btnCancelCategoryEdit" onclick="resetCategoryForm()" style="white-space: nowrap; height: 44px; display: none;">Cancelar</button>
-          </div>
-        </div>
-      </div>
-
-      <h4 style="font-size: 0.95rem; margin-bottom: 12px; font-weight: 800;">Categorias Cadastradas</h4>
-      <div id="categoriesListContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
-
-      <div class="form-actions">
-        <button type="button" class="btn-cancel" onclick="closeCategoryModal()">Fechar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Login -->
-  <div class="modal-overlay" id="loginModal">
-    <div class="modal-box" style="max-width: 420px; padding: 30px 24px; text-align: center; border-radius: 20px;">
-      <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px;">Acesso Restrito</h3>
-      <form onsubmit="handleLoginSubmit(event)">
-        <div class="form-group" style="text-align: left;">
-          <label>Senha de Gestor</label>
-          <input type="password" id="adminPasswordInput" class="form-control" placeholder="••••••••••••" required autofocus>
-        </div>
-        <div class="form-group" id="patTokenGroup" style="text-align: left; display: none;">
-          <label>GitHub Personal Access Token</label>
-          <input type="password" id="adminPatInput" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-        </div>
-        <div id="loginErrorMessage" style="color: var(--danger); font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; display: none;">
-          Senha incorreta.
-        </div>
-        <div class="form-actions" style="justify-content: center;">
-          <button type="button" class="btn-cancel" onclick="closeLoginModal()">Cancelar</button>
-          <button type="submit" class="btn-submit" style="min-width: 110px;">Entrar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modal Deploy -->
-  <div class="modal-overlay" id="deployProgressModal">
-    <div class="modal-box" style="max-width: 460px; padding: 36px 28px; text-align: center; border-radius: 20px;">
-      <div id="deployPhaseUploading">
-        <div style="width: 48px; height: 48px; border: 4px solid #E2E8F0; border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 18px;"></div>
-        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Publicando Atualizações</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted);" id="deployStatusMessage">Gravando arquivos...</p>
-      </div>
-
-      <div id="deployPhaseCountdown" style="display: none;">
-        <div style="width: 80px; height: 80px; border-radius: 50%; background: #ECFDF5; border: 3px solid #10B981; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: #059669; margin: 16px auto;" id="countdownNumber">30</div>
-        <h3 style="font-size: 1.3rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Publicação Enviada!</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted);">Aguarde a atualização automática:</p>
-        <div style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 10px; overflow: hidden; margin-top: 18px;">
-          <div style="height: 100%; width: 0%; background: linear-gradient(90deg, #10B981, #0284C7); transition: width 1s linear;" id="deployProgressBar"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Rodapé -->
   <footer>
     <div class="brand-logo" style="justify-content: center; margin-bottom: 12px;">
@@ -1367,7 +1070,6 @@
     <div class="footer-links">
       <a href="tel:+5511930001426">+55 11 93000-1426</a>
       <a href="mailto:contato@infinitycorp.com.br">contato@infinitycorp.com.br</a>
-      <a href="javascript:void(0)" onclick="openLoginModal()" style="color: var(--text-muted); font-size: 0.8rem;">🔒 Acesso Restrito</a>
     </div>
   </footer>
 
@@ -1375,11 +1077,7 @@
     /* ==========================================================================
        CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA AJUSTADA
        ========================================================================== */
-    const GITHUB_OWNER  = 'infinitycorp-experience';
-    const GITHUB_REPO   = 'portfolio';
     const JSON_PATH     = 'produtos.json';
-    const GITHUB_BRANCH = 'main';
-    const SENHA_MESTRE  = 'InfinityCorp2026';
     const WEB3FORMS_KEY = 'e8f03456-563e-4a72-9e74-208b73929ba8';
 
     // URL ATIVA DO GOOGLE APPS SCRIPT:
@@ -1612,37 +1310,15 @@
     let categorias = [];
     let produtos = [];
     let marcas = [...DEFAULT_PRESET_LOGOS];
-    let pendingChangesCount = 0;
-    let pendingUploadQueue = [];
-    let pendingDeletionsQueue = [];
-    let originalSnapshot = null;
     let modalImages = [];
     let modalCurrentIdx = 0;
     let currentSelectedProductForModal = null;
-    let formActivePhotos = [];
-    let editCurrentBrandLogo = '';
-    let draggedPhotoIdx = null;
 
     const carrinhoCotacao = new Map();
 
     function initBrandPresetsUI() {
-      const select = document.getElementById('brandPresetSelect');
+      
       const globalBrandSelect = document.getElementById('globalBrandFilter');
-
-      if (select) {
-        select.innerHTML = '<option value="">-- Selecione a Marca --</option>';
-        const marcasOrdenadas = [...marcas].sort((a, b) => a.name.localeCompare(b.name));
-        marcasOrdenadas.forEach(item => {
-          const opt = document.createElement('option');
-          opt.value = item.name;
-          opt.textContent = item.name;
-          select.appendChild(opt);
-        });
-        const customOpt = document.createElement('option');
-        customOpt.value = '__custom__';
-        customOpt.textContent = 'Outra Marca / Digitar...';
-        select.appendChild(customOpt);
-      }
 
       if (globalBrandSelect) {
         const currentSelected = globalBrandSelect.value;
@@ -1661,64 +1337,7 @@
       }
     }
 
-    function handleBrandPresetChange(val) {
-      const brandInput = document.getElementById('prodBrand');
-      if (!val) {
-        brandInput.value = '';
-        brandInput.style.display = 'none';
-        removeBrandLogo();
-        return;
-      }
-      if (val === '__custom__') {
-        brandInput.style.display = 'block';
-        brandInput.value = '';
-        brandInput.focus();
-        removeBrandLogo();
-        return;
-      }
-      brandInput.style.display = 'none';
-      brandInput.value = val;
-
-      const preset = marcas.find(p => p.name.toLowerCase() === val.toLowerCase());
-      if (preset && preset.logo) {
-        setBrandLogoPreview(preset.logo, `Padrão: ${preset.name}`);
-      } else {
-        removeBrandLogo();
-      }
-    }
-
-    function setBrandLogoPreview(logoSrc, text) {
-      editCurrentBrandLogo = logoSrc;
-      const img = document.getElementById('brandLogoPreviewImg');
-      const textState = document.getElementById('brandLogoTextState');
-      const btnRemove = document.getElementById('btnRemoveLogo');
-      img.src = logoSrc;
-      img.style.display = 'inline-block';
-      textState.textContent = text;
-      btnRemove.style.display = 'inline-flex';
-    }
-
-    function removeBrandLogo() {
-      editCurrentBrandLogo = '';
-      const img = document.getElementById('brandLogoPreviewImg');
-      const textState = document.getElementById('brandLogoTextState');
-      const btnRemove = document.getElementById('btnRemoveLogo');
-      const fileInput = document.getElementById('prodBrandLogoInput');
-      img.style.display = 'none';
-      img.src = '';
-      textState.textContent = 'Sem logotipo';
-      btnRemove.style.display = 'none';
-      if (fileInput) fileInput.value = '';
-    }
-
-    async function handleBrandLogoFileInput(input) {
-      if (input.files && input.files[0]) {
-        const file = input.files[0];
-        const previewUrl = await fileToDataUrl(file);
-        setBrandLogoPreview(previewUrl, 'Novo PNG');
-      }
-    }
-
+    
     function handleSearchFilterChange() {
       const searchVal = document.getElementById('globalSearchInput').value.trim();
       const btnClear = document.getElementById('btnClearSearch');
@@ -1754,7 +1373,6 @@
           }
         }
 
-        originalSnapshot = JSON.stringify({ categorias, produtos, marcas });
         initBrandPresetsUI();
         renderCatalog();
         atualizarBarraFlutuante();
@@ -1763,40 +1381,7 @@
       }
     }
 
-    function notifyLocalChange() {
-      pendingChangesCount++;
-      updateAdminBarUI();
-    }
-
-    function updateAdminBarUI() {
-      const btnDeploy = document.getElementById('btnPublishDeploy');
-      const btnDiscard = document.getElementById('btnDiscardChanges');
-      const countSpan = document.getElementById('pendingCount');
-
-      if (pendingChangesCount > 0) {
-        btnDeploy.style.display = 'inline-block';
-        btnDiscard.style.display = 'inline-block';
-        countSpan.textContent = pendingChangesCount;
-      } else {
-        btnDeploy.style.display = 'none';
-        btnDiscard.style.display = 'none';
-      }
-    }
-
-    function discardPendingChanges() {
-      if (!confirm('Deseja descartar todas as alterações não publicadas?')) return;
-      const data = JSON.parse(originalSnapshot);
-      categorias = data.categorias;
-      produtos = data.produtos;
-      marcas = data.marcas || [...DEFAULT_PRESET_LOGOS];
-      pendingChangesCount = 0;
-      pendingUploadQueue = [];
-      pendingDeletionsQueue = [];
-      initBrandPresetsUI();
-      updateAdminBarUI();
-      renderCatalog();
-    }
-
+    
     function setActiveCategoryNav(catId) {
       document.querySelectorAll('.nav-menu .nav-item').forEach(item => {
         if (item.dataset.catTarget === catId) {
@@ -1830,10 +1415,7 @@
     }
 
     function renderCatalog() {
-      const isAdmin = checkIsAdmin();
-      document.body.classList.toggle('admin-mode', isAdmin);
-      updateAdminBarUI();
-
+      
       const searchKeyword = (document.getElementById('globalSearchInput')?.value || '').toLowerCase().trim();
       const selectedBrand = (document.getElementById('globalBrandFilter')?.value || '').toLowerCase().trim();
       const navContainer = document.getElementById('dynamicNavMenu');
@@ -1845,8 +1427,10 @@
 
       categorias.forEach((cat, catIdx) => {
         const iconKey = cat.icon || cat.id;
-        let produtosDaCat = produtos.filter(p => p.categoria === cat.id);
-        let produtosVisiveis = produtosDaCat.filter(p => isAdmin || p.ativo);
+        let produtosVisiveis = produtos.filter(
+          p => p.categoria === cat.id && p.ativo
+        );
+
 
         if (selectedBrand) {
           produtosVisiveis = produtosVisiveis.filter(p => (p.marca || '').toLowerCase() === selectedBrand);
@@ -1861,7 +1445,8 @@
           });
         }
 
-        if (!isAdmin && (!cat.ativa || produtosVisiveis.length === 0)) return;
+        if (!cat.ativa || produtosVisiveis.length === 0) return;
+
         if (searchKeyword && produtosVisiveis.length === 0) return;
 
         if (!firstRenderedCatId) firstRenderedCatId = cat.id;
@@ -1878,7 +1463,8 @@
 
         navItem.innerHTML = `
           ${getCategorySvg(iconKey, 'icon-svg')}
-          <span>${cat.title.split(' ')[0]} ${!cat.ativa ? '(Oculta)' : ''}</span>
+          <span>${cat.title.split(' ')[0]}</span>
+
         `;
         navItem.onclick = () => setActiveCategoryNav(cat.id);
         navContainer.appendChild(navItem);
@@ -1887,14 +1473,13 @@
         section.id = cat.id;
         section.className = 'catalog-section';
         section.dataset.catId = cat.id;
-        section.style.opacity = !cat.ativa ? '0.6' : '1';
 
         section.innerHTML = `
           <div class="section-header">
             <h2 class="section-title">
               ${getCategorySvg(iconKey, 'icon-svg icon-svg-lg')}
-              ${cat.title} ${!cat.ativa ? '<small style="color:var(--danger); font-size:0.8rem;">(CATEGORIA OCULTA)</small>' : ''}
-            </h2>
+                          ${cat.title}
+</h2>
             <span class="badge-count">${produtosVisiveis.length} Itens</span>
           </div>
           <div class="products-grid" id="grid-${cat.id}"></div>
@@ -1905,8 +1490,8 @@
         produtosVisiveis.forEach(prod => {
           const card = document.createElement('div');
           const isSelectedInCart = carrinhoCotacao.has(prod.id);
-          card.className = `prod-card ${!prod.ativo ? 'item-oculto' : ''} ${isSelectedInCart ? 'in-quote' : ''}`;
-          card.onclick = () => openProductModal(prod);
+                   card.className = `prod-card ${isSelectedInCart ? 'in-quote' : ''}`;
+ card.onclick = () => openProductModal(prod);
 
           let mediaHtml = '';
           if (!prod.imagens || prod.imagens.length === 0) {
@@ -1937,8 +1522,8 @@
               ${mediaHtml}
             </div>
             <div class="brand-header-row">
-              <span class="brand-sub">${prod.marca} ${!prod.ativo ? '(ITEM OCULTO)' : ''}</span>
-              ${logoMarcaHtml}
+                         <span class="brand-sub">${prod.marca}</span>
+   ${logoMarcaHtml}
             </div>
             <div class="prod-name">${prod.nome}</div>
             <div class="specs-list">${specsHtml}</div>
@@ -1952,15 +1537,6 @@
               </button>
             </div>
 
-            <div class="admin-card-actions" onclick="event.stopPropagation()">
-              <div class="admin-card-buttons-row">
-                <button class="btn-action btn-order" title="Mover para a esquerda" onclick="moveProductOrder('${prod.id}', -1)">◀</button>
-                <button class="btn-action" onclick="toggleActive('${prod.id}')">${prod.ativo ? 'Ocultar' : 'Ativar'}</button>
-                <button class="btn-action" onclick="editProduct('${prod.id}')">Editar</button>
-                <button class="btn-action btn-del" onclick="deleteProduct('${prod.id}')">Excluir</button>
-                <button class="btn-action btn-order" title="Mover para a direita" onclick="moveProductOrder('${prod.id}', 1)">▶</button>
-              </div>
-            </div>
           `;
           grid.appendChild(card);
         });
@@ -2328,8 +1904,6 @@
       const telefone = document.getElementById('quoteTelefone').value.trim();
       const mensagem = document.getElementById('quoteMensagem').value.trim();
 
-      if (empresa) localStorage.setItem('infinity_lead_tracked', empresa);
-
       let itensFormatados = '';
       let index = 1;
       carrinhoCotacao.forEach(item => {
@@ -2367,7 +1941,8 @@
 
         if (resData.success) {
           const dadosContatoStr = `${nome} | ${empresa || 'Sem Empresa'} | Tel: ${telefone} | E-mail: ${email}`;
-          sendTrackingEvent('Cotação Enviada', itensFormatados.replace(/\n/g, ' // '), dadosContatoStr);
+         sendTrackingEvent('Cotação Enviada', itensFormatados.replace(/\n/g, ' // '));
+
 
           feedback.className = 'quote-feedback success';
           feedback.innerHTML = '<strong>✓ Muito obrigado! Recebemos sua solicitação.</strong><br>Nosso time analisará as especificações e retornará o contato o mais breve possível.';
@@ -2442,38 +2017,6 @@
         window.print();
         allSections.forEach(sec => sec.style.removeProperty('display'));
       }, 350);
-    }
-
-    function moveProductOrder(prodId, direction) {
-      const prod = produtos.find(p => p.id === prodId);
-      if (!prod) return;
-      const catId = prod.categoria;
-      const sameCatIndexes = [];
-      produtos.forEach((p, idx) => { if (p.categoria === catId) sameCatIndexes.push(idx); });
-
-      const currentPosition = sameCatIndexes.findIndex(idx => produtos[idx].id === prodId);
-      const targetPosition = currentPosition + direction;
-      if (targetPosition < 0 || targetPosition >= sameCatIndexes.length) return;
-
-      const idxA = sameCatIndexes[currentPosition];
-      const idxB = sameCatIndexes[targetPosition];
-      const temp = produtos[idxA];
-      produtos[idxA] = produtos[idxB];
-      produtos[idxB] = temp;
-
-      notifyLocalChange();
-      renderCatalog();
-    }
-
-    function moveCategoryOrder(index, direction) {
-      const newIndex = index + direction;
-      if (newIndex < 0 || newIndex >= categorias.length) return;
-      const temp = categorias[index];
-      categorias[index] = categorias[newIndex];
-      categorias[newIndex] = temp;
-      notifyLocalChange();
-      renderCategoriesManager();
-      renderCatalog();
     }
 
     function changeCardSlide(e, btn, step) {
@@ -2563,678 +2106,6 @@
 
     function closeModalOnOutsideClick(e) {
       if (e.target.id === 'productModal') closeModal();
-    }
-
-    function checkIsAdmin() {
-      return localStorage.getItem('infinity_admin_logged') === 'true';
-    }
-
-    function openLoginModal() {
-      const token = localStorage.getItem('gh_pat_infinity');
-      document.getElementById('patTokenGroup').style.display = token ? 'none' : 'block';
-      document.getElementById('adminPasswordInput').value = '';
-      document.getElementById('loginErrorMessage').style.display = 'none';
-      document.getElementById('loginModal').classList.add('active');
-    }
-
-    function closeLoginModal() {
-      document.getElementById('loginModal').classList.remove('active');
-    }
-
-    function handleLoginSubmit(e) {
-      e.preventDefault();
-      const senha = document.getElementById('adminPasswordInput').value;
-      const patToken = document.getElementById('adminPatInput').value.trim();
-
-      if (senha === SENHA_MESTRE) {
-        if (!localStorage.getItem('gh_pat_infinity')) {
-          if (!patToken) {
-            alert('Por favor, informe seu Personal Access Token do GitHub para o primeiro acesso.');
-            return;
-          }
-          localStorage.setItem('gh_pat_infinity', patToken);
-        }
-        localStorage.setItem('infinity_admin_logged', 'true');
-        closeLoginModal();
-        renderCatalog();
-      } else {
-        document.getElementById('loginErrorMessage').style.display = 'block';
-      }
-    }
-
-    function logoutAdmin() {
-      if (pendingChangesCount > 0) {
-        if (!confirm('Você tem alterações não salvas no repositório! Deseja sair mesmo assim?')) return;
-      }
-      localStorage.removeItem('infinity_admin_logged');
-      location.reload();
-    }
-
-    async function uploadSingleImageToGithub(file, token, customPath = null) {
-      const fileName = customPath || `fotos/${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
-      const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileName}`;
-
-      const reader = new FileReader();
-      const base64Promise = new Promise((resolve) => {
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.readAsDataURL(file);
-      });
-      const content = await base64Promise;
-
-      const res = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          Authorization: `token ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: `Upload mídia: ${fileName}`,
-          content: content,
-          branch: GITHUB_BRANCH
-        })
-      });
-
-      if (!res.ok) throw new Error(`Falha no upload de ${fileName}`);
-      return fileName;
-    }
-
-    async function deleteGithubFile(filePath, token) {
-      try {
-        const fileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}?ref=${GITHUB_BRANCH}`;
-        const getRes = await fetch(fileUrl, { headers: { Authorization: `token ${token}` } });
-        if (!getRes.ok) return false;
-        const fileData = await getRes.json();
-        const sha = fileData.sha;
-
-        const delRes = await fetch(fileUrl, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `token ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            message: `Limpeza de foto: ${filePath}`,
-            sha: sha,
-            branch: GITHUB_BRANCH
-          })
-        });
-        return delRes.ok;
-      } catch (err) {
-        return false;
-      }
-    }
-
-    async function publishAllChanges() {
-      const token = localStorage.getItem('gh_pat_infinity');
-      if (!token) {
-        openLoginModal();
-        return;
-      }
-
-      const deployModal = document.getElementById('deployProgressModal');
-      const phaseUpload = document.getElementById('deployPhaseUploading');
-      const phaseCountdown = document.getElementById('deployPhaseCountdown');
-      const statusMsg = document.getElementById('deployStatusMessage');
-
-      phaseUpload.style.display = 'block';
-      phaseCountdown.style.display = 'none';
-      deployModal.classList.add('active');
-
-      try {
-        if (pendingDeletionsQueue.length > 0) {
-          statusMsg.textContent = 'Limpando fotos antigas...';
-          const stillInUse = new Set();
-          produtos.forEach(p => (p.imagens || []).forEach(img => stillInUse.add(img)));
-          const toDelete = [...new Set(pendingDeletionsQueue)].filter(path => !stillInUse.has(path));
-          for (const delPath of toDelete) {
-            await deleteGithubFile(delPath, token);
-          }
-          pendingDeletionsQueue = [];
-        }
-
-        if (pendingUploadQueue.length > 0) {
-          let count = 0;
-          for (let item of pendingUploadQueue) {
-            count++;
-            statusMsg.textContent = `Enviando arquivo ${count} de ${pendingUploadQueue.length}...`;
-            const uploadedPath = await uploadSingleImageToGithub(item.file, token, item.targetPath || null);
-            
-            if (item.type === 'image') {
-              const prod = produtos.find(p => p.id === item.prodId);
-              if (prod) {
-                const idx = prod.imagens.indexOf(item.previewUrl);
-                if (idx !== -1) prod.imagens[idx] = uploadedPath;
-              }
-            } else if (item.type === 'logo') {
-              const prod = produtos.find(p => p.id === item.prodId);
-              if (prod) prod.logoMarca = uploadedPath;
-            } else if (item.type === 'brand_logo') {
-              const marcaObj = marcas.find(m => m.name.toLowerCase() === item.brandName.toLowerCase());
-              if (marcaObj) marcaObj.logo = uploadedPath;
-            }
-          }
-        }
-
-        statusMsg.textContent = 'Gravando produtos.json no repositório...';
-        const getFileUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${JSON_PATH}?ref=${GITHUB_BRANCH}`;
-        const getRes = await fetch(getFileUrl, { headers: { Authorization: `token ${token}` } });
-        
-        let sha = '';
-        if (getRes.ok) {
-          const fileData = await getRes.json();
-          sha = fileData.sha;
-        }
-
-        const payload = { categorias, produtos, marcas };
-        const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
-        
-        const putRes = await fetch(getFileUrl, {
-          method: 'PUT',
-          headers: {
-            Authorization: `token ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            message: `Deploy Geral Infinity: ${pendingChangesCount} alterações`,
-            content: contentBase64,
-            sha: sha || undefined,
-            branch: GITHUB_BRANCH
-          })
-        });
-
-        if (!putRes.ok) throw new Error('Erro ao gravar arquivo no repositório.');
-
-        phaseUpload.style.display = 'none';
-        phaseCountdown.style.display = 'block';
-        startDeployCountdown(30);
-
-        pendingChangesCount = 0;
-        pendingUploadQueue = [];
-        pendingDeletionsQueue = [];
-        originalSnapshot = JSON.stringify({ categorias, produtos, marcas });
-        updateAdminBarUI();
-      } catch (err) {
-        console.error(err);
-        deployModal.classList.remove('active');
-        alert('Erro ao publicar alterações no servidor.');
-      }
-    }
-
-    function startDeployCountdown(seconds) {
-      let remaining = seconds;
-      const numberEl = document.getElementById('countdownNumber');
-      const barEl = document.getElementById('deployProgressBar');
-      numberEl.textContent = remaining;
-      barEl.style.width = '0%';
-
-      const interval = setInterval(() => {
-        remaining--;
-        numberEl.textContent = remaining;
-        barEl.style.width = `${((seconds - remaining) / seconds) * 100}%`;
-        if (remaining <= 0) {
-          clearInterval(interval);
-          location.reload();
-        }
-      }, 1000);
-    }
-
-    function renderCategoryPills(selectedId = '') {
-      const container = document.getElementById('categoryPillsContainer');
-      const hiddenInput = document.getElementById('prodCategory');
-      container.innerHTML = '';
-
-      if (!selectedId && categorias.length > 0) selectedId = categorias[0].id;
-      hiddenInput.value = selectedId;
-
-      categorias.forEach((cat, idx) => {
-        const iconKey = cat.icon || cat.id;
-        const color = CATEGORY_COLORS[idx % CATEGORY_COLORS.length];
-        const isSelected = cat.id === selectedId;
-
-        const pill = document.createElement('div');
-        pill.className = `cat-pill-btn ${isSelected ? 'selected' : ''}`;
-        pill.style.backgroundColor = color.bg;
-        pill.style.color = color.text;
-        pill.style.borderColor = color.border;
-
-        pill.innerHTML = `${getCategorySvg(iconKey, 'icon-svg-sm')} <span>${cat.title.split(' ')[0]}</span>`;
-        pill.onclick = () => {
-          document.querySelectorAll('.cat-pill-btn').forEach(btn => btn.classList.remove('selected'));
-          pill.classList.add('selected');
-          hiddenInput.value = cat.id;
-        };
-        container.appendChild(pill);
-      });
-    }
-
-    async function handleNewPhotosInput(input) {
-      if (!input.files || input.files.length === 0) return;
-      for (let file of input.files) {
-        const previewUrl = await fileToDataUrl(file);
-        formActivePhotos.push({ type: 'file', src: previewUrl, file: file });
-      }
-      input.value = '';
-      renderPhotosManagerGrid();
-    }
-
-    function renderPhotosManagerGrid() {
-      const container = document.getElementById('photosGridContainer');
-      container.innerHTML = '';
-      if (formActivePhotos.length === 0) {
-        container.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Nenhuma foto selecionada.</span>`;
-        return;
-      }
-
-      formActivePhotos.forEach((item, idx) => {
-        const thumb = document.createElement('div');
-        thumb.className = 'photo-thumb-edit';
-        thumb.draggable = true;
-        thumb.dataset.index = idx;
-
-        thumb.addEventListener('dragstart', (e) => {
-          draggedPhotoIdx = idx;
-          thumb.classList.add('dragging');
-          e.dataTransfer.effectAllowed = 'move';
-        });
-        thumb.addEventListener('dragend', () => {
-          thumb.classList.remove('dragging');
-          draggedPhotoIdx = null;
-        });
-        thumb.addEventListener('dragover', (e) => e.preventDefault());
-        thumb.addEventListener('drop', (e) => {
-          e.preventDefault();
-          if (draggedPhotoIdx === null || draggedPhotoIdx === idx) return;
-          const movedItem = formActivePhotos.splice(draggedPhotoIdx, 1)[0];
-          formActivePhotos.splice(idx, 0, movedItem);
-          renderPhotosManagerGrid();
-        });
-
-        thumb.innerHTML = `
-          <button type="button" class="btn-remove-photo" onclick="removePhotoFromActive(${idx})">✕</button>
-          <img src="${item.src}">
-          <div class="photo-reorder-nav">
-            <button type="button" class="btn-photo-nav" ${idx === 0 ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, -1)">◀</button>
-            <span style="font-size:9px; font-weight:800; line-height:18px;">${idx + 1}</span>
-            <button type="button" class="btn-photo-nav" ${idx === formActivePhotos.length - 1 ? 'disabled style="opacity:0.3;"' : ''} onclick="movePhotoOrder(${idx}, 1)">▶</button>
-          </div>
-        `;
-        container.appendChild(thumb);
-      });
-    }
-
-    function movePhotoOrder(idx, step) {
-      const targetIdx = idx + step;
-      if (targetIdx < 0 || targetIdx >= formActivePhotos.length) return;
-      const temp = formActivePhotos[idx];
-      formActivePhotos[idx] = formActivePhotos[targetIdx];
-      formActivePhotos[targetIdx] = temp;
-      renderPhotosManagerGrid();
-    }
-
-    function removePhotoFromActive(idx) {
-      formActivePhotos.splice(idx, 1);
-      renderPhotosManagerGrid();
-    }
-
-    function openProductForm() {
-      document.getElementById('productCrudForm').reset();
-      document.getElementById('prodId').value = '';
-      formActivePhotos = [];
-      removeBrandLogo();
-      document.getElementById('prodBrand').value = '';
-      document.getElementById('prodBrand').style.display = 'none';
-      document.getElementById('brandPresetSelect').value = '';
-      renderCategoryPills();
-      renderPhotosManagerGrid();
-      document.getElementById('formModalTitle').textContent = 'Cadastrar Novo Equipamento';
-      document.getElementById('formModal').classList.add('active');
-    }
-
-    function editProduct(id) {
-      const prod = produtos.find(p => p.id === id);
-      if (!prod) return;
-
-      document.getElementById('prodId').value = prod.id;
-      renderCategoryPills(prod.categoria);
-      document.getElementById('prodName').value = prod.nome;
-
-      let specsText = '';
-      if (prod.specs) {
-        specsText = Object.entries(prod.specs).map(([k, v]) => `${k}: ${v}`).join('\n');
-      }
-      document.getElementById('prodSpecs').value = specsText;
-
-      const brandInput = document.getElementById('prodBrand');
-      const brandSelect = document.getElementById('brandPresetSelect');
-      const foundPreset = marcas.find(p => p.name.toLowerCase() === (prod.marca || '').toLowerCase());
-
-      if (foundPreset) {
-        brandSelect.value = foundPreset.name;
-        brandInput.value = foundPreset.name;
-        brandInput.style.display = 'none';
-      } else {
-        brandSelect.value = '__custom__';
-        brandInput.value = prod.marca || '';
-        brandInput.style.display = 'block';
-      }
-
-      if (prod.logoMarca) {
-        setBrandLogoPreview(prod.logoMarca, foundPreset ? `Padrão: ${foundPreset.name}` : 'Logo Vinculada');
-      } else {
-        removeBrandLogo();
-      }
-
-      formActivePhotos = (prod.imagens || []).map(url => ({ type: 'url', src: url }));
-      renderPhotosManagerGrid();
-
-      document.getElementById('formModalTitle').textContent = 'Editar Equipamento';
-      document.getElementById('formModal').classList.add('active');
-    }
-
-    function closeFormModal() {
-      document.getElementById('formModal').classList.remove('active');
-    }
-
-    function fileToDataUrl(file) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = (e) => resolve(e.target.result);
-        reader.readAsDataURL(file);
-      });
-    }
-
-    async function handleFormSubmit(e) {
-      e.preventDefault();
-      const id = document.getElementById('prodId').value || `prod-${Date.now()}`;
-      const categoria = document.getElementById('prodCategory').value;
-      const brandSelect = document.getElementById('brandPresetSelect').value;
-      const brandManual = document.getElementById('prodBrand').value.trim();
-      const marca = brandSelect === '__custom__' ? brandManual : brandSelect;
-      const nome = document.getElementById('prodName').value;
-      const specsText = document.getElementById('prodSpecs').value;
-      const logoInput = document.getElementById('prodBrandLogoInput');
-
-      if (!categoria) { alert('Selecione uma categoria.'); return; }
-      if (!marca) { alert('Defina a marca/fabricante.'); return; }
-
-      const specs = {};
-      specsText.split('\n').forEach(line => {
-        const parts = line.split(':');
-        if (parts.length >= 2) specs[parts[0].trim()] = parts.slice(1).join(':').trim();
-      });
-
-      let logoFinal = editCurrentBrandLogo;
-      if (logoInput.files && logoInput.files.length > 0) {
-        const logoFile = logoInput.files[0];
-        const previewLogoUrl = await fileToDataUrl(logoFile);
-        logoFinal = previewLogoUrl;
-        pendingUploadQueue.push({ type: 'logo', prodId: id, file: logoFile, previewUrl: previewLogoUrl });
-      }
-
-      const fotosFinais = [];
-      for (let item of formActivePhotos) {
-        if (item.type === 'file') {
-          fotosFinais.push(item.src);
-          pendingUploadQueue.push({ type: 'image', prodId: id, file: item.file, previewUrl: item.src });
-        } else {
-          fotosFinais.push(item.src);
-        }
-      }
-
-      const existingIdx = produtos.findIndex(p => p.id === id);
-      if (existingIdx >= 0) {
-        const fotosAntigas = produtos[existingIdx].imagens || [];
-        fotosAntigas.forEach(antigaUrl => {
-          if (!fotosFinais.includes(antigaUrl) && antigaUrl.startsWith('fotos/')) {
-            pendingDeletionsQueue.push(antigaUrl);
-          }
-        });
-        produtos[existingIdx].categoria = categoria;
-        produtos[existingIdx].marca = marca;
-        produtos[existingIdx].nome = nome;
-        produtos[existingIdx].specs = specs;
-        produtos[existingIdx].imagens = fotosFinais;
-        produtos[existingIdx].logoMarca = logoFinal;
-      } else {
-        produtos.push({
-          id, categoria, marca, nome, ativo: true, imagens: fotosFinais, specs, logoMarca: logoFinal
-        });
-      }
-
-      initBrandPresetsUI();
-      notifyLocalChange();
-      closeFormModal();
-      renderCatalog();
-    }
-
-    async function uploadLogoToLogosFolder(file, token) {
-      const cleanFileName = file.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\.\-_]/g, '');
-      const filePath = `logos/${cleanFileName}`;
-      const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`;
-
-      const reader = new FileReader();
-      const base64Promise = new Promise((resolve) => {
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.readAsDataURL(file);
-      });
-      const content = await base64Promise;
-
-      let sha = null;
-      try {
-        const checkRes = await fetch(`${url}?ref=${GITHUB_BRANCH}`, { headers: { Authorization: `token ${token}` } });
-        if (checkRes.ok) {
-          const existing = await checkRes.json();
-          sha = existing.sha;
-        }
-      } catch (e) {}
-
-      const res = await fetch(url, {
-        method: 'PUT',
-        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: `Upload logo: ${filePath}`, content, sha: sha || undefined, branch: GITHUB_BRANCH })
-      });
-
-      if (!res.ok) throw new Error(`Falha ao enviar logo ${filePath}`);
-      return filePath;
-    }
-
-    async function promptUploadLogoFabricante() {
-      const token = localStorage.getItem('gh_pat_infinity');
-      if (!token) { openLoginModal(); return; }
-
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/png, image/webp, image/svg+xml';
-      input.onchange = async () => {
-        if (!input.files || !input.files[0]) return;
-        const file = input.files[0];
-        if (!confirm(`Deseja enviar "${file.name}" para a pasta logos/?`)) return;
-
-        try {
-          alert('Enviando... aguarde.');
-          const pathGravado = await uploadLogoToLogosFolder(file, token);
-          alert(`Logo gravado em: ${pathGravado}`);
-        } catch (err) {
-          alert('Erro ao enviar logotipo: ' + err.message);
-        }
-      };
-      input.click();
-    }
-
-    function toggleActive(id) {
-      const prod = produtos.find(p => p.id === id);
-      if (!prod) return;
-      prod.ativo = !prod.ativo;
-      notifyLocalChange();
-      renderCatalog();
-    }
-
-    function deleteProduct(id) {
-      const prod = produtos.find(p => p.id === id);
-      if (!prod) return;
-      if (!confirm(`Remover "${prod.nome}"?`)) return;
-
-      if (prod.imagens && prod.imagens.length > 0) {
-        prod.imagens.forEach(img => {
-          if (img.startsWith('fotos/')) pendingDeletionsQueue.push(img);
-        });
-      }
-      produtos = produtos.filter(p => p.id !== id);
-      notifyLocalChange();
-      renderCatalog();
-    }
-
-    function openBrandModal() {
-      document.getElementById('brandForm').reset();
-      document.getElementById('newBrandPreviewContainer').style.display = 'none';
-      document.getElementById('newBrandPreviewImg').src = '';
-      document.getElementById('brandModal').classList.add('active');
-    }
-
-    function closeBrandModal() {
-      document.getElementById('brandModal').classList.remove('active');
-    }
-
-    async function previewNewBrandLogo(input) {
-      if (input.files && input.files[0]) {
-        const previewUrl = await fileToDataUrl(input.files[0]);
-        document.getElementById('newBrandPreviewImg').src = previewUrl;
-        document.getElementById('newBrandPreviewContainer').style.display = 'flex';
-      }
-    }
-
-    async function handleBrandSubmit(e) {
-      e.preventDefault();
-      const brandName = document.getElementById('newBrandName').value.trim();
-      const fileInput = document.getElementById('newBrandFileInput');
-      if (!brandName || !fileInput.files[0]) return;
-
-      const file = fileInput.files[0];
-      const cleanFileName = brandName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\.\-_]/g, '') + '.png';
-      const logoPath = `logos/${cleanFileName}`;
-      const previewUrl = await fileToDataUrl(file);
-
-      pendingUploadQueue.push({
-        type: 'brand_logo', brandName: brandName, targetPath: logoPath, file: file, previewUrl: previewUrl
-      });
-
-      const existingBrand = marcas.find(m => m.name.toLowerCase() === brandName.toLowerCase());
-      if (existingBrand) {
-        existingBrand.logo = logoPath;
-      } else {
-        marcas.push({ name: brandName, logo: logoPath });
-      }
-
-      initBrandPresetsUI();
-      notifyLocalChange();
-      closeBrandModal();
-      alert(`Fabricante "${brandName}" configurado!`);
-    }
-
-    function openCategoryModal() {
-      resetCategoryForm();
-      renderCategoriesManager();
-      document.getElementById('categoryModal').classList.add('active');
-    }
-
-    function closeCategoryModal() {
-      resetCategoryForm();
-      document.getElementById('categoryModal').classList.remove('active');
-    }
-
-    function renderCategoriesManager() {
-      const container = document.getElementById('categoriesListContainer');
-      container.innerHTML = '';
-
-      categorias.forEach((cat, idx) => {
-        const iconKey = cat.icon || cat.id;
-        const isFirst = idx === 0;
-        const isLast = idx === categorias.length - 1;
-
-        const row = document.createElement('div');
-        row.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 10px; background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 8px;';
-        row.innerHTML = `
-          <div style="display: flex; align-items: center; gap: 8px;">
-            ${getCategorySvg(iconKey, 'icon-svg')}
-            <strong>${cat.title}</strong>
-            <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 4px;">(${cat.ativa ? 'Ativa' : 'Oculta'})</span>
-          </div>
-          <div style="display: flex; gap: 6px; align-items: center;">
-            <button class="btn-action btn-order" title="Mover para cima" ${isFirst ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''} onclick="moveCategoryOrder(${idx}, -1)">▲</button>
-            <button class="btn-action btn-order" title="Mover para baixo" ${isLast ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''} onclick="moveCategoryOrder(${idx}, 1)">▼</button>
-            <button class="btn-action" onclick="prepareEditCategory('${cat.id}')">Editar</button>
-            <button class="btn-action" onclick="toggleCategoryActive(${idx})">${cat.ativa ? 'Ocultar' : 'Ativar'}</button>
-            <button class="btn-action btn-del" onclick="deleteCategory(${idx})">Excluir</button>
-          </div>
-        `;
-        container.appendChild(row);
-      });
-    }
-
-    function prepareEditCategory(catId) {
-      const cat = categorias.find(c => c.id === catId);
-      if (!cat) return;
-      document.getElementById('editCatId').value = cat.id;
-      document.getElementById('catTitleInput').value = cat.title;
-      document.getElementById('catIconSelect').value = cat.icon || 'menu';
-      document.getElementById('catFormHeaderTitle').textContent = `Editar Categoria (${cat.title})`;
-      document.getElementById('btnSaveCategory').textContent = 'Salvar Alteração';
-      document.getElementById('btnCancelCategoryEdit').style.display = 'inline-block';
-      document.getElementById('catTitleInput').focus();
-    }
-
-    function resetCategoryForm() {
-      document.getElementById('editCatId').value = '';
-      document.getElementById('catTitleInput').value = '';
-      document.getElementById('catIconSelect').value = 'menu';
-      document.getElementById('catFormHeaderTitle').textContent = 'Adicionar Nova Categoria';
-      document.getElementById('btnSaveCategory').textContent = 'Adicionar';
-      document.getElementById('btnCancelCategoryEdit').style.display = 'none';
-    }
-
-    function handleCategorySave() {
-      const editId = document.getElementById('editCatId').value;
-      const title = document.getElementById('catTitleInput').value.trim();
-      const icon = document.getElementById('catIconSelect').value;
-      if (!title) return;
-
-      if (editId) {
-        const cat = categorias.find(c => c.id === editId);
-        if (cat) { cat.title = title; cat.icon = icon; }
-      } else {
-        let generatedId = title.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (!generatedId) generatedId = `cat-${Date.now()}`;
-        let finalId = generatedId;
-        let counter = 1;
-        while (categorias.some(c => c.id === finalId)) {
-          finalId = `${generatedId}-${counter++}`;
-        }
-
-        categorias.push({ id: finalId, title, icon, ativa: true });
-      }
-
-      resetCategoryForm();
-      notifyLocalChange();
-      renderCategoriesManager();
-      renderCatalog();
-    }
-
-    function toggleCategoryActive(idx) {
-      categorias[idx].ativa = !categorias[idx].ativa;
-      notifyLocalChange();
-      renderCategoriesManager();
-      renderCatalog();
-    }
-
-    function deleteCategory(idx) {
-      const cat = categorias[idx];
-      const temProdutos = produtos.some(p => p.categoria === cat.id);
-      if (temProdutos && !confirm(`Existem produtos vinculados a esta categoria. Deseja realmente remover?`)) return;
-
-      categorias.splice(idx, 1);
-      notifyLocalChange();
-      renderCategoriesManager();
-      renderCatalog();
     }
 
     window.addEventListener('DOMContentLoaded', loadCatalog);
