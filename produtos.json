@@ -1509,16 +1509,6 @@
         "Construção": "Peso de 177 gramas com certificação IP68 e Ceramic Shield 2"
       },
       "logoMarca": "logos/apple.png"
-    },
-    {
-      "id": "prod-1791223312315",
-      "categoria": "print",
-      "marca": "Brother",
-      "nome": "teste",
-      "ativo": true,
-      "imagens": [],
-      "specs": {},
-      "logoMarca": "logos/brother.png"
     }
   ],
   "marcas": [
