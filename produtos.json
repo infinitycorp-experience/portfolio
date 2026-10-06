@@ -103,7 +103,8 @@
         "Primeira página": "Cerca de 5,9 segundos",
         "Conectividade": "USB 2.0, RJ45 10/100/1000"
       },
-      "logoMarca": "logos/hp.png"
+      "logoMarca": "logos/hp.png",
+      "destaque": "condicao-especial"
     },
     {
       "id": "brother-ads4700",
@@ -278,7 +279,8 @@
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
-      "logoMarca": "fotos/1788542042460_LogoLenovo.png"
+      "logoMarca": "fotos/1788542042460_LogoLenovo.png",
+      "destaque": "semi-novo"
     },
     {
       "id": "prod-1788546166053",
@@ -366,7 +368,8 @@
         "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050",
         "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "top"
     },
     {
       "id": "prod-1788548256418",
@@ -489,9 +492,9 @@
       "nome": "Maxify GX6010",
       "ativo": true,
       "imagens": [
+        "fotos/1789409809875_6000.jpg",
         "fotos/1789409808663_60001.jpg",
-        "fotos/1789409807611_60002.jpg",
-        "fotos/1789409809875_6000.jpg"
+        "fotos/1789409807611_60002.jpg"
       ],
       "specs": {
         "Velocidade": "Até 45 ppm",
@@ -500,7 +503,8 @@
         "Impressão Frente e Verso (Duplex)": "Automática (A4/Carta)",
         "Capacidade de Papel": "Cassete frontal para 250 folhas"
       },
-      "logoMarca": "logos/canon.png"
+      "logoMarca": "logos/canon.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789409034307",
@@ -607,7 +611,8 @@
         "Processador": "350 MHz",
         "Memória": "128 MB"
       },
-      "logoMarca": "logos/ricoh.png"
+      "logoMarca": "logos/ricoh.png",
+      "destaque": "semi-novo"
     },
     {
       "id": "prod-1789416673686",
@@ -632,7 +637,8 @@
         "Processador": "350 MHz",
         "Memória": "256 MB"
       },
-      "logoMarca": "logos/ricoh.png"
+      "logoMarca": "logos/ricoh.png",
+      "destaque": "semi-novo"
     },
     {
       "id": "prod-1789417209322",
@@ -1146,7 +1152,8 @@
         "Armazenamento": "128GB SSD",
         "Conectividade": "Bluetooth e Wi-Fi"
       },
-      "logoMarca": "logos/isd-tech.png"
+      "logoMarca": "logos/isd-tech.png",
+      "destaque": "condicao-especial"
     },
     {
       "id": "prod-1789480475675",
