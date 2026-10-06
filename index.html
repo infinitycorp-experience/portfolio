@@ -514,6 +514,31 @@
   border-color: #C4B5FD;
 }
 
+.destaque-semi-novo {
+  color: #92400E;
+  background: #FEF3C7;
+  border-color: #FCD34D;
+}
+
+.destaque-melhor-valor {
+  color: #1D4ED8;
+  background: #DBEAFE;
+  border-color: #93C5FD;
+}
+
+.destaque-condicao-especial {
+  color: #9F1239;
+  background: #FFE4E6;
+  border-color: #FDA4AF;
+}
+
+.destaque-top {
+  color: #334155;
+  background: #F1F5F9;
+  border-color: #94A3B8;
+}
+
+
     .thumb-slider-container {
       position: relative;
       width: 100%;
@@ -1460,13 +1485,29 @@
       label: 'Mais procurado',
       className: 'destaque-mais-procurado'
     },
-    'novidade': {
+    novidade: {
       label: 'Novidade',
       className: 'destaque-novidade'
     },
-    'recomendado': {
+    recomendado: {
       label: 'Recomendado',
       className: 'destaque-recomendado'
+    },
+    'semi-novo': {
+      label: 'Semi-Novo',
+      className: 'destaque-semi-novo'
+    },
+    'melhor-valor': {
+      label: 'Melhor Valor',
+      className: 'destaque-melhor-valor'
+    },
+    'condicao-especial': {
+      label: 'Condição Especial',
+      className: 'destaque-condicao-especial'
+    },
+    top: {
+      label: 'Top',
+      className: 'destaque-top'
     }
   };
 
@@ -1475,6 +1516,7 @@
 
   return `<span class="destaque-badge ${item.className}">${item.label}</span>`;
 }
+
 
     function renderCatalog() {
       
