@@ -147,7 +147,8 @@
         "Sistema": "Android",
         "Bateria": "Aproximadamente 5 horas"
       },
-      "logoMarca": "logos/isd-tech.png"
+      "logoMarca": "logos/isd-tech.png",
+      "destaque": "recomendado"
     },
     {
       "id": "prod-1788520245805",
@@ -234,7 +235,8 @@
         "ADF": "50 páginas com digitalização duplex de passagem única",
         "Memória e Armazenamento": "2 GB de memória RAM e 16 GB de eMMC"
       },
-      "logoMarca": "logos/hp.png"
+      "logoMarca": "logos/hp.png",
+      "destaque": "mais-procurado"
     },
     {
       "id": "prod-1789497540428",
@@ -1164,7 +1166,8 @@
         "Sistema": "Windows 11",
         "Operação": "18/7"
       },
-      "logoMarca": "logos/isd-tech.png"
+      "logoMarca": "logos/isd-tech.png",
+      "destaque": "novidade"
     },
     {
       "id": "prod-1789496980704",
@@ -1207,7 +1210,8 @@
         "Construção": "Gabinete resistente em metal",
         "Velocidade": "Até 152 mm/s (6 pol/s)"
       },
-      "logoMarca": "fotos/1788533823542_logozebra.png"
+      "logoMarca": "fotos/1788533823542_logozebra.png",
+      "destaque": "mais-procurado"
     },
     {
       "id": "prod-1789496793112",
