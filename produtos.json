@@ -1509,6 +1509,19 @@
         "Construção": "Peso de 177 gramas com certificação IP68 e Ceramic Shield 2"
       },
       "logoMarca": "logos/apple.png"
+    },
+    {
+      "id": "prod-1791298358873",
+      "categoria": "print",
+      "marca": "Apple",
+      "nome": "Teste",
+      "destaque": "novidade",
+      "ativo": true,
+      "imagens": [],
+      "specs": {
+        "Teste": "Destaque"
+      },
+      "logoMarca": "logos/apple.png"
     }
   ],
   "marcas": [
