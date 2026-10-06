@@ -167,7 +167,8 @@
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "mais-procurado"
     },
     {
       "id": "hp-4003",
@@ -299,7 +300,8 @@
         "Teclado": "Padrão ABNT2, retroiluminado e com teclado numérico dedicado",
         "Portas e Conexões": "Wi-Fi 6, Bluetooth 5.2, 1x USB-C, 1x USB 3.2, 1x USB 2.0, HDMI 2.0, RJ45 e leitor de cartões de memória"
       },
-      "logoMarca": "logos/avell.png"
+      "logoMarca": "logos/avell.png",
+      "destaque": "recomendado"
     },
     {
       "id": "prod-1788541943893",
@@ -408,7 +410,8 @@
         "Memória padrão": "1.75 GB",
         "Rendimento do toner": "Até 23.000"
       },
-      "logoMarca": "fotos/1788533821335_LogoHP.png"
+      "logoMarca": "fotos/1788533821335_LogoHP.png",
+      "destaque": "recomendado"
     },
     {
       "id": "prod-1789408659803",
@@ -428,7 +431,8 @@
         "Alimentador automático (AAD)": "100 páginas com digitalização duplex de passada única",
         "Conectividade": "USB 3.0, RJ45 10/100/1000"
       },
-      "logoMarca": "logos/hp.png"
+      "logoMarca": "logos/hp.png",
+      "destaque": "novidade"
     },
     {
       "id": "xerox-c7020",
@@ -450,7 +454,8 @@
         "Impressão Frente e Verso (Duplex)": "Automática",
         "Conectividade": "RJ45 10/100/1000, USB 3.0 e NFC Opcional"
       },
-      "logoMarca": "fotos/1788525690206_LogoXerox.png"
+      "logoMarca": "fotos/1788525690206_LogoXerox.png",
+      "destaque": "recomendado"
     },
     {
       "id": "prod-1789410979194",
@@ -916,7 +921,8 @@
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
         "Gabinete": "Formato Slim (SFF - Small Form Factor)"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "novidade"
     },
     {
       "id": "prod-1789473196660",
@@ -1344,7 +1350,8 @@
         "Sistema": "Windows 11 Pro",
         "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "novidade"
     },
     {
       "id": "prod-1789502850761",
@@ -1367,7 +1374,8 @@
         "Sistema": "Windows 11 Pro",
         "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "novidade"
     },
     {
       "id": "prod-1789559680594",
@@ -1507,19 +1515,6 @@
         "Câmeras": "Traseiro dupla com sensor principal de 48 MP e ultrawide de 12 MP; câmera frontal de 18 MP",
         "Bateria": "Autonomia de até 30 horas  e recarga rápida de 50% em 20 minutos",
         "Construção": "Peso de 177 gramas com certificação IP68 e Ceramic Shield 2"
-      },
-      "logoMarca": "logos/apple.png"
-    },
-    {
-      "id": "prod-1791298358873",
-      "categoria": "print",
-      "marca": "Apple",
-      "nome": "Teste",
-      "destaque": "novidade",
-      "ativo": true,
-      "imagens": [],
-      "specs": {
-        "Teste": "Destaque"
       },
       "logoMarca": "logos/apple.png"
     }
