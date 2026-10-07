@@ -370,29 +370,6 @@
       "logoMarca": "logos/lenovo.png"
     },
     {
-      "id": "prod-1791401218090",
-      "categoria": "computer",
-      "marca": "Dell",
-      "nome": "Dell 15",
-      "destaque": "sem-destaque",
-      "ativo": true,
-      "imagens": [
-        "fotos/1791401234131_dell15.png",
-        "fotos/1791401236300_dell15_2.png",
-        "fotos/1791401237944_dell15_3.png",
-        "fotos/1791401239051_dell15_1.png",
-        "fotos/1791401240657_dell15_4.png"
-      ],
-      "specs": {
-        "Processador": "Intel Core i5 / i7 -  13ª Gen",
-        "Tela": "15,6\" - Full HD (1920 x 1080)",
-        "Memória": "16/32 GB DDR5 (5600 MHz)",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
-      },
-      "logoMarca": "logos/dell.png"
-    },
-    {
       "id": "prod-1789400359192",
       "categoria": "print",
       "marca": "HP",
@@ -1321,10 +1298,33 @@
       "logoMarca": "logos/isd-tech.png"
     },
     {
+      "id": "prod-1791401218090",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Dell 15",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791401234131_dell15.png",
+        "fotos/1791401236300_dell15_2.png",
+        "fotos/1791401237944_dell15_3.png",
+        "fotos/1791401239051_dell15_1.png",
+        "fotos/1791401240657_dell15_4.png"
+      ],
+      "specs": {
+        "Processador": "Intel Core i5 / i7 -  13ª Gen",
+        "Tela": "15,6\" - Full HD (1920 x 1080)",
+        "Memória": "16/32 GB DDR5 (5600 MHz)",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+      },
+      "logoMarca": "logos/dell.png"
+    },
+    {
       "id": "prod-1789502638984",
       "categoria": "computer",
       "marca": "Dell",
-      "nome": "Pro 14",
+      "nome": "Pro 14 / 16",
       "ativo": true,
       "imagens": [
         "fotos/1789502863631_dell14.jpg",
@@ -1334,32 +1334,8 @@
       ],
       "specs": {
         "Processador": "Intel Core /  Ultra 5 / 7",
-        "Tela": "14\" - Full HD+ (1920 x 1200)",
+        "Tela": "14\" / 16\" - Full HD+ (1920 x 1200)",
         "Memória": "8 / 16 / 32 GB DDR5 / LPDDR5x",
-        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
-        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
-        "Sistema": "Windows 11 Pro",
-        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
-      },
-      "logoMarca": "logos/dell.png",
-      "destaque": "novidade"
-    },
-    {
-      "id": "prod-1789502850761",
-      "categoria": "computer",
-      "marca": "Dell",
-      "nome": "Pro 16",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789502867805_dell161.jpg",
-        "fotos/1789502868749_dell162.jpg",
-        "fotos/1789502869928_dell163.jpg",
-        "fotos/1789502871044_dell16.jpg"
-      ],
-      "specs": {
-        "Processador": "Intel Core /  Ultra 5 / 7",
-        "Tela": "16\" - Full HD+ (1920 x 1200)",
-        "Memória": "16 / 32 GB DDR5 / LPDDR5x",
         "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
         "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
         "Sistema": "Windows 11 Pro",
