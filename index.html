@@ -1071,7 +1071,8 @@
             class="form-control"
             inputmode="numeric"
             autocomplete="off"
-            maxlength="18"
+            maxlength="18" 
+            required
             placeholder="00.000.000/0000-00"
             aria-describedby="cnpjStatus"
             oninput="formatarCampoCNPJ(this)"
@@ -1158,153 +1159,151 @@
     </div>
   </footer>
 
-  <script>
-    /* ==========================================================================
-       CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA AJUSTADA
-       ========================================================================== */
-    const JSON_PATH     = 'produtos.json';
-    const WEB3FORMS_KEY = 'e8f03456-563e-4a72-9e74-208b73929ba8';
+<script>
+/* ==========================================================================
+   CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA AJUSTADA
+   ========================================================================== */
+const JSON_PATH     = 'produtos.json';
+const WEB3FORMS_KEY = 'e8f03456-563e-4a72-9e74-208b73929ba8';
 
-    // URL ATIVA DO GOOGLE APPS SCRIPT:
-    const TELEMETRY_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHEClDrFhwM1DBL0DSnjep3W-FZWrJKaLGVykRELisko2ajiY3KOZR_OK5PL6ot9vI/exec';
+const TELEMETRY_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHEClDrFhwM1DBL0DSnjep3W-FZWrJKaLGVykRELisko2ajiY3KOZR_OK5PL6ot9vI/exec';
 
-    const sessionStartTime = Date.now();
-    const horaEntrada = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+const sessionStartTime = Date.now();
+const horaEntrada = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-    const produtosVisualizados = new Set();
-    const catalogosExportados = new Set(); 
-    const historicoCotadosNaSessao = new Set();
-    let resumoSaidaDisparado = false;
-    let entradaRegistrada = false;
+const produtosVisualizados = new Set();
+const catalogosExportados = new Set();
+const historicoCotadosNaSessao = new Set();
+let resumoSaidaDisparado = false;
+let entradaRegistrada = false;
 
-    // Helper para recuperar nome legível da categoria
-    function getNomeCategoria(catId) {
-      if (!catId) return 'Geral';
-      const c = categorias.find(cat => cat.id === catId);
-      return c ? c.title : catId;
+// [MUDANÇA 4] Instância global do observer do scrollspy, para poder desconectar
+// a anterior e nunca acumular observers duplicados.
+let navScrollObserver = null;
+
+function getNomeCategoria(catId) {
+  if (!catId) return 'Geral';
+  const c = categorias.find(cat => cat.id === catId);
+  return c ? c.title : catId;
+}
+
+function getLeadIdentification() {
+  const params = new URLSearchParams(window.location.search);
+  const leadUrl = params.get('lead') || params.get('cliente') || params.get('empresa') || params.get('c');
+  if (leadUrl) {
+    sessionStorage.setItem('infinity_current_lead', leadUrl);
+    return leadUrl;
+  }
+  return sessionStorage.getItem('infinity_current_lead') || 'Visitante Geral';
+}
+
+function sendTrackingEvent(eventType, detail = '', contactInfo = '') {
+  if (!TELEMETRY_SHEET_URL) return;
+
+  const lead = getLeadIdentification();
+  const tempoTotal = Math.round((Date.now() - sessionStartTime) / 1000);
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  const payload = {
+    lead: lead,
+    empresaUrl: lead,
+    evento: eventType,
+    acao: eventType,
+    detalhe: typeof detail === 'object' ? JSON.stringify(detail) : detail,
+    detalhes: typeof detail === 'object' ? JSON.stringify(detail) : detail,
+    tempoSegundos: tempoTotal,
+    dispositivo: isMobile ? 'Mobile' : 'Desktop',
+    contato: contactInfo,
+    origem: window.location.href
+  };
+
+  const payloadString = JSON.stringify(payload);
+
+  try {
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payloadString], { type: 'text/plain;charset=UTF-8' });
+      navigator.sendBeacon(TELEMETRY_SHEET_URL, blob);
+    } else {
+      fetch(TELEMETRY_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: payloadString,
+        keepalive: true
+      });
     }
+  } catch (err) {
+    console.warn('Telemetria:', err);
+  }
+}
 
-    // Isola o lead por ABA usando sessionStorage
-    function getLeadIdentification() {
-      const params = new URLSearchParams(window.location.search);
-      const leadUrl = params.get('lead') || params.get('cliente') || params.get('empresa') || params.get('c');
-      if (leadUrl) {
-        sessionStorage.setItem('infinity_current_lead', leadUrl);
-        return leadUrl;
-      }
-      return sessionStorage.getItem('infinity_current_lead') || 'Visitante Geral';
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if (document.visibilityState !== 'hidden' && !resumoSaidaDisparado) {
+      entradaRegistrada = true;
+      sendTrackingEvent('Entrou no Portfólio', 'Início da sessão');
     }
+  }, 2500);
+});
 
-    function sendTrackingEvent(eventType, detail = '', contactInfo = '') {
-      if (!TELEMETRY_SHEET_URL) return;
+function formatarItemComIcone(str) {
+  const s = str.toLowerCase();
 
-      const lead = getLeadIdentification();
-      const tempoTotal = Math.round((Date.now() - sessionStartTime) / 1000);
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (s.includes('tab') || s.includes('ipad') || s.includes('iphone') || s.includes('galaxy') || s.includes('celular') || s.includes('mobile') || s.includes('a7 lite') || s.includes('a9')) {
+    return `📱 ${str}`;
+  }
+  if (s.includes('ideapad') || s.includes('thinkpad') || s.includes('notebook') || s.includes('laptop') || s.includes('dell') || s.includes('avell') || s.includes('desktop') || s.includes('computador')) {
+    return `💻 ${str}`;
+  }
+  if (s.includes('zebra') || s.includes('dascom') || s.includes('thermal') || s.includes('térmica') || s.includes('etiqueta')) {
+    return `🏷️ ${str}`;
+  }
+  if (s.includes('totem') || s.includes('kiosk') || s.includes('isd tech')) {
+    return `🖥️ ${str}`;
+  }
+  if (s.includes('papercut') || s.includes('software') || s.includes('licença')) {
+    return `💾 ${str}`;
+  }
+  if (s.includes('print') || s.includes('hp') || s.includes('ricoh') || s.includes('canon') || s.includes('lexmark') || s.includes('epson') || s.includes('xerox') || s.includes('brother') || s.includes('kyocera') || s.includes('mono') || s.includes('color')) {
+    return `🖨️ ${str}`;
+  }
 
-      const payload = {
-        lead: lead,
-        empresaUrl: lead,
-        evento: eventType,
-        acao: eventType,
-        detalhe: typeof detail === 'object' ? JSON.stringify(detail) : detail,
-        detalhes: typeof detail === 'object' ? JSON.stringify(detail) : detail,
-        tempoSegundos: tempoTotal,
-        dispositivo: isMobile ? 'Mobile' : 'Desktop',
-        contato: contactInfo,
-        origem: window.location.href // Agora garantidamente atualizada via scrollspy
-      };
+  return `📦 ${str}`;
+}
 
-      const payloadString = JSON.stringify(payload);
+function dispararResumoSaida() {
+  if (resumoSaidaDisparado) return;
 
-      try {
-        if (navigator.sendBeacon) {
-          const blob = new Blob([payloadString], { type: 'text/plain;charset=UTF-8' });
-          navigator.sendBeacon(TELEMETRY_SHEET_URL, blob);
-        } else {
-          fetch(TELEMETRY_SHEET_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: payloadString,
-            keepalive: true
-          });
-        }
-      } catch (err) {
-        console.warn('Telemetria:', err);
-      }
-    }
+  const tempoSegundos = Math.round((Date.now() - sessionStartTime) / 1000);
 
-    // 1. Evita rajadas ao abrir o navegador: aguarda 2.5s de permanência real na página
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        if (document.visibilityState !== 'hidden' && !resumoSaidaDisparado) {
-          entradaRegistrada = true;
-          sendTrackingEvent('Entrou no Portfólio', 'Início da sessão');
-        }
-      }, 2500);
-    });
+  if (tempoSegundos < 3 && produtosVisualizados.size === 0 && carrinhoCotacao.size === 0) {
+    return;
+  }
 
-    // 2. Classificador Inteligente de Ícones por Equipamento/Marca
-    function formatarItemComIcone(str) {
-      const s = str.toLowerCase();
+  resumoSaidaDisparado = true;
+  const minutos = Math.max(1, Math.round(tempoSegundos / 60));
 
-      if (s.includes('tab') || s.includes('ipad') || s.includes('iphone') || s.includes('galaxy') || s.includes('celular') || s.includes('mobile') || s.includes('a7 lite') || s.includes('a9')) {
-        return `📱 ${str}`;
-      }
-      if (s.includes('ideapad') || s.includes('thinkpad') || s.includes('notebook') || s.includes('laptop') || s.includes('dell') || s.includes('avell') || s.includes('desktop') || s.includes('computador')) {
-        return `💻 ${str}`;
-      }
-      if (s.includes('zebra') || s.includes('dascom') || s.includes('thermal') || s.includes('térmica') || s.includes('etiqueta')) {
-        return `🏷️ ${str}`;
-      }
-      if (s.includes('totem') || s.includes('kiosk') || s.includes('isd tech')) {
-        return `🖥️ ${str}`;
-      }
-      if (s.includes('papercut') || s.includes('software') || s.includes('licença')) {
-        return `💾 ${str}`;
-      }
-      if (s.includes('print') || s.includes('hp') || s.includes('ricoh') || s.includes('canon') || s.includes('lexmark') || s.includes('epson') || s.includes('xerox') || s.includes('brother') || s.includes('kyocera') || s.includes('mono') || s.includes('color')) {
-        return `🖨️ ${str}`;
-      }
+  let textoVistos = '0 em detalhes';
+  if (produtosVisualizados.size > 0) {
+    const itens = Array.from(produtosVisualizados).map(item => `  • ${formatarItemComIcone(item)}`).join('\n');
+    textoVistos = `${produtosVisualizados.size} em detalhes\n${itens}`;
+  }
 
-      return `📦 ${str}`;
-    }
+  let textoCotados = 'Nenhum item cotado';
+  if (historicoCotadosNaSessao.size > 0) {
+    textoCotados = '\n' + Array.from(historicoCotadosNaSessao).map(item => `  • ${formatarItemComIcone(item)}`).join('\n');
+  }
 
-    // 3. Grava o resumo final ao sair
-    function dispararResumoSaida() {
-      if (resumoSaidaDisparado) return;
-      
-      const tempoSegundos = Math.round((Date.now() - sessionStartTime) / 1000);
-      
-      if (tempoSegundos < 3 && produtosVisualizados.size === 0 && carrinhoCotacao.size === 0) {
-        return;
-      }
+  let textoExportou = 'Não';
+  if (catalogosExportados.size > 0) {
+    const cats = Array.from(catalogosExportados).map(cat => `  • ${formatarItemComIcone(cat)}`).join('\n');
+    textoExportou = `Sim\n${cats}`;
+  }
 
-      resumoSaidaDisparado = true;
-      const minutos = Math.max(1, Math.round(tempoSegundos / 60));
+  const qtdCarrinho = carrinhoCotacao.size;
+  const textoCarrinho = qtdCarrinho > 0 ? `🛒 ${qtdCarrinho} modelo(s) pendente(s)` : `🛒 Carrinho finalizado vazio`;
 
-      let textoVistos = '0 em detalhes';
-      if (produtosVisualizados.size > 0) {
-        const itens = Array.from(produtosVisualizados).map(item => `  • ${formatarItemComIcone(item)}`).join('\n');
-        textoVistos = `${produtosVisualizados.size} em detalhes\n${itens}`;
-      }
-
-      let textoCotados = 'Nenhum item cotado';
-      if (historicoCotadosNaSessao.size > 0) {
-        textoCotados = '\n' + Array.from(historicoCotadosNaSessao).map(item => `  • ${formatarItemComIcone(item)}`).join('\n');
-      }
-
-      let textoExportou = 'Não';
-      if (catalogosExportados.size > 0) {
-        const cats = Array.from(catalogosExportados).map(cat => `  • ${formatarItemComIcone(cat)}`).join('\n');
-        textoExportou = `Sim\n${cats}`;
-      }
-
-      const qtdCarrinho = carrinhoCotacao.size;
-      const textoCarrinho = qtdCarrinho > 0 ? `🛒 ${qtdCarrinho} modelo(s) pendente(s)` : `🛒 Carrinho finalizado vazio`;
-
-      const detalheFormatado = 
+  const detalheFormatado =
 `⏳ Tempo: ~${minutos} min
 
 👀 Vistos: ${textoVistos}
@@ -1315,220 +1314,203 @@
 
 🫰🏻 Proposta (${textoCarrinho})`;
 
-      sendTrackingEvent(`Entrou na Pagina as ${horaEntrada} hs ⏱️`, detalheFormatado);
+  // [MUDANÇA 5] Rótulo agora identifica corretamente um evento de SAÍDA.
+  sendTrackingEvent(`Saiu da Página (entrada às ${horaEntrada}h) ⏱️`, detalheFormatado);
+}
+
+// [MUDANÇA 5] Trocado window -> document no listener de visibilitychange.
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    dispararResumoSaida();
+  }
+});
+window.addEventListener('pagehide', dispararResumoSaida);
+
+
+/* ==========================================================================
+   DADOS BASE & CATÁLOGO
+   ========================================================================== */
+const DEFAULT_PRESET_LOGOS = [
+  { name: 'Avell', logo: 'logos/avell.png' },
+  { name: 'Brother', logo: 'logos/brother.png' },
+  { name: 'Canon', logo: 'logos/canon.png' },
+  { name: 'Dell', logo: 'logos/dell.png' },
+  { name: 'Epson', logo: 'logos/epson.png' },
+  { name: 'HP', logo: 'logos/hp.png' },
+  { name: 'Kyocera', logo: 'logos/kyocera.png' },
+  { name: 'Lenovo', logo: 'logos/lenovo.png' },
+  { name: 'Lexmark', logo: 'logos/lexmark.png' },
+  { name: 'Ricoh', logo: 'logos/ricoh.png' },
+  { name: 'Samsung', logo: 'logos/samsung.png' },
+  { name: 'Xerox', logo: 'logos/xerox.png' },
+  { name: 'Zebra', logo: 'logos/zebra.png' }
+];
+
+const CATEGORY_COLORS = [
+  { bg: '#E0F2FE', text: '#0284C7', border: '#BAE6FD' },
+  { bg: '#DCFCE7', text: '#10B981', border: '#BBF7D0' },
+  { bg: '#FEF3C7', text: '#D97706', border: '#FDE68A' },
+  { bg: '#EDE9FE', text: '#7C3AED', border: '#DDD6FE' },
+  { bg: '#FFE4E6', text: '#E11D48', border: '#FECDD3' },
+  { bg: '#CCFBF1', text: '#0D9488', border: '#99F6E4' },
+  { bg: '#FFEDD5', text: '#EA580C', border: '#FED7AA' },
+  { bg: '#F1F5F9', text: '#475569', border: '#CBD5E1' }
+];
+
+const ICONS_MAP = {
+  print: `<polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect>`,
+  scanner: `<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="7" y1="15" x2="9" y2="15"></line>`,
+  thermal: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><line x1="6" y1="12" x2="6" y2="16"></line><line x1="10" y1="12" x2="10" y2="16"></line><line x1="14" y1="12" x2="14" y2="16"></line><line x1="18" y1="12" x2="18" y2="16"></line>`,
+  computer: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>`,
+  laptop: `<rect x="4" y="4" width="16" height="11" rx="2" ry="2"></rect><path d="M2 19h20"></path><line x1="9" y1="15" x2="15" y2="15"></line>`,
+  notebook: `<rect x="4" y="4" width="16" height="11" rx="2" ry="2"></rect><path d="M2 19h20"></path><line x1="9" y1="15" x2="15" y2="15"></line>`,
+  monitor: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="12" y1="17" x2="12" y2="21"></line><line x1="8" y1="21" x2="16" y2="21"></line>`,
+  mobile: `<rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line>`,
+  totem: `<rect x="6" y="2" width="12" height="20" rx="2"></rect><circle cx="12" cy="18" r="1"></circle><rect x="8" y="5" width="8" height="6"></rect>`,
+  server: `<rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line>`,
+  network: `<rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><line x1="12" y1="12" x2="12" y2="8"></line>`,
+  shield: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
+  menu: `<path d="M4 6h16M4 12h16M4 18h7"></path>`
+};
+
+function getCategorySvg(iconKey, className = "icon-svg") {
+  const inner = ICONS_MAP[iconKey] || ICONS_MAP.menu;
+  return `<svg class="${className}" viewBox="0 0 24 24">${inner}</svg>`;
+}
+
+function isNotebookCategory(catId) {
+  if (!catId) return false;
+  const lower = catId.toLowerCase();
+  if (lower.includes('notebook') || lower.includes('laptop')) return true;
+  const catObj = categorias.find(c => c.id === catId);
+  if (catObj) {
+    const catTitleLower = (catObj.title || '').toLowerCase();
+    const catIconLower = (catObj.icon || '').toLowerCase();
+    if (catTitleLower.includes('notebook') || catTitleLower.includes('laptop') || catIconLower === 'laptop' || catIconLower === 'notebook') {
+      return true;
+    }
+  }
+  return false;
+}
+
+let categorias = [];
+let produtos = [];
+let marcas = [...DEFAULT_PRESET_LOGOS];
+let modalImages = [];
+let modalCurrentIdx = 0;
+let currentSelectedProductForModal = null;
+
+const carrinhoCotacao = new Map();
+
+function initBrandPresetsUI() {
+  const globalBrandSelect = document.getElementById('globalBrandFilter');
+
+  if (globalBrandSelect) {
+    const currentSelected = globalBrandSelect.value;
+    globalBrandSelect.innerHTML = '<option value="">Todas as Marcas</option>';
+    const allBrands = new Set();
+    marcas.forEach(m => allBrands.add(m.name));
+    produtos.forEach(p => { if (p.marca) allBrands.add(p.marca); });
+
+    Array.from(allBrands).sort().forEach(bName => {
+      const opt = document.createElement('option');
+      opt.value = bName;
+      opt.textContent = bName;
+      if (bName === currentSelected) opt.selected = true;
+      globalBrandSelect.appendChild(opt);
+    });
+  }
+}
+
+function handleSearchFilterChange() {
+  const searchVal = document.getElementById('globalSearchInput').value.trim();
+  const btnClear = document.getElementById('btnClearSearch');
+  btnClear.style.display = searchVal.length > 0 ? 'inline-flex' : 'none';
+  renderCatalog();
+}
+
+function clearSearch() {
+  document.getElementById('globalSearchInput').value = '';
+  document.getElementById('btnClearSearch').style.display = 'none';
+  renderCatalog();
+}
+
+async function loadCatalog() {
+  try {
+    const response = await fetch(`${JSON_PATH}?t=${new Date().getTime()}`);
+    if (!response.ok) throw new Error('Erro ao carregar catálogo.');
+    const data = await response.json();
+
+    if (Array.isArray(data)) {
+      produtos = data;
+    } else {
+      produtos = data.produtos || [];
+      categorias = data.categorias || [];
+      if (data.marcas && Array.isArray(data.marcas) && data.marcas.length > 0) {
+        const savedNames = new Set(data.marcas.map(m => m.name.toLowerCase()));
+        marcas = [...data.marcas];
+        DEFAULT_PRESET_LOGOS.forEach(def => {
+          if (!savedNames.has(def.name.toLowerCase())) marcas.push(def);
+        });
+      } else {
+        marcas = [...DEFAULT_PRESET_LOGOS];
+      }
     }
 
-    window.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') {
-        dispararResumoSaida();
+    initBrandPresetsUI();
+    renderCatalog();
+    atualizarBarraFlutuante();
+  } catch (err) {
+    console.error('Erro ao ler JSON:', err);
+  }
+}
+
+function setActiveCategoryNav(catId) {
+  document.querySelectorAll('.nav-menu .nav-item').forEach(item => {
+    if (item.dataset.catTarget === catId) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
+/* [MUDANÇA 4] SCROLLSPY — desconecta o observer anterior antes de criar um novo,
+   evitando múltiplos observers acumulados a cada renderCatalog(). */
+function initNavScrollspy() {
+  const sections = document.querySelectorAll('.catalog-section');
+  if (!sections.length) return;
+
+  if (navScrollObserver) {
+    navScrollObserver.disconnect();
+    navScrollObserver = null;
+  }
+
+  navScrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const catId = entry.target.dataset.catId;
+        setActiveCategoryNav(catId);
+
+        if (history.replaceState) {
+          history.replaceState(null, '', `#${catId}`);
+        }
       }
     });
-    window.addEventListener('pagehide', dispararResumoSaida);
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
 
+  sections.forEach(sec => navScrollObserver.observe(sec));
+}
 
-    /* ==========================================================================
-       DADOS BASE & CATÁLOGO
-       ========================================================================== */
-    const DEFAULT_PRESET_LOGOS = [
-      { name: 'Avell', logo: 'logos/avell.png' },
-      { name: 'Brother', logo: 'logos/brother.png' },
-      { name: 'Canon', logo: 'logos/canon.png' },
-      { name: 'Dell', logo: 'logos/dell.png' },
-      { name: 'Epson', logo: 'logos/epson.png' },
-      { name: 'HP', logo: 'logos/hp.png' },
-      { name: 'Kyocera', logo: 'logos/kyocera.png' },
-      { name: 'Lenovo', logo: 'logos/lenovo.png' },
-      { name: 'Lexmark', logo: 'logos/lexmark.png' },
-      { name: 'Ricoh', logo: 'logos/ricoh.png' },
-      { name: 'Samsung', logo: 'logos/samsung.png' },
-      { name: 'Xerox', logo: 'logos/xerox.png' },
-      { name: 'Zebra', logo: 'logos/zebra.png' }
-    ];
-
-    const CATEGORY_COLORS = [
-      { bg: '#E0F2FE', text: '#0284C7', border: '#BAE6FD' },
-      { bg: '#DCFCE7', text: '#10B981', border: '#BBF7D0' },
-      { bg: '#FEF3C7', text: '#D97706', border: '#FDE68A' },
-      { bg: '#EDE9FE', text: '#7C3AED', border: '#DDD6FE' },
-      { bg: '#FFE4E6', text: '#E11D48', border: '#FECDD3' },
-      { bg: '#CCFBF1', text: '#0D9488', border: '#99F6E4' },
-      { bg: '#FFEDD5', text: '#EA580C', border: '#FED7AA' },
-      { bg: '#F1F5F9', text: '#475569', border: '#CBD5E1' }
-    ];
-
-    const ICONS_MAP = {
-      print: `<polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect>`,
-      scanner: `<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="7" y1="15" x2="9" y2="15"></line>`,
-      thermal: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><line x1="6" y1="12" x2="6" y2="16"></line><line x1="10" y1="12" x2="10" y2="16"></line><line x1="14" y1="12" x2="14" y2="16"></line><line x1="18" y1="12" x2="18" y2="16"></line>`,
-      computer: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>`,
-      laptop: `<rect x="4" y="4" width="16" height="11" rx="2" ry="2"></rect><path d="M2 19h20"></path><line x1="9" y1="15" x2="15" y2="15"></line>`,
-      notebook: `<rect x="4" y="4" width="16" height="11" rx="2" ry="2"></rect><path d="M2 19h20"></path><line x1="9" y1="15" x2="15" y2="15"></line>`,
-      monitor: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="12" y1="17" x2="12" y2="21"></line><line x1="8" y1="21" x2="16" y2="21"></line>`,
-      mobile: `<rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line>`,
-      totem: `<rect x="6" y="2" width="12" height="20" rx="2"></rect><circle cx="12" cy="18" r="1"></circle><rect x="8" y="5" width="8" height="6"></rect>`,
-      server: `<rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line>`,
-      network: `<rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><line x1="12" y1="12" x2="12" y2="8"></line>`,
-      shield: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
-      menu: `<path d="M4 6h16M4 12h16M4 18h7"></path>`
-    };
-
-    function getCategorySvg(iconKey, className = "icon-svg") {
-      const inner = ICONS_MAP[iconKey] || ICONS_MAP.menu;
-      return `<svg class="${className}" viewBox="0 0 24 24">${inner}</svg>`;
-    }
-
-    function isNotebookCategory(catId) {
-      if (!catId) return false;
-      const lower = catId.toLowerCase();
-      if (lower.includes('notebook') || lower.includes('laptop')) return true;
-      const catObj = categorias.find(c => c.id === catId);
-      if (catObj) {
-        const catTitleLower = (catObj.title || '').toLowerCase();
-        const catIconLower = (catObj.icon || '').toLowerCase();
-        if (catTitleLower.includes('notebook') || catTitleLower.includes('laptop') || catIconLower === 'laptop' || catIconLower === 'notebook') {
-          return true;
-        }
-      }
-      return false;
-    }
-
-    let categorias = [];
-    let produtos = [];
-    let marcas = [...DEFAULT_PRESET_LOGOS];
-    let modalImages = [];
-    let modalCurrentIdx = 0;
-    let currentSelectedProductForModal = null;
-
-    const carrinhoCotacao = new Map();
-
-    function initBrandPresetsUI() {
-      
-      const globalBrandSelect = document.getElementById('globalBrandFilter');
-
-      if (globalBrandSelect) {
-        const currentSelected = globalBrandSelect.value;
-        globalBrandSelect.innerHTML = '<option value="">Todas as Marcas</option>';
-        const allBrands = new Set();
-        marcas.forEach(m => allBrands.add(m.name));
-        produtos.forEach(p => { if (p.marca) allBrands.add(p.marca); });
-
-        Array.from(allBrands).sort().forEach(bName => {
-          const opt = document.createElement('option');
-          opt.value = bName;
-          opt.textContent = bName;
-          if (bName === currentSelected) opt.selected = true;
-          globalBrandSelect.appendChild(opt);
-        });
-      }
-    }
-
-    
-    function handleSearchFilterChange() {
-      const searchVal = document.getElementById('globalSearchInput').value.trim();
-      const btnClear = document.getElementById('btnClearSearch');
-      btnClear.style.display = searchVal.length > 0 ? 'inline-flex' : 'none';
-      renderCatalog();
-    }
-
-    function clearSearch() {
-      document.getElementById('globalSearchInput').value = '';
-      document.getElementById('btnClearSearch').style.display = 'none';
-      renderCatalog();
-    }
-
-    async function loadCatalog() {
-      try {
-        const response = await fetch(`${JSON_PATH}?t=${new Date().getTime()}`);
-        if (!response.ok) throw new Error('Erro ao carregar catálogo.');
-        const data = await response.json();
-
-        if (Array.isArray(data)) {
-          produtos = data;
-        } else {
-          produtos = data.produtos || [];
-          categorias = data.categorias || [];
-          if (data.marcas && Array.isArray(data.marcas) && data.marcas.length > 0) {
-            const savedNames = new Set(data.marcas.map(m => m.name.toLowerCase()));
-            marcas = [...data.marcas];
-            DEFAULT_PRESET_LOGOS.forEach(def => {
-              if (!savedNames.has(def.name.toLowerCase())) marcas.push(def);
-            });
-          } else {
-            marcas = [...DEFAULT_PRESET_LOGOS];
-          }
-        }
-
-        initBrandPresetsUI();
-        renderCatalog();
-        atualizarBarraFlutuante();
-      } catch (err) {
-        console.error('Erro ao ler JSON:', err);
-      }
-    }
-
-    
-    function setActiveCategoryNav(catId) {
-      document.querySelectorAll('.nav-menu .nav-item').forEach(item => {
-        if (item.dataset.catTarget === catId) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
-    }
-
-    /* SCROLLSPY COM ATUALIZAÇÃO SILENCIOSA DE HASH NA URL */
-    function initNavScrollspy() {
-      const sections = document.querySelectorAll('.catalog-section');
-      if (!sections.length) return;
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const catId = entry.target.dataset.catId;
-            setActiveCategoryNav(catId);
-            
-            // Atualiza silenciosamente a URL para incluir o hash da categoria atual
-            if (history.replaceState) {
-              history.replaceState(null, null, `#${catId}`);
-            }
-          }
-        });
-      }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
-
-      sections.forEach(sec => observer.observe(sec));
-    }
-
-    function renderDestaqueBadge(destaque) {
+function renderDestaqueBadge(destaque) {
   const opcoes = {
-    'mais-procurado': {
-      label: 'Mais procurado',
-      className: 'destaque-mais-procurado'
-    },
-    novidade: {
-      label: 'Novidade',
-      className: 'destaque-novidade'
-    },
-    recomendado: {
-      label: 'Recomendado',
-      className: 'destaque-recomendado'
-    },
-    'semi-novo': {
-      label: 'Semi-Novo',
-      className: 'destaque-semi-novo'
-    },
-    'melhor-valor': {
-      label: 'Melhor Valor',
-      className: 'destaque-melhor-valor'
-    },
-    'condicao-especial': {
-      label: 'Condição Especial',
-      className: 'destaque-condicao-especial'
-    },
-    top: {
-      label: 'Top',
-      className: 'destaque-top'
-    }
+    'mais-procurado': { label: 'Mais procurado', className: 'destaque-mais-procurado' },
+    novidade: { label: 'Novidade', className: 'destaque-novidade' },
+    recomendado: { label: 'Recomendado', className: 'destaque-recomendado' },
+    'semi-novo': { label: 'Semi-Novo', className: 'destaque-semi-novo' },
+    'melhor-valor': { label: 'Melhor Valor', className: 'destaque-melhor-valor' },
+    'condicao-especial': { label: 'Condição Especial', className: 'destaque-condicao-especial' },
+    top: { label: 'Top', className: 'destaque-top' }
   };
 
   const item = opcoes[destaque];
@@ -1537,849 +1519,917 @@
   return `<span class="destaque-badge ${item.className}">${item.label}</span>`;
 }
 
+function renderCatalog() {
+  const searchKeyword = (document.getElementById('globalSearchInput')?.value || '').toLowerCase().trim();
+  const selectedBrand = (document.getElementById('globalBrandFilter')?.value || '').toLowerCase().trim();
+  const navContainer = document.getElementById('dynamicNavMenu');
+  const sectionsContainer = document.getElementById('dynamicSectionsContainer');
+  navContainer.innerHTML = '';
+  sectionsContainer.innerHTML = '';
 
-    function renderCatalog() {
-      
-      const searchKeyword = (document.getElementById('globalSearchInput')?.value || '').toLowerCase().trim();
-      const selectedBrand = (document.getElementById('globalBrandFilter')?.value || '').toLowerCase().trim();
-      const navContainer = document.getElementById('dynamicNavMenu');
-      const sectionsContainer = document.getElementById('dynamicSectionsContainer');
-      navContainer.innerHTML = '';
-      sectionsContainer.innerHTML = '';
+  let firstRenderedCatId = null;
 
-      let firstRenderedCatId = null;
+  categorias.forEach((cat, catIdx) => {
+    const iconKey = cat.icon || cat.id;
+    let produtosVisiveis = produtos.filter(p => p.categoria === cat.id && p.ativo);
 
-      categorias.forEach((cat, catIdx) => {
-        const iconKey = cat.icon || cat.id;
-        let produtosVisiveis = produtos.filter(
-          p => p.categoria === cat.id && p.ativo
-        );
-
-
-        if (selectedBrand) {
-          produtosVisiveis = produtosVisiveis.filter(p => (p.marca || '').toLowerCase() === selectedBrand);
-        }
-
-        if (searchKeyword) {
-          produtosVisiveis = produtosVisiveis.filter(p => {
-            const matchName = (p.nome || '').toLowerCase().includes(searchKeyword);
-            const matchBrand = (p.marca || '').toLowerCase().includes(searchKeyword);
-            const matchSpecs = p.specs ? Object.entries(p.specs).some(([k, v]) => `${k} ${v}`.toLowerCase().includes(searchKeyword)) : false;
-            return matchName || matchBrand || matchSpecs;
-          });
-        }
-
-        if (!cat.ativa || produtosVisiveis.length === 0) return;
-
-        if (searchKeyword && produtosVisiveis.length === 0) return;
-
-        if (!firstRenderedCatId) firstRenderedCatId = cat.id;
-
-        const color = CATEGORY_COLORS[catIdx % CATEGORY_COLORS.length];
-
-        const navItem = document.createElement('a');
-        navItem.href = `#${cat.id}`;
-        navItem.className = 'nav-item';
-        navItem.dataset.catTarget = cat.id;
-        navItem.style.setProperty('--cat-color', color.text);
-        navItem.style.setProperty('--cat-bg', color.bg);
-        navItem.style.setProperty('--cat-border', color.border);
-
-        navItem.innerHTML = `
-          ${getCategorySvg(iconKey, 'icon-svg')}
-          <span>${cat.title.split(' ')[0]}</span>
-
-        `;
-        navItem.onclick = () => setActiveCategoryNav(cat.id);
-        navContainer.appendChild(navItem);
-
-        const section = document.createElement('section');
-        section.id = cat.id;
-        section.className = 'catalog-section';
-        section.dataset.catId = cat.id;
-
-        section.innerHTML = `
-          <div class="section-header">
-            <h2 class="section-title">
-              ${getCategorySvg(iconKey, 'icon-svg icon-svg-lg')}
-                          ${cat.title}
-</h2>
-            <span class="badge-count">${produtosVisiveis.length} Itens</span>
-          </div>
-          <div class="products-grid" id="grid-${cat.id}"></div>
-        `;
-        sectionsContainer.appendChild(section);
-
-        const grid = section.querySelector(`#grid-${cat.id}`);
-        produtosVisiveis.forEach(prod => {
-          const card = document.createElement('div');
-          const isSelectedInCart = carrinhoCotacao.has(prod.id);
-                   card.className = `prod-card ${isSelectedInCart ? 'in-quote' : ''}`;
- card.onclick = () => openProductModal(prod);
-
-          let mediaHtml = '';
-          if (!prod.imagens || prod.imagens.length === 0) {
-            mediaHtml = `<span class="placeholder-text">[Sem Foto]</span>`;
-          } else if (prod.imagens.length === 1) {
-            mediaHtml = `<img src="${prod.imagens[0]}" alt="${prod.nome}">`;
-          } else {
-            mediaHtml = `
-              <button class="carousel-btn prev" onclick="changeCardSlide(event, this, -1)">◀</button>
-              <img src="${prod.imagens[0]}" alt="${prod.nome}">
-              <button class="carousel-btn next" onclick="changeCardSlide(event, this, 1)">▶</button>
-              <div class="carousel-dots">
-                ${prod.imagens.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
-              </div>
-            `;
-          }
-
-          let specsHtml = '';
-          if (prod.specs) {
-            const entries = Object.entries(prod.specs).slice(0, 2);
-            specsHtml = entries.map(([k, v]) => `<div class="spec-row"><span>${k}</span><strong>${v}</strong></div>`).join('');
-          }
-
-          const logoMarcaHtml = prod.logoMarca ? `<img src="${prod.logoMarca}" class="brand-inline-logo" alt="${prod.marca}">` : '';
-
-          card.innerHTML = `
-            <div class="thumb-slider-container" data-index="0" data-images='${JSON.stringify(prod.imagens || [])}'>
-  ${renderDestaqueBadge(prod.destaque)}
-  ${mediaHtml}
-</div>
-            <div class="brand-header-row">
-                         <span class="brand-sub">${prod.marca}</span>
-   ${logoMarcaHtml}
-            </div>
-            <div class="prod-name">${prod.nome}</div>
-            <div class="specs-list">${specsHtml}</div>
-
-            <div class="card-actions-bar" onclick="event.stopPropagation()">
-              <button type="button" class="btn-card-view-eye" title="Visualizar Detalhes" onclick="openProductModalDirect('${prod.id}')">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-              </button>
-              <button type="button" class="btn-card-cart-toggle ${isSelectedInCart ? 'active' : ''}" onclick="toggleProdutoCarrinho('${prod.id}')">
-                ${isSelectedInCart ? '✓ Na Cotação' : '+ Cotar'}
-              </button>
-            </div>
-
-          `;
-          grid.appendChild(card);
-        });
-      });
-
-      if (firstRenderedCatId) setActiveCategoryNav(firstRenderedCatId);
-      initNavScrollspy();
+    if (selectedBrand) {
+      produtosVisiveis = produtosVisiveis.filter(p => (p.marca || '').toLowerCase() === selectedBrand);
     }
 
-    function verificarDicaFlutuante() {
-      const hintEl = document.getElementById('floatingQuoteHint');
-      if (!hintEl) return;
-      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-      if (scrollPos > 180 && carrinhoCotacao.size === 0) {
-        hintEl.classList.add('active');
+    if (searchKeyword) {
+      produtosVisiveis = produtosVisiveis.filter(p => {
+        const matchName = (p.nome || '').toLowerCase().includes(searchKeyword);
+        const matchBrand = (p.marca || '').toLowerCase().includes(searchKeyword);
+        const matchSpecs = p.specs ? Object.entries(p.specs).some(([k, v]) => `${k} ${v}`.toLowerCase().includes(searchKeyword)) : false;
+        return matchName || matchBrand || matchSpecs;
+      });
+    }
+
+    if (!cat.ativa || produtosVisiveis.length === 0) return;
+    if (searchKeyword && produtosVisiveis.length === 0) return;
+
+    if (!firstRenderedCatId) firstRenderedCatId = cat.id;
+
+    const color = CATEGORY_COLORS[catIdx % CATEGORY_COLORS.length];
+
+    const navItem = document.createElement('a');
+    navItem.href = `#${cat.id}`;
+    navItem.className = 'nav-item';
+    navItem.dataset.catTarget = cat.id;
+    navItem.style.setProperty('--cat-color', color.text);
+    navItem.style.setProperty('--cat-bg', color.bg);
+    navItem.style.setProperty('--cat-border', color.border);
+
+    navItem.innerHTML = `
+      ${getCategorySvg(iconKey, 'icon-svg')}
+      <span>${cat.title.split(' ')[0]}</span>
+    `;
+    navItem.onclick = () => setActiveCategoryNav(cat.id);
+    navContainer.appendChild(navItem);
+
+    const section = document.createElement('section');
+    section.id = cat.id;
+    section.className = 'catalog-section';
+    section.dataset.catId = cat.id;
+
+    section.innerHTML = `
+      <div class="section-header">
+        <h2 class="section-title">
+          ${getCategorySvg(iconKey, 'icon-svg icon-svg-lg')}
+          ${cat.title}
+        </h2>
+        <span class="badge-count">${produtosVisiveis.length} Itens</span>
+      </div>
+      <div class="products-grid" id="grid-${cat.id}"></div>
+    `;
+    sectionsContainer.appendChild(section);
+
+    const grid = section.querySelector(`#grid-${cat.id}`);
+    produtosVisiveis.forEach(prod => {
+      const card = document.createElement('div');
+      const isSelectedInCart = carrinhoCotacao.has(prod.id);
+      card.className = `prod-card ${isSelectedInCart ? 'in-quote' : ''}`;
+      card.onclick = () => openProductModal(prod);
+
+      let mediaHtml = '';
+      if (!prod.imagens || prod.imagens.length === 0) {
+        mediaHtml = `<span class="placeholder-text">[Sem Foto]</span>`;
+      } else if (prod.imagens.length === 1) {
+        mediaHtml = `<img src="${prod.imagens[0]}" alt="${prod.nome}">`;
       } else {
-        hintEl.classList.remove('active');
-      }
-    }
-
-    /* CARRINHO & TELEMETRIA */
-    function toggleProdutoCarrinho(prodId, forceQty = null) {
-      const prod = produtos.find(p => p.id === prodId);
-      if (!prod) return;
-      const nomeCategoria = getNomeCategoria(prod.categoria);
-
-      if (carrinhoCotacao.has(prodId) && forceQty === null) {
-        carrinhoCotacao.delete(prodId);
-        sendTrackingEvent('Removeu Produto da Proposta', `[${nomeCategoria}] ${prod.marca} - ${prod.nome}`);
-      } else {
-        const itemExistente = carrinhoCotacao.get(prodId);
-        const currentQty = itemExistente?.qtd || 1;
-        const newQty = forceQty !== null ? Math.max(1, forceQty) : currentQty;
-        const ram = itemExistente?.ram || '8GB';
-        const ssd = itemExistente?.ssd || '256GB';
-
-        carrinhoCotacao.set(prodId, {
-          id: prod.id,
-          nome: prod.nome,
-          marca: prod.marca,
-          categoria: prod.categoria,
-          imagem: prod.imagens?.[0] || '',
-          qtd: newQty,
-          ram: ram,
-          ssd: ssd
-        });
-
-        historicoCotadosNaSessao.add(`${prod.marca} - ${prod.nome}`);
-        sendTrackingEvent('Adicionou à Proposta', `[${nomeCategoria}] ${prod.marca} - ${prod.nome} (${newQty} un)`);
-      }
-
-      atualizarBarraFlutuante();
-      renderCatalog();
-      renderQuoteModalState();
-    }
-
-    function alterarQtdCarrinho(prodId, delta) {
-      if (!carrinhoCotacao.has(prodId)) return;
-      const item = carrinhoCotacao.get(prodId);
-      item.qtd = Math.max(1, item.qtd + delta);
-      carrinhoCotacao.set(prodId, item);
-      atualizarBarraFlutuante();
-      renderQuoteModalState();
-    }
-
-    function definirQtdDigitadaCarrinho(prodId, val) {
-      if (!carrinhoCotacao.has(prodId)) return;
-      let qtd = parseInt(val, 10);
-      if (isNaN(qtd) || qtd < 1) qtd = 1;
-      const item = carrinhoCotacao.get(prodId);
-      item.qtd = qtd;
-      carrinhoCotacao.set(prodId, item);
-      atualizarBarraFlutuante();
-      renderQuoteModalState();
-    }
-
-    function definirOpcaoNotebook(prodId, tipo, val) {
-      if (!carrinhoCotacao.has(prodId)) return;
-      const item = carrinhoCotacao.get(prodId);
-      if (tipo === 'ram') item.ram = val;
-      if (tipo === 'ssd') item.ssd = val;
-      carrinhoCotacao.set(prodId, item);
-      renderQuoteModalState();
-    }
-
-    function limparTodoCarrinho() {
-      carrinhoCotacao.clear();
-      atualizarBarraFlutuante();
-      renderCatalog();
-      renderQuoteModalState();
-    }
-
-    function atualizarBarraFlutuante() {
-      const floatingBar = document.getElementById('floatingQuoteBar');
-      const counterEl = document.getElementById('floatingQuoteCounter');
-      const countTextEl = document.getElementById('floatingQuoteCountText');
-      const count = carrinhoCotacao.size;
-
-      if (counterEl) counterEl.textContent = count;
-      if (countTextEl) {
-        const isMobile = window.innerWidth <= 600;
-        countTextEl.textContent = isMobile ? `${count} item(ns) selec.` : `${count} equipamento(s) selecionado(s)`;
-      }
-
-      if (count > 0) {
-        floatingBar.classList.add('active');
-      } else {
-        floatingBar.classList.remove('active');
-      }
-      verificarDicaFlutuante();
-    }
-
-    function abrirModalSelecaoCotacao() {
-      const modal = document.getElementById('quoteSelectionModal');
-      document.getElementById('quoteModalSearchInput').value = '';
-      document.getElementById('btnQuoteClearSearch').style.display = 'none';
-
-      renderQuoteModalAccordion();
-      renderQuoteModalState();
-
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      sendTrackingEvent('Abriu Seleção de Proposta', `${carrinhoCotacao.size} modelos no carrinho`);
-    }
-
-    function fecharModalSelecaoCotacao() {
-      document.getElementById('quoteSelectionModal').classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    function handleQuoteModalSearch() {
-      const query = document.getElementById('quoteModalSearchInput').value.trim();
-      document.getElementById('btnQuoteClearSearch').style.display = query.length > 0 ? 'inline-block' : 'none';
-      renderQuoteModalAccordion(query);
-    }
-
-    function clearQuoteModalSearch() {
-      document.getElementById('quoteModalSearchInput').value = '';
-      document.getElementById('btnQuoteClearSearch').style.display = 'none';
-      renderQuoteModalAccordion('');
-    }
-
-    function toggleQuoteCatAccordion(blockEl) {
-      blockEl.classList.toggle('expanded');
-    }
-
-    function renderQuoteModalAccordion(searchQuery = '') {
-      const container = document.getElementById('quoteAccordionContainer');
-      container.innerHTML = '';
-      const filter = searchQuery.toLowerCase().trim();
-
-      categorias.forEach(cat => {
-        let prodsCat = produtos.filter(p => p.categoria === cat.id && p.ativo);
-        if (filter) {
-          prodsCat = prodsCat.filter(p => 
-            p.nome.toLowerCase().includes(filter) || (p.marca && p.marca.toLowerCase().includes(filter))
-          );
-        }
-        if (prodsCat.length === 0 && filter) return;
-
-        const isNotebookCat = isNotebookCategory(cat.id);
-        const block = document.createElement('div');
-        block.className = `quote-cat-block ${filter ? 'expanded' : ''}`;
-
-        const header = document.createElement('div');
-        header.className = 'quote-cat-header';
-        header.onclick = () => toggleQuoteCatAccordion(block);
-
-        header.innerHTML = `
-          <div class="quote-cat-title-side">
-            ${getCategorySvg(cat.icon || cat.id, 'icon-svg-sm')}
-            <span>${cat.title}</span>
-            <span class="quote-cat-count-badge">${prodsCat.length}</span>
-          </div>
-          <span class="quote-cat-arrow">▶</span>
-        `;
-        block.appendChild(header);
-
-        const list = document.createElement('div');
-        list.className = 'quote-cat-items-list';
-
-        prodsCat.forEach(prod => {
-          const isSelected = carrinhoCotacao.has(prod.id);
-          const currentItem = carrinhoCotacao.get(prod.id);
-          const currentQty = currentItem ? currentItem.qtd : 1;
-          const currentRam = currentItem?.ram || '8GB';
-          const currentSsd = currentItem?.ssd || '256GB';
-
-          const row = document.createElement('div');
-          row.className = 'quote-item-row';
-          row.dataset.prodId = prod.id;
-
-          const thumbSrc = prod.imagens && prod.imagens.length > 0 ? prod.imagens[0] : 'https://placehold.co/40x40?text=Foto';
-
-          let notebookOptionsHtml = '';
-          if (isNotebookCat) {
-            notebookOptionsHtml = `
-              <div class="quote-notebook-options" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
-                <div class="quote-opt-select-group">
-                  <label>RAM:</label>
-                  <select class="quote-opt-select quote-ram-select" onchange="definirOpcaoNotebook('${prod.id}', 'ram', this.value)">
-                    <option value="8GB" ${currentRam === '8GB' ? 'selected' : ''}>8GB</option>
-                    <option value="16GB" ${currentRam === '16GB' ? 'selected' : ''}>16GB</option>
-                    <option value="32GB" ${currentRam === '32GB' ? 'selected' : ''}>32GB</option>
-                  </select>
-                </div>
-                <div class="quote-opt-select-group">
-                  <label>SSD:</label>
-                  <select class="quote-opt-select quote-ssd-select" onchange="definirOpcaoNotebook('${prod.id}', 'ssd', this.value)">
-                    <option value="256GB" ${currentSsd === '256GB' ? 'selected' : ''}>256GB</option>
-                    <option value="512GB" ${currentSsd === '512GB' ? 'selected' : ''}>512GB</option>
-                    <option value="1TB" ${currentSsd === '1TB' ? 'selected' : ''}>1TB</option>
-                  </select>
-                </div>
-              </div>
-            `;
-          }
-
-          row.innerHTML = `
-            <label class="quote-item-label-side" onclick="event.stopPropagation()">
-              <input type="checkbox" class="quote-item-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleProdutoCarrinho('${prod.id}')">
-              <img src="${thumbSrc}" class="quote-item-thumb" alt="${prod.nome}">
-              <div>
-                <span class="quote-item-brand-tag">${prod.marca}</span>
-                <span class="quote-item-name">${prod.nome}</span>
-              </div>
-            </label>
-
-            <div class="quote-item-right-controls">
-              ${notebookOptionsHtml}
-              <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
-                <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
-                <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)">
-                <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', 1)">+</button>
-              </div>
-            </div>
-          `;
-          list.appendChild(row);
-        });
-
-        block.appendChild(list);
-        container.appendChild(block);
-      });
-    }
-
-    function renderQuoteModalState() {
-      const chipsContainer = document.getElementById('quoteChipsContainer');
-      const countEl = document.getElementById('quoteSummaryCount');
-      chipsContainer.innerHTML = '';
-      countEl.textContent = carrinhoCotacao.size;
-
-      if (carrinhoCotacao.size === 0) {
-        chipsContainer.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); font-style:italic;">Nenhum item selecionado. Abra as categorias abaixo para marcar.</span>`;
-      } else {
-        carrinhoCotacao.forEach(item => {
-          const chip = document.createElement('div');
-          chip.className = 'quote-chip';
-          const isNotebook = isNotebookCategory(item.categoria);
-          const specsBadge = isNotebook ? `<span class="quote-chip-specs">${item.ram || '8GB'} | ${item.ssd || '256GB'}</span>` : '';
-
-          chip.innerHTML = `
-            <span>${item.marca} ${item.nome}</span>
-            ${specsBadge}
-            <span class="quote-chip-qty">${item.qtd} un</span>
-            <button type="button" class="quote-chip-remove" onclick="toggleProdutoCarrinho('${item.id}')" title="Remover item">✕</button>
-          `;
-          chipsContainer.appendChild(chip);
-        });
-      }
-
-      document.querySelectorAll('.quote-item-row').forEach(row => {
-        const prodId = row.dataset.prodId;
-        const checkbox = row.querySelector('.quote-item-checkbox');
-        const qtyControl = row.querySelector('.quote-item-qty-control');
-        const qtyInput = row.querySelector('.quote-qty-input');
-        const notebookOptions = row.querySelector('.quote-notebook-options');
-        const ramSelect = row.querySelector('.quote-ram-select');
-        const ssdSelect = row.querySelector('.quote-ssd-select');
-
-        if (prodId && carrinhoCotacao.has(prodId)) {
-          const item = carrinhoCotacao.get(prodId);
-          if (checkbox) checkbox.checked = true;
-          if (qtyControl) qtyControl.style.display = 'flex';
-          if (qtyInput) qtyInput.value = item.qtd;
-          if (notebookOptions) {
-            notebookOptions.style.display = 'flex';
-            if (ramSelect) ramSelect.value = item.ram || '8GB';
-            if (ssdSelect) ssdSelect.value = item.ssd || '256GB';
-          }
-        } else {
-          if (checkbox) checkbox.checked = false;
-          if (qtyControl) qtyControl.style.display = 'none';
-          if (notebookOptions) notebookOptions.style.display = 'none';
-        }
-      });
-
-      if (currentSelectedProductForModal) {
-        const btnZoom = document.getElementById('btnZoomModalAddToCart');
-        if (btnZoom) {
-          const isSelected = carrinhoCotacao.has(currentSelectedProductForModal.id);
-          btnZoom.textContent = isSelected ? '✓ Na Cotação' : '+ Cotar';
-          btnZoom.className = `btn-zoom-cart-toggle ${isSelected ? 'active' : ''}`;
-        }
-      }
-    }
-
-    function avancarParaDadosLead() {
-      if (carrinhoCotacao.size === 0) {
-        alert('Por favor, selecione ao menos 1 equipamento antes de prosseguir.');
-        return;
-      }
-      fecharModalSelecaoCotacao();
-      document.getElementById('quoteFeedbackBox').style.display = 'none';
-      document.getElementById('leadContactModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function fecharSubmodalLead() {
-      document.getElementById('leadContactModal').classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    function voltarParaSelecaoModal() {
-      fecharSubmodalLead();
-      abrirModalSelecaoCotacao();
-    }
-
-    function openProductModalDirect(prodId) {
-      const prod = produtos.find(p => p.id === prodId);
-      if (prod) openProductModal(prod);
-    }
-
-    function toggleCartFromModal() {
-      if (!currentSelectedProductForModal) return;
-      const prodId = currentSelectedProductForModal.id;
-      const isAdding = !carrinhoCotacao.has(prodId);
-
-      toggleProdutoCarrinho(prodId);
-
-      if (isAdding) {
-        const btnZoom = document.getElementById('btnZoomModalAddToCart');
-        if (btnZoom) {
-          btnZoom.textContent = '✓ Adicionado!';
-          btnZoom.style.backgroundColor = 'var(--primary)';
-          btnZoom.style.color = '#FFFFFF';
-        }
-        setTimeout(() => closeModal(), 400);
-      }
-    }
-
-    let cnpjLookupRequestId = 0;
-    let cnpjLookupPromise = Promise.resolve();
-
-    function obterDigitosCNPJ(valor) {
-      return String(valor || '').replace(/\D/g, '');
-    }
-
-    function validarCNPJ(valor) {
-      const cnpj = obterDigitosCNPJ(valor);
-
-      if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
-
-      const calcularDigito = (base, pesos) => {
-        const soma = base
-          .split('')
-          .reduce((total, numero, indice) => total + Number(numero) * pesos[indice], 0);
-        const resto = soma % 11;
-        return resto < 2 ? 0 : 11 - resto;
-      };
-
-      const primeiroDigito = calcularDigito(
-        cnpj.slice(0, 12),
-        [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-      );
-
-      const segundoDigito = calcularDigito(
-        cnpj.slice(0, 12) + primeiroDigito,
-        [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-      );
-
-      return cnpj.endsWith(`${primeiroDigito}${segundoDigito}`);
-    }
-
-    function formatarCampoCNPJ(input) {
-      const digitos = obterDigitosCNPJ(input.value).slice(0, 14);
-      let formatado = digitos.slice(0, 2);
-
-      if (digitos.length > 2) formatado += '.' + digitos.slice(2, 5);
-      if (digitos.length > 5) formatado += '.' + digitos.slice(5, 8);
-      if (digitos.length > 8) formatado += '/' + digitos.slice(8, 12);
-      if (digitos.length > 12) formatado += '-' + digitos.slice(12, 14);
-
-      input.value = formatado;
-      input.setCustomValidity('');
-
-      const empresaInput = document.getElementById('quoteEmpresa');
-      if (empresaInput.dataset.cnpjAutofill) {
-        empresaInput.value = '';
-        delete empresaInput.dataset.cnpjAutofill;
-      }
-
-      cnpjLookupRequestId++;
-
-      const status = document.getElementById('cnpjStatus');
-      status.textContent = 'Informe o CNPJ para preencher automaticamente o nome da empresa.';
-      status.style.color = 'var(--text-muted)';
-    }
-
-    function aoSairDoCNPJ() {
-      cnpjLookupPromise = consultarRazaoSocialCNPJ();
-    }
-
-    async function consultarRazaoSocialCNPJ() {
-      const input = document.getElementById('quoteCNPJ');
-      const empresaInput = document.getElementById('quoteEmpresa');
-      const status = document.getElementById('cnpjStatus');
-      const cnpj = obterDigitosCNPJ(input.value);
-
-      input.setCustomValidity('');
-
-      if (!cnpj) {
-        status.textContent = 'Informe o CNPJ para preencher automaticamente o nome da empresa.';
-        status.style.color = 'var(--text-muted)';
-        return;
-      }
-
-      if (!validarCNPJ(cnpj)) {
-        input.setCustomValidity('Digite um CNPJ válido com 14 números.');
-        input.reportValidity();
-        status.textContent = 'CNPJ inválido. Confira os números digitados.';
-        status.style.color = 'var(--danger)';
-        return;
-      }
-
-      const requestId = ++cnpjLookupRequestId;
-      empresaInput.readOnly = true;
-      status.textContent = 'Consultando razão social do CNPJ...';
-      status.style.color = 'var(--primary)';
-
-      try {
-        const response = await fetch(
-          `https://brasilapi.com.br/api/cnpj/v1/${cnpj}`,
-          { headers: { Accept: 'application/json' } }
-        );
-
-        if (!response.ok) {
-          throw new Error('Não foi possível localizar esse CNPJ.');
-        }
-
-        const dados = await response.json();
-
-        if (
-          requestId !== cnpjLookupRequestId ||
-          obterDigitosCNPJ(input.value) !== cnpj
-        ) {
-          return;
-        }
-
-        if (!dados.razao_social) {
-          throw new Error('A consulta não retornou a razão social.');
-        }
-
-        empresaInput.value = dados.razao_social;
-        empresaInput.dataset.cnpjAutofill = cnpj;
-        status.textContent = 'Razão social preenchida automaticamente.';
-        status.style.color = 'var(--success)';
-      } catch (erro) {
-        if (requestId === cnpjLookupRequestId) {
-          status.textContent = 'Não foi possível consultar o CNPJ. Você pode preencher o nome da empresa manualmente.';
-          status.style.color = 'var(--danger)';
-        }
-      } finally {
-        if (requestId === cnpjLookupRequestId) {
-          empresaInput.readOnly = false;
-        }
-      }
-    }
-
-    async function enviarCotacaoWeb3Forms(e) {
-      e.preventDefault();
-        const cnpjInput = document.getElementById('quoteCNPJ');
-      const cnpjDigitos = obterDigitosCNPJ(cnpjInput.value);
-
-      cnpjInput.setCustomValidity('');
-
-      if (cnpjDigitos && !validarCNPJ(cnpjDigitos)) {
-        cnpjInput.setCustomValidity('Digite um CNPJ válido com 14 números.');
-        cnpjInput.reportValidity();
-        return;
-      }
-
-      if (cnpjDigitos) {
-        await cnpjLookupPromise;
-      }
-      const btn = document.getElementById('btnSubmitCotacao');
-      const feedback = document.getElementById('quoteFeedbackBox');
-
-      if (carrinhoCotacao.size === 0) {
-        alert('Nenhum equipamento selecionado.');
-        return;
-      }
-
-      const nome = document.getElementById('quoteNome').value.trim();
-      const empresa = document.getElementById('quoteEmpresa').value.trim();
-      const cnpj = document.getElementById('quoteCNPJ').value.trim();
-      const email = document.getElementById('quoteEmail').value.trim();
-      const telefone = document.getElementById('quoteTelefone').value.trim();
-      const mensagem = document.getElementById('quoteMensagem').value.trim();
-
-      let itensFormatados = '';
-      let index = 1;
-      carrinhoCotacao.forEach(item => {
-        const isNotebook = isNotebookCategory(item.categoria);
-        const opcionaisText = isNotebook ? ` (RAM: ${item.ram || '8GB'}, SSD: ${item.ssd || '256GB'})` : '';
-        itensFormatados += `${index}. [${item.marca.toUpperCase()}] ${item.nome}${opcionaisText} — Qtd Estimada: ${item.qtd} unidade(s)\n`;
-        index++;
-      });
-
-      const payload = {
-        access_key: WEB3FORMS_KEY,
-        subject: `Nova Cotação Infinity Corp - ${empresa ? empresa + ' (' + nome + ')' : nome} (${carrinhoCotacao.size} modelos)`,
-        from_name: 'Infinity Corp - Portfólio Comercial',
-        nome_contato: nome,
-        empresa: empresa || 'Não informada',
-        cnpj: cnpj || 'Não informado',
-        email: email,
-        telefone: telefone,
-        equipamentos_selecionados: itensFormatados,
-        total_equipamentos: carrinhoCotacao.size,
-        observacoes: mensagem || 'Nenhuma observação adicional.'
-      };
-
-      btn.disabled = true;
-      btn.innerHTML = `<span>Enviando solicitação...</span>`;
-      feedback.style.display = 'none';
-
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const resData = await response.json();
-
-        if (resData.success) {
-          const dadosContatoStr = `${nome} | ${empresa || 'Sem Empresa'} | CNPJ: ${cnpj || 'Não informado'} | Tel: ${telefone} | E-mail: ${email}`;
-         sendTrackingEvent('Cotação Enviada', itensFormatados.replace(/\n/g, ' // '));
-
-
-          feedback.className = 'quote-feedback success';
-          feedback.innerHTML = '<strong>✓ Muito obrigado! Recebemos sua solicitação.</strong><br>Nosso time analisará as especificações e retornará o contato o mais breve possível.';
-          feedback.style.display = 'block';
-
-          limparTodoCarrinho();
-          document.getElementById('formCotacaoWeb3').reset();
-
-          setTimeout(() => location.reload(), 3500);
-        } else {
-          throw new Error(resData.message || 'Falha no envio.');
-        }
-      } catch (err) {
-        feedback.className = 'quote-feedback error';
-        feedback.innerText = 'Ops! Não foi possível enviar no momento. Por favor, tente novamente ou entre em contato pelo WhatsApp.';
-        feedback.style.display = 'block';
-        btn.disabled = false;
-        btn.innerHTML = `<span>Enviar Solicitação de Cotação</span>`;
-      }
-    }
-
-    function openExportModal() {
-      const container = document.getElementById('exportCategoriesList');
-      container.innerHTML = '';
-      categorias.forEach(cat => {
-        const item = document.createElement('label');
-        item.className = 'export-category-item';
-        item.innerHTML = `
-          <input type="checkbox" value="${cat.id}" checked>
-          ${getCategorySvg(cat.icon || cat.id, 'icon-svg-sm')}
-          <span>${cat.title}</span>
-        `;
-        container.appendChild(item);
-      });
-      document.getElementById('exportModal').classList.add('active');
-    }
-
-    function closeExportModal() {
-      document.getElementById('exportModal').classList.remove('active');
-    }
-
-    function toggleAllExportCheckboxes(state) {
-      document.querySelectorAll('#exportCategoriesList input[type="checkbox"]').forEach(chk => {
-        chk.checked = state;
-      });
-    }
-
-    function executePrint() {
-      const checkboxes = document.querySelectorAll('#exportCategoriesList input[type="checkbox"]');
-      const selectedCatIds = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
-
-      if (selectedCatIds.length === 0) {
-        alert('Selecione ao menos uma categoria.');
-        return;
-      }
-      
-      selectedCatIds.forEach(cat => catalogosExportados.add(cat));
-
-      const allSections = document.querySelectorAll('.catalog-section');
-
-      allSections.forEach(sec => {
-        if (!selectedCatIds.includes(sec.dataset.catId)) {
-          sec.style.setProperty('display', 'none', 'important');
-        } else {
-          sec.style.removeProperty('display');
-        }
-      });
-
-      closeExportModal();
-
-      setTimeout(() => {
-        window.print();
-        allSections.forEach(sec => sec.style.removeProperty('display'));
-      }, 350);
-    }
-
-    function changeCardSlide(e, btn, step) {
-      e.stopPropagation();
-      const container = btn.closest('.thumb-slider-container');
-      const images = JSON.parse(container.dataset.images);
-      let idx = parseInt(container.dataset.index) + step;
-      if (idx < 0) idx = images.length - 1;
-      if (idx >= images.length) idx = 0;
-      container.dataset.index = idx;
-      container.querySelector('img').src = images[idx];
-      const dots = container.querySelectorAll('.dot');
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
-    }
-
-    function openProductModal(prod) {
-      currentSelectedProductForModal = prod;
-      modalImages = prod.imagens || [];
-      modalCurrentIdx = 0;
-
-      const nomeCategoria = getNomeCategoria(prod.categoria);
-
-      produtosVisualizados.add(`${prod.marca} ${prod.nome}`);
-
-      document.getElementById('modalBrand').textContent = prod.marca;
-      document.getElementById('modalTitle').textContent = prod.nome;
-
-      const modalLogoImg = document.getElementById('modalBrandLogo');
-      if (prod.logoMarca) {
-        modalLogoImg.src = prod.logoMarca;
-        modalLogoImg.style.display = 'inline-block';
-      } else {
-        modalLogoImg.style.display = 'none';
-        modalLogoImg.src = '';
-      }
-
-      const specsList = document.getElementById('modalSpecsList');
-      specsList.innerHTML = '';
-      if (prod.specs) {
-        for (const [k, v] of Object.entries(prod.specs)) {
-          const li = document.createElement('li');
-          li.innerHTML = `<span>${k}:</span> <strong>${v}</strong>`;
-          specsList.appendChild(li);
-        }
-      }
-
-      renderQuoteModalState();
-      renderModalGallery();
-      document.getElementById('productModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      // Agora envia explícito: [Nome da Categoria] Fabricante - Modelo
-      sendTrackingEvent('Visualizou Detalhes do Produto', `[${nomeCategoria}] ${prod.marca} - ${prod.nome}`);
-    }
-
-    function renderModalGallery() {
-      const gallery = document.getElementById('modalGallery');
-      if (modalImages.length === 0) {
-        gallery.innerHTML = `<span style="color:var(--text-muted); font-weight:700;">[Sem Fotos]</span>`;
-        return;
-      }
-      if (modalImages.length === 1) {
-        gallery.innerHTML = `<img src="${modalImages[0]}" alt="Zoom">`;
-      } else {
-        gallery.innerHTML = `
-          <button class="carousel-btn prev" style="width:40px; height:40px; font-size:16px;" onclick="changeModalSlide(-1)">◀</button>
-          <img src="${modalImages[modalCurrentIdx]}" alt="Zoom">
-          <button class="carousel-btn next" style="width:40px; height:40px; font-size:16px;" onclick="changeModalSlide(1)">▶</button>
+        mediaHtml = `
+          <button class="carousel-btn prev" onclick="changeCardSlide(event, this, -1)">◀</button>
+          <img src="${prod.imagens[0]}" alt="${prod.nome}">
+          <button class="carousel-btn next" onclick="changeCardSlide(event, this, 1)">▶</button>
           <div class="carousel-dots">
-            ${modalImages.map((_, i) => `<span class="dot ${i === modalCurrentIdx ? 'active' : ''}"></span>`).join('')}
+            ${prod.imagens.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
           </div>
         `;
       }
+
+      let specsHtml = '';
+      if (prod.specs) {
+        const entries = Object.entries(prod.specs).slice(0, 2);
+        specsHtml = entries.map(([k, v]) => `<div class="spec-row"><span>${k}</span><strong>${v}</strong></div>`).join('');
+      }
+
+      const logoMarcaHtml = prod.logoMarca ? `<img src="${prod.logoMarca}" class="brand-inline-logo" alt="${prod.marca}">` : '';
+
+      card.innerHTML = `
+        <div class="thumb-slider-container" data-index="0" data-images='${JSON.stringify(prod.imagens || [])}'>
+          ${renderDestaqueBadge(prod.destaque)}
+          ${mediaHtml}
+        </div>
+        <div class="brand-header-row">
+          <span class="brand-sub">${prod.marca}</span>
+          ${logoMarcaHtml}
+        </div>
+        <div class="prod-name">${prod.nome}</div>
+        <div class="specs-list">${specsHtml}</div>
+
+        <div class="card-actions-bar" onclick="event.stopPropagation()">
+          <button type="button" class="btn-card-view-eye" title="Visualizar Detalhes" onclick="openProductModalDirect('${prod.id}')">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+          <button type="button" class="btn-card-cart-toggle ${isSelectedInCart ? 'active' : ''}" onclick="toggleProdutoCarrinho('${prod.id}')">
+            ${isSelectedInCart ? '✓ Na Cotação' : '+ Cotar'}
+          </button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  });
+
+  if (firstRenderedCatId) setActiveCategoryNav(firstRenderedCatId);
+  initNavScrollspy();
+}
+
+function verificarDicaFlutuante() {
+  const hintEl = document.getElementById('floatingQuoteHint');
+  if (!hintEl) return;
+  const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  if (scrollPos > 180 && carrinhoCotacao.size === 0) {
+    hintEl.classList.add('active');
+  } else {
+    hintEl.classList.remove('active');
+  }
+}
+
+/* CARRINHO & TELEMETRIA */
+function toggleProdutoCarrinho(prodId, forceQty = null) {
+  const prod = produtos.find(p => p.id === prodId);
+  if (!prod) return;
+  const nomeCategoria = getNomeCategoria(prod.categoria);
+
+  if (carrinhoCotacao.has(prodId) && forceQty === null) {
+    carrinhoCotacao.delete(prodId);
+    sendTrackingEvent('Removeu Produto da Proposta', `[${nomeCategoria}] ${prod.marca} - ${prod.nome}`);
+  } else {
+    const itemExistente = carrinhoCotacao.get(prodId);
+    const currentQty = itemExistente?.qtd || 1;
+    const newQty = forceQty !== null ? Math.max(1, forceQty) : currentQty;
+    const ram = itemExistente?.ram || '8GB';
+    const ssd = itemExistente?.ssd || '256GB';
+
+    carrinhoCotacao.set(prodId, {
+      id: prod.id,
+      nome: prod.nome,
+      marca: prod.marca,
+      categoria: prod.categoria,
+      imagem: prod.imagens?.[0] || '',
+      qtd: newQty,
+      ram: ram,
+      ssd: ssd
+    });
+
+    historicoCotadosNaSessao.add(`${prod.marca} - ${prod.nome}`);
+    sendTrackingEvent('Adicionou à Proposta', `[${nomeCategoria}] ${prod.marca} - ${prod.nome} (${newQty} un)`);
+  }
+
+  atualizarBarraFlutuante();
+  renderCatalog();
+  renderQuoteModalState();
+}
+
+function alterarQtdCarrinho(prodId, delta) {
+  if (!carrinhoCotacao.has(prodId)) return;
+  const item = carrinhoCotacao.get(prodId);
+  item.qtd = Math.max(1, item.qtd + delta);
+  carrinhoCotacao.set(prodId, item);
+  atualizarBarraFlutuante();
+  renderQuoteModalState();
+}
+
+function definirQtdDigitadaCarrinho(prodId, val) {
+  if (!carrinhoCotacao.has(prodId)) return;
+  let qtd = parseInt(val, 10);
+  if (isNaN(qtd) || qtd < 1) qtd = 1;
+  const item = carrinhoCotacao.get(prodId);
+  item.qtd = qtd;
+  carrinhoCotacao.set(prodId, item);
+  atualizarBarraFlutuante();
+  renderQuoteModalState();
+}
+
+function definirOpcaoNotebook(prodId, tipo, val) {
+  if (!carrinhoCotacao.has(prodId)) return;
+  const item = carrinhoCotacao.get(prodId);
+  if (tipo === 'ram') item.ram = val;
+  if (tipo === 'ssd') item.ssd = val;
+  carrinhoCotacao.set(prodId, item);
+  renderQuoteModalState();
+}
+
+function limparTodoCarrinho() {
+  carrinhoCotacao.clear();
+  atualizarBarraFlutuante();
+  renderCatalog();
+  renderQuoteModalState();
+}
+
+function atualizarBarraFlutuante() {
+  const floatingBar = document.getElementById('floatingQuoteBar');
+  const counterEl = document.getElementById('floatingQuoteCounter');
+  const countTextEl = document.getElementById('floatingQuoteCountText');
+  const count = carrinhoCotacao.size;
+
+  if (counterEl) counterEl.textContent = count;
+  if (countTextEl) {
+    const isMobile = window.innerWidth <= 600;
+    countTextEl.textContent = isMobile ? `${count} item(ns) selec.` : `${count} equipamento(s) selecionado(s)`;
+  }
+
+  if (count > 0) {
+    floatingBar.classList.add('active');
+  } else {
+    floatingBar.classList.remove('active');
+  }
+  verificarDicaFlutuante();
+}
+
+function abrirModalSelecaoCotacao() {
+  const modal = document.getElementById('quoteSelectionModal');
+  document.getElementById('quoteModalSearchInput').value = '';
+  document.getElementById('btnQuoteClearSearch').style.display = 'none';
+
+  renderQuoteModalAccordion();
+  renderQuoteModalState();
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  sendTrackingEvent('Abriu Seleção de Proposta', `${carrinhoCotacao.size} modelos no carrinho`);
+}
+
+function fecharModalSelecaoCotacao() {
+  document.getElementById('quoteSelectionModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function handleQuoteModalSearch() {
+  const query = document.getElementById('quoteModalSearchInput').value.trim();
+  document.getElementById('btnQuoteClearSearch').style.display = query.length > 0 ? 'inline-block' : 'none';
+  renderQuoteModalAccordion(query);
+}
+
+function clearQuoteModalSearch() {
+  document.getElementById('quoteModalSearchInput').value = '';
+  document.getElementById('btnQuoteClearSearch').style.display = 'none';
+  renderQuoteModalAccordion('');
+}
+
+function toggleQuoteCatAccordion(blockEl) {
+  blockEl.classList.toggle('expanded');
+}
+
+/* [MUDANÇA 6] Agora filtra categorias inativas (!cat.ativa) no início do forEach,
+   antes de montar a lista de produtos — igual ao comportamento do catálogo principal. */
+function renderQuoteModalAccordion(searchQuery = '') {
+  const container = document.getElementById('quoteAccordionContainer');
+  container.innerHTML = '';
+  const filter = searchQuery.toLowerCase().trim();
+
+  categorias.forEach(cat => {
+    if (!cat.ativa) return;
+
+    let prodsCat = produtos.filter(p => p.categoria === cat.id && p.ativo);
+
+    if (prodsCat.length === 0) return;
+
+    if (filter) {
+      prodsCat = prodsCat.filter(p =>
+        p.nome.toLowerCase().includes(filter) || (p.marca && p.marca.toLowerCase().includes(filter))
+      );
+    }
+    if (prodsCat.length === 0 && filter) return;
+
+    const isNotebookCat = isNotebookCategory(cat.id);
+    const block = document.createElement('div');
+    block.className = `quote-cat-block ${filter ? 'expanded' : ''}`;
+
+    const header = document.createElement('div');
+    header.className = 'quote-cat-header';
+    header.onclick = () => toggleQuoteCatAccordion(block);
+
+    header.innerHTML = `
+      <div class="quote-cat-title-side">
+        ${getCategorySvg(cat.icon || cat.id, 'icon-svg-sm')}
+        <span>${cat.title}</span>
+        <span class="quote-cat-count-badge">${prodsCat.length}</span>
+      </div>
+      <span class="quote-cat-arrow">▶</span>
+    `;
+    block.appendChild(header);
+
+    const list = document.createElement('div');
+    list.className = 'quote-cat-items-list';
+
+    prodsCat.forEach(prod => {
+      const isSelected = carrinhoCotacao.has(prod.id);
+      const currentItem = carrinhoCotacao.get(prod.id);
+      const currentQty = currentItem ? currentItem.qtd : 1;
+      const currentRam = currentItem?.ram || '8GB';
+      const currentSsd = currentItem?.ssd || '256GB';
+
+      const row = document.createElement('div');
+      row.className = 'quote-item-row';
+      row.dataset.prodId = prod.id;
+
+      const thumbSrc = prod.imagens && prod.imagens.length > 0 ? prod.imagens[0] : 'https://placehold.co/40x40?text=Foto';
+
+      let notebookOptionsHtml = '';
+      if (isNotebookCat) {
+        notebookOptionsHtml = `
+          <div class="quote-notebook-options" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
+            <div class="quote-opt-select-group">
+              <label>RAM:</label>
+              <select class="quote-opt-select quote-ram-select" onchange="definirOpcaoNotebook('${prod.id}', 'ram', this.value)">
+                <option value="8GB" ${currentRam === '8GB' ? 'selected' : ''}>8GB</option>
+                <option value="16GB" ${currentRam === '16GB' ? 'selected' : ''}>16GB</option>
+                <option value="32GB" ${currentRam === '32GB' ? 'selected' : ''}>32GB</option>
+              </select>
+            </div>
+            <div class="quote-opt-select-group">
+              <label>SSD:</label>
+              <select class="quote-opt-select quote-ssd-select" onchange="definirOpcaoNotebook('${prod.id}', 'ssd', this.value)">
+                <option value="256GB" ${currentSsd === '256GB' ? 'selected' : ''}>256GB</option>
+                <option value="512GB" ${currentSsd === '512GB' ? 'selected' : ''}>512GB</option>
+                <option value="1TB" ${currentSsd === '1TB' ? 'selected' : ''}>1TB</option>
+              </select>
+            </div>
+          </div>
+        `;
+      }
+
+      row.innerHTML = `
+        <label class="quote-item-label-side" onclick="event.stopPropagation()">
+          <input type="checkbox" class="quote-item-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleProdutoCarrinho('${prod.id}')">
+          <img src="${thumbSrc}" class="quote-item-thumb" alt="${prod.nome}">
+          <div>
+            <span class="quote-item-brand-tag">${prod.marca}</span>
+            <span class="quote-item-name">${prod.nome}</span>
+          </div>
+        </label>
+
+        <div class="quote-item-right-controls">
+          ${notebookOptionsHtml}
+          <div class="quote-item-qty-control" style="display: ${isSelected ? 'flex' : 'none'};" onclick="event.stopPropagation()">
+            <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', -1)">-</button>
+            <input type="number" min="1" class="quote-qty-input" value="${currentQty}" onchange="definirQtdDigitadaCarrinho('${prod.id}', this.value)">
+            <button type="button" class="quote-qty-btn" onclick="alterarQtdCarrinho('${prod.id}', 1)">+</button>
+          </div>
+        </div>
+      `;
+      list.appendChild(row);
+    });
+
+    block.appendChild(list);
+    container.appendChild(block);
+  });
+}
+
+function renderQuoteModalState() {
+  const chipsContainer = document.getElementById('quoteChipsContainer');
+  const countEl = document.getElementById('quoteSummaryCount');
+  chipsContainer.innerHTML = '';
+  countEl.textContent = carrinhoCotacao.size;
+
+  if (carrinhoCotacao.size === 0) {
+    chipsContainer.innerHTML = `<span style="font-size:0.75rem; color:var(--text-muted); font-style:italic;">Nenhum item selecionado. Abra as categorias abaixo para marcar.</span>`;
+  } else {
+    carrinhoCotacao.forEach(item => {
+      const chip = document.createElement('div');
+      chip.className = 'quote-chip';
+      const isNotebook = isNotebookCategory(item.categoria);
+      const specsBadge = isNotebook ? `<span class="quote-chip-specs">${item.ram || '8GB'} | ${item.ssd || '256GB'}</span>` : '';
+
+      chip.innerHTML = `
+        <span>${item.marca} ${item.nome}</span>
+        ${specsBadge}
+        <span class="quote-chip-qty">${item.qtd} un</span>
+        <button type="button" class="quote-chip-remove" onclick="toggleProdutoCarrinho('${item.id}')" title="Remover item">✕</button>
+      `;
+      chipsContainer.appendChild(chip);
+    });
+  }
+
+  document.querySelectorAll('.quote-item-row').forEach(row => {
+    const prodId = row.dataset.prodId;
+    const checkbox = row.querySelector('.quote-item-checkbox');
+    const qtyControl = row.querySelector('.quote-item-qty-control');
+    const qtyInput = row.querySelector('.quote-qty-input');
+    const notebookOptions = row.querySelector('.quote-notebook-options');
+    const ramSelect = row.querySelector('.quote-ram-select');
+    const ssdSelect = row.querySelector('.quote-ssd-select');
+
+    if (prodId && carrinhoCotacao.has(prodId)) {
+      const item = carrinhoCotacao.get(prodId);
+      if (checkbox) checkbox.checked = true;
+      if (qtyControl) qtyControl.style.display = 'flex';
+      if (qtyInput) qtyInput.value = item.qtd;
+      if (notebookOptions) {
+        notebookOptions.style.display = 'flex';
+        if (ramSelect) ramSelect.value = item.ram || '8GB';
+        if (ssdSelect) ssdSelect.value = item.ssd || '256GB';
+      }
+    } else {
+      if (checkbox) checkbox.checked = false;
+      if (qtyControl) qtyControl.style.display = 'none';
+      if (notebookOptions) notebookOptions.style.display = 'none';
+    }
+  });
+
+  if (currentSelectedProductForModal) {
+    const btnZoom = document.getElementById('btnZoomModalAddToCart');
+    if (btnZoom) {
+      const isSelected = carrinhoCotacao.has(currentSelectedProductForModal.id);
+      btnZoom.textContent = isSelected ? '✓ Na Cotação' : '+ Cotar';
+      btnZoom.className = `btn-zoom-cart-toggle ${isSelected ? 'active' : ''}`;
+    }
+  }
+}
+
+function avancarParaDadosLead() {
+  if (carrinhoCotacao.size === 0) {
+    alert('Por favor, selecione ao menos 1 equipamento antes de prosseguir.');
+    return;
+  }
+  fecharModalSelecaoCotacao();
+  document.getElementById('quoteFeedbackBox').style.display = 'none';
+  document.getElementById('leadContactModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharSubmodalLead() {
+  document.getElementById('leadContactModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function voltarParaSelecaoModal() {
+  fecharSubmodalLead();
+  abrirModalSelecaoCotacao();
+}
+
+function openProductModalDirect(prodId) {
+  const prod = produtos.find(p => p.id === prodId);
+  if (prod) openProductModal(prod);
+}
+
+function toggleCartFromModal() {
+  if (!currentSelectedProductForModal) return;
+  const prodId = currentSelectedProductForModal.id;
+  const isAdding = !carrinhoCotacao.has(prodId);
+
+  toggleProdutoCarrinho(prodId);
+
+  if (isAdding) {
+    const btnZoom = document.getElementById('btnZoomModalAddToCart');
+    if (btnZoom) {
+      btnZoom.textContent = '✓ Adicionado!';
+      btnZoom.style.backgroundColor = 'var(--primary)';
+      btnZoom.style.color = '#FFFFFF';
+    }
+    setTimeout(() => closeModal(), 400);
+  }
+}
+
+/* ==========================================================================
+   CNPJ / RAZÃO SOCIAL
+   ========================================================================== */
+let cnpjLookupRequestId = 0;
+let cnpjLookupPromise = Promise.resolve();
+let cnpjUltimoConsultado = '';
+
+// [MUDANÇA 1] Listener único de "input" no campo Empresa, registrado uma única
+// vez no carregamento do script (fora de qualquer função que roda em loop/submit).
+// Isso remove o dataset.cnpjAutofill sempre que o usuário digitar manualmente,
+// sinalizando que o nome não deve mais ser sobrescrito pela consulta automática.
+const quoteEmpresaInput = document.getElementById('quoteEmpresa');
+if (quoteEmpresaInput) {
+  quoteEmpresaInput.addEventListener('input', function () {
+    delete this.dataset.cnpjAutofill;
+  });
+}
+
+function obterDigitosCNPJ(valor) {
+  return String(valor || '').replace(/\D/g, '');
+}
+
+function validarCNPJ(valor) {
+  const cnpj = obterDigitosCNPJ(valor);
+
+  if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
+
+  const calcularDigito = (base, pesos) => {
+    const soma = base
+      .split('')
+      .reduce((total, numero, indice) => total + Number(numero) * pesos[indice], 0);
+    const resto = soma % 11;
+    return resto < 2 ? 0 : 11 - resto;
+  };
+
+  const primeiroDigito = calcularDigito(
+    cnpj.slice(0, 12),
+    [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+  );
+
+  const segundoDigito = calcularDigito(
+    cnpj.slice(0, 12) + primeiroDigito,
+    [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+  );
+
+  return cnpj.endsWith(`${primeiroDigito}${segundoDigito}`);
+}
+
+function formatarCampoCNPJ(input) {
+  const digitos = obterDigitosCNPJ(input.value).slice(0, 14);
+  let formatado = digitos.slice(0, 2);
+
+  if (digitos.length > 2) formatado += '.' + digitos.slice(2, 5);
+  if (digitos.length > 5) formatado += '.' + digitos.slice(5, 8);
+  if (digitos.length > 8) formatado += '/' + digitos.slice(8, 12);
+  if (digitos.length > 12) formatado += '-' + digitos.slice(12, 14);
+
+  input.value = formatado;
+  input.setCustomValidity('');
+
+  // [MUDANÇA 3] Mantido o desbloqueio do campo + reset do autofill quando o
+  // CNPJ é alterado, pois um novo CNPJ invalida a razão social preenchida antes.
+  const empresaInput = document.getElementById('quoteEmpresa');
+  empresaInput.readOnly = false;
+
+  if (empresaInput.dataset.cnpjAutofill) {
+    empresaInput.value = '';
+    delete empresaInput.dataset.cnpjAutofill;
+  }
+
+  cnpjLookupRequestId++;
+  cnpjUltimoConsultado = '';
+
+  const status = document.getElementById('cnpjStatus');
+  status.textContent = 'Informe o CNPJ para preencher automaticamente o nome da empresa.';
+  status.style.color = 'var(--text-muted)';
+}
+
+function aoSairDoCNPJ() {
+  cnpjLookupPromise = consultarRazaoSocialCNPJ();
+}
+
+// [MUDANÇA 8] Helper de fetch com timeout, reutilizável em qualquer chamada externa.
+async function fetchComTimeout(url, options = {}, timeoutMs = 10000) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+async function consultarRazaoSocialCNPJ() {
+  const input = document.getElementById('quoteCNPJ');
+  const empresaInput = document.getElementById('quoteEmpresa');
+  const status = document.getElementById('cnpjStatus');
+  const cnpj = obterDigitosCNPJ(input.value);
+
+  input.setCustomValidity('');
+
+  if (!cnpj) {
+    status.textContent = 'Informe o CNPJ para preencher automaticamente o nome da empresa.';
+    status.style.color = 'var(--text-muted)';
+    return;
+  }
+
+  if (!validarCNPJ(cnpj)) {
+    input.setCustomValidity('Digite um CNPJ válido com 14 números.');
+    input.reportValidity();
+    status.textContent = 'CNPJ inválido. Confira os números digitados.';
+    status.style.color = 'var(--danger)';
+    return;
+  }
+
+  const requestId = ++cnpjLookupRequestId;
+  cnpjUltimoConsultado = cnpj;
+  empresaInput.readOnly = true;
+
+  status.textContent = 'Consultando razão social do CNPJ...';
+  status.style.color = 'var(--primary)';
+
+  try {
+    // [MUDANÇA 8] Fetch agora usa timeout de 10s para não travar indefinidamente.
+    const response = await fetchComTimeout(
+      `https://brasilapi.com.br/api/cnpj/v1/${cnpj}`,
+      { headers: { Accept: 'application/json' } },
+      10000
+    );
+
+    if (!response.ok) {
+      throw new Error('Não foi possível localizar esse CNPJ.');
     }
 
-    function changeModalSlide(step) {
-      modalCurrentIdx += step;
-      if (modalCurrentIdx < 0) modalCurrentIdx = modalImages.length - 1;
-      if (modalCurrentIdx >= modalImages.length) modalCurrentIdx = 0;
-      renderModalGallery();
+    const dados = await response.json();
+
+    if (
+      requestId !== cnpjLookupRequestId ||
+      obterDigitosCNPJ(input.value) !== cnpj
+    ) {
+      return;
     }
 
-    function closeModal() {
-      document.getElementById('productModal').classList.remove('active');
-      document.body.style.overflow = 'auto';
+    if (!dados.razao_social) {
+      throw new Error('A consulta não retornou a razão social.');
     }
 
-    function closeModalOnOutsideClick(e) {
-      if (e.target.id === 'productModal') closeModal();
+    // [MUDANÇA 2] Só sobrescreve o campo Empresa se ele estiver vazio OU se o
+    // valor atual já veio de um autofill anterior (preserva nome digitado à mão).
+    if (!empresaInput.value.trim() || empresaInput.dataset.cnpjAutofill) {
+      empresaInput.value = dados.razao_social;
+      empresaInput.dataset.cnpjAutofill = cnpj;
+    } else {
+      delete empresaInput.dataset.cnpjAutofill;
     }
 
-    window.addEventListener('DOMContentLoaded', loadCatalog);
-    window.addEventListener('resize', atualizarBarraFlutuante);
-    window.addEventListener('scroll', verificarDicaFlutuante, { passive: true });
+    status.textContent = 'Razão social preenchida automaticamente.';
+    status.style.color = 'var(--success)';
+  } catch (erro) {
+    if (requestId === cnpjLookupRequestId) {
+      status.textContent = 'Não foi possível consultar o CNPJ. Você pode preencher o nome da empresa manualmente.';
+      status.style.color = 'var(--danger)';
+    }
+  } finally {
+    if (requestId === cnpjLookupRequestId) {
+      empresaInput.readOnly = false;
+    }
+  }
+}
+
+async function enviarCotacaoWeb3Forms(e) {
+  e.preventDefault();
+
+  const cnpjInput = document.getElementById('quoteCNPJ');
+  const cnpjDigitos = obterDigitosCNPJ(cnpjInput.value);
+  const btn = document.getElementById('btnSubmitCotacao');
+  const feedback = document.getElementById('quoteFeedbackBox');
+
+  cnpjInput.setCustomValidity('');
+
+  if (!cnpjDigitos) {
+    cnpjInput.setCustomValidity('Preencha o CNPJ.');
+    cnpjInput.reportValidity();
+    return;
+  }
+
+  if (!validarCNPJ(cnpjDigitos)) {
+    cnpjInput.setCustomValidity('Informe um CNPJ válido.');
+    cnpjInput.reportValidity();
+    return;
+  }
+
+  if (carrinhoCotacao.size === 0) {
+    alert('Nenhum equipamento selecionado.');
+    return;
+  }
+
+  if (btn.disabled) return;
+
+  btn.disabled = true;
+  btn.innerHTML = '<span>Enviando solicitação...</span>';
+  feedback.style.display = 'none';
+
+  if (cnpjUltimoConsultado !== cnpjDigitos) {
+    cnpjLookupPromise = consultarRazaoSocialCNPJ();
+  }
+
+  try {
+    await cnpjLookupPromise;
+  } catch (erro) {
+    console.warn('Consulta de CNPJ:', erro);
+  }
+
+  const nome = document.getElementById('quoteNome').value.trim();
+  const empresa = document.getElementById('quoteEmpresa').value.trim();
+  const cnpj = document.getElementById('quoteCNPJ').value.trim();
+  const email = document.getElementById('quoteEmail').value.trim();
+  const telefone = document.getElementById('quoteTelefone').value.trim();
+  const mensagem = document.getElementById('quoteMensagem').value.trim();
+
+  // [MUDANÇA 1] REMOVIDO o addEventListener('input', ...) que estava duplicado
+  // aqui dentro. O listener agora existe uma única vez, declarado no topo do
+  // bloco de CNPJ (quoteEmpresaInput.addEventListener acima).
+
+  let itensFormatados = '';
+  let index = 1;
+  carrinhoCotacao.forEach(item => {
+    const isNotebook = isNotebookCategory(item.categoria);
+    const opcionaisText = isNotebook ? ` (RAM: ${item.ram || '8GB'}, SSD: ${item.ssd || '256GB'})` : '';
+    itensFormatados += `${index}. [${item.marca.toUpperCase()}] ${item.nome}${opcionaisText} — Qtd Estimada: ${item.qtd} unidade(s)\n`;
+    index++;
+  });
+
+  // [MUDANÇA 7] Diferencia quantidade de modelos distintos vs. total de unidades.
+  const totalModelos = carrinhoCotacao.size;
+  const totalUnidades = [...carrinhoCotacao.values()]
+    .reduce((total, item) => total + Math.max(1, Number(item.qtd) || 1), 0);
+
+  const payload = {
+    access_key: WEB3FORMS_KEY,
+    subject: `Nova Cotação Infinity Corp - ${empresa ? empresa + ' (' + nome + ')' : nome} (${totalModelos} modelos)`,
+    from_name: 'Infinity Corp - Portfólio Comercial',
+    nome_contato: nome,
+    empresa: empresa || 'Não informada',
+    cnpj: cnpj || 'Não informado',
+    email: email,
+    telefone: telefone,
+    equipamentos_selecionados: itensFormatados,
+    total_modelos: totalModelos,
+    total_unidades: totalUnidades,
+    observacoes: mensagem || 'Nenhuma observação adicional.'
+  };
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const resData = await response.json();
+
+    if (resData.success) {
+      sendTrackingEvent('Cotação Enviada', itensFormatados.replace(/\n/g, ' // '));
+
+      feedback.className = 'quote-feedback success';
+      feedback.innerHTML = '<strong>✓ Muito obrigado! Recebemos sua solicitação.</strong><br>Nosso time analisará as especificações e retornará o contato o mais breve possível.';
+      feedback.style.display = 'block';
+
+      limparTodoCarrinho();
+      document.getElementById('formCotacaoWeb3').reset();
+
+      setTimeout(() => location.reload(), 3500);
+    } else {
+      throw new Error(resData.message || 'Falha no envio.');
+    }
+  } catch (err) {
+    feedback.className = 'quote-feedback error';
+    feedback.innerText = 'Ops! Não foi possível enviar no momento. Por favor, tente novamente ou entre em contato pelo WhatsApp.';
+    feedback.style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = `<span>Enviar Solicitação de Cotação</span>`;
+  }
+}
+
+function openExportModal() {
+  const container = document.getElementById('exportCategoriesList');
+  container.innerHTML = '';
+  categorias.forEach(cat => {
+    const item = document.createElement('label');
+    item.className = 'export-category-item';
+    item.innerHTML = `
+      <input type="checkbox" value="${cat.id}" checked>
+      ${getCategorySvg(cat.icon || cat.id, 'icon-svg-sm')}
+      <span>${cat.title}</span>
+    `;
+    container.appendChild(item);
+  });
+  document.getElementById('exportModal').classList.add('active');
+}
+
+function closeExportModal() {
+  document.getElementById('exportModal').classList.remove('active');
+}
+
+function toggleAllExportCheckboxes(state) {
+  document.querySelectorAll('#exportCategoriesList input[type="checkbox"]').forEach(chk => {
+    chk.checked = state;
+  });
+}
+
+function executePrint() {
+  const checkboxes = document.querySelectorAll('#exportCategoriesList input[type="checkbox"]');
+  const selectedCatIds = Array.from(checkboxes).filter(c => c.checked).map(c => c.value);
+
+  if (selectedCatIds.length === 0) {
+    alert('Selecione ao menos uma categoria.');
+    return;
+  }
+
+  selectedCatIds.forEach(cat => catalogosExportados.add(cat));
+
+  const allSections = document.querySelectorAll('.catalog-section');
+
+  allSections.forEach(sec => {
+    if (!selectedCatIds.includes(sec.dataset.catId)) {
+      sec.style.setProperty('display', 'none', 'important');
+    } else {
+      sec.style.removeProperty('display');
+    }
+  });
+
+  closeExportModal();
+
+  setTimeout(() => {
+    window.print();
+    allSections.forEach(sec => sec.style.removeProperty('display'));
+  }, 350);
+}
+
+function changeCardSlide(e, btn, step) {
+  e.stopPropagation();
+  const container = btn.closest('.thumb-slider-container');
+  const images = JSON.parse(container.dataset.images);
+  let idx = parseInt(container.dataset.index) + step;
+  if (idx < 0) idx = images.length - 1;
+  if (idx >= images.length) idx = 0;
+  container.dataset.index = idx;
+  container.querySelector('img').src = images[idx];
+  const dots = container.querySelectorAll('.dot');
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+}
+
+function openProductModal(prod) {
+  currentSelectedProductForModal = prod;
+  modalImages = prod.imagens || [];
+  modalCurrentIdx = 0;
+
+  const nomeCategoria = getNomeCategoria(prod.categoria);
+
+  produtosVisualizados.add(`${prod.marca} ${prod.nome}`);
+
+  document.getElementById('modalBrand').textContent = prod.marca;
+  document.getElementById('modalTitle').textContent = prod.nome;
+
+  const modalLogoImg = document.getElementById('modalBrandLogo');
+  if (prod.logoMarca) {
+    modalLogoImg.src = prod.logoMarca;
+    modalLogoImg.style.display = 'inline-block';
+  } else {
+    modalLogoImg.style.display = 'none';
+    modalLogoImg.src = '';
+  }
+
+  const specsList = document.getElementById('modalSpecsList');
+  specsList.innerHTML = '';
+  if (prod.specs) {
+    for (const [k, v] of Object.entries(prod.specs)) {
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${k}:</span> <strong>${v}</strong>`;
+      specsList.appendChild(li);
+    }
+  }
+
+  renderQuoteModalState();
+  renderModalGallery();
+  document.getElementById('productModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  sendTrackingEvent('Visualizou Detalhes do Produto', `[${nomeCategoria}] ${prod.marca} - ${prod.nome}`);
+}
+
+function renderModalGallery() {
+  const gallery = document.getElementById('modalGallery');
+  if (modalImages.length === 0) {
+    gallery.innerHTML = `<span style="color:var(--text-muted); font-weight:700;">[Sem Fotos]</span>`;
+    return;
+  }
+  if (modalImages.length === 1) {
+    gallery.innerHTML = `<img src="${modalImages[0]}" alt="Zoom">`;
+  } else {
+    gallery.innerHTML = `
+      <button class="carousel-btn prev" style="width:40px; height:40px; font-size:16px;" onclick="changeModalSlide(-1)">◀</button>
+      <img src="${modalImages[modalCurrentIdx]}" alt="Zoom">
+      <button class="carousel-btn next" style="width:40px; height:40px; font-size:16px;" onclick="changeModalSlide(1)">▶</button>
+      <div class="carousel-dots">
+        ${modalImages.map((_, i) => `<span class="dot ${i === modalCurrentIdx ? 'active' : ''}"></span>`).join('')}
+      </div>
+    `;
+  }
+}
+
+function changeModalSlide(step) {
+  modalCurrentIdx += step;
+  if (modalCurrentIdx < 0) modalCurrentIdx = modalImages.length - 1;
+  if (modalCurrentIdx >= modalImages.length) modalCurrentIdx = 0;
+  renderModalGallery();
+}
+
+function closeModal() {
+  document.getElementById('productModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function closeModalOnOutsideClick(e) {
+  if (e.target.id === 'productModal') closeModal();
+}
+
+window.addEventListener('DOMContentLoaded', loadCatalog);
+window.addEventListener('resize', atualizarBarraFlutuante);
+window.addEventListener('scroll', verificarDicaFlutuante, { passive: true });
+
   </script>
 
 </body>
