@@ -954,6 +954,28 @@
       "logoMarca": "logos/lenovo.png"
     },
     {
+      "id": "prod-1791403201855",
+      "categoria": "desktops",
+      "marca": "Lenovo",
+      "nome": "ThinkCentre M70q",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791403234154_70q-3.jpg",
+        "fotos/1791403235607_70q-2.jpg",
+        "fotos/1791403236815_70q-1.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Ultra 5 / 7 - NPU",
+        "Memória RAM": "16 - 32 - 64 GB DDR5",
+        "Armazenamento": "SSD M.2 NVMe PCIe",
+        "Placa de Vídeo (GPU)": "Intel UHD Graphics integrada",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
+        "Gabinete": "Formato ultracompacto Tiny (chassi de aproximadamente 1L)"
+      },
+      "logoMarca": "logos/lenovo.png"
+    },
+    {
       "id": "prod-1789473814090",
       "categoria": "desktops",
       "marca": "Lenovo",
@@ -972,27 +994,6 @@
         "Placa de Vídeo (GPU)": "Intel UHD Graphics integrada",
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
         "Gabinete": "Formato SFF (Small Form Factor)"
-      },
-      "logoMarca": "logos/lenovo.png"
-    },
-    {
-      "id": "prod-1789473611498",
-      "categoria": "desktops",
-      "marca": "Lenovo",
-      "nome": "ThinkCentre Neo 50s",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789474167617_50s.jpg",
-        "fotos/1789474168657_50s3.jpg",
-        "fotos/1789474169584_50s2.jpg",
-        "fotos/1789474170802_50s1.jpg"
-      ],
-      "specs": {
-        "Processador": "Intel Core  i5 / i7- 14ª Gen",
-        "Memória RAM": "16 - 32 - 64 GB DDR5",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Intel UHD Graphics integrada (710 ou 730)",
-        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
       },
       "logoMarca": "logos/lenovo.png"
     },
@@ -1623,6 +1624,27 @@
         "Acabamento": "Premium"
       },
       "logoMarca": "logos/avell.png"
+    },
+    {
+      "id": "prod-1789473611498",
+      "categoria": "desktops",
+      "marca": "Lenovo",
+      "nome": "ThinkCentre Neo 50s",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789474167617_50s.jpg",
+        "fotos/1789474168657_50s3.jpg",
+        "fotos/1789474169584_50s2.jpg",
+        "fotos/1789474170802_50s1.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core  i5 / i7- 14ª Gen",
+        "Memória RAM": "16 - 32 - 64 GB DDR5",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Intel UHD Graphics integrada (710 ou 730)",
+        "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
+      },
+      "logoMarca": "logos/lenovo.png"
     }
   ],
   "marcas": [
