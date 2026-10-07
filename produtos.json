@@ -1320,6 +1320,29 @@
       "logoMarca": "logos/isd-tech.png"
     },
     {
+      "id": "prod-1791401777508",
+      "categoria": "computer",
+      "marca": "Lenovo",
+      "nome": "Thinkpad E14",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791402191302_e14.jpg",
+        "fotos/1791402193068_e14_3.jpg",
+        "fotos/1791402194089_e14_1.jpg",
+        "fotos/1791402195115_e14_2.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Ultra 5 / 7",
+        "Tela": "14\" - Full HD (1920 x 1080)",
+        "Memória": "16/32 GB DDR5 (5600 MHz)",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Intel Arc Graphics",
+        "Conectividade": "Wi-Fi 6E, Bluetooth 5.3 e RJ-45"
+      },
+      "logoMarca": "logos/lenovo.png"
+    },
+    {
       "id": "prod-1791401218090",
       "categoria": "computer",
       "marca": "Dell",
@@ -1341,30 +1364,6 @@
         "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "logos/dell.png"
-    },
-    {
-      "id": "prod-1789502638984",
-      "categoria": "computer",
-      "marca": "Dell",
-      "nome": "Pro 14",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789502863631_dell14.jpg",
-        "fotos/1789502864709_dell141.jpg",
-        "fotos/1789502865829_dell143.jpg",
-        "fotos/1789502866804_dell142.jpg"
-      ],
-      "specs": {
-        "Processador": "Intel Core /  Ultra 5 / 7",
-        "Tela": "14\" - Full HD+ (1920 x 1200)",
-        "Memória": "8 / 16 / 32 GB DDR5 / LPDDR5x",
-        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
-        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
-        "Sistema": "Windows 11 Pro",
-        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
-      },
-      "logoMarca": "logos/dell.png",
-      "destaque": "novidade"
     },
     {
       "id": "prod-1789559680594",
@@ -1531,6 +1530,30 @@
       "logoMarca": "logos/brother.png"
     },
     {
+      "id": "prod-1789502638984",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Pro 14",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789502863631_dell14.jpg",
+        "fotos/1789502864709_dell141.jpg",
+        "fotos/1789502865829_dell143.jpg",
+        "fotos/1789502866804_dell142.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core /  Ultra 5 / 7",
+        "Tela": "14\" - Full HD+ (1920 x 1200)",
+        "Memória": "8 / 16 / 32 GB DDR5 / LPDDR5x",
+        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
+        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
+        "Sistema": "Windows 11 Pro",
+        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
+      },
+      "logoMarca": "logos/dell.png",
+      "destaque": "novidade"
+    },
+    {
       "id": "prod-1789502850761",
       "categoria": "computer",
       "marca": "Dell",
@@ -1553,6 +1576,29 @@
       },
       "logoMarca": "logos/dell.png",
       "destaque": "novidade"
+    },
+    {
+      "id": "prod-1791402189102",
+      "categoria": "computer",
+      "marca": "Lenovo",
+      "nome": "LOQ",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791402196216_loq.jpg",
+        "fotos/1791402197304_loq2.jpg",
+        "fotos/1791402198351_loq1.jpg",
+        "fotos/1791402199428_loq3.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core i5 / i7",
+        "Tela": "15.6' Full HD (1920x1080), 144 Hz IPS",
+        "Memória": "16/32/64GB DDR5 (5600 MT/s)",
+        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "RTX 4050 / 5050",
+        "Acabamento": "Tampa em metal com abertura de até 180º"
+      },
+      "logoMarca": "logos/lenovo.png"
     }
   ],
   "marcas": [
