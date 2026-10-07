@@ -445,7 +445,7 @@
       "id": "prod-1791394188974",
       "categoria": "print",
       "marca": "HP",
-      "nome": "E57540",
+      "nome": "Multi Color E57540",
       "destaque": "sem-destaque",
       "ativo": true,
       "imagens": [
@@ -469,7 +469,7 @@
       "id": "prod-1789408659803",
       "categoria": "print",
       "marca": "HP",
-      "nome": "X57945",
+      "nome": "Multi Color X57945",
       "ativo": true,
       "imagens": [
         "fotos/1789408684730_579451.jpg",
@@ -484,7 +484,7 @@
         "Conectividade": "USB 3.0, RJ45 10/100/1000"
       },
       "logoMarca": "logos/hp.png",
-      "destaque": "novidade"
+      "destaque": "sem-destaque"
     },
     {
       "id": "xerox-c7020",
