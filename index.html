@@ -1063,6 +1063,26 @@
         </div>
 
         <div class="form-group" style="margin-bottom: 12px;">
+          <label for="quoteCNPJ">CNPJ</label>
+          <input
+            type="text"
+            id="quoteCNPJ"
+            name="cnpj"
+            class="form-control"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="18"
+            placeholder="00.000.000/0000-00"
+            aria-describedby="cnpjStatus"
+            oninput="formatarCampoCNPJ(this)"
+            onblur="aoSairDoCNPJ()"
+          >
+          <small id="cnpjStatus" style="display:block; margin-top:5px; color:var(--text-muted); font-size:0.72rem;">
+            Informe o CNPJ para preencher automaticamente o nome da empresa.
+          </small>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 12px;">
           <label for="quoteEmpresa">Nome da Empresa</label>
           <input type="text" id="quoteEmpresa" name="empresa" class="form-control" placeholder="Digite o nome da sua empresa">
         </div>
@@ -1994,7 +2014,152 @@
     }
 
     async function enviarCotacaoWeb3Forms(e) {
+
+
+    let cnpjLookupRequestId = 0;
+    let cnpjLookupPromise = Promise.resolve();
+
+    function obterDigitosCNPJ(valor) {
+      return String(valor || '').replace(/\D/g, '');
+    }
+
+    function validarCNPJ(valor) {
+      const cnpj = obterDigitosCNPJ(valor);
+
+      if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
+
+      const calcularDigito = (base, pesos) => {
+        const soma = base
+          .split('')
+          .reduce((total, numero, indice) => total + Number(numero) * pesos[indice], 0);
+        const resto = soma % 11;
+        return resto < 2 ? 0 : 11 - resto;
+      };
+
+      const primeiroDigito = calcularDigito(
+        cnpj.slice(0, 12),
+        [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+      );
+
+      const segundoDigito = calcularDigito(
+        cnpj.slice(0, 12) + primeiroDigito,
+        [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+      );
+
+      return cnpj.endsWith(`${primeiroDigito}${segundoDigito}`);
+    }
+
+    function formatarCampoCNPJ(input) {
+      const digitos = obterDigitosCNPJ(input.value).slice(0, 14);
+      let formatado = digitos.slice(0, 2);
+
+      if (digitos.length > 2) formatado += '.' + digitos.slice(2, 5);
+      if (digitos.length > 5) formatado += '.' + digitos.slice(5, 8);
+      if (digitos.length > 8) formatado += '/' + digitos.slice(8, 12);
+      if (digitos.length > 12) formatado += '-' + digitos.slice(12, 14);
+
+      input.value = formatado;
+      input.setCustomValidity('');
+
+      const empresaInput = document.getElementById('quoteEmpresa');
+      if (empresaInput.dataset.cnpjAutofill) {
+        empresaInput.value = '';
+        delete empresaInput.dataset.cnpjAutofill;
+      }
+
+      cnpjLookupRequestId++;
+
+      const status = document.getElementById('cnpjStatus');
+      status.textContent = 'Informe o CNPJ para preencher automaticamente o nome da empresa.';
+      status.style.color = 'var(--text-muted)';
+    }
+
+    function aoSairDoCNPJ() {
+      cnpjLookupPromise = consultarRazaoSocialCNPJ();
+    }
+
+    async function consultarRazaoSocialCNPJ() {
+      const input = document.getElementById('quoteCNPJ');
+      const empresaInput = document.getElementById('quoteEmpresa');
+      const status = document.getElementById('cnpjStatus');
+      const cnpj = obterDigitosCNPJ(input.value);
+
+      input.setCustomValidity('');
+
+      if (!cnpj) {
+        status.textContent = 'Informe o CNPJ para preencher automaticamente o nome da empresa.';
+        status.style.color = 'var(--text-muted)';
+        return;
+      }
+
+      if (!validarCNPJ(cnpj)) {
+        input.setCustomValidity('Digite um CNPJ válido com 14 números.');
+        input.reportValidity();
+        status.textContent = 'CNPJ inválido. Confira os números digitados.';
+        status.style.color = 'var(--danger)';
+        return;
+      }
+
+      const requestId = ++cnpjLookupRequestId;
+      empresaInput.readOnly = true;
+      status.textContent = 'Consultando razão social do CNPJ...';
+      status.style.color = 'var(--primary)';
+
+      try {
+        const response = await fetch(
+          `https://brasilapi.com.br/api/cnpj/v1/${cnpj}`,
+          { headers: { Accept: 'application/json' } }
+        );
+
+        if (!response.ok) {
+          throw new Error('Não foi possível localizar esse CNPJ.');
+        }
+
+        const dados = await response.json();
+
+        if (
+          requestId !== cnpjLookupRequestId ||
+          obterDigitosCNPJ(input.value) !== cnpj
+        ) {
+          return;
+        }
+
+        if (!dados.razao_social) {
+          throw new Error('A consulta não retornou a razão social.');
+        }
+
+        empresaInput.value = dados.razao_social;
+        empresaInput.dataset.cnpjAutofill = cnpj;
+        status.textContent = 'Razão social preenchida automaticamente.';
+        status.style.color = 'var(--success)';
+      } catch (erro) {
+        if (requestId === cnpjLookupRequestId) {
+          status.textContent = 'Não foi possível consultar o CNPJ. Você pode preencher o nome da empresa manualmente.';
+          status.style.color = 'var(--danger)';
+        }
+      } finally {
+        if (requestId === cnpjLookupRequestId) {
+          empresaInput.readOnly = false;
+        }
+      }
+    }
+
+    async function enviarCotacaoWeb3Forms(e) {
       e.preventDefault();
+        const cnpjInput = document.getElementById('quoteCNPJ');
+      const cnpjDigitos = obterDigitosCNPJ(cnpjInput.value);
+
+      cnpjInput.setCustomValidity('');
+
+      if (cnpjDigitos && !validarCNPJ(cnpjDigitos)) {
+        cnpjInput.setCustomValidity('Digite um CNPJ válido com 14 números.');
+        cnpjInput.reportValidity();
+        return;
+      }
+
+      if (cnpjDigitos) {
+        await cnpjLookupPromise;
+      }
       const btn = document.getElementById('btnSubmitCotacao');
       const feedback = document.getElementById('quoteFeedbackBox');
 
@@ -2005,6 +2170,7 @@
 
       const nome = document.getElementById('quoteNome').value.trim();
       const empresa = document.getElementById('quoteEmpresa').value.trim();
+      const cnpj = document.getElementById('quoteCNPJ').value.trim();
       const email = document.getElementById('quoteEmail').value.trim();
       const telefone = document.getElementById('quoteTelefone').value.trim();
       const mensagem = document.getElementById('quoteMensagem').value.trim();
@@ -2024,6 +2190,7 @@
         from_name: 'Infinity Corp - Portfólio Comercial',
         nome_contato: nome,
         empresa: empresa || 'Não informada',
+        cnpj: cnpj || 'Não informado',
         email: email,
         telefone: telefone,
         equipamentos_selecionados: itensFormatados,
@@ -2045,7 +2212,7 @@
         const resData = await response.json();
 
         if (resData.success) {
-          const dadosContatoStr = `${nome} | ${empresa || 'Sem Empresa'} | Tel: ${telefone} | E-mail: ${email}`;
+          const dadosContatoStr = `${nome} | ${empresa || 'Sem Empresa'} | CNPJ: ${cnpj || 'Não informado'} | Tel: ${telefone} | E-mail: ${email}`;
          sendTrackingEvent('Cotação Enviada', itensFormatados.replace(/\n/g, ' // '));
 
 
