@@ -1578,26 +1578,19 @@
       "logoMarca": "logos/lenovo.png"
     },
     {
-      "id": "prod-1791402730921",
+      "id": "prod-1791403879865",
       "categoria": "computer",
       "marca": "Avell",
-      "nome": "STORM 450/550",
+      "nome": "ION A 65/70",
       "destaque": "sem-destaque",
       "ativo": true,
-      "imagens": [
-        "fotos/1791402782066_storm.jpg",
-        "fotos/1791402783601_storm-3.jpg",
-        "fotos/1791402784681_storm-4.jpg",
-        "fotos/1791402786296_storm-2.jpg",
-        "fotos/1791402787326_storm-1.jpg"
-      ],
+      "imagens": [],
       "specs": {
-        "Processador": "Intel Core i5 / i7",
-        "Tela": "15.6' Full HD  (1980 x 1080), 165 Hz",
-        "Memória": "16/32/64GB DDR5 (5600 MT/s)",
+        "Processador": "Intel Ultra 7",
+        "Tela": "15.3\" Quad HD+ 2560x1600p - 180Hz",
+        "Memória": "32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "RTX 5050",
-        "Acabamento": "Premium"
+        "Placa de Vídeo (GPU)": "RTX 5060"
       },
       "logoMarca": "logos/avell.png"
     },
@@ -1621,6 +1614,30 @@
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
       },
       "logoMarca": "logos/lenovo.png"
+    },
+    {
+      "id": "prod-1791402730921",
+      "categoria": "computer",
+      "marca": "Avell",
+      "nome": "STORM 450/550",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791402782066_storm.jpg",
+        "fotos/1791402783601_storm-3.jpg",
+        "fotos/1791402784681_storm-4.jpg",
+        "fotos/1791402786296_storm-2.jpg",
+        "fotos/1791402787326_storm-1.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core i5 / i7",
+        "Tela": "15.6' Full HD  (1980 x 1080), 165 Hz",
+        "Memória": "16/32/64GB DDR5 (5600 MT/s)",
+        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "RTX 5050",
+        "Acabamento": "Premium"
+      },
+      "logoMarca": "logos/avell.png"
     }
   ],
   "marcas": [
