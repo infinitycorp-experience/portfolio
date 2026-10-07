@@ -347,48 +347,48 @@
       "logoMarca": "fotos/1788542048564_LogoDell.png"
     },
     {
-      "id": "prod-1788543206762",
+      "id": "prod-1791401777508",
       "categoria": "computer",
-      "marca": "Dell",
-      "nome": "Alienware Aurora 16",
+      "marca": "Lenovo",
+      "nome": "Thinkpad E14",
+      "destaque": "sem-destaque",
       "ativo": true,
       "imagens": [
-        "fotos/1788544362389_ALIENWARE_AURORA5.jpg",
-        "fotos/1788544363651_ALIENWARE_AURORA4.jpg",
-        "fotos/1788544860512_ALIENWARE_AURORA3.jpg",
-        "fotos/1788544861437_ALIENWARE_AURORA2.jpg",
-        "fotos/1788544862474_ALIENWARE_AURORA1.jpg",
-        "fotos/1788544863350_ALIENWARE_AURORA.jpg"
+        "fotos/1791402191302_e14.jpg",
+        "fotos/1791402193068_e14_3.jpg",
+        "fotos/1791402194089_e14_1.jpg",
+        "fotos/1791402195115_e14_2.jpg"
       ],
       "specs": {
-        "Processador": "Intel Core 5 /  7",
-        "Tela": "16' WQXGA (2560 x 1600), 120 Hz",
-        "Memória": "16/32/64GB DDR5  (5600 MT/s)",
-        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050",
-        "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
+        "Processador": "Intel Ultra 5 / 7",
+        "Tela": "14\" - Full HD (1920 x 1080)",
+        "Memória": "16/32 GB DDR5 (5600 MHz)",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Intel Arc Graphics",
+        "Conectividade": "Wi-Fi 6E, Bluetooth 5.3 e RJ-45"
       },
-      "logoMarca": "logos/dell.png",
-      "destaque": "top"
+      "logoMarca": "logos/lenovo.png"
     },
     {
-      "id": "prod-1788548256418",
+      "id": "prod-1791401218090",
       "categoria": "computer",
       "marca": "Dell",
-      "nome": "XPS 13 9350",
+      "nome": "Dell 15",
+      "destaque": "sem-destaque",
       "ativo": true,
       "imagens": [
-        "fotos/1788548372625_NOTEBOOK_DELL_XPS_13_9320.png",
-        "fotos/1788548374109_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
+        "fotos/1791401234131_dell15.png",
+        "fotos/1791401236300_dell15_2.png",
+        "fotos/1791401237944_dell15_3.png",
+        "fotos/1791401239051_dell15_1.png",
+        "fotos/1791401240657_dell15_4.png"
       ],
       "specs": {
-        "Processador": "Intel Core Ultra 7 256V/258V",
-        "NPU": "47 TOPS para recursos de IA",
-        "Memória": "16/32 GB LPDDR5X (8533 MT/s)",
-        "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
-        "Placa de Vídeo": "Intel Arc Graphics 140V",
-        "Tela": "OLED 3K (2880x1800): Touchscreen, 400 nits / FHD+ (1920x1200): Sem toque, 500 nits",
-        "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e apenas 2 portas Thunderbolt 4 (USB-C)"
+        "Processador": "Intel Core i5 / i7 -  13ª Gen",
+        "Tela": "15,6\" - Full HD (1920 x 1080)",
+        "Memória": "16/32 GB DDR5 (5600 MHz)",
+        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "logos/dell.png"
     },
@@ -1320,50 +1320,52 @@
       "logoMarca": "logos/isd-tech.png"
     },
     {
-      "id": "prod-1791401777508",
-      "categoria": "computer",
-      "marca": "Lenovo",
-      "nome": "Thinkpad E14",
-      "destaque": "sem-destaque",
-      "ativo": true,
-      "imagens": [
-        "fotos/1791402191302_e14.jpg",
-        "fotos/1791402193068_e14_3.jpg",
-        "fotos/1791402194089_e14_1.jpg",
-        "fotos/1791402195115_e14_2.jpg"
-      ],
-      "specs": {
-        "Processador": "Intel Ultra 5 / 7",
-        "Tela": "14\" - Full HD (1920 x 1080)",
-        "Memória": "16/32 GB DDR5 (5600 MHz)",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Intel Arc Graphics",
-        "Conectividade": "Wi-Fi 6E, Bluetooth 5.3 e RJ-45"
-      },
-      "logoMarca": "logos/lenovo.png"
-    },
-    {
-      "id": "prod-1791401218090",
+      "id": "prod-1789502638984",
       "categoria": "computer",
       "marca": "Dell",
-      "nome": "Dell 15",
-      "destaque": "sem-destaque",
+      "nome": "Pro 14",
       "ativo": true,
       "imagens": [
-        "fotos/1791401234131_dell15.png",
-        "fotos/1791401236300_dell15_2.png",
-        "fotos/1791401237944_dell15_3.png",
-        "fotos/1791401239051_dell15_1.png",
-        "fotos/1791401240657_dell15_4.png"
+        "fotos/1789502863631_dell14.jpg",
+        "fotos/1789502864709_dell141.jpg",
+        "fotos/1789502865829_dell143.jpg",
+        "fotos/1789502866804_dell142.jpg"
       ],
       "specs": {
-        "Processador": "Intel Core i5 / i7 -  13ª Gen",
-        "Tela": "15,6\" - Full HD (1920 x 1080)",
-        "Memória": "16/32 GB DDR5 (5600 MHz)",
-        "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Processador": "Intel Core /  Ultra 5 / 7",
+        "Tela": "14\" - Full HD+ (1920 x 1200)",
+        "Memória": "8 / 16 / 32 GB DDR5 / LPDDR5x",
+        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
+        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
+        "Sistema": "Windows 11 Pro",
+        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "novidade"
+    },
+    {
+      "id": "prod-1789502850761",
+      "categoria": "computer",
+      "marca": "Dell",
+      "nome": "Pro 16",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789502867805_dell161.jpg",
+        "fotos/1789502868749_dell162.jpg",
+        "fotos/1789502869928_dell163.jpg",
+        "fotos/1789502871044_dell16.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core /  Ultra 5 / 7",
+        "Tela": "16\" - Full HD+ (1920 x 1200)",
+        "Memória": "16 / 32 GB DDR5 / LPDDR5x",
+        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
+        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
+        "Sistema": "Windows 11 Pro",
+        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
+      },
+      "logoMarca": "logos/dell.png",
+      "destaque": "novidade"
     },
     {
       "id": "prod-1789559680594",
@@ -1530,52 +1532,50 @@
       "logoMarca": "logos/brother.png"
     },
     {
-      "id": "prod-1789502638984",
+      "id": "prod-1788548256418",
       "categoria": "computer",
       "marca": "Dell",
-      "nome": "Pro 14",
+      "nome": "XPS 13 9350",
       "ativo": true,
       "imagens": [
-        "fotos/1789502863631_dell14.jpg",
-        "fotos/1789502864709_dell141.jpg",
-        "fotos/1789502865829_dell143.jpg",
-        "fotos/1789502866804_dell142.jpg"
+        "fotos/1788548372625_NOTEBOOK_DELL_XPS_13_9320.png",
+        "fotos/1788548374109_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
       ],
       "specs": {
-        "Processador": "Intel Core /  Ultra 5 / 7",
-        "Tela": "14\" - Full HD+ (1920 x 1200)",
-        "Memória": "8 / 16 / 32 GB DDR5 / LPDDR5x",
-        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
-        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
-        "Sistema": "Windows 11 Pro",
-        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
+        "Processador": "Intel Core Ultra 7 256V/258V",
+        "NPU": "47 TOPS para recursos de IA",
+        "Memória": "16/32 GB LPDDR5X (8533 MT/s)",
+        "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
+        "Placa de Vídeo": "Intel Arc Graphics 140V",
+        "Tela": "OLED 3K (2880x1800): Touchscreen, 400 nits / FHD+ (1920x1200): Sem toque, 500 nits",
+        "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e apenas 2 portas Thunderbolt 4 (USB-C)"
       },
-      "logoMarca": "logos/dell.png",
-      "destaque": "novidade"
+      "logoMarca": "logos/dell.png"
     },
     {
-      "id": "prod-1789502850761",
+      "id": "prod-1788543206762",
       "categoria": "computer",
       "marca": "Dell",
-      "nome": "Pro 16",
+      "nome": "Alienware Aurora 16",
       "ativo": true,
       "imagens": [
-        "fotos/1789502867805_dell161.jpg",
-        "fotos/1789502868749_dell162.jpg",
-        "fotos/1789502869928_dell163.jpg",
-        "fotos/1789502871044_dell16.jpg"
+        "fotos/1788544362389_ALIENWARE_AURORA5.jpg",
+        "fotos/1788544363651_ALIENWARE_AURORA4.jpg",
+        "fotos/1788544860512_ALIENWARE_AURORA3.jpg",
+        "fotos/1788544861437_ALIENWARE_AURORA2.jpg",
+        "fotos/1788544862474_ALIENWARE_AURORA1.jpg",
+        "fotos/1788544863350_ALIENWARE_AURORA.jpg"
       ],
       "specs": {
-        "Processador": "Intel Core /  Ultra 5 / 7",
-        "Tela": "16\" - Full HD+ (1920 x 1200)",
-        "Memória": "16 / 32 GB DDR5 / LPDDR5x",
-        "Armazenamento": "SSD NVMe M.2  256 / 512 GB ou 1 TB",
-        "Placa de Vídeo": "Integrada Intel Graphics ou Intel Arc Graphics",
-        "Sistema": "Windows 11 Pro",
-        "Conectividade": "Wi-Fi 6E e USB Type-C / Thunderbolt 4"
+        "Processador": "Intel Core 5 /  7",
+        "Tela": "16' WQXGA (2560 x 1600), 120 Hz",
+        "Memória": "16/32/64GB DDR5  (5600 MT/s)",
+        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050",
+        "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
       },
       "logoMarca": "logos/dell.png",
-      "destaque": "novidade"
+      "destaque": "top"
     },
     {
       "id": "prod-1791402189102",
@@ -1599,6 +1599,30 @@
         "Acabamento": "Tampa em metal com abertura de até 180º"
       },
       "logoMarca": "logos/lenovo.png"
+    },
+    {
+      "id": "prod-1791402730921",
+      "categoria": "computer",
+      "marca": "Avell",
+      "nome": "STORM 450/550",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791402782066_storm.jpg",
+        "fotos/1791402783601_storm-3.jpg",
+        "fotos/1791402784681_storm-4.jpg",
+        "fotos/1791402786296_storm-2.jpg",
+        "fotos/1791402787326_storm-1.jpg"
+      ],
+      "specs": {
+        "Processador": "Intel Core i5 / i7",
+        "Tela": "15.6' Full HD  (1980 x 1080), 165 Hz",
+        "Memória": "16/32/64GB DDR5 (5600 MT/s)",
+        "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
+        "Placa de Vídeo (GPU)": "RTX 5050",
+        "Acabamento": "Premium"
+      },
+      "logoMarca": "logos/avell.png"
     }
   ],
   "marcas": [
