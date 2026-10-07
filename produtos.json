@@ -1584,7 +1584,10 @@
       "nome": "ION A 65/70",
       "destaque": "sem-destaque",
       "ativo": true,
-      "imagens": [],
+      "imagens": [
+        "fotos/1791404212996_ion-2.jpg",
+        "fotos/1791404214084_ion.jpg"
+      ],
       "specs": {
         "Processador": "Intel Ultra 7",
         "Tela": "15.3\" Quad HD+ 2560x1600p - 180Hz",
