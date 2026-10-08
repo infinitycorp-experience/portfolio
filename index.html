@@ -88,12 +88,9 @@
     .brand-logo img { height: 58px; width: auto; object-fit: contain; }
 
     .nav-menu {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 4px 2px;
-      scrollbar-width: none;
-    }
+  mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 24px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 24px), transparent);
+}
     .nav-menu::-webkit-scrollbar { display: none; }
 
     .nav-item {
@@ -462,14 +459,23 @@
     /* Grid & Cards */
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 100px; }
     .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 40px 0 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #EDF2F7;
-      scroll-margin-top: 80px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 45px 0 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #E2E8F0;
+  position: relative;
+}
+.section-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--primary); /* ou herdar a cor da categoria */
     .section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
     .badge-count { font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: #E0F2FE; color: var(--primary); border: 1px solid #BAE6FD; }
 
@@ -600,19 +606,35 @@
     .prod-name { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
 
     .specs-list {
-      background: #F8FAFC;
-      border: 1px solid #EDF2F7;
-      border-radius: 10px;
-      padding: 12px;
-      margin-top: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 0.8rem;
-    }
-    .spec-row { display: flex; justify-content: space-between; align-items: center; }
-    .spec-row span { color: var(--text-muted); font-weight: 500; }
-    .spec-row strong { color: var(--text-main); font-weight: 700; }
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 0.78rem;
+}
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.spec-row span {
+  color: #64748B;
+  font-weight: 600;
+  font-size: 0.74rem;
+}
+.spec-row strong {
+  color: #0F172A;
+  font-weight: 800;
+  background: #FFFFFF;
+  padding: 2px 7px;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+}
+
 
     .card-actions-bar {
       margin-top: 12px;
@@ -860,6 +882,17 @@
 
     .print-header, .print-footer { display: none; }
 
+    @keyframes badgePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+.floating-quote-counter.pulse-anim {
+  animation: badgePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
     @media print {
       @page { size: A4 portrait; margin: 14mm 10mm 15mm 10mm; }
       body { background: #FFFFFF !important; color: #0F172A !important; }
@@ -905,6 +938,18 @@
   <section class="hero">
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
+
+    <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 24px;">
+  <span style="font-size: 0.76rem; font-weight: 700; color: #475569; background: #FFFFFF; border: 1px solid #E2E8F0; padding: 4px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+    <span style="color: #0284C7;">●</span> Padrão Corporativo Homologado
+  </span>
+  <span style="font-size: 0.76rem; font-weight: 700; color: #475569; background: #FFFFFF; border: 1px solid #E2E8F0; padding: 4px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+    <span style="color: #10B981;">●</span> Suporte & Backup Inclusos
+  </span>
+  <span style="font-size: 0.76rem; font-weight: 700; color: #475569; background: #FFFFFF; border: 1px solid #E2E8F0; padding: 4px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+    <span style="color: #F59E0B;">●</span> Rollout Ágil para Filiais
+  </span>
+</div>
 
     <div class="hero-actions-container">
       <div class="search-filter-wrapper">
@@ -1761,6 +1806,11 @@ function limparTodoCarrinho() {
 function atualizarBarraFlutuante() {
   const floatingBar = document.getElementById('floatingQuoteBar');
   const counterEl = document.getElementById('floatingQuoteCounter');
+if (counterEl) {
+  counterEl.classList.remove('pulse-anim');
+  void counterEl.offsetWidth; // trigger reflow
+  counterEl.classList.add('pulse-anim');
+}
   const countTextEl = document.getElementById('floatingQuoteCountText');
   const count = carrinhoCotacao.size;
 
