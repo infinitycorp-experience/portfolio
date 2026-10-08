@@ -15,7 +15,7 @@
     {
       "id": "desktops",
       "title": "Desktops",
-      "icon": "computer",
+      "icon": "computer2",
       "ativa": true
     },
     {
@@ -28,18 +28,19 @@
       "id": "mobile",
       "title": "Tablets",
       "ativa": true,
-      "icon": "mobile"
+      "icon": "tablets"
     },
     {
       "id": "celulares",
       "title": "Celulares",
-      "icon": "mobile",
+      "icon": "totem",
       "ativa": true
     },
     {
       "id": "totem",
       "title": "Totens de Autoatendimento",
-      "ativa": true
+      "ativa": true,
+      "icon": "mobile"
     },
     {
       "id": "scanner",
