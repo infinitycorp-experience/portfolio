@@ -1661,6 +1661,25 @@
         "Especificação": "Lousa digital integrada"
       },
       "logoMarca": "logos/isd-tech.png"
+    },
+    {
+      "id": "prod-1791471754784",
+      "categoria": "acessrios",
+      "marca": "ISD Tech",
+      "nome": "Coletores de Dados",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791471756939_coletor.jpg"
+      ],
+      "specs": {
+        "Sistema Operacional": "Android",
+        "Tipo de Scanner": "1D e 2D de longo alcance",
+        "Certificação": "IP65/IP67",
+        "Conectividade": "4G + Wi-Fi + Bluetooth",
+        "Bateria": "Até 18h de autonomia"
+      },
+      "logoMarca": "logos/isd-tech.png"
     }
   ],
   "marcas": [
