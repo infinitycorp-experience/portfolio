@@ -1346,37 +1346,23 @@
       "destaque": "novidade"
     },
     {
-      "id": "prod-1789559680594",
+      "id": "prod-1791471754784",
       "categoria": "acessrios",
-      "marca": "DMZ Connection",
-      "nome": "Leitor RFID",
+      "marca": "ISD Tech",
+      "nome": "Coletores de Dados",
+      "destaque": "sem-destaque",
       "ativo": true,
       "imagens": [
-        "fotos/1789559921558_dmz.jpg"
+        "fotos/1791471756939_coletor.jpg"
       ],
       "specs": {
-        "Frequência": "125 kHz, 134 kHz e 13,56 MHz",
-        "Conectividade": "USB"
+        "Sistema Operacional": "Android",
+        "Tipo de Scanner": "1D e 2D de longo alcance",
+        "Certificação": "IP65/IP67",
+        "Conectividade": "4G + Wi-Fi + Bluetooth",
+        "Bateria": "Até 18h de autonomia"
       },
-      "logoMarca": "logos/dmz-connection.png"
-    },
-    {
-      "id": "prod-1789560323802",
-      "categoria": "acessrios",
-      "marca": "DMZ Connection",
-      "nome": " Mini Leitor Bio Reader SR",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789561318026_biodmz.png"
-      ],
-      "specs": {
-        "Impressão Segura": "Biometria",
-        "RFID": "125 kHz e 13,56 MHz",
-        "Cartões": "Mifare, EM4002/4100",
-        "Conectividade": "USB",
-        "Compatibilidade": "Funciona com soluções como PaperCut MF"
-      },
-      "logoMarca": "logos/dmz-connection.png"
+      "logoMarca": "logos/isd-tech.png"
     },
     {
       "id": "prod-1789561225838",
@@ -1663,23 +1649,62 @@
       "logoMarca": "logos/isd-tech.png"
     },
     {
-      "id": "prod-1791471754784",
+      "id": "prod-1791472145437",
       "categoria": "acessrios",
-      "marca": "ISD Tech",
-      "nome": "Coletores de Dados",
+      "marca": "Zebra",
+      "nome": "TC22R RFID",
       "destaque": "sem-destaque",
       "ativo": true,
       "imagens": [
-        "fotos/1791471756939_coletor.jpg"
+        "fotos/1791472510640_coletorzebra1.jpg",
+        "fotos/1791472509007_coletorzebra.jpg",
+        "fotos/1791472511804_coletorzebra2.jpg"
       ],
       "specs": {
-        "Sistema Operacional": "Android",
-        "Tipo de Scanner": "1D e 2D de longo alcance",
-        "Certificação": "IP65/IP67",
-        "Conectividade": "4G + Wi-Fi + Bluetooth",
-        "Bateria": "Até 18h de autonomia"
+        "Tela": "Touch 6\" Polegadas",
+        "Conectividade": "Wi-Fi 6 e Bluetooth",
+        "Câmera": "5MP e 16MP",
+        "Sistema Operacional": "Android 14",
+        "Teclado": "Qwerty (Tela)"
       },
-      "logoMarca": "logos/isd-tech.png"
+      "logoMarca": "logos/zebra.png"
+    },
+    {
+      "id": "prod-1791472360670",
+      "categoria": "acessrios",
+      "marca": "Zebra",
+      "nome": "TC22",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791472513627_tc22.jpg",
+        "fotos/1791472514918_tc221.jpg",
+        "fotos/1791472516294_tc222.jpg"
+      ],
+      "specs": {
+        "Processador": "Qualcomm® 5430 hex-core, 2,1 GHz",
+        "Memória": "6 GB de RAM/64 GB de flash",
+        "Sistema Operacional": "Android",
+        "Câmera": "Frontal e Traseira",
+        "Conectividade": "Wi-Fi e Bluetooth"
+      },
+      "logoMarca": "logos/zebra.png"
+    },
+    {
+      "id": "prod-1789559680594",
+      "categoria": "acessrios",
+      "marca": "DMZ Connection",
+      "nome": "Leitor RFID (Para Impressoras)",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789559921558_dmz.jpg"
+      ],
+      "specs": {
+        "Frequência": "125 kHz, 134 kHz e 13,56 MHz",
+        "Conectividade": "USB"
+      },
+      "logoMarca": "logos/dmz-connection.png",
+      "destaque": "sem-destaque"
     }
   ],
   "marcas": [
