@@ -404,45 +404,60 @@
       .floating-quote-btn-action { height: 36px; padding: 0 12px; font-size: 0.74rem; gap: 5px; }
     }
 
-    .floating-quote-hint {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 1350;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(240, 249, 255, 0.92);
-      backdrop-filter: blur(12px);
-      padding: 6px 6px 6px 18px;
-      border-radius: 50px;
-      border: 1px solid #BAE6FD;
-      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(20px) scale(0.96);
-      pointer-events: none;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      user-select: none;
-    }
+/* Dica Flutuante Dinâmica */
+.floating-quote-hint {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1350;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--active-cat-bg, rgba(240, 249, 255, 0.92));
+  backdrop-filter: blur(12px);
+  padding: 6px 6px 6px 18px;
+  border-radius: 50px;
+  border: 1px solid var(--active-cat-border, #BAE6FD);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.4s ease, border-color 0.4s ease;
+  user-select: none;
+}
     .floating-quote-hint.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
     .floating-quote-hint:hover { background: #E0F2FE; border-color: #7DD3FC; transform: translateY(-2px) scale(1.02); }
-    .floating-quote-hint .hint-lead-text { font-size: 0.82rem; font-weight: 800; color: #0369A1; display: inline-flex; align-items: center; gap: 6px; }
-    .floating-quote-hint .hint-button {
-      background: linear-gradient(135deg, #0284C7, #0369A1);
-      color: #FFFFFF;
-      border: none;
-      height: 38px;
-      padding: 0 16px;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
-    }
+.floating-quote-hint .hint-lead-text { 
+  font-size: 0.82rem; 
+  font-weight: 800; 
+  color: var(--active-cat-color, #0369A1); 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 6px; 
+  transition: color 0.4s ease;
+}
+
+.floating-quote-hint .hint-button {
+  background: var(--active-cat-color, #0284C7);
+  color: #FFFFFF;
+  border: none;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+  transition: background 0.4s ease, transform 0.2s ease;
+}
+.floating-quote-hint:hover .hint-button {
+  filter: brightness(1.1);
+  transform: scale(1.03);
+}
 
     /* Grid & Cards */
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 100px; }
@@ -1466,13 +1481,28 @@ async function loadCatalog() {
 }
 
 function setActiveCategoryNav(catId) {
+  let activeColor = null;
+
   document.querySelectorAll('.nav-menu .nav-item').forEach(item => {
     if (item.dataset.catTarget === catId) {
       item.classList.add('active');
+      activeColor = {
+        color: item.style.getPropertyValue('--cat-color'),
+        bg: item.style.getPropertyValue('--cat-bg'),
+        border: item.style.getPropertyValue('--cat-border')
+      };
     } else {
       item.classList.remove('active');
     }
   });
+
+  // Atualiza as cores do botão flutuante de proposta para acompanhar a categoria ativa
+  const hintEl = document.getElementById('floatingQuoteHint');
+  if (hintEl && activeColor && activeColor.color) {
+    hintEl.style.setProperty('--active-cat-color', activeColor.color);
+    hintEl.style.setProperty('--active-cat-bg', activeColor.bg);
+    hintEl.style.setProperty('--active-cat-border', activeColor.border);
+  }
 }
 
 /* [MUDANÇA 4] SCROLLSPY — desconecta o observer anterior antes de criar um novo,
