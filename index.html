@@ -1618,6 +1618,13 @@ function setActiveCategoryNav(catId) {
         bg: item.style.getPropertyValue('--cat-bg'),
         border: item.style.getPropertyValue('--cat-border')
       };
+
+      // Rola o menu automaticamente para manter o botão sempre no centro da visão
+      item.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest'
+      });
     } else {
       item.classList.remove('active');
     }
