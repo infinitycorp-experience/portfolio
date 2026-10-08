@@ -1116,7 +1116,7 @@
       "id": "prod-1789480475675",
       "categoria": "totem",
       "marca": "ISD Tech",
-      "nome": "Tela Interativa 75",
+      "nome": "Tela Interativa 65",
       "ativo": true,
       "imagens": [
         "fotos/1789480490560_telainterativa.png"
@@ -1641,6 +1641,25 @@
         "Acabamento": "Premium"
       },
       "logoMarca": "logos/avell.png"
+    },
+    {
+      "id": "prod-1791470412593",
+      "categoria": "totem",
+      "marca": "ISD Tech",
+      "nome": "Telas Interativa Lousa 65\" à 85\"",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791470423261_isd-d65-lousa-inf.png"
+      ],
+      "specs": {
+        "Resolução": "4K UHD",
+        "Touch": "Sim, Multi-ponto (até 20 toques)",
+        "OS": "Android Embarcado e Windows Opcional",
+        "Espelhamento": "Sim,  sem fio",
+        "Especificação": "Lousa digital integrada"
+      },
+      "logoMarca": "logos/isd-tech.png"
     }
   ],
   "marcas": [
