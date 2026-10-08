@@ -1045,6 +1045,32 @@
       "logoMarca": "logos/samsung.png"
     },
     {
+      "id": "prod-1791475081013",
+      "categoria": "mobile",
+      "marca": "Lenovo",
+      "nome": "Idea Tab 11\"",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791475101274_ideatab.jpg",
+        "fotos/1791475103427_ideatab1.jpg",
+        "fotos/1791475104482_ideatab2.jpg"
+      ],
+      "specs": {
+        "Processador": "MediaTek Dimensity 6300 Octa-Core (até 2,40 GHz).",
+        "Memória RAM": "8 GB LPDDR4X.",
+        "Resolução": "2.5K (2560 x 1600)",
+        "Taxa": "90Hz e brilho de 500 nits.",
+        "Armazenamento": "128 GB ou 256 GB (expansível via cartão MicroSD).",
+        "Sistema Operacional": "Android 15.",
+        "Câmeras": "Traseira de 8 MP e frontal de 5 MP.",
+        "Áudio": "4 alto-falantes estéreo Dolby Atmos.",
+        "Bateria": "7.040 mAh com suporte a carregamento de 20W.",
+        "Conectividade": "Wi-Fi e Bluetooth 5.2."
+      },
+      "logoMarca": "logos/lenovo.png"
+    },
+    {
       "id": "prod-1789475793328",
       "categoria": "mobile",
       "marca": "Apple",
@@ -1065,28 +1091,6 @@
         "Conectividade": "Porta USB-C, Wi-Fi 6 e opção Cellular (5G) em modelos específicos",
         "Segurança": "Touch ID integrado no botão superior",
         "Compatibilidade de caneta": "Suporta o Apple Pencil (USB-C) e o Apple Pencil (1ª geração via adaptador)"
-      },
-      "logoMarca": "logos/apple.png"
-    },
-    {
-      "id": "prod-1789476034749",
-      "categoria": "mobile",
-      "marca": "Apple",
-      "nome": "iPad (11ª geração)",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789476074537_ipad11.jpg",
-        "fotos/1789476075620_ipad111.jpg"
-      ],
-      "specs": {
-        "Tela": "11 polegadas",
-        "Resolução": "2360 x 1640",
-        "Processador": "Chip A16 com CPU de 5 núcleos, GPU de 4 núcleos e Neural Engine de 16 núcleos",
-        "Armazenamento": "Opções de 128 GB, 256 GB e 512 GB",
-        "Câmera Traseira": "Grande-angular de 12 MP com abertura ƒ/1.8 e zoom digital até 5x",
-        "Câmera Frontal": "12 MP com Palco Central (Center Stage) e abertura ƒ/2.4",
-        "Bateria": "Autonomia de até 10 horas para navegação na internet via Wi-Fi ou vídeo.Peso: 477 gramas (modelo Wi-Fi) ou 481 gramas (modelo com 5G)",
-        "Conectividade": "Wi-Fi 6, Bluetooth 5.3 e opção com suporte a redes 5G"
       },
       "logoMarca": "logos/apple.png"
     },
@@ -1725,6 +1729,28 @@
         "Conectividade": "USB 2.0"
       },
       "logoMarca": "logos/canon.png"
+    },
+    {
+      "id": "prod-1789476034749",
+      "categoria": "mobile",
+      "marca": "Apple",
+      "nome": "iPad (11ª geração)",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789476074537_ipad11.jpg",
+        "fotos/1789476075620_ipad111.jpg"
+      ],
+      "specs": {
+        "Tela": "11 polegadas",
+        "Resolução": "2360 x 1640",
+        "Processador": "Chip A16 com CPU de 5 núcleos, GPU de 4 núcleos e Neural Engine de 16 núcleos",
+        "Armazenamento": "Opções de 128 GB, 256 GB e 512 GB",
+        "Câmera Traseira": "Grande-angular de 12 MP com abertura ƒ/1.8 e zoom digital até 5x",
+        "Câmera Frontal": "12 MP com Palco Central (Center Stage) e abertura ƒ/2.4",
+        "Bateria": "Autonomia de até 10 horas para navegação na internet via Wi-Fi ou vídeo.Peso: 477 gramas (modelo Wi-Fi) ou 481 gramas (modelo com 5G)",
+        "Conectividade": "Wi-Fi 6, Bluetooth 5.3 e opção com suporte a redes 5G"
+      },
+      "logoMarca": "logos/apple.png"
     }
   ],
   "marcas": [
