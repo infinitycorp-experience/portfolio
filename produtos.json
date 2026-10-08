@@ -136,7 +136,9 @@
       "nome": "Movel 24",
       "ativo": true,
       "imagens": [
-        "fotos/1789479749231_totem-movel1-inf.png"
+        "fotos/1791471428199_totem-movel1-inf.png",
+        "fotos/1791471430607_totem-movel3.png",
+        "fotos/1791471433413_totem-movel2.png"
       ],
       "specs": {
         "Tela": "24\" polegadas",
