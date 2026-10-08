@@ -1020,6 +1020,32 @@
       "logoMarca": "logos/samsung.png"
     },
     {
+      "id": "prod-1791475448625",
+      "categoria": "mobile",
+      "marca": "Samsung",
+      "nome": "Galaxy Tab A11+",
+      "destaque": "sem-destaque",
+      "ativo": true,
+      "imagens": [
+        "fotos/1791475476956_a11.jpg",
+        "fotos/1791475478194_a11-2.jpg",
+        "fotos/1791475479178_a11-1.jpg"
+      ],
+      "specs": {
+        "Processador": "MediaTek MT8775 (Octa: 4x 2.5 GHz + 4x 2.0 GHz)",
+        "Memória RAM": "6 GB",
+        "Armazenamento": "128 GB (MicroSD até 2 TB)",
+        "Resolução": "WUXGA (1920 x 1200 pixels), de 90 Hz",
+        "Câmera traseira": "8 MP com foco automático",
+        "Câmera frontal": "5 MP",
+        "Bateria": "7.040 mAh carregamento rápido de 25W",
+        "Sistema operacional": "Android 16 com interface Samsung One UI 8",
+        "Áudio": "4alto-falantes estéreo (Quad) Dolby Atmos e entrada P2",
+        "Conectividade": "Wi-Fi 5, Bluetooth 5.3, USB-C 2.0 e versão opcional com 5G"
+      },
+      "logoMarca": "logos/samsung.png"
+    },
+    {
       "id": "prod-1789475247971",
       "categoria": "mobile",
       "marca": "Samsung",
@@ -1069,30 +1095,6 @@
         "Conectividade": "Wi-Fi e Bluetooth 5.2."
       },
       "logoMarca": "logos/lenovo.png"
-    },
-    {
-      "id": "prod-1789475793328",
-      "categoria": "mobile",
-      "marca": "Apple",
-      "nome": "iPad (10ª geração)",
-      "ativo": true,
-      "imagens": [
-        "fotos/1789476071143_ipad10a.webp",
-        "fotos/1789476072787_ipad10.jpg"
-      ],
-      "specs": {
-        "Tela": "10,9 polegadas",
-        "Resolução": "2360 x 1640",
-        "Processador": "Chip A14 Bionic (CPU de 6 núcleos e GPU de 4 núcleos)",
-        "Memória RAM": "4 GB",
-        "Armazenamento interno": "Versões de 64 GB ou 256 GB (sem expansão por cartão de memória)",
-        "Câmera Traseira": "Grande-angular de 12 MP (gravação de vídeo em 4K)",
-        "Câmera Frontal": "Ultra-angular de 12 MP na paisagem",
-        "Conectividade": "Porta USB-C, Wi-Fi 6 e opção Cellular (5G) em modelos específicos",
-        "Segurança": "Touch ID integrado no botão superior",
-        "Compatibilidade de caneta": "Suporta o Apple Pencil (USB-C) e o Apple Pencil (1ª geração via adaptador)"
-      },
-      "logoMarca": "logos/apple.png"
     },
     {
       "id": "totem-stand5",
@@ -1729,6 +1731,30 @@
         "Conectividade": "USB 2.0"
       },
       "logoMarca": "logos/canon.png"
+    },
+    {
+      "id": "prod-1789475793328",
+      "categoria": "mobile",
+      "marca": "Apple",
+      "nome": "iPad (10ª geração)",
+      "ativo": true,
+      "imagens": [
+        "fotos/1789476071143_ipad10a.webp",
+        "fotos/1789476072787_ipad10.jpg"
+      ],
+      "specs": {
+        "Tela": "10,9 polegadas",
+        "Resolução": "2360 x 1640",
+        "Processador": "Chip A14 Bionic (CPU de 6 núcleos e GPU de 4 núcleos)",
+        "Memória RAM": "4 GB",
+        "Armazenamento interno": "Versões de 64 GB ou 256 GB (sem expansão por cartão de memória)",
+        "Câmera Traseira": "Grande-angular de 12 MP (gravação de vídeo em 4K)",
+        "Câmera Frontal": "Ultra-angular de 12 MP na paisagem",
+        "Conectividade": "Porta USB-C, Wi-Fi 6 e opção Cellular (5G) em modelos específicos",
+        "Segurança": "Touch ID integrado no botão superior",
+        "Compatibilidade de caneta": "Suporta o Apple Pencil (USB-C) e o Apple Pencil (1ª geração via adaptador)"
+      },
+      "logoMarca": "logos/apple.png"
     },
     {
       "id": "prod-1789476034749",
