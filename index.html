@@ -963,20 +963,118 @@
 
 
     @media print {
-      @page { size: A4 portrait; margin: 14mm 10mm 15mm 10mm; }
-      body { background: #FFFFFF !important; color: #0F172A !important; }
-      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { display: none !important; }
-      .main-content { padding: 0 !important; max-width: 100% !important; }
-      .print-header { display: flex !important; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 2px solid #0284C7; }
-      .print-header img { height: 50px; }
-      .print-header-meta h2 { font-size: 1.15rem; color: #0284C7; font-weight: 900; }
-      .section-header { margin: 25px 0 15px !important; }
-      .products-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 16px !important; }
-      .prod-card { page-break-inside: avoid !important; border: 1px solid #CBD5E1 !important; box-shadow: none !important; padding: 12px !important; }
-      .thumb-slider-container { height: 180px !important; }
-      .print-footer { display: block !important; margin-top: 40px; border-top: 2px solid #0284C7; text-align: center; }
-      .print-footer-grid { display: flex; justify-content: space-around; margin-top: 10px; }
+      @page { 
+        size: A4 portrait; 
+        margin: 8mm 8mm 10mm 8mm; 
+      }
+      body { 
+        background: #FFFFFF !important; 
+        color: #0F172A !important; 
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { 
+        display: none !important; 
+      }
+      .main-content { 
+        padding: 0 !important; 
+        max-width: 100% !important; 
+      }
+      
+      /* Cabeçalho compacto de impressão */
+      .print-header { 
+        display: flex !important; 
+        align-items: center; 
+        justify-content: space-between; 
+        margin-bottom: 8px !important; 
+        padding-bottom: 6px !important;
+        border-bottom: 2px solid #0284C7; 
+      }
+      .print-header img { height: 38px !important; }
+      .print-header-meta h2 { font-size: 0.95rem !important; color: #0284C7; font-weight: 900; }
+      .print-header-meta p { font-size: 0.68rem !important; color: #64748B; }
+
+      .catalog-section { 
+        page-break-inside: auto;
+      }
+      .section-header { 
+        margin: 10px 0 8px !important; 
+        padding-bottom: 4px !important;
+        page-break-after: avoid !important;
+      }
+      .section-title { font-size: 1rem !important; }
+      .badge-count { font-size: 0.68rem !important; padding: 2px 8px !important; }
+
+      /* Grade: 4 colunas exatas com espaçamento enxuto */
+      .products-grid { 
+        display: grid !important; 
+        grid-template-columns: repeat(4, 1fr) !important; 
+        gap: 8px !important; 
+      }
+
+      /* Card reduzido para fechar 3 linhas perfeitas no A4 */
+      .prod-card { 
+        break-inside: avoid !important;
+        page-break-inside: avoid !important; 
+        border: 1px solid #E2E8F0 !important; 
+        border-radius: 10px !important;
+        box-shadow: none !important; 
+        padding: 8px !important; 
+        background: #FFFFFF !important;
+      }
+      
+      .thumb-slider-container { 
+        height: 95px !important; 
+        margin-bottom: 6px !important;
+        border-radius: 8px !important;
+      }
+      .thumb-slider-container img { max-height: 85px !important; }
+
+      .destaque-badge { 
+        font-size: 0.55rem !important; 
+        padding: 2px 6px !important;
+        top: 4px !important;
+        right: 4px !important;
+      }
+
+      .brand-header-row { 
+        margin-bottom: 2px !important; 
+        min-height: 16px !important; 
+      }
+      .brand-sub { font-size: 0.62rem !important; }
+      .brand-inline-logo { height: 14px !important; max-width: 50px !important; }
+      
+      .prod-name { 
+        font-size: 0.75rem !important; 
+        line-height: 1.15 !important;
+        margin-bottom: 5px !important; 
+        height: 2.3em;
+        overflow: hidden;
+      }
+
+      .specs-list { 
+        padding: 5px 6px !important; 
+        gap: 3px !important; 
+        font-size: 0.64rem !important;
+        border-radius: 6px !important;
+      }
+      .spec-row { font-size: 0.64rem !important; }
+      .spec-row span { font-size: 0.60rem !important; }
+      .spec-row strong { font-size: 0.62rem !important; }
+      .spec-row:not(:last-child) { margin-bottom: 2px !important; padding-bottom: 2px !important; }
+
+      .print-footer { 
+        display: block !important; 
+        margin-top: 15px !important; 
+        padding-top: 8px !important;
+        border-top: 1.5px solid #0284C7; 
+        text-align: center; 
+        page-break-inside: avoid !important;
+      }
+      .print-footer p { font-size: 0.68rem !important; margin-bottom: 2px !important; }
+      .print-footer-grid { display: flex; justify-content: space-around; margin-top: 6px; font-size: 0.62rem; }
     }
+
 
     footer {
       position: relative;
@@ -1260,10 +1358,12 @@
         Selecione as categorias que deseja imprimir ou salvar em PDF:
       </p>
 
-      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px;">
-        <button type="button" class="btn-action" style="flex: none; font-size: 0.72rem; padding: 4px 10px;" onclick="toggleAllExportCheckboxes(true)">Marcar Todas</button>
-        <button type="button" class="btn-action" style="flex: none; font-size: 0.72rem; padding: 4px 10px;" onclick="toggleAllExportCheckboxes(false)">Desmarcar Todas</button>
-      </div>
+<!-- BLOCO ATUALIZADO: -->
+<div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px;">
+  <button type="button" style="flex: none; font-size: 0.74rem; font-weight: 700; padding: 5px 12px; border-radius: 8px; border: 1px solid #0284C7; background: #0284C7; color: #FFFFFF; cursor: pointer; box-shadow: 0 1px 4px rgba(2, 132, 199, 0.25);" onclick="toggleAllExportCheckboxes(true)">✓ Marcar Todas</button>
+  <button type="button" class="btn-action" style="flex: none; font-size: 0.74rem; padding: 5px 12px;" onclick="toggleAllExportCheckboxes(false)">Desmarcar Todas</button>
+</div>
+
 
       <div class="export-categories-list" id="exportCategoriesList"></div>
 
@@ -2519,6 +2619,7 @@ async function enviarCotacaoWeb3Forms(e) {
   }
 }
 
+// FUNÇÃO ATUALIZADA (TODOS INICIAM DESMARCADOS):
 function openExportModal() {
   const container = document.getElementById('exportCategoriesList');
   container.innerHTML = '';
@@ -2526,7 +2627,7 @@ function openExportModal() {
     const item = document.createElement('label');
     item.className = 'export-category-item';
     item.innerHTML = `
-      <input type="checkbox" value="${cat.id}" checked>
+      <input type="checkbox" value="${cat.id}">
       ${getCategorySvg(cat.icon || cat.id, 'icon-svg-sm')}
       <span>${cat.title}</span>
     `;
@@ -2534,6 +2635,7 @@ function openExportModal() {
   });
   document.getElementById('exportModal').classList.add('active');
 }
+
 
 function closeExportModal() {
   document.getElementById('exportModal').classList.remove('active');
