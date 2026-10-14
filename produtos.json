@@ -395,8 +395,10 @@
         "Impressão frente e verso": "Duplex automático padrão",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
         "Conectividade": "Portas USB e RJ45  (10/100/1000)",
-        "ADF": "50 páginas com digitalização duplex de passagem única",
-        "Memória e Armazenamento": "2 GB de memória RAM e 16 GB de eMMC"
+        "ADF": "50 páginas e duplex de passagem única",
+        "Processador": "800 MHz",
+        "Memória padrão": "2 GB",
+        "Armazenamento": "16 GB de eMMC"
       },
       "logoMarca": "logos/hp.png",
       "destaque": "mais-procurado"
