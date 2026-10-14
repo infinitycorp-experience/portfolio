@@ -1629,7 +1629,7 @@
   <div class="modal-overlay" id="exportModal">
     <div class="modal-box export-modal-box">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Exportar Catálogo / PDF</h3>
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Exportar Portfólio / PDF</h3>
         <button type="button" class="modal-close-btn" style="position: static; width: 32px; height: 32px;" onclick="closeExportModal()">✕</button>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
@@ -1958,7 +1958,7 @@ function clearSearch() {
 async function loadCatalog() {
   try {
     const response = await fetch(`${JSON_PATH}?t=${new Date().getTime()}`);
-    if (!response.ok) throw new Error('Erro ao carregar catálogo.');
+    if (!response.ok) throw new Error('Erro ao carregar porfólio.');
     const data = await response.json();
 
     if (Array.isArray(data)) {
