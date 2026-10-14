@@ -108,8 +108,7 @@
   }
 }
 
-    /* Barra Superior */
-    /* Barra Superior Firme e Corporativa */
+  /* Barra Superior Firme e Corporativa */
 .top-navbar {
   background: #FFFFFF !important; /* Branco 100% sólido */
   border-bottom: 1px solid var(--card-border);
@@ -327,6 +326,125 @@
       .search-filter-wrapper { width: 100%; }
       .btn-export-discreet { width: 100%; justify-content: center; }
     }
+
+    /* Pílula Suave de Comparação (Ativada pós-visualização) */
+    .comparador-toast-sutil {
+      position: fixed;
+      bottom: 85px;
+      right: 24px;
+      z-index: 1380;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border: 1px solid #BAE6FD;
+      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.15), 0 2px 8px rgba(15, 23, 42, 0.06);
+      border-radius: 50px;
+      padding: 6px 8px 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 90vw;
+    }
+    .comparador-toast-sutil.ativo {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .comparador-toast-texto {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .comparador-toast-btn {
+      background: #0284C7;
+      color: #FFFFFF;
+      border: none;
+      height: 32px;
+      padding: 0 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+    }
+    .comparador-toast-btn:hover {
+      background: #0369A1;
+      transform: scale(1.02);
+    }
+    .comparador-toast-close {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 4px;
+      line-height: 1;
+    }
+    .comparador-toast-close:hover { color: #E11D48; }
+
+    /* Modal Comparativo Limpo */
+    #modal-comparador {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 2500;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #modal-comparador.aberto { display: flex; }
+    .modal-comp-content {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 860px;
+      max-height: 85vh;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-comp-header {
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .modal-comp-body {
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .tabela-comparacao {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .tabela-comparacao th, .tabela-comparacao td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid #F1F5F9;
+      font-size: 0.85rem;
+    }
+    .tabela-comparacao th {
+      background: #F8FAFC;
+      color: #475569;
+      position: sticky;
+      top: 0;
+    }
+
 
     /* Barra Flutuante de Proposta */
     .floating-quote-bar {
@@ -1075,9 +1193,9 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer { 
-        display: none !important; 
-      }
+      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer, #dock-comparacao, #modal-comparador { 
+  display: none !important; 
+}
       .main-content { 
         padding: 0 !important; 
         max-width: 100% !important; 
@@ -1282,8 +1400,8 @@
       <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
     </div>
     <div class="scroll-up-toast-content">
-      <strong>Precisa salvar este Portfólio?</strong>
-      <span>Exporte os modelos em PDF.</span>
+      <strong>Precisa salvar este catálogo?</strong>
+      <span>Exporte especificações e modelos em PDF.</span>
     </div>
     <button type="button" class="scroll-up-toast-btn" onclick="acionarExportViaToast()">
       <span>Baixar PDF</span>
@@ -2017,6 +2135,7 @@ function renderCatalog() {
             ${isSelectedInCart ? '✓ Na Cotação' : '+ Cotar'}
           </button>
         </div>
+
       `;
       grid.appendChild(card);
     });
@@ -2859,6 +2978,7 @@ function changeCardSlide(e, btn, step) {
 }
 
 function openProductModal(prod) {
+  registrarInspecaoComparador(prod);
   currentSelectedProductForModal = prod;
   modalImages = prod.imagens || [];
   modalCurrentIdx = 0;
@@ -2916,6 +3036,88 @@ function renderModalGallery() {
     `;
   }
 }
+/* ==========================================================================
+   COMPARADOR INTELIGENTE (ATIVADO APENAS APÓS VER DETALHES)
+   ========================================================================== */
+let modelosInspecionados = [];
+
+function registrarInspecaoComparador(prod) {
+  if (!prod || !prod.id) return;
+  // Mantém apenas os últimos modelos únicos vistos (até 3)
+  modelosInspecionados = modelosInspecionados.filter(p => p.id !== prod.id);
+  modelosInspecionados.unshift(prod);
+  if (modelosInspecionados.length > 3) {
+    modelosInspecionados.pop();
+  }
+}
+
+function sugerirComparacaoAoFecharDetalhe() {
+  const toast = document.getElementById("comparadorToastSutil");
+  if (!toast) return;
+
+  // Sugere se o cliente viu 2 ou 3 equipamentos diferentes
+  if (modelosInspecionados.length >= 2) {
+    const msgEl = document.getElementById("compToastMsg");
+    if (msgEl) {
+      msgEl.textContent = `Comparar os ${modelosInspecionados.length} modelos vistos?`;
+    }
+    toast.classList.add("ativo");
+  }
+}
+
+function fecharToastComparador() {
+  const toast = document.getElementById("comparadorToastSutil");
+  if (toast) toast.classList.remove("ativo");
+}
+
+function abrirModalComparador() {
+  fecharToastComparador();
+  if (modelosInspecionados.length < 2) return;
+
+  const container = document.getElementById("modal-comp-tabela-wrap");
+  const todasSpecs = new Set();
+  
+  modelosInspecionados.forEach(p => {
+    if (p.specs) Object.keys(p.specs).forEach(k => todasSpecs.add(k));
+  });
+
+  let html = `
+    <table class="tabela-comparacao">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Item / Especificação</th>
+          ${modelosInspecionados.map(p => `
+            <th>
+              <img src="${p.imagens?.[0] || 'https://placehold.co/80x60?text=Sem+Foto'}" style="height: 55px; object-fit: contain; display: block; margin-bottom: 6px;">
+              <strong>${p.nome}</strong><br>
+              <small style="color: #0284C7; font-weight: 700;">${p.marca}</small>
+            </th>
+          `).join('')}
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  todasSpecs.forEach(spec => {
+    html += `<tr><td><strong>${spec}</strong></td>`;
+    modelosInspecionados.forEach(p => {
+      const valor = p.specs ? (p.specs[spec] || "-") : "-";
+      html += `<td>${valor}</td>`;
+    });
+    html += `</tr>`;
+  });
+
+  html += `</tbody></table>`;
+  container.innerHTML = html;
+
+  document.getElementById("modal-comparador").classList.add("aberto");
+  document.body.style.overflow = "hidden";
+}
+
+function fecharModalComparador() {
+  document.getElementById("modal-comparador").classList.remove("aberto");
+  document.body.style.overflow = "auto";
+}
 
 function changeModalSlide(step) {
   modalCurrentIdx += step;
@@ -2927,6 +3129,7 @@ function changeModalSlide(step) {
 function closeModal() {
   document.getElementById('productModal').classList.remove('active');
   document.body.style.overflow = 'auto';
+  sugerirComparacaoAoFecharDetalhe();
 }
 
 function closeModalOnOutsideClick(e) {
@@ -2937,5 +3140,32 @@ window.addEventListener('resize', atualizarBarraFlutuante);
 window.addEventListener('scroll', gerenciarScrollUpExport, { passive: true });
 
   </script>
+
+<!-- Pílula Sutil de Comparação -->
+<div id="comparadorToastSutil" class="comparador-toast-sutil">
+  <div class="comparador-toast-texto">
+    <span>⚖️</span>
+    <span id="compToastMsg">Comparar modelos vistos?</span>
+  </div>
+  <button type="button" class="comparador-toast-btn" onclick="abrirModalComparador()">
+    Comparar
+  </button>
+  <button type="button" class="comparador-toast-close" onclick="fecharToastComparador()" title="Dispensar">✕</button>
+</div>
+
+
+<!-- Modal da Tabela Lado a Lado -->
+<div id="modal-comparador" onclick="if(event.target === this) fecharModalComparador()">
+  <div class="modal-comp-content">
+    <div class="modal-comp-header">
+      <h3 style="margin: 0;">Comparativo Técnico Lado a Lado</h3>
+      <button onclick="fecharModalComparador()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+    </div>
+    <div class="modal-comp-body" id="modal-comp-tabela-wrap">
+      <!-- Tabela gerada via JavaScript -->
+    </div>
+  </div>
+</div>
+  
 </body>
 </html>
