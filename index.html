@@ -8,7 +8,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/logos/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/logos/favicon-180.png">
   <style>
-    
     :root {
       --bg-body: #F8FAFC;
       --card-bg: #FFFFFF;
@@ -427,26 +426,36 @@
     }
     .modal-comp-body {
       overflow-y: auto;
-      padding: 20px;
+      padding: 0 20px 20px 20px; /* ZERO no topo: elimina o vão onde o texto vazava */
     }
     .tabela-comparacao {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate; /* Fundamental para sticky funcionar sem falhas */
+      border-spacing: 0;
+    }
+    .tabela-comparacao thead {
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     .tabela-comparacao th, .tabela-comparacao td {
       padding: 12px 14px;
       text-align: left;
-      border-bottom: 1px solid #F1F5F9;
+      border-bottom: 1px solid #E2E8F0;
       font-size: 0.85rem;
       vertical-align: top;
+      background-color: #FFFFFF;
     }
     .tabela-comparacao th {
-      background: #F8FAFC;
+      background-color: #F8FAFC !important;
       color: #475569;
       position: sticky;
       top: 0;
-      z-index: 5;
+      z-index: 10;
+      border-bottom: 2px solid #CBD5E1;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05); /* Sombra sutil que separa o cabeçalho ao rolar */
     }
+
     .comp-col-actions {
       display: flex;
       flex-direction: column;
@@ -3077,8 +3086,15 @@ let modelosInspecionados = [];
 
 function registrarInspecaoComparador(prod) {
   if (!prod || !prod.id) return;
+
+  // Se o cliente mudou para outra categoria, reinicia a lista para não misturar tipos diferentes
+  if (modelosInspecionados.length > 0 && modelosInspecionados[0].categoria !== prod.categoria) {
+    modelosInspecionados = [];
+  }
+
   modelosInspecionados = modelosInspecionados.filter(p => p.id !== prod.id);
   modelosInspecionados.unshift(prod);
+
   if (modelosInspecionados.length > 3) {
     modelosInspecionados.pop();
   }
@@ -3166,9 +3182,12 @@ function renderTabelaComparador() {
     return;
   }
 
-  // Gera lista com todos os produtos disponíveis para o dropdown
+  // 1. Pega a categoria do primeiro produto como referência
+  const categoriaFiltro = modelosInspecionados[0]?.categoria;
+
+  // 2. Filtra apenas os produtos ativos da MESMA categoria
   const opcoesProdutos = produtos
-    .filter(p => p.ativo)
+    .filter(p => p.ativo && (!categoriaFiltro || p.categoria === categoriaFiltro))
     .map(p => `<option value="${p.id}">${p.marca} - ${p.nome}</option>`)
     .join('');
 
@@ -3191,7 +3210,7 @@ function renderTabelaComparador() {
               <small style="color: #0284C7; font-weight: 700;">${p.marca}</small>
               
               <div class="comp-col-actions">
-                <select class="comp-select-troca" onchange="trocarModeloComparador('${p.id}', this.value)" title="Substituir por outro modelo">
+                <select class="comp-select-troca" onchange="trocarModeloComparador('${p.id}', this.value)" title="Substituir por outro modelo da mesma categoria">
                   <option value="">⇄ Substituir modelo...</option>
                   ${opcoesProdutos}
                 </select>
