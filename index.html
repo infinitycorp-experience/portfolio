@@ -327,34 +327,38 @@
       .btn-export-discreet { width: 100%; justify-content: center; }
     }
 
-    /* Pílula Suave de Comparação (Ativada pós-visualização) */
+    /* Pílula Suave Centralizada (Não concorre com o botão Cotar no canto) */
     .comparador-toast-sutil {
       position: fixed;
-      bottom: 85px;
-      right: 24px;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(25px) scale(0.96);
       z-index: 1380;
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(14px);
       border: 1px solid #BAE6FD;
-      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.15), 0 2px 8px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.15), 0 2px 10px rgba(15, 23, 42, 0.08);
       border-radius: 50px;
-      padding: 6px 8px 6px 16px;
+      padding: 6px 10px 6px 18px;
       display: flex;
       align-items: center;
       gap: 12px;
       opacity: 0;
-      transform: translateY(20px) scale(0.96);
       pointer-events: none;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       max-width: 90vw;
     }
     .comparador-toast-sutil.ativo {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateX(-50%) translateY(0) scale(1);
       pointer-events: auto;
     }
+    /* Se a barra preta de proposta também estiver ativa, sobe a pílula suavemente */
+    #floatingQuoteBar.active ~ #comparadorToastSutil {
+      bottom: 84px;
+    }
     .comparador-toast-texto {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #0F172A;
       display: flex;
@@ -375,13 +379,9 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: background 0.2s, transform 0.15s;
       box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
     }
-    .comparador-toast-btn:hover {
-      background: #0369A1;
-      transform: scale(1.02);
-    }
+    .comparador-toast-btn:hover { background: #0369A1; }
     .comparador-toast-close {
       background: transparent;
       border: none;
@@ -393,7 +393,7 @@
     }
     .comparador-toast-close:hover { color: #E11D48; }
 
-    /* Modal Comparativo Limpo */
+    /* Modal Comparativo & Controles de Cabeçalho */
     #modal-comparador {
       display: none;
       position: fixed;
@@ -409,8 +409,8 @@
     .modal-comp-content {
       background: #FFFFFF;
       width: 100%;
-      max-width: 860px;
-      max-height: 85vh;
+      max-width: 920px;
+      max-height: 88vh;
       border-radius: 20px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
       overflow: hidden;
@@ -437,14 +437,45 @@
       text-align: left;
       border-bottom: 1px solid #F1F5F9;
       font-size: 0.85rem;
+      vertical-align: top;
     }
     .tabela-comparacao th {
       background: #F8FAFC;
       color: #475569;
       position: sticky;
       top: 0;
+      z-index: 5;
     }
-
+    .comp-col-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .comp-select-troca {
+      width: 100%;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 4px 6px;
+      background: #FFFFFF;
+      color: #334155;
+      cursor: pointer;
+    }
+    .btn-comp-remover {
+      background: transparent;
+      border: none;
+      color: #E11D48;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 0;
+    }
+    .btn-comp-remover:hover { text-decoration: underline; }
 
     /* Barra Flutuante de Proposta */
     .floating-quote-bar {
@@ -1193,9 +1224,11 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
-      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer, #dock-comparacao, #modal-comparador { 
-  display: none !important; 
-}
+      
+      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer, .comparador-toast-sutil, #modal-comparador { 
+        display: none !important; 
+      }
+
       .main-content { 
         padding: 0 !important; 
         max-width: 100% !important; 
@@ -3037,13 +3070,12 @@ function renderModalGallery() {
   }
 }
 /* ==========================================================================
-   COMPARADOR INTELIGENTE (ATIVADO APENAS APÓS VER DETALHES)
+   COMPARADOR INTELIGENTE (COM GESTÃO DINÂMICA DE MODELOS)
    ========================================================================== */
 let modelosInspecionados = [];
 
 function registrarInspecaoComparador(prod) {
   if (!prod || !prod.id) return;
-  // Mantém apenas os últimos modelos únicos vistos (até 3)
   modelosInspecionados = modelosInspecionados.filter(p => p.id !== prod.id);
   modelosInspecionados.unshift(prod);
   if (modelosInspecionados.length > 3) {
@@ -3055,7 +3087,6 @@ function sugerirComparacaoAoFecharDetalhe() {
   const toast = document.getElementById("comparadorToastSutil");
   if (!toast) return;
 
-  // Sugere se o cliente viu 2 ou 3 equipamentos diferentes
   if (modelosInspecionados.length >= 2) {
     const msgEl = document.getElementById("compToastMsg");
     if (msgEl) {
@@ -3072,27 +3103,113 @@ function fecharToastComparador() {
 
 function abrirModalComparador() {
   fecharToastComparador();
-  if (modelosInspecionados.length < 2) return;
+  renderTabelaComparador();
+  document.getElementById("modal-comparador").classList.add("aberto");
+  document.body.style.overflow = "hidden";
+}
 
-  const container = document.getElementById("modal-comp-tabela-wrap");
-  const todasSpecs = new Set();
+function fecharModalComparador() {
+  document.getElementById("modal-comparador").classList.remove("aberto");
+  document.body.style.overflow = "auto";
+}
+
+/* Remover modelo individual */
+function removerModeloComparador(prodId) {
+  modelosInspecionados = modelosInspecionados.filter(p => p.id !== prodId);
+  if (modelosInspecionados.length === 0) {
+    fecharModalComparador();
+  } else {
+    renderTabelaComparador();
+  }
+}
+
+/* Substituir um modelo selecionado por outro do portfólio (sem duplicar na tela) */
+function trocarModeloComparador(idAntigo, idNovo) {
+  if (!idNovo || idAntigo === idNovo) return;
   
+  if (modelosInspecionados.some(p => p.id === idNovo)) {
+    alert("Este equipamento já está sendo comparado.");
+    renderTabelaComparador(); // Restaura o select
+    return;
+  }
+
+  const novoProd = produtos.find(p => p.id === idNovo);
+  if (!novoProd) return;
+
+  const idx = modelosInspecionados.findIndex(p => p.id === idAntigo);
+  if (idx !== -1) {
+    modelosInspecionados[idx] = novoProd;
+    renderTabelaComparador();
+  }
+}
+
+/* Adicionar um 3º modelo quando há apenas 2 */
+function adicionarModeloComparador(idNovo) {
+  if (!idNovo) return;
+  const novoProd = produtos.find(p => p.id === idNovo);
+  if (!novoProd) return;
+
+  if (modelosInspecionados.length < 3 && !modelosInspecionados.some(p => p.id === novoProd.id)) {
+    modelosInspecionados.push(novoProd);
+    renderTabelaComparador();
+  }
+}
+
+/* Monta e atualiza a tabela dinamicamente */
+function renderTabelaComparador() {
+  const container = document.getElementById("modal-comp-tabela-wrap");
+  if (!container) return;
+
+  if (modelosInspecionados.length === 0) {
+    container.innerHTML = `<p style="text-align:center; padding:30px; color:#64748B;">Nenhum equipamento selecionado para comparação.</p>`;
+    return;
+  }
+
+  // Gera lista com todos os produtos disponíveis para o dropdown
+  const opcoesProdutos = produtos
+    .filter(p => p.ativo)
+    .map(p => `<option value="${p.id}">${p.marca} - ${p.nome}</option>`)
+    .join('');
+
+  const todasSpecs = new Set();
   modelosInspecionados.forEach(p => {
     if (p.specs) Object.keys(p.specs).forEach(k => todasSpecs.add(k));
   });
+
+  const slotsDisponiveis = 3 - modelosInspecionados.length;
 
   let html = `
     <table class="tabela-comparacao">
       <thead>
         <tr>
-          <th style="width: 25%;">Item / Especificação</th>
+          <th style="width: 22%;">Especificação</th>
           ${modelosInspecionados.map(p => `
-            <th>
+            <th style="width: ${slotsDisponiveis > 0 ? '26%' : '26%'};">
               <img src="${p.imagens?.[0] || 'https://placehold.co/80x60?text=Sem+Foto'}" style="height: 55px; object-fit: contain; display: block; margin-bottom: 6px;">
               <strong>${p.nome}</strong><br>
               <small style="color: #0284C7; font-weight: 700;">${p.marca}</small>
+              
+              <div class="comp-col-actions">
+                <select class="comp-select-troca" onchange="trocarModeloComparador('${p.id}', this.value)" title="Substituir por outro modelo">
+                  <option value="">⇄ Substituir modelo...</option>
+                  ${opcoesProdutos}
+                </select>
+                <button type="button" class="btn-comp-remover" onclick="removerModeloComparador('${p.id}')">
+                  ✕ Remover
+                </button>
+              </div>
             </th>
           `).join('')}
+
+          ${slotsDisponiveis > 0 ? `
+            <th style="width: 26%; background: #FAFDFE; border: 1px dashed #BAE6FD; border-radius: 8px; text-align: center;">
+              <span style="font-size: 0.78rem; font-weight: 700; color: #0284C7; display: block; margin-bottom: 6px;">+ Adicionar Modelo</span>
+              <select class="comp-select-troca" onchange="adicionarModeloComparador(this.value)">
+                <option value="">Selecionar equipamento...</option>
+                ${opcoesProdutos}
+              </select>
+            </th>
+          ` : ''}
         </tr>
       </thead>
       <tbody>
@@ -3104,6 +3221,9 @@ function abrirModalComparador() {
       const valor = p.specs ? (p.specs[spec] || "-") : "-";
       html += `<td>${valor}</td>`;
     });
+    if (slotsDisponiveis > 0) {
+      html += `<td style="background: #FAFCFD;">-</td>`;
+    }
     html += `</tr>`;
   });
 
