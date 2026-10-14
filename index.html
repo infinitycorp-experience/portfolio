@@ -961,6 +961,108 @@
   animation: badgePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+    /* Banner Sutil de Reengajamento / Exportação ao Subir */
+    .scroll-up-export-toast {
+      position: fixed;
+      top: 75px;
+      right: 24px;
+      z-index: 1200;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid #BAE6FD;
+      box-shadow: 0 12px 35px rgba(2, 132, 199, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
+      border-radius: 14px;
+      padding: 10px 14px 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(-15px) scale(0.97);
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 420px;
+    }
+
+    .scroll-up-export-toast.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .scroll-up-toast-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #E0F2FE;
+      color: #0284C7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .scroll-up-toast-content {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+
+    .scroll-up-toast-content strong {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    .scroll-up-toast-content span {
+      font-size: 0.72rem;
+      color: #64748B;
+    }
+
+    .scroll-up-toast-btn {
+      background: #0284C7;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s ease, transform 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .scroll-up-toast-btn:hover {
+      background: #0369A1;
+      transform: translateY(-1px);
+    }
+
+    .scroll-up-toast-close {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      padding: 4px;
+      border-radius: 4px;
+      margin-left: 2px;
+    }
+
+    .scroll-up-toast-close:hover {
+      color: #E11D48;
+    }
+
+    @media (max-width: 600px) {
+      .scroll-up-export-toast {
+        top: 65px;
+        left: 14px;
+        right: 14px;
+        max-width: none;
+      }
+    }
 
     @media print {
       @page { 
@@ -1174,6 +1276,21 @@
         </div>
       </div>
     </div>
+      <!-- Toast Delicado de Exportação / Scroll Up -->
+  <div class="scroll-up-export-toast" id="scrollUpExportToast">
+    <div class="scroll-up-toast-icon">
+      <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+    </div>
+    <div class="scroll-up-toast-content">
+      <strong>Precisa salvar este catálogo?</strong>
+      <span>Exporte especificações e modelos em PDF.</span>
+    </div>
+    <button type="button" class="scroll-up-toast-btn" onclick="acionarExportViaToast()">
+      <span>Baixar PDF</span>
+    </button>
+    <button type="button" class="scroll-up-toast-close" onclick="fecharExportToast()" title="Dispensar">✕</button>
+  </div>
+
   </main>
 
   <!-- Dica Flutuante de Cotação -->
@@ -2619,6 +2736,58 @@ async function enviarCotacaoWeb3Forms(e) {
   }
 }
 
+/* ==========================================================================
+   EFEITO: GATILHO DE SUBIDA (SCROLL-UP) PARA EXPORTAÇÃO EM PDF
+   ========================================================================== */
+let lastScrollY = 0;
+let exportToastExibidoNestaSessao = false;
+let scrollDownMaximo = 0;
+
+function gerenciarScrollUpExport() {
+  // Também chama a dica de cotação que você já tem
+  verificarDicaFlutuante();
+
+  const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  const toast = document.getElementById('scrollUpExportToast');
+  if (!toast) return;
+
+  // Guarda o ponto mais profundo que o cliente desceu na página
+  if (currentScrollY > scrollDownMaximo) {
+    scrollDownMaximo = currentScrollY;
+  }
+
+  // Regra:
+  // 1. Ele desceu pelo menos 750px (viu itens)
+  // 2. Está subindo (currentScrollY menor que lastScrollY com folga de 60px)
+  // 3. Ainda não voltou tudo pro topo (currentScrollY > 200)
+  // 4. Ainda não foi dispensado nesta sessão
+  const subindoSignificativamente = (lastScrollY - currentScrollY) > 8;
+
+  if (
+    !exportToastExibidoNestaSessao &&
+    scrollDownMaximo > 750 &&
+    currentScrollY > 250 &&
+    subindoSignificativamente
+  ) {
+    toast.classList.add('active');
+  }
+
+  lastScrollY = currentScrollY;
+}
+
+function fecharExportToast() {
+  const toast = document.getElementById('scrollUpExportToast');
+  if (toast) toast.classList.remove('active');
+  exportToastExibidoNestaSessao = true; // Não perturba novamente na mesma rolagem
+}
+
+function acionarExportViaToast() {
+  fecharExportToast();
+  openExportModal();
+  sendTrackingEvent('Clicou Dica ScrollUp PDF', 'Abriu modal via sugestão ao subir a página');
+}
+
+
 // FUNÇÃO ATUALIZADA (TODOS INICIAM DESMARCADOS):
 function openExportModal() {
   const container = document.getElementById('exportCategoriesList');
@@ -2765,7 +2934,8 @@ function closeModalOnOutsideClick(e) {
 }
 window.addEventListener('DOMContentLoaded', loadCatalog);
 window.addEventListener('resize', atualizarBarraFlutuante);
-window.addEventListener('scroll', verificarDicaFlutuante, { passive: true });
+window.addEventListener('scroll', gerenciarScrollUpExport, { passive: true });
+
   </script>
 </body>
 </html>
