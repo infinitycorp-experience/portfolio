@@ -242,10 +242,10 @@
         "Painel": "Touch colorido de 2,7\"",
         "ADF": "50 folhas",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
-        "Impressão frente e verso (Duplex)": "Automática.",
         "Conectividade": "USB 2.0, RJ45 Gigabit, Wi-Fi 802.11b/g/n, Bluetooth e Wi-Fi Direct"
       },
-      "logoMarca": "fotos/1788525509551_LogoHP.png"
+      "logoMarca": "fotos/1788525509551_LogoHP.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789497540428",
@@ -418,13 +418,13 @@
         "Velocidade": "Até 43 a 48 ppm",
         "Painel": "Touch colorido de 10\"",
         "1ª Página": "5,9 segundos",
-        "Resolução": "Até 1200 x 1200 dpi",
         "Impressão frente e verso": "Duplex automático padrão",
         "ADF": "Até 100 folhas",
         "Conectividade": "USB 2.0 e Ethernet",
         "Processador": "1.2 GHz",
         "Memória padrão": "1.75 GB",
-        "Rendimento do toner": "Até 23.000"
+        "Rendimento do toner": "Até 23.000",
+        "Resolução de impressão": "Até 1200 x 1200 dpi"
       },
       "logoMarca": "fotos/1788533821335_LogoHP.png",
       "destaque": "recomendado"
