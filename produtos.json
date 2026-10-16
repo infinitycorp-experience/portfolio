@@ -180,7 +180,7 @@
         "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Placa de Vídeo": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "logos/dell.png",
       "destaque": "mais-procurado"
@@ -297,7 +297,7 @@
         "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Placa de Vídeo": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "fotos/1788542042460_LogoLenovo.png",
       "destaque": "semi-novo"
@@ -362,9 +362,10 @@
         "Tela": "14\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Placa de Vídeo": "Integrada (Intel UHD Graphics"
       },
-      "logoMarca": "fotos/1788542048564_LogoDell.png"
+      "logoMarca": "fotos/1788542048564_LogoDell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1791401777508",
@@ -384,7 +385,7 @@
         "Tela": "14\" - Full HD (1920 x 1080)",
         "Memória": "16/32 GB DDR5 (5600 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Intel Arc Graphics",
+        "Placa de Vídeo": "Intel Arc Graphics",
         "Conectividade": "Wi-Fi 6E, Bluetooth 5.3 e RJ-45"
       },
       "logoMarca": "logos/lenovo.png"
@@ -1377,7 +1378,7 @@
         "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "16/32 GB DDR5 (5600 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Placa de Vídeo": "Integrada (Intel UHD Graphics"
       },
       "logoMarca": "logos/dell.png"
     },
@@ -1595,7 +1596,7 @@
         "Tela": "16' WQXGA (2560 x 1600), 120 Hz",
         "Memória": "16/32/64GB DDR5  (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "RTX 3050 / 4050 / 5050",
+        "Placa de Vídeo": "RTX 3050 / 4050 / 5050",
         "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
       },
       "logoMarca": "logos/dell.png",
@@ -1619,7 +1620,7 @@
         "Tela": "15.6' Full HD (1920x1080), 144 Hz IPS",
         "Memória": "16/32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "RTX 4050 / 5050",
+        "Placa de Vídeo": "RTX 4050 / 5050",
         "Acabamento": "Tampa em metal com abertura de até 180º"
       },
       "logoMarca": "logos/lenovo.png"
@@ -1640,7 +1641,7 @@
         "Tela": "15.3\" Quad HD+ 2560x1600p - 180Hz",
         "Memória": "32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "RTX 5060"
+        "Placa de Vídeo": "RTX 5060"
       },
       "logoMarca": "logos/avell.png"
     },
@@ -1684,7 +1685,7 @@
         "Tela": "15.6' Full HD  (1980 x 1080), 165 Hz",
         "Memória": "16/32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "RTX 5050",
+        "Placa de Vídeo": "RTX 5050",
         "Acabamento": "Premium"
       },
       "logoMarca": "logos/avell.png"
