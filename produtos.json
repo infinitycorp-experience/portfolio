@@ -518,8 +518,8 @@
         "ADF": "Até 110 páginas e duplex por inversão",
         "Velocidade do Scanner (AAD)": "Até 55 ipm",
         "Tamanhos de papel": "A3, A4, B4, B5 e Ofício",
-        "Impressão frente e verso (Duplex)": "Automático",
-        "Conectividade": "USB 3.0, RJ45 10/100/1000 e NFC Opcional"
+        "Conectividade": "USB 3.0, RJ45 10/100/1000 e NFC Opcional",
+        "Bandeja": "520 folhas"
       },
       "logoMarca": "fotos/1788525690206_LogoXerox.png",
       "destaque": "recomendado"
@@ -537,15 +537,16 @@
       "specs": {
         "Velocidade": "Até 35/45 ppm",
         "Painel": "Touch colorido de 10.1\"",
-        "Impressão": "Até 1200 x 2400 dpi",
-        "Cópia": "Até 600 x 600 dpi",
-        "Processador": "Intel Atom Quad-Core de 1,91 GHz",
-        "Memória": "8 GB do sistema.",
-        "Bandeja Bypass": "100 folhas",
-        "Bandejas 1 e 2": "520 folhas cada",
-        "Alimentador automático duplex (DADF) de passagem única": "130 folhas (velocidade de até 139 ipm em duplex)"
+        "Resolução": "Até 1200 x 2400 dpi",
+        "Processador": "1,91 GHz (Intel Atom Quad-Core)",
+        "Memória": "8 GB",
+        "Armazenamento": "250 GB (HD criptografado)",
+        "Bandeja": "520 folhas (2x)",
+        "ADF": "Até 130 páginas e duplex de passagem única",
+        "Velocidade do Scanner (AAD)": "Até 139 ipm"
       },
-      "logoMarca": "logos/xerox.png"
+      "logoMarca": "logos/xerox.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789409034307",
