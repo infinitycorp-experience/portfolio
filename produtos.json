@@ -613,13 +613,14 @@
         "fotos/1789412141456_61911.jpg"
       ],
       "specs": {
-        "Velocidade": "15 ppm em preto e 8 ppm em cores (modo normal)",
+        "Velocidade": "Até 33 ppm",
         "Painel": "Touch colorido de 2,4\"",
         "Tecnologia de impressão": "Jato de tinta de 4 cores (CMYK)",
-        "Resolução máxima de impressão": "Até 4800 x 1200 dpi de resolução otimizada",
-        "Impressão Duplex": "Automática",
-        "Bandeja": "Capacidade para 250 folhas",
-        "ADF": "Capacidade para até 30 folhas (simplex)"
+        "Resolução de impressão": "Até 4800 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "Bandeja": "250 folhas",
+        "ADF": "Até 30 páginas (simplex)",
+        "Conectividade": "USB 2.0, RJ45 10/100 e Wi-Fi 802.11 b/g/n"
       },
       "logoMarca": "logos/epson.png",
       "destaque": "sem-destaque"
@@ -636,15 +637,17 @@
         "fotos/1789416201212_58102.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 24 a 25 ppm preto/cor",
+        "Velocidade": "Até  34 ppm",
         "Painel": "Touch colorido de 4,3\"",
         "Resolução": "Até 4800 x 1200 dpi",
-        "Impressão Duplex": "Automática",
-        "ADF": "Capacidade para 50 folhas",
-        "Bandeja": "Principal de 250 folhas + bandeja traseira de 80 folhas",
-        "Conectividade": "Wi-Fi, RJ45 e USB 2.0"
+        "Tecnologia de impressão": "Jato de tinta de 4 cores (CMYK)",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "ADF": "Até 50 páginas e duplex por inversão",
+        "Bandeja": "250 folhas + 80 folhas traseira",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000 e WI-FI"
       },
-      "logoMarca": "logos/epson.png"
+      "logoMarca": "logos/epson.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789409798572",
@@ -659,10 +662,13 @@
       ],
       "specs": {
         "Velocidade": "Até 45 ppm",
-        "Painel": "Touch colorido + botões físicos",
+        "Painel": "Touch colorido 2.7\"+ botões físicos",
         "Resolução": "Até 600 x 1200 dpi",
-        "Impressão Duplex": "Automática (A4/Carta)",
-        "Bandeja": "Cassete frontal para 250 folhas"
+        "Tecnologia de impressão": "Jato de tinta de 4 cores (CMYK)",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "ADF": "Até 50 páginas",
+        "Bandeja": "250 folhas + 100 folhas traseira",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000 e WI-FI"
       },
       "logoMarca": "logos/canon.png",
       "destaque": "sem-destaque"
