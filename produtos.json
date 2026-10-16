@@ -510,10 +510,16 @@
       "specs": {
         "Velocidade": "Até 20/25/30 ppm",
         "Painel": "Touch colorido de 7\"",
-        "Resolução Máxima": "Até 1200 x 2400 dpi",
-        "Tamanhos de Papel": "A3, A4, B4, B5 e Ofício",
-        "Impressão Frente e Verso (Duplex)": "Automática",
-        "Conectividade": "RJ45 10/100/1000, USB 3.0 e NFC Opcional"
+        "Resolução": "Até 1200 x 2400 dpi",
+        "Processador": "1,05 GHz (Dual-Core)",
+        "Memória": "4 GB",
+        "Armazenamento": "320 GB (HD criptografado)",
+        "Primeira página": "Cerca de 6,9 segundos",
+        "ADF": "Até 110 páginas e duplex por inversão",
+        "Velocidade do Scanner (AAD)": "Até 55 ipm",
+        "Tamanhos de papel": "A3, A4, B4, B5 e Ofício",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "Conectividade": "USB 3.0, RJ45 10/100/1000 e NFC Opcional"
       },
       "logoMarca": "fotos/1788525690206_LogoXerox.png",
       "destaque": "recomendado"
