@@ -543,7 +543,8 @@
         "Armazenamento": "250 GB (HD criptografado)",
         "Bandeja": "520 folhas (2x)",
         "ADF": "Até 130 páginas e duplex de passagem única",
-        "Velocidade do Scanner (AAD)": "Até 139 ipm"
+        "Velocidade do Scanner (AAD)": "Até 139 ipm",
+        "Conectividade": "USB 3.0, RJ45 10/100/1000 e NFC Opcional"
       },
       "logoMarca": "logos/xerox.png",
       "destaque": "sem-destaque"
@@ -588,12 +589,18 @@
       "specs": {
         "Velocidade": "Até 25 ppm",
         "Painel": "Touch colorido de 7\"",
-        "Resolução": "Até 1200 x 1200 dpi",
+        "Resolução de impressão": "Até 1200 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "Processador": "Canon Custom Processor (arquitetura imageCHIP II).",
+        "Memória": "512 MB",
+        "Armazenamento": "60 GB (HD)",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000",
+        "Bandeja": "550 folhas (2x)",
         "Papel Suportado": "Até o formato A3 (incluindo A4, A5, A5R, A6, envelopes)",
-        "Gramatura de Papel": "Suporta até 300 g/m² na bandeja manual/multiuso",
-        "Conectividade": "RJ45, USB e Wi-Fi opcional"
+        "Gramatura de papel": "Suporta até 300 g/m² na bandeja manual/multiuso"
       },
-      "logoMarca": "logos/canon.png"
+      "logoMarca": "logos/canon.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789412126991",
