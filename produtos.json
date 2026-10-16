@@ -564,7 +564,7 @@
       "specs": {
         "Velocidade": "Até 43 ppm",
         "Painel": "Touch colorido de 5\"",
-        "Impressão frente e verso": "Automático (Duplex)",
+        "Impressão frente e verso (Duplex)": "Automático",
         "Resolução de Impressão": "Até 1200 x 1200 dpi",
         "Bandeja": "Padrão de 550 folhas, expansível até 2.300 folhas",
         "ADF": "Até 50 folhas, com passagem única duplex automática.",
@@ -686,10 +686,10 @@
       ],
       "specs": {
         "Velocidade": "Até 34 ppm",
-        "Resolução": "1200 x 1200 dpi",
-        "Primeira Página": "Menos de 7,1 a 7,5 segundos",
-        "Impressão Duplex (Frente e Verso)": "Automática",
-        "Bandeja": "250 folhas + Bandeja manual de 50 folhas (total de 300 folhas)",
+        "Resolução de impressão": "1200 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "Primeira página": "Menos de 7,1 a 7,5 segundos",
+        "Bandeja": "250 folhas + 50 folhas  manual",
         "Conectividade": "RJ45 10/100 e USB 2.0",
         "Processador": "350 MHz",
         "Memória": "128 MB"
@@ -712,10 +712,10 @@
       "specs": {
         "Velocidade": "Até 34 ppm",
         "Painel": "Touch colorido de 4,3\"",
-        "Resolução": "1200 x 1200 dpi",
-        "Primeira Página": "Menos de 7,1 a 7,5 segundos",
-        "Impressão Duplex (Frente e Verso)": "Automática",
-        "Bandeja": "250 folhas + Bandeja manual de 50 folhas (total de 300 folhas)",
+        "Resolução de impressão": "1200 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "Primeira página": "Menos de 7,1 a 7,5 segundos",
+        "Bandeja": "250 folhas + 50 folhas  manual",
         "Conectividade": "RJ45 10/100 e USB 2.0",
         "Processador": "350 MHz",
         "Memória": "256 MB"
@@ -1546,14 +1546,14 @@
       "specs": {
         "Velocidade": "Até 40 ppm",
         "Painel": "Touch colorido de 3,7\"",
-        "Resolução Máxima": "Até 1200 x 1200 dpi (impressão) e 1200 x 600 dpi (cópia)",
-        "Impressão Frente e Verso (Duplex)": "Automática",
-        "ADF": "70 folhas e cópia e digitalização com passagem única",
-        "Bandeja": "250 folhas + bandeja multiuso 50 folhas",
-        "Bandeja de saída": "150 folhas",
-        "Conectividade": "RJ45 10/100/1000 e USB 2.0 (com porta USB frontal para impressão/digitalização direta"
+        "Resolução de impressão": "Até 1200 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "ADF": "Até 70 folhas e duplex de passagem única",
+        "Bandeja": "250 folhas",
+        "Conectividade": "USB 2.0, RJ45 10/100/1000"
       },
-      "logoMarca": "logos/brother.png"
+      "logoMarca": "logos/brother.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1788548256418",
