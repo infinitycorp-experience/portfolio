@@ -483,11 +483,13 @@
       "specs": {
         "Velocidade": "Até 45 ppm (preto e colorido)",
         "Painel": "Touch colorido de 8\" ou 10,1\"",
+        "Processador": "1,2 GHz (Tri-Core)",
         "Memória": "6,0 GB",
         "Armazenamento": "32 GB de eMMC",
         "Resolução": "Até 1200 x 1200 dpi",
         "Velocidade do Scanner (AAD)": "Até 120 ipm",
         "ADF": "Até 100 páginas e duplex de passagem única",
+        "Bandeja": "650 folhas",
         "Conectividade": "USB 3.0, RJ45 10/100/1000"
       },
       "logoMarca": "logos/hp.png",
