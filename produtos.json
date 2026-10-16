@@ -79,12 +79,14 @@
       ],
       "specs": {
         "Velocidade": "Até 40ppm",
+        "Painel": "Botões físicos",
         "Bandeja": "500 Folhas",
-        "Impressão frente e verso (Duplex)": "Duplex automático",
-        "Primeira página": "Em cerca de 6,3 segundos",
+        "Impressão frente e verso (Duplex)": "Automático",
+        "Primeira página": "Cerca de 6,3 segundos",
         "Resolução": "Até 1200 x 1200 dpi",
         "Processador": "1,2 GHz",
-        "Memória": "256 MB"
+        "Memória": "256 MB",
+        "Conectividade": "USB 2.0, RJ45 100/1000"
       },
       "logoMarca": "fotos/1788525660810_LogoHP.png",
       "destaque": "sem-destaque"
@@ -106,7 +108,7 @@
         "Processador": "1,2GHz",
         "Memória": "512MB",
         "Resolução": "Até 1200 x 1200 dpi",
-        "Impressão frente e verso (Duplex)": "Automática",
+        "Impressão frente e verso (Duplex)": "Automático",
         "Bandeja": "550 Folhas",
         "Toner": "50.000 páginas",
         "Primeira página": "Cerca de 5,9 segundos",
@@ -202,7 +204,7 @@
         "Processador": "1,2 GHz.",
         "Memória": "512 MB",
         "Resolução": "Até 1200 x 1200 dpi",
-        "Impressão frente e verso (Duplex)": "Automática",
+        "Impressão frente e verso (Duplex)": "Automático",
         "Primeira página": "Cerca de 5,1 segundos",
         "Bandeja": "650 Folhas",
         "Toner": "50.000 páginas",
