@@ -639,7 +639,7 @@
       "specs": {
         "Velocidade": "Até  34 ppm",
         "Painel": "Touch colorido de 4,3\"",
-        "Resolução": "Até 4800 x 1200 dpi",
+        "Resolução de impressão": "Até 4800 x 1200 dpi",
         "Tecnologia de impressão": "Jato de tinta de 4 cores (CMYK)",
         "Impressão frente e verso (Duplex)": "Automático",
         "ADF": "Até 50 páginas e duplex por inversão",
@@ -663,10 +663,10 @@
       "specs": {
         "Velocidade": "Até 45 ppm",
         "Painel": "Touch colorido 2.7\"+ botões físicos",
-        "Resolução": "Até 600 x 1200 dpi",
+        "Resolução de impressão": "Até 600 x 1200 dpi",
         "Tecnologia de impressão": "Jato de tinta de 4 cores (CMYK)",
         "Impressão frente e verso (Duplex)": "Automático",
-        "ADF": "Até 50 páginas",
+        "ADF": "Até 50 páginas e duplex por inversão",
         "Bandeja": "250 folhas + 100 folhas traseira",
         "Conectividade": "USB 2.0, RJ45 10/100/1000 e WI-FI"
       },
