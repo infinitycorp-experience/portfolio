@@ -61,67 +61,67 @@
     }
     .icon-svg-lg { width: 24px; height: 24px; stroke-width: 2.2; }
     .icon-svg-sm { width: 14px; height: 14px; stroke-width: 2; }
-/* Container do Carrossel de Credibilidade */
-.trust-badges-wrapper {
-  max-width: 900px;
-  margin: 0 auto 26px;
-  overflow: hidden;
-  position: relative;
-  padding: 4px 0;
-}
 
-.trust-badges-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  gap: 14px;
-}
+    /* Container do Carrossel de Credibilidade */
+    .trust-badges-wrapper {
+      max-width: 900px;
+      margin: 0 auto 26px;
+      overflow: hidden;
+      position: relative;
+      padding: 4px 0;
+    }
 
-.trust-badge-item {
-  flex: 0 0 calc((100% - 28px) / 3); /* Exibe exatamente 3 por vez */
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #334155;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  padding: 7px 14px;
-  border-radius: 50px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
-  white-space: nowrap;
-  user-select: none;
-}
+    .trust-badges-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 14px;
+    }
 
-.trust-badge-item .dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+    .trust-badge-item {
+      flex: 0 0 calc((100% - 28px) / 3);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #334155;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 7px 14px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+      white-space: nowrap;
+      user-select: none;
+    }
 
-/* Responsivo para celular: mostra 1 por vez para não espremer */
-@media (max-width: 768px) {
-  .trust-badge-item {
-    flex: 0 0 100%;
-  }
-}
+    .trust-badge-item .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
 
-  /* Barra Superior Firme e Corporativa */
-.top-navbar {
-  background: #FFFFFF !important; /* Branco 100% sólido */
-  border-bottom: 1px solid var(--card-border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 8px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05); /* Sombra suave profissional */
-}
+    @media (max-width: 768px) {
+      .trust-badge-item {
+        flex: 0 0 100%;
+      }
+    }
+
+    /* Barra Superior Firme e Corporativa */
+    .top-navbar {
+      background: #FFFFFF !important;
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+    }
     .brand-logo { 
       display: flex; 
       align-items: center; 
@@ -132,20 +132,19 @@
     .brand-logo:hover { transform: scale(1.02); }
     .brand-logo img { height: 58px; width: auto; object-fit: contain; }
 
-    /* Menu de categorias limpo sem corte borrado */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 4px 0;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-}
-.nav-menu::-webkit-scrollbar { 
-  display: none; /* Chrome, Edge, Safari */
-}
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 4px 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-menu::-webkit-scrollbar { 
+      display: none;
+    }
 
     .nav-item {
       text-decoration: none;
@@ -216,16 +215,17 @@
     .hero p { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 24px; }
 
     .hero-actions-container {
-      max-width: 760px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       gap: 10px;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     .search-filter-wrapper {
-      flex: 1;
+      flex: 1 1 420px;
       display: flex;
       gap: 8px;
       padding: 4px;
@@ -296,6 +296,46 @@
       padding: 6px 0;
     }
 
+    /* Seletor Segmentado de Visualização */
+    .view-mode-selector {
+      display: inline-flex;
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 3px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      height: 46px;
+      align-items: center;
+    }
+    .btn-view-mode {
+      background: transparent;
+      border: none;
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 9px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-view-mode:hover {
+      color: var(--text-main);
+      background: #F8FAFC;
+    }
+    .btn-view-mode.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+    }
+    .btn-view-mode.active .icon-svg {
+      color: #FFFFFF;
+    }
+
     .btn-export-discreet {
       display: inline-flex;
       align-items: center;
@@ -323,11 +363,13 @@
 
     @media (max-width: 768px) {
       .hero-actions-container { flex-direction: column; width: 100%; }
-      .search-filter-wrapper { width: 100%; }
+      .search-filter-wrapper { width: 100%; flex: 1 1 100%; }
+      .view-mode-selector { width: 100%; justify-content: space-between; }
+      .btn-view-mode { flex: 1; justify-content: center; }
       .btn-export-discreet { width: 100%; justify-content: center; }
     }
 
-    /* Pílula Suave Centralizada (Não concorre com o botão Cotar no canto) */
+    /* Pílula Suave Centralizada de Comparador */
     .comparador-toast-sutil {
       position: fixed;
       bottom: 28px;
@@ -353,7 +395,6 @@
       transform: translateX(-50%) translateY(0) scale(1);
       pointer-events: auto;
     }
-    /* Se a barra preta de proposta também estiver ativa, sobe a pílula suavemente */
     #floatingQuoteBar.active ~ #comparadorToastSutil {
       bottom: 84px;
     }
@@ -393,7 +434,7 @@
     }
     .comparador-toast-close:hover { color: #E11D48; }
 
-    /* Modal Comparativo & Controles de Cabeçalho */
+    /* Modal Comparativo */
     #modal-comparador {
       display: none;
       position: fixed;
@@ -426,11 +467,11 @@
     }
     .modal-comp-body {
       overflow-y: auto;
-      padding: 0 20px 20px 20px; /* ZERO no topo: elimina o vão onde o texto vazava */
+      padding: 0 20px 20px 20px;
     }
     .tabela-comparacao {
       width: 100%;
-      border-collapse: separate; /* Fundamental para sticky funcionar sem falhas */
+      border-collapse: separate;
       border-spacing: 0;
     }
     .tabela-comparacao thead {
@@ -453,7 +494,7 @@
       top: 0;
       z-index: 10;
       border-bottom: 2px solid #CBD5E1;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05); /* Sombra sutil que separa o cabeçalho ao rolar */
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
     }
 
     .comp-col-actions {
@@ -615,92 +656,207 @@
       .floating-quote-btn-action { height: 36px; padding: 0 12px; font-size: 0.74rem; gap: 5px; }
     }
 
-/* Dica Flutuante Dinâmica */
-.floating-quote-hint {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1350;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--active-cat-bg, rgba(240, 249, 255, 0.92));
-  backdrop-filter: blur(12px);
-  padding: 6px 6px 6px 18px;
-  border-radius: 50px;
-  border: 1px solid var(--active-cat-border, #BAE6FD);
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px) scale(0.96);
-  pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease, background 0.4s ease, border-color 0.4s ease;
-  user-select: none;
-}
+    /* Dica Flutuante Dinâmica */
+    .floating-quote-hint {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1350;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--active-cat-bg, rgba(240, 249, 255, 0.92));
+      backdrop-filter: blur(12px);
+      padding: 6px 6px 6px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--active-cat-border, #BAE6FD);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease, background 0.4s ease, border-color 0.4s ease;
+      user-select: none;
+    }
     .floating-quote-hint.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
     .floating-quote-hint:hover { 
-  transform: translateY(-2px) scale(1.02);
-  filter: brightness(0.97);
-}
+      transform: translateY(-2px) scale(1.02);
+      filter: brightness(0.97);
+    }
 
-.floating-quote-hint .hint-lead-text { 
-  font-size: 0.82rem; 
-  font-weight: 800; 
-  color: var(--active-cat-color, #0369A1); 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 6px; 
-  transition: color 0.4s ease;
-}
+    .floating-quote-hint .hint-lead-text { 
+      font-size: 0.82rem; 
+      font-weight: 800; 
+      color: var(--active-cat-color, #0369A1); 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 6px; 
+      transition: color 0.4s ease;
+    }
 
-.floating-quote-hint .hint-button {
-  background: var(--active-cat-color, #0284C7);
-  color: #FFFFFF;
-  border: none;
-  height: 38px;
-  padding: 0 16px;
-  border-radius: 30px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
-  transition: background 0.4s ease, transform 0.2s ease;
-}
-.floating-quote-hint:hover .hint-button {
-  filter: brightness(1.1);
-  transform: scale(1.03);
-}
+    .floating-quote-hint .hint-button {
+      background: var(--active-cat-color, #0284C7);
+      color: #FFFFFF;
+      border: none;
+      height: 38px;
+      padding: 0 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+      transition: background 0.4s ease, transform 0.2s ease;
+    }
+    .floating-quote-hint:hover .hint-button {
+      filter: brightness(1.1);
+      transform: scale(1.03);
+    }
 
-    /* Grid & Cards */
+    /* Grid & Cards Principais */
     .main-content { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px 100px; }
     .section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 45px 0 22px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #E2E8F0;
-  position: relative;
-}
-.section-header::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  border-radius: 3px;
-  background: var(--primary);
-} /* <--- FALTAVA ESTA CHAVE AQUI */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 45px 0 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #E2E8F0;
+      position: relative;
+    }
+    .section-header::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--primary);
+    }
 
-.section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
-
+    .section-title { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
     .badge-count { font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: #E0F2FE; color: var(--primary); border: 1px solid #BAE6FD; }
 
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
+    /* LAYOUTS DO SELETOR: Grade (Padrão), Foco e Lista */
+    .products-grid {
+      display: grid;
+      gap: 20px;
+      transition: all 0.3s ease;
+    }
+
+    /* MODO 2: GRADE (Padronizado 2 cols mobile, 3-4 cols desktop) */
+    .products-grid.view-mode-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    @media (max-width: 640px) {
+      .products-grid.view-mode-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .products-grid.view-mode-grid .prod-card {
+        padding: 10px;
+      }
+      .products-grid.view-mode-grid .thumb-slider-container {
+        height: 150px;
+        margin-bottom: 10px;
+      }
+      .products-grid.view-mode-grid .prod-name {
+        font-size: 0.88rem;
+        min-height: 2.3em;
+        margin-bottom: 8px;
+      }
+      .products-grid.view-mode-grid .specs-list {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+      }
+      .products-grid.view-mode-grid .btn-card-cart-toggle {
+        padding: 0 8px;
+        font-size: 0.7rem;
+      }
+    }
+
+    /* MODO 1: FOCO (Card Amplo / 1 Coluna destacada) */
+    .products-grid.view-mode-focus {
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 26px;
+    }
+    @media (max-width: 640px) {
+      .products-grid.view-mode-focus {
+        grid-template-columns: 1fr;
+      }
+      .products-grid.view-mode-focus .thumb-slider-container {
+        height: 260px;
+      }
+    }
+
+    /* MODO 3: LISTA CORPORATIVA CONTÍNUA (≡) */
+    .products-grid.view-mode-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .products-grid.view-mode-list .prod-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 18px;
+    }
+    .products-grid.view-mode-list .thumb-slider-container {
+      width: 130px;
+      height: 110px;
+      min-width: 130px;
+      margin-bottom: 0;
+    }
+    .products-grid.view-mode-list .card-info-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+    .products-grid.view-mode-list .specs-list {
+      margin-top: 6px;
+      padding: 6px 10px;
+      max-width: 520px;
+    }
+    .products-grid.view-mode-list .card-actions-bar {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .products-grid.view-mode-list .prod-card {
+        padding: 10px;
+        gap: 10px;
+      }
+      .products-grid.view-mode-list .thumb-slider-container {
+        width: 85px;
+        height: 85px;
+        min-width: 85px;
+      }
+      .products-grid.view-mode-list .prod-name {
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+      }
+      .products-grid.view-mode-list .specs-list {
+        display: none;
+      }
+      .products-grid.view-mode-list .card-actions-bar {
+        gap: 6px;
+      }
+      .products-grid.view-mode-list .btn-card-cart-toggle {
+        font-size: 0.7rem;
+        padding: 0 8px;
+      }
+    }
+
     .prod-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -713,78 +869,42 @@
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     }
-    .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08); border-color: var(--primary); }
+    .prod-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08); border-color: var(--primary); }
     .prod-card.in-quote { border-color: var(--primary); background: #FAFDFE; }
 
-.destaque-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 6;
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 800;
-  line-height: 1.2;
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.14);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .destaque-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 6;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      line-height: 1.2;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.14);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .prod-card:hover .destaque-badge {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(15, 23, 42, 0.2);
+    }
 
-.prod-card:hover .destaque-badge {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.2);
-}
-
-.destaque-mais-procurado {
-  color: #9A3412;
-  background: #FFEDD5;
-  border-color: #FDBA74;
-}
-
-.destaque-novidade {
-  color: #065F46;
-  background: #D1FAE5;
-  border-color: #6EE7B7;
-}
-
-.destaque-recomendado {
-  color: #5B21B6;
-  background: #EDE9FE;
-  border-color: #C4B5FD;
-}
-
-.destaque-semi-novo {
-  color: #92400E;
-  background: #FEF3C7;
-  border-color: #FCD34D;
-}
-
-.destaque-melhor-valor {
-  color: #1D4ED8;
-  background: #DBEAFE;
-  border-color: #93C5FD;
-}
-
-.destaque-condicao-especial {
-  color: #9F1239;
-  background: #FFE4E6;
-  border-color: #FDA4AF;
-}
-
-.destaque-top {
-  color: #334155;
-  background: #F1F5F9;
-  border-color: #94A3B8;
-}
-
+    .destaque-mais-procurado { color: #9A3412; background: #FFEDD5; border-color: #FDBA74; }
+    .destaque-novidade { color: #065F46; background: #D1FAE5; border-color: #6EE7B7; }
+    .destaque-recomendado { color: #5B21B6; background: #EDE9FE; border-color: #C4B5FD; }
+    .destaque-semi-novo { color: #92400E; background: #FEF3C7; border-color: #FCD34D; }
+    .destaque-melhor-valor { color: #1D4ED8; background: #DBEAFE; border-color: #93C5FD; }
+    .destaque-condicao-especial { color: #9F1239; background: #FFE4E6; border-color: #FDA4AF; }
+    .destaque-top { color: #334155; background: #F1F5F9; border-color: #94A3B8; }
 
     .thumb-slider-container {
       position: relative;
       width: 100%;
-      height: 280px;
+      height: 260px;
       background: #FFFFFF;
       border: 1px solid #EDF2F7;
       border-radius: 12px;
@@ -824,45 +944,42 @@
     .brand-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; min-height: 24px; }
     .brand-sub { font-size: 0.74rem; font-weight: 800; text-transform: uppercase; color: var(--primary); }
     .brand-inline-logo { height: 20px; max-width: 75px; object-fit: contain; }
-    .prod-name { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
+    .prod-name { font-size: 1.12rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.25; }
 
     .specs-list {
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
-  padding: 10px 12px;
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  font-size: 0.78rem;
-}
-.spec-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.spec-row span {
-  color: #64748B;
-  font-weight: 600;
-  font-size: 0.74rem;
-}
-/* Remova ou ajuste a classe que estiliza o valor */
-.spec-row strong {
-  background: transparent;  /* Remove o fundo branco */
-  border: none;             /* Remove a borda da pílula */
-  padding: 0;               /* Remove o espaçamento de botão */
-  font-weight: 700;
-  color: var(--text-dark, #0F172A);
-  text-align: right;
-}
-
-/* Opcional: uma linha divisória bem sutil entre as linhas fica bem mais elegante */
-.spec-row:not(:last-child) {
-  border-bottom: 1px solid #E2E8F0;
-  padding-bottom: 6px;
-  margin-bottom: 6px;
-}
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 0.78rem;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .spec-row span {
+      color: #64748B;
+      font-weight: 600;
+      font-size: 0.74rem;
+    }
+    .spec-row strong {
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-weight: 700;
+      color: #0F172A;
+      text-align: right;
+    }
+    .spec-row:not(:last-child) {
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+    }
 
     .card-actions-bar {
       margin-top: 12px;
@@ -900,6 +1017,7 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      white-space: nowrap;
     }
     .btn-card-cart-toggle:hover, .btn-card-cart-toggle.active { background: var(--primary); color: #FFFFFF; }
 
@@ -1111,16 +1229,15 @@
     .print-header, .print-footer { display: none; }
 
     @keyframes badgePop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.35); }
-  100% { transform: scale(1); }
-}
+      0% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+    .floating-quote-counter.pulse-anim {
+      animation: badgePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-.floating-quote-counter.pulse-anim {
-  animation: badgePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-    /* Banner Sutil de Reengajamento / Exportação ao Subir */
+    /* Banner Sutil de Reengajamento ao Subir */
     .scroll-up-export-toast {
       position: fixed;
       top: 75px;
@@ -1141,13 +1258,11 @@
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       max-width: 420px;
     }
-
     .scroll-up-export-toast.active {
       opacity: 1;
       transform: translateY(0) scale(1);
       pointer-events: auto;
     }
-
     .scroll-up-toast-icon {
       width: 34px;
       height: 34px;
@@ -1159,24 +1274,13 @@
       justify-content: center;
       flex-shrink: 0;
     }
-
     .scroll-up-toast-content {
       display: flex;
       flex-direction: column;
       line-height: 1.3;
     }
-
-    .scroll-up-toast-content strong {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: #0F172A;
-    }
-
-    .scroll-up-toast-content span {
-      font-size: 0.72rem;
-      color: #64748B;
-    }
-
+    .scroll-up-toast-content strong { font-size: 0.8rem; font-weight: 800; color: #0F172A; }
+    .scroll-up-toast-content span { font-size: 0.72rem; color: #64748B; }
     .scroll-up-toast-btn {
       background: #0284C7;
       color: #FFFFFF;
@@ -1192,12 +1296,7 @@
       align-items: center;
       gap: 5px;
     }
-
-    .scroll-up-toast-btn:hover {
-      background: #0369A1;
-      transform: translateY(-1px);
-    }
-
+    .scroll-up-toast-btn:hover { background: #0369A1; transform: translateY(-1px); }
     .scroll-up-toast-close {
       background: transparent;
       border: none;
@@ -1209,10 +1308,7 @@
       border-radius: 4px;
       margin-left: 2px;
     }
-
-    .scroll-up-toast-close:hover {
-      color: #E11D48;
-    }
+    .scroll-up-toast-close:hover { color: #E11D48; }
 
     @media (max-width: 600px) {
       .scroll-up-export-toast {
@@ -1235,7 +1331,7 @@
         print-color-adjust: exact !important;
       }
       
-      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer, .comparador-toast-sutil, #modal-comparador { 
+      body::before, .top-navbar, .hero, .modal-overlay, .card-actions-bar, .carousel-btn, .carousel-dots, .floating-quote-bar, .floating-quote-hint, footer, .comparador-toast-sutil, #modal-comparador, .view-mode-selector { 
         display: none !important; 
       }
 
@@ -1244,7 +1340,6 @@
         max-width: 100% !important; 
       }
       
-      /* Cabeçalho compacto de impressão */
       .print-header { 
         display: flex !important; 
         align-items: center; 
@@ -1268,14 +1363,12 @@
       .section-title { font-size: 1rem !important; }
       .badge-count { font-size: 0.68rem !important; padding: 2px 8px !important; }
 
-      /* Grade: 4 colunas exatas com espaçamento enxuto */
       .products-grid { 
         display: grid !important; 
         grid-template-columns: repeat(4, 1fr) !important; 
         gap: 8px !important; 
       }
 
-      /* Card reduzido para fechar 3 linhas perfeitas no A4 */
       .prod-card { 
         break-inside: avoid !important;
         page-break-inside: avoid !important; 
@@ -1284,10 +1377,12 @@
         box-shadow: none !important; 
         padding: 8px !important; 
         background: #FFFFFF !important;
+        flex-direction: column !important;
       }
       
       .thumb-slider-container { 
         height: 95px !important; 
+        width: 100% !important;
         margin-bottom: 6px !important;
         border-radius: 8px !important;
       }
@@ -1316,6 +1411,7 @@
       }
 
       .specs-list { 
+        display: flex !important;
         padding: 5px 6px !important; 
         gap: 3px !important; 
         font-size: 0.64rem !important;
@@ -1337,7 +1433,6 @@
       .print-footer p { font-size: 0.68rem !important; margin-bottom: 2px !important; }
       .print-footer-grid { display: flex; justify-content: space-around; margin-top: 6px; font-size: 0.62rem; }
     }
-
 
     footer {
       position: relative;
@@ -1369,21 +1464,21 @@
     <h1>PORTFÓLIO DE <span> EQUIPAMENTOS 2026</span></h1>
     <p>Apresentação oficial de equipamentos do nosso portfólio.</p>
 
-<!-- Faixa Dinâmica de Credibilidade (7 Itens) -->
-<div class="trust-badges-wrapper" id="trustBadgesWrapper">
-  <div class="trust-badges-track" id="trustBadgesTrack">
-    <span class="trust-badge-item"><span class="dot" style="background:#0284C7;"></span>Equipamentos Homologados</span>
-    <span class="trust-badge-item"><span class="dot" style="background:#10B981;"></span>Redução de Custos</span>
-    <span class="trust-badge-item"><span class="dot" style="background:#F59E0B;"></span>Investimento Inteligente</span>
-    <span class="trust-badge-item"><span class="dot" style="background:#ec0000;"></span>Atendimento Ágil</span>
-    <span class="trust-badge-item"><span class="dot" style="background:#0284C7;"></span>Mais Produtividade</span>
-    <span class="trust-badge-item"><span class="dot" style="background:#10B981;"></span>Redução de Impostos</span>
-    <span class="trust-badge-item"><span class="dot" style="background:#F59E0B;"></span>Otimização de Processos</span>
-    <span class="trust-badge-item"><span class="dot" style="background:#ec0000;"></span>Operação sem Falhas</span>
-  </div>
-</div>
+    <!-- Faixa Dinâmica de Credibilidade -->
+    <div class="trust-badges-wrapper" id="trustBadgesWrapper">
+      <div class="trust-badges-track" id="trustBadgesTrack">
+        <span class="trust-badge-item"><span class="dot" style="background:#0284C7;"></span>Equipamentos Homologados</span>
+        <span class="trust-badge-item"><span class="dot" style="background:#10B981;"></span>Redução de Custos</span>
+        <span class="trust-badge-item"><span class="dot" style="background:#F59E0B;"></span>Investimento Inteligente</span>
+        <span class="trust-badge-item"><span class="dot" style="background:#ec0000;"></span>Atendimento Ágil</span>
+        <span class="trust-badge-item"><span class="dot" style="background:#0284C7;"></span>Mais Produtividade</span>
+        <span class="trust-badge-item"><span class="dot" style="background:#10B981;"></span>Redução de Impostos</span>
+        <span class="trust-badge-item"><span class="dot" style="background:#F59E0B;"></span>Otimização de Processos</span>
+        <span class="trust-badge-item"><span class="dot" style="background:#ec0000;"></span>Operação sem Falhas</span>
+      </div>
+    </div>
 
-
+    <!-- Controles Centrais: Busca, Marcas, Seletor de Visualização e Exportar -->
     <div class="hero-actions-container">
       <div class="search-filter-wrapper">
         <div class="search-box-inner">
@@ -1398,6 +1493,22 @@
             <option value="">Todas as Marcas</option>
           </select>
         </div>
+      </div>
+
+      <!-- Seletor Segmentado de Visualização -->
+      <div class="view-mode-selector" id="viewModeSelector" title="Alternar formato de visualização">
+        <button type="button" class="btn-view-mode" data-mode="focus" onclick="setViewMode('focus')" title="Modo Foco / 1 Card amplo">
+          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg>
+          <span>Foco</span>
+        </button>
+        <button type="button" class="btn-view-mode active" data-mode="grid" onclick="setViewMode('grid')" title="Modo Grade / 2 Colunas equilibradas">
+          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Grade</span>
+        </button>
+        <button type="button" class="btn-view-mode" data-mode="list" onclick="setViewMode('list')" title="Modo Lista Horizontal corrida">
+          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+          <span>Lista</span>
+        </button>
       </div>
 
       <button type="button" class="btn-export-discreet" onclick="openExportModal()" title="Exportar portfólio em PDF ou imprimir">
@@ -1437,21 +1548,21 @@
         </div>
       </div>
     </div>
-      <!-- Toast Delicado de Exportação / Scroll Up -->
-  <div class="scroll-up-export-toast" id="scrollUpExportToast">
-    <div class="scroll-up-toast-icon">
-      <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-    </div>
-    <div class="scroll-up-toast-content">
-      <strong>Precisa salvar este Portfólio?</strong>
-      <span>Escolha itens e exporte em PDF.</span>
-    </div>
-    <button type="button" class="scroll-up-toast-btn" onclick="acionarExportViaToast()">
-      <span>Baixar PDF</span>
-    </button>
-    <button type="button" class="scroll-up-toast-close" onclick="fecharExportToast()" title="Dispensar">✕</button>
-  </div>
 
+    <!-- Toast Delicado de Exportação / Scroll Up -->
+    <div class="scroll-up-export-toast" id="scrollUpExportToast">
+      <div class="scroll-up-toast-icon">
+        <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      </div>
+      <div class="scroll-up-toast-content">
+        <strong>Precisa salvar este Portfólio?</strong>
+        <span>Escolha itens e exporte em PDF.</span>
+      </div>
+      <button type="button" class="scroll-up-toast-btn" onclick="acionarExportViaToast()">
+        <span>Baixar PDF</span>
+      </button>
+      <button type="button" class="scroll-up-toast-close" onclick="fecharExportToast()" title="Dispensar">✕</button>
+    </div>
   </main>
 
   <!-- Dica Flutuante de Cotação -->
@@ -1624,7 +1735,6 @@
     </div>
   </div>
 
-  
   <!-- Modal Exportação -->
   <div class="modal-overlay" id="exportModal">
     <div class="modal-box export-modal-box">
@@ -1636,12 +1746,10 @@
         Selecione as categorias que deseja imprimir ou salvar em PDF:
       </p>
 
-<!-- BLOCO ATUALIZADO: -->
-<div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px;">
-  <button type="button" style="flex: none; font-size: 0.74rem; font-weight: 700; padding: 5px 12px; border-radius: 8px; border: 1px solid #0284C7; background: #0284C7; color: #FFFFFF; cursor: pointer; box-shadow: 0 1px 4px rgba(2, 132, 199, 0.25);" onclick="toggleAllExportCheckboxes(true)">✓ Marcar Todas</button>
-  <button type="button" class="btn-action" style="flex: none; font-size: 0.74rem; padding: 5px 12px;" onclick="toggleAllExportCheckboxes(false)">Desmarcar Todas</button>
-</div>
-
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 8px;">
+        <button type="button" style="flex: none; font-size: 0.74rem; font-weight: 700; padding: 5px 12px; border-radius: 8px; border: 1px solid #0284C7; background: #0284C7; color: #FFFFFF; cursor: pointer; box-shadow: 0 1px 4px rgba(2, 132, 199, 0.25);" onclick="toggleAllExportCheckboxes(true)">✓ Marcar Todas</button>
+        <button type="button" class="btn-action" style="flex: none; font-size: 0.74rem; padding: 5px 12px;" onclick="toggleAllExportCheckboxes(false)">Desmarcar Todas</button>
+      </div>
 
       <div class="export-categories-list" id="exportCategoriesList"></div>
 
@@ -1652,6 +1760,29 @@
           Gerar PDF / Imprimir
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- Pílula Sutil de Comparação -->
+  <div id="comparadorToastSutil" class="comparador-toast-sutil">
+    <div class="comparador-toast-texto">
+      <span>⚖️</span>
+      <span id="compToastMsg">Comparar modelos vistos?</span>
+    </div>
+    <button type="button" class="comparador-toast-btn" onclick="abrirModalComparador()">
+      Comparar
+    </button>
+    <button type="button" class="comparador-toast-close" onclick="fecharToastComparador()" title="Dispensar">✕</button>
+  </div>
+
+  <!-- Modal da Tabela Comparativa -->
+  <div id="modal-comparador" onclick="if(event.target === this) fecharModalComparador()">
+    <div class="modal-comp-content">
+      <div class="modal-comp-header">
+        <h3 style="margin: 0;">Comparativo Técnico Lado a Lado</h3>
+        <button onclick="fecharModalComparador()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+      </div>
+      <div class="modal-comp-body" id="modal-comp-tabela-wrap"></div>
     </div>
   </div>
 
@@ -1671,11 +1802,10 @@
 
 <script>
 /* ==========================================================================
-   CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA AJUSTADA
+   CONFIGURAÇÕES PRINCIPAIS & TELEMETRIA
    ========================================================================== */
 const JSON_PATH     = 'produtos.json';
 const WEB3FORMS_KEY = 'e8f03456-563e-4a72-9e74-208b73929ba8';
-
 const TELEMETRY_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyHEClDrFhwM1DBL0DSnjep3W-FZWrJKaLGVykRELisko2ajiY3KOZR_OK5PL6ot9vI/exec';
 
 const sessionStartTime = Date.now();
@@ -1686,10 +1816,28 @@ const catalogosExportados = new Set();
 const historicoCotadosNaSessao = new Set();
 let resumoSaidaDisparado = false;
 let entradaRegistrada = false;
-
-// [MUDANÇA 4] Instância global do observer do scrollspy, para poder desconectar
-// a anterior e nunca acumular observers duplicados.
 let navScrollObserver = null;
+
+/* ESTADO DE VISUALIZAÇÃO (Foco, Grade ou Lista) */
+let currentViewMode = localStorage.getItem('infinity_view_mode') || 'grid';
+
+function setViewMode(mode) {
+  currentViewMode = mode;
+  localStorage.setItem('infinity_view_mode', mode);
+
+  // Atualiza os botões visuais
+  document.querySelectorAll('#viewModeSelector .btn-view-mode').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === mode);
+  });
+
+  // Atualiza a classe de visualização em todos os containers de produtos
+  document.querySelectorAll('.products-grid').forEach(grid => {
+    grid.classList.remove('view-mode-focus', 'view-mode-grid', 'view-mode-list');
+    grid.classList.add(`view-mode-${mode}`);
+  });
+
+  sendTrackingEvent('Alterou Modo de Visualização', `Modo: ${mode}`);
+}
 
 function getNomeCategoria(catId) {
   if (!catId) return 'Geral';
@@ -1758,7 +1906,6 @@ window.addEventListener('load', () => {
 
 function formatarItemComIcone(str) {
   const s = str.toLowerCase();
-
   if (s.includes('tab') || s.includes('ipad') || s.includes('iphone') || s.includes('galaxy') || s.includes('celular') || s.includes('mobile') || s.includes('a7 lite') || s.includes('a9')) {
     return `📱 ${str}`;
   }
@@ -1777,7 +1924,6 @@ function formatarItemComIcone(str) {
   if (s.includes('print') || s.includes('hp') || s.includes('ricoh') || s.includes('canon') || s.includes('lexmark') || s.includes('epson') || s.includes('xerox') || s.includes('brother') || s.includes('kyocera') || s.includes('mono') || s.includes('color')) {
     return `🖨️ ${str}`;
   }
-
   return `📦 ${str}`;
 }
 
@@ -1785,10 +1931,7 @@ function dispararResumoSaida() {
   if (resumoSaidaDisparado) return;
 
   const tempoSegundos = Math.round((Date.now() - sessionStartTime) / 1000);
-
-  if (tempoSegundos < 3 && produtosVisualizados.size === 0 && carrinhoCotacao.size === 0) {
-    return;
-  }
+  if (tempoSegundos < 3 && produtosVisualizados.size === 0 && carrinhoCotacao.size === 0) return;
 
   resumoSaidaDisparado = true;
   const minutos = Math.max(1, Math.round(tempoSegundos / 60));
@@ -1824,15 +1967,11 @@ function dispararResumoSaida() {
 
 🫰🏻 Proposta (${textoCarrinho})`;
 
-  // [MUDANÇA 5] Rótulo agora identifica corretamente um evento de SAÍDA.
   sendTrackingEvent(`Saiu da Página (entrada às ${horaEntrada}h) ⏱️`, detalheFormatado);
 }
 
-// [MUDANÇA 5] Trocado window -> document no listener de visibilitychange.
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') {
-    dispararResumoSaida();
-  }
+  if (document.visibilityState === 'hidden') dispararResumoSaida();
 });
 window.addEventListener('pagehide', dispararResumoSaida);
 
@@ -1879,16 +2018,10 @@ const ICONS_MAP = {
   totem: `<rect x="6" y="2" width="12" height="20" rx="2"></rect><circle cx="12" cy="18" r="1"></circle><rect x="8" y="5" width="8" height="6"></rect>`,
   server: `<rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line>`,
   network: `<rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><line x1="12" y1="12" x2="12" y2="8"></line>`,
-    /* Desktop: Monitor + Gabinete torre lado a lado */
   desktop: `<rect x="2" y="4" width="12" height="10" rx="1.5"></rect><line x1="8" y1="14" x2="8" y2="18"></line><line x1="5" y1="18" x2="11" y2="18"></line><rect x="16" y="4" width="6" height="16" rx="1"></rect><line x1="19" y1="7" x2="19.01" y2="7"></line><line x1="18" y1="10" x2="20" y2="10"></line>`,
   desktops: `<rect x="2" y="4" width="12" height="10" rx="1.5"></rect><line x1="8" y1="14" x2="8" y2="18"></line><line x1="5" y1="18" x2="11" y2="18"></line><rect x="16" y="4" width="6" height="16" rx="1"></rect><line x1="19" y1="7" x2="19.01" y2="7"></line><line x1="18" y1="10" x2="20" y2="10"></line>`,
-  computer2: `<rect x="2" y="4" width="12" height="10" rx="1.5"></rect><line x1="8" y1="14" x2="8" y2="18"></line><line x1="5" y1="18" x2="11" y2="18"></line><rect x="16" y="4" width="6" height="16" rx="1"></rect><line x1="19" y1="7" x2="19.01" y2="7"></line><line x1="18" y1="10" x2="20" y2="10"></line>`,
-
-  /* Tablet: Formato horizontal widescreen corporativo */
   tablet: `<rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="18.5" y1="12" x2="18.51" y2="12"></line>`,
   tablets: `<rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="18.5" y1="12" x2="18.51" y2="12"></line>`,
-
-  
   shield: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
   menu: `<path d="M4 6h16M4 12h16M4 18h7"></path>`
 };
@@ -1958,7 +2091,7 @@ function clearSearch() {
 async function loadCatalog() {
   try {
     const response = await fetch(`${JSON_PATH}?t=${new Date().getTime()}`);
-    if (!response.ok) throw new Error('Erro ao carregar porfólio.');
+    if (!response.ok) throw new Error('Erro ao carregar portfólio.');
     const data = await response.json();
 
     if (Array.isArray(data)) {
@@ -1979,6 +2112,7 @@ async function loadCatalog() {
 
     initBrandPresetsUI();
     renderCatalog();
+    setViewMode(currentViewMode);
     atualizarBarraFlutuante();
   } catch (err) {
     console.error('Erro ao ler JSON:', err);
@@ -1997,7 +2131,6 @@ function setActiveCategoryNav(catId) {
         border: item.style.getPropertyValue('--cat-border')
       };
 
-      // Rola o menu automaticamente para manter o botão sempre no centro da visão
       item.scrollIntoView({
         behavior: 'smooth',
         inline: 'center',
@@ -2008,7 +2141,6 @@ function setActiveCategoryNav(catId) {
     }
   });
 
-  // Atualiza as cores do botão flutuante de proposta para acompanhar a categoria ativa
   const hintEl = document.getElementById('floatingQuoteHint');
   if (hintEl && activeColor && activeColor.color) {
     hintEl.style.setProperty('--active-cat-color', activeColor.color);
@@ -2017,8 +2149,6 @@ function setActiveCategoryNav(catId) {
   }
 }
 
-/* [MUDANÇA 4] SCROLLSPY — desconecta o observer anterior antes de criar um novo,
-   evitando múltiplos observers acumulados a cada renderCatalog(). */
 function initNavScrollspy() {
   const sections = document.querySelectorAll('.catalog-section');
   if (!sections.length) return;
@@ -2123,7 +2253,7 @@ function renderCatalog() {
         </h2>
         <span class="badge-count">${produtosVisiveis.length} Itens</span>
       </div>
-      <div class="products-grid" id="grid-${cat.id}"></div>
+      <div class="products-grid view-mode-${currentViewMode}" id="grid-${cat.id}"></div>
     `;
     sectionsContainer.appendChild(section);
 
@@ -2163,12 +2293,14 @@ function renderCatalog() {
           ${renderDestaqueBadge(prod.destaque)}
           ${mediaHtml}
         </div>
-        <div class="brand-header-row">
-          <span class="brand-sub">${prod.marca}</span>
-          ${logoMarcaHtml}
+        <div class="card-info-wrap">
+          <div class="brand-header-row">
+            <span class="brand-sub">${prod.marca}</span>
+            ${logoMarcaHtml}
+          </div>
+          <div class="prod-name">${prod.nome}</div>
+          <div class="specs-list">${specsHtml}</div>
         </div>
-        <div class="prod-name">${prod.nome}</div>
-        <div class="specs-list">${specsHtml}</div>
 
         <div class="card-actions-bar" onclick="event.stopPropagation()">
           <button type="button" class="btn-card-view-eye" title="Visualizar Detalhes" onclick="openProductModalDirect('${prod.id}')">
@@ -2178,7 +2310,6 @@ function renderCatalog() {
             ${isSelectedInCart ? '✓ Na Cotação' : '+ Cotar'}
           </button>
         </div>
-
       `;
       grid.appendChild(card);
     });
@@ -2199,7 +2330,7 @@ function verificarDicaFlutuante() {
   }
 }
 
-// Carrossel Automático Contínuo de Selos de Confiança (Loop Infinito)
+/* Carrossel de Selos de Confiança (Loop Infinito) */
 (function initTrustBadgesCarousel() {
   const track = document.getElementById("trustBadgesTrack");
   const wrapper = document.getElementById("trustBadgesWrapper");
@@ -2209,7 +2340,6 @@ function verificarDicaFlutuante() {
   const totalOriginal = originalChildren.length;
   if (totalOriginal === 0) return;
 
-  // Clona os primeiros 3 itens para fazer a passagem imperceptível no final
   originalChildren.slice(0, 3).forEach(item => {
     track.appendChild(item.cloneNode(true));
   });
@@ -2230,17 +2360,15 @@ function verificarDicaFlutuante() {
     currentIndex++;
     const step = getStepWidth();
 
-    // Rola sempre para a frente
     track.style.transition = "transform 0.5s ease-in-out";
     track.style.transform = `translateX(-${currentIndex * step}px)`;
 
-    // Se alcançou os itens clonados, pula de volta para o primeiro sem o cliente perceber
     if (currentIndex >= totalOriginal) {
       setTimeout(() => {
         track.style.transition = "none";
         currentIndex = 0;
         track.style.transform = "translateX(0px)";
-        void track.offsetWidth; // Força o navegador a aplicar o pulo imediato
+        void track.offsetWidth;
         isTransitioning = false;
       }, 500);
     } else {
@@ -2252,14 +2380,12 @@ function verificarDicaFlutuante() {
 
   let autoplay = setInterval(advanceSlide, 3500);
 
-  // Pausa ao passar o mouse por cima
   wrapper.addEventListener("mouseenter", () => clearInterval(autoplay));
   wrapper.addEventListener("mouseleave", () => {
     clearInterval(autoplay);
     autoplay = setInterval(advanceSlide, 3500);
   });
 
-  // Reajusta em caso de redimensionamento da janela
   window.addEventListener("resize", () => {
     track.style.transition = "none";
     track.style.transform = `translateX(-${currentIndex * getStepWidth()}px)`;
@@ -2341,11 +2467,11 @@ function limparTodoCarrinho() {
 function atualizarBarraFlutuante() {
   const floatingBar = document.getElementById('floatingQuoteBar');
   const counterEl = document.getElementById('floatingQuoteCounter');
-if (counterEl) {
-  counterEl.classList.remove('pulse-anim');
-  void counterEl.offsetWidth; // trigger reflow
-  counterEl.classList.add('pulse-anim');
-}
+  if (counterEl) {
+    counterEl.classList.remove('pulse-anim');
+    void counterEl.offsetWidth;
+    counterEl.classList.add('pulse-anim');
+  }
   const countTextEl = document.getElementById('floatingQuoteCountText');
   const count = carrinhoCotacao.size;
 
@@ -2398,8 +2524,6 @@ function toggleQuoteCatAccordion(blockEl) {
   blockEl.classList.toggle('expanded');
 }
 
-/* [MUDANÇA 6] Agora filtra categorias inativas (!cat.ativa) no início do forEach,
-   antes de montar a lista de produtos — igual ao comportamento do catálogo principal. */
 function renderQuoteModalAccordion(searchQuery = '') {
   const container = document.getElementById('quoteAccordionContainer');
   container.innerHTML = '';
@@ -2409,7 +2533,6 @@ function renderQuoteModalAccordion(searchQuery = '') {
     if (!cat.ativa) return;
 
     let prodsCat = produtos.filter(p => p.categoria === cat.id && p.ativo);
-
     if (prodsCat.length === 0) return;
 
     if (filter) {
@@ -2609,17 +2732,11 @@ function toggleCartFromModal() {
   }
 }
 
-/* ==========================================================================
-   CNPJ / RAZÃO SOCIAL
-   ========================================================================== */
+/* CNPJ / RAZÃO SOCIAL */
 let cnpjLookupRequestId = 0;
 let cnpjLookupPromise = Promise.resolve();
 let cnpjUltimoConsultado = '';
 
-// [MUDANÇA 1] Listener único de "input" no campo Empresa, registrado uma única
-// vez no carregamento do script (fora de qualquer função que roda em loop/submit).
-// Isso remove o dataset.cnpjAutofill sempre que o usuário digitar manualmente,
-// sinalizando que o nome não deve mais ser sobrescrito pela consulta automática.
 const quoteEmpresaInput = document.getElementById('quoteEmpresa');
 if (quoteEmpresaInput) {
   quoteEmpresaInput.addEventListener('input', function () {
@@ -2633,7 +2750,6 @@ function obterDigitosCNPJ(valor) {
 
 function validarCNPJ(valor) {
   const cnpj = obterDigitosCNPJ(valor);
-
   if (cnpj.length !== 14 || /^(\d)\1{13}$/.test(cnpj)) return false;
 
   const calcularDigito = (base, pesos) => {
@@ -2669,8 +2785,6 @@ function formatarCampoCNPJ(input) {
   input.value = formatado;
   input.setCustomValidity('');
 
-  // [MUDANÇA 3] Mantido o desbloqueio do campo + reset do autofill quando o
-  // CNPJ é alterado, pois um novo CNPJ invalida a razão social preenchida antes.
   const empresaInput = document.getElementById('quoteEmpresa');
   empresaInput.readOnly = false;
 
@@ -2691,16 +2805,12 @@ function aoSairDoCNPJ() {
   cnpjLookupPromise = consultarRazaoSocialCNPJ();
 }
 
-// [MUDANÇA 8] Helper de fetch com timeout, reutilizável em qualquer chamada externa.
 async function fetchComTimeout(url, options = {}, timeoutMs = 10000) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
-    return await fetch(url, {
-      ...options,
-      signal: controller.signal
-    });
+    return await fetch(url, { ...options, signal: controller.signal });
   } finally {
     clearTimeout(timeoutId);
   }
@@ -2736,32 +2846,20 @@ async function consultarRazaoSocialCNPJ() {
   status.style.color = 'var(--primary)';
 
   try {
-    // [MUDANÇA 8] Fetch agora usa timeout de 10s para não travar indefinidamente.
     const response = await fetchComTimeout(
       `https://brasilapi.com.br/api/cnpj/v1/${cnpj}`,
       { headers: { Accept: 'application/json' } },
       10000
     );
 
-    if (!response.ok) {
-      throw new Error('Não foi possível localizar esse CNPJ.');
-    }
+    if (!response.ok) throw new Error('Não foi possível localizar esse CNPJ.');
 
     const dados = await response.json();
 
-    if (
-      requestId !== cnpjLookupRequestId ||
-      obterDigitosCNPJ(input.value) !== cnpj
-    ) {
-      return;
-    }
+    if (requestId !== cnpjLookupRequestId || obterDigitosCNPJ(input.value) !== cnpj) return;
 
-    if (!dados.razao_social) {
-      throw new Error('A consulta não retornou a razão social.');
-    }
+    if (!dados.razao_social) throw new Error('A consulta não retornou a razão social.');
 
-    // [MUDANÇA 2] Só sobrescreve o campo Empresa se ele estiver vazio OU se o
-    // valor atual já veio de um autofill anterior (preserva nome digitado à mão).
     if (!empresaInput.value.trim() || empresaInput.dataset.cnpjAutofill) {
       empresaInput.value = dados.razao_social;
       empresaInput.dataset.cnpjAutofill = cnpj;
@@ -2833,10 +2931,6 @@ async function enviarCotacaoWeb3Forms(e) {
   const telefone = document.getElementById('quoteTelefone').value.trim();
   const mensagem = document.getElementById('quoteMensagem').value.trim();
 
-  // [MUDANÇA 1] REMOVIDO o addEventListener('input', ...) que estava duplicado
-  // aqui dentro. O listener agora existe uma única vez, declarado no topo do
-  // bloco de CNPJ (quoteEmpresaInput.addEventListener acima).
-
   let itensFormatados = '';
   let index = 1;
   carrinhoCotacao.forEach(item => {
@@ -2846,7 +2940,6 @@ async function enviarCotacaoWeb3Forms(e) {
     index++;
   });
 
-  // [MUDANÇA 7] Diferencia quantidade de modelos distintos vs. total de unidades.
   const totalModelos = carrinhoCotacao.size;
   const totalUnidades = [...carrinhoCotacao.values()]
     .reduce((total, item) => total + Math.max(1, Number(item.qtd) || 1), 0);
@@ -2898,31 +2991,22 @@ async function enviarCotacaoWeb3Forms(e) {
   }
 }
 
-/* ==========================================================================
-   EFEITO: GATILHO DE SUBIDA (SCROLL-UP) PARA EXPORTAÇÃO EM PDF
-   ========================================================================== */
+/* SCROLL-UP / EXPORTAÇÃO EM PDF */
 let lastScrollY = 0;
 let exportToastExibidoNestaSessao = false;
 let scrollDownMaximo = 0;
 
 function gerenciarScrollUpExport() {
-  // Também chama a dica de cotação que você já tem
   verificarDicaFlutuante();
 
   const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
   const toast = document.getElementById('scrollUpExportToast');
   if (!toast) return;
 
-  // Guarda o ponto mais profundo que o cliente desceu na página
   if (currentScrollY > scrollDownMaximo) {
     scrollDownMaximo = currentScrollY;
   }
 
-  // Regra:
-  // 1. Ele desceu pelo menos 750px (viu itens)
-  // 2. Está subindo (currentScrollY menor que lastScrollY com folga de 60px)
-  // 3. Ainda não voltou tudo pro topo (currentScrollY > 200)
-  // 4. Ainda não foi dispensado nesta sessão
   const subindoSignificativamente = (lastScrollY - currentScrollY) > 8;
 
   if (
@@ -2940,7 +3024,7 @@ function gerenciarScrollUpExport() {
 function fecharExportToast() {
   const toast = document.getElementById('scrollUpExportToast');
   if (toast) toast.classList.remove('active');
-  exportToastExibidoNestaSessao = true; // Não perturba novamente na mesma rolagem
+  exportToastExibidoNestaSessao = true;
 }
 
 function acionarExportViaToast() {
@@ -2949,8 +3033,6 @@ function acionarExportViaToast() {
   sendTrackingEvent('Clicou Dica ScrollUp PDF', 'Abriu modal via sugestão ao subir a página');
 }
 
-
-// FUNÇÃO ATUALIZADA (TODOS INICIAM DESMARCADOS):
 function openExportModal() {
   const container = document.getElementById('exportCategoriesList');
   container.innerHTML = '';
@@ -2966,7 +3048,6 @@ function openExportModal() {
   });
   document.getElementById('exportModal').classList.add('active');
 }
-
 
 function closeExportModal() {
   document.getElementById('exportModal').classList.remove('active');
@@ -3027,7 +3108,6 @@ function openProductModal(prod) {
   modalCurrentIdx = 0;
 
   const nomeCategoria = getNomeCategoria(prod.categoria);
-
   produtosVisualizados.add(`${prod.marca} ${prod.nome}`);
 
   document.getElementById('modalBrand').textContent = prod.marca;
@@ -3079,15 +3159,13 @@ function renderModalGallery() {
     `;
   }
 }
-/* ==========================================================================
-   COMPARADOR INTELIGENTE (COM GESTÃO DINÂMICA DE MODELOS)
-   ========================================================================== */
+
+/* COMPARADOR INTELIGENTE */
 let modelosInspecionados = [];
 
 function registrarInspecaoComparador(prod) {
   if (!prod || !prod.id) return;
 
-  // Se o cliente mudou para outra categoria, reinicia a lista para não misturar tipos diferentes
   if (modelosInspecionados.length > 0 && modelosInspecionados[0].categoria !== prod.categoria) {
     modelosInspecionados = [];
   }
@@ -3130,7 +3208,6 @@ function fecharModalComparador() {
   document.body.style.overflow = "auto";
 }
 
-/* Remover modelo individual */
 function removerModeloComparador(prodId) {
   modelosInspecionados = modelosInspecionados.filter(p => p.id !== prodId);
   if (modelosInspecionados.length === 0) {
@@ -3140,13 +3217,12 @@ function removerModeloComparador(prodId) {
   }
 }
 
-/* Substituir um modelo selecionado por outro do portfólio (sem duplicar na tela) */
 function trocarModeloComparador(idAntigo, idNovo) {
   if (!idNovo || idAntigo === idNovo) return;
   
   if (modelosInspecionados.some(p => p.id === idNovo)) {
     alert("Este equipamento já está sendo comparado.");
-    renderTabelaComparador(); // Restaura o select
+    renderTabelaComparador();
     return;
   }
 
@@ -3160,7 +3236,6 @@ function trocarModeloComparador(idAntigo, idNovo) {
   }
 }
 
-/* Adicionar um 3º modelo quando há apenas 2 */
 function adicionarModeloComparador(idNovo) {
   if (!idNovo) return;
   const novoProd = produtos.find(p => p.id === idNovo);
@@ -3172,7 +3247,6 @@ function adicionarModeloComparador(idNovo) {
   }
 }
 
-/* Monta e atualiza a tabela dinamicamente */
 function renderTabelaComparador() {
   const container = document.getElementById("modal-comp-tabela-wrap");
   if (!container) return;
@@ -3182,10 +3256,7 @@ function renderTabelaComparador() {
     return;
   }
 
-  // 1. Pega a categoria do primeiro produto como referência
   const categoriaFiltro = modelosInspecionados[0]?.categoria;
-
-  // 2. Filtra apenas os produtos ativos da MESMA categoria
   const opcoesProdutos = produtos
     .filter(p => p.ativo && (!categoriaFiltro || p.categoria === categoriaFiltro))
     .map(p => `<option value="${p.id}">${p.marca} - ${p.nome}</option>`)
@@ -3204,13 +3275,13 @@ function renderTabelaComparador() {
         <tr>
           <th style="width: 22%;">Especificação</th>
           ${modelosInspecionados.map(p => `
-            <th style="width: ${slotsDisponiveis > 0 ? '26%' : '26%'};">
+            <th style="width: 26%;">
               <img src="${p.imagens?.[0] || 'https://placehold.co/80x60?text=Sem+Foto'}" style="height: 55px; object-fit: contain; display: block; margin-bottom: 6px;">
               <strong>${p.nome}</strong><br>
               <small style="color: #0284C7; font-weight: 700;">${p.marca}</small>
               
               <div class="comp-col-actions">
-                <select class="comp-select-troca" onchange="trocarModeloComparador('${p.id}', this.value)" title="Substituir por outro modelo da mesma categoria">
+                <select class="comp-select-troca" onchange="trocarModeloComparador('${p.id}', this.value)" title="Substituir por outro modelo">
                   <option value="">⇄ Substituir modelo...</option>
                   ${opcoesProdutos}
                 </select>
@@ -3249,14 +3320,6 @@ function renderTabelaComparador() {
 
   html += `</tbody></table>`;
   container.innerHTML = html;
-
-  document.getElementById("modal-comparador").classList.add("aberto");
-  document.body.style.overflow = "hidden";
-}
-
-function fecharModalComparador() {
-  document.getElementById("modal-comparador").classList.remove("aberto");
-  document.body.style.overflow = "auto";
 }
 
 function changeModalSlide(step) {
@@ -3275,37 +3338,11 @@ function closeModal() {
 function closeModalOnOutsideClick(e) {
   if (e.target.id === 'productModal') closeModal();
 }
+
 window.addEventListener('DOMContentLoaded', loadCatalog);
 window.addEventListener('resize', atualizarBarraFlutuante);
 window.addEventListener('scroll', gerenciarScrollUpExport, { passive: true });
+</script>
 
-  </script>
-
-<!-- Pílula Sutil de Comparação -->
-<div id="comparadorToastSutil" class="comparador-toast-sutil">
-  <div class="comparador-toast-texto">
-    <span>⚖️</span>
-    <span id="compToastMsg">Comparar modelos vistos?</span>
-  </div>
-  <button type="button" class="comparador-toast-btn" onclick="abrirModalComparador()">
-    Comparar
-  </button>
-  <button type="button" class="comparador-toast-close" onclick="fecharToastComparador()" title="Dispensar">✕</button>
-</div>
-
-
-<!-- Modal da Tabela Lado a Lado -->
-<div id="modal-comparador" onclick="if(event.target === this) fecharModalComparador()">
-  <div class="modal-comp-content">
-    <div class="modal-comp-header">
-      <h3 style="margin: 0;">Comparativo Técnico Lado a Lado</h3>
-      <button onclick="fecharModalComparador()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
-    </div>
-    <div class="modal-comp-body" id="modal-comp-tabela-wrap">
-      <!-- Tabela gerada via JavaScript -->
-    </div>
-  </div>
-</div>
-  
 </body>
 </html>
