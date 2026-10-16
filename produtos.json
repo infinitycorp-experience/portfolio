@@ -97,11 +97,14 @@
         "fotos/1789404637254_50145t.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 43 ppm",
+        "Velocidade": "Até 45 ppm",
         "Painel": "Touch colorido de 10,9 cm (4,3\")",
+        "Processador": "1,5GHz",
+        "Memória": "512MB",
         "Resolução": "Até 1200 x 1200 dpi",
         "Impressão frente e verso (Duplex)": "Automática",
         "Bandeja": "550 Folhas",
+        "Toner": "50.000 páginas",
         "Primeira página": "Cerca de 5,9 segundos",
         "Frente e verso": "Duplex automático",
         "Conectividade": "USB 2.0, RJ45 10/100/1000"
@@ -193,6 +196,8 @@
       "specs": {
         "Velocidade": "Até 65 ppm",
         "Painel": "Touch colorido de 10,9 cm (4,3\")",
+        "Processador": "1,2 GHz.",
+        "Memória": "512 MB",
         "Resolução": "Até 1200 x 1200 dpi",
         "Impressão frente e verso (Duplex)": "Automática",
         "Primeira página": "Cerca de 5,1 segundos",
@@ -392,12 +397,15 @@
         "Velocidade": "Até 40 a 42 (ppm)",
         "Painel": "Touch colorido de 10,9 cm (4,3\")",
         "Impressão frente e verso": "Duplex automático padrão",
+        "Primeira Página": "Cerca de 6,5 segundos",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
         "Conectividade": "Portas USB e RJ45  (10/100/1000)",
         "ADF": "50 páginas e duplex de passagem única",
         "Processador": "800 MHz",
         "Memória padrão": "2 GB",
-        "Armazenamento": "16 GB de eMMC"
+        "Armazenamento": "16 GB de eMMC",
+        "Toner": "Aproximadamente 11.500 páginas",
+        "Bandeja": "350 Folhas"
       },
       "logoMarca": "logos/hp.png",
       "destaque": "mais-procurado"
@@ -414,15 +422,16 @@
         "fotos/1789405726426_52645.jpg"
       ],
       "specs": {
-        "Velocidade": "Até 43 a 48 ppm",
-        "Painel": "Touch colorido de 10\"",
-        "1ª Página": "5,9 segundos",
+        "Velocidade": "Até 43 a 45 ppm",
+        "Painel": "Touch colorido de 8\"",
+        "Primeira Página": "5,4 segundos",
         "Impressão frente e verso": "Duplex automático padrão",
-        "ADF": "Até 100 folhas",
+        "ADF": "Até 100 folhas com passagem única",
         "Conectividade": "USB 2.0 e Ethernet",
         "Processador": "1.2 GHz",
-        "Memória padrão": "1.75 GB",
-        "Rendimento do toner": "Até 23.000",
+        "Memória": "1.75 GB",
+        "Armazenamento": "16 GB eMMC",
+        "Toner": "Até 50.000",
         "Resolução de impressão": "Até 1200 x 1200 dpi"
       },
       "logoMarca": "fotos/1788533821335_LogoHP.png",
@@ -534,11 +543,18 @@
       "specs": {
         "Velocidade": "Até 43 ppm",
         "Painel": "Touch colorido de 5\"",
-        "Frente e verso": "Automático (Duplex)",
-        "Bandeja": "Padrão de 650 folhas, expansível até 2.300 folhas",
+        "Impressão frente e verso": "Automático (Duplex)",
+        "Resolução de Impressão": "Até 1200 x 1200 dpi",
+        "Bandeja": "Padrão de 550 folhas, expansível até 2.300 folhas",
+        "ADF": "Até 50 folhas, com passagem única duplex automática.",
+        "Toner": "Rendimento estimado de aproximadamente 20.500 páginas",
+        "Processador": "Dual-Core (Processador Personalizado Canon).",
+        "Memória": "1,0 GB",
+        "Armazenamento": "eMMC de 2 GB",
         "Conectividade": "RJ45 10/100/1000, Wi-Fi, Wi-Fi Direct e USB"
       },
-      "logoMarca": "logos/canon.png"
+      "logoMarca": "logos/canon.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789409489301",
