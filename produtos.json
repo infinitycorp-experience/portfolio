@@ -253,6 +253,7 @@
         "Memória": "512 MB",
         "ADF": "Até 50 páginas e duplex de passagem única",
         "Resolução de impressão": "Até 1200 x 1200 dpi",
+        "Impressão frente e verso (Duplex)": "Automático",
         "Conectividade": "USB 2.0, RJ45 10/100/1000, Wi-Fi 802.11b/g/n, Bluetooth e Wi-Fi Direct",
         "Bandeja": "350"
       },
@@ -848,14 +849,17 @@
       "specs": {
         "Tela": "24 polegadas",
         "Resolução": "WUXGA (1920 x 1200)",
+        "Brilho": "250 nits",
         "Proporção": "16:10 (oferece mais espaço vertical que o Full HD tradicional)",
         "Painel": "Tecnologia IPS (In-Plane Switching)",
-        "Taxa de Atualização": "100 Hz",
-        "Contraste Nativo": "1.500:1.",
+        "Taxa de Atualização": "Até 100 Hz",
+        "Contraste": "1.500:1.",
         "Gama de Cores": "99% sRGB",
+        "Conectividade": "1- HDMI (1.4), 1-DisplayPort 1.2 , 1-VGA e 1-USB 3.2",
         "Conforto Visual": "Tela antirreflexo e certificação TÜV"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789471087004",
@@ -878,7 +882,8 @@
         "Contraste": "1500:1.Cobertura de Cores: 99% sRGB",
         "Proteção Ocular": "Tecnologia ComfortView Plus"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789471382008",
