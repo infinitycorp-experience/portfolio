@@ -824,16 +824,21 @@
       "specs": {
         "Tela": "21,5 polegadas",
         "Resolução": "Full HD (1920 x 1080)",
-        "Atualização": "100 Hz (via HDMI)",
+        "Taxa de Atualização": "100 Hz",
+        "Proporção": "16:9",
+        "Conforto Visual": "Certificação TÜV Rheinland",
+        "Gama de Cores": "16,7 milhões de cores (72% NTSC)",
         "Painel": "VA (Alinhamento Vertical)",
+        "Ajuste de Posição": "-5° a 21°",
         "Contraste": "3.000",
-        "Brilho": "250 cd/m² (nits)",
+        "Brilho": "250 nits",
         "Tempo de Resposta": "5 ms (modo rápido) / 8 ms (modo normal)",
-        "Conectividade": "1 porta HDMI (1.4) e 1 porta VGA",
+        "Conectividade": "1-HDMI (1.4) e 1-VGA",
         "Ajustes de Posição": "Apenas ajuste de inclinação (tilt)",
         "Furação VESA": "Sim (100 x 100 mm)"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789470709050",
