@@ -882,10 +882,13 @@
         "Resolução": "Full HD (1920 x 1080)",
         "Painel": "Tecnologia IPS (In-Plane Switching), antirreflexo com dureza 3H",
         "Taxa de Atualização": "Até 100 Hz",
-        "Tempo de Resposta": "5 ms (modo rápido)",
+        "Proporção": "16:9",
+        "Gama de Cores": "16,7 milhões de cores (99% sRGB)",
+        "Tempo de Resposta": "5 ms (modo rápido) / 8 ms (modo normal)",
         "Brilho": "300 nits",
-        "Contraste": "1500:1.Cobertura de Cores: 99% sRGB",
-        "Proteção Ocular": "Tecnologia ComfortView Plus"
+        "Contraste": "1500:1",
+        "Conectividade": "1- HDMI (1.4), 1-DisplayPort 1.2 , 1-VGA e 1-USB 3.2",
+        "Conforto Visual": "ComfortView Plus (redução de luz azul) Certificação TÜV 4 estrelas"
       },
       "logoMarca": "logos/dell.png",
       "destaque": "sem-destaque"
