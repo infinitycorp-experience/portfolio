@@ -824,18 +824,16 @@
       "specs": {
         "Tela": "21,5 polegadas",
         "Resolução": "Full HD (1920 x 1080)",
-        "Taxa de Atualização": "100 Hz",
+        "Taxa de Atualização": "Até 100 Hz",
         "Proporção": "16:9",
         "Conforto Visual": "Certificação TÜV Rheinland",
         "Gama de Cores": "16,7 milhões de cores (72% NTSC)",
         "Painel": "VA (Alinhamento Vertical)",
-        "Ajuste de Posição": "-5° a 21°",
+        "Ajuste de Posição": "Apenas ajuste de inclinação (tilt)",
         "Contraste": "3.000",
         "Brilho": "250 nits",
         "Tempo de Resposta": "5 ms (modo rápido) / 8 ms (modo normal)",
-        "Conectividade": "1-HDMI (1.4) e 1-VGA",
-        "Ajustes de Posição": "Apenas ajuste de inclinação (tilt)",
-        "Furação VESA": "Sim (100 x 100 mm)"
+        "Conectividade": "1-HDMI (1.4) e 1-VGA"
       },
       "logoMarca": "logos/dell.png",
       "destaque": "sem-destaque"
@@ -855,10 +853,10 @@
         "Tela": "24 polegadas",
         "Resolução": "WUXGA (1920 x 1200)",
         "Brilho": "250 nits",
-        "Proporção": "16:10 (oferece mais espaço vertical que o Full HD tradicional)",
+        "Proporção": "16:10",
         "Painel": "Tecnologia IPS (In-Plane Switching)",
         "Taxa de Atualização": "Até 100 Hz",
-        "Contraste": "1.500:1.",
+        "Contraste": "1.500:1",
         "Gama de Cores": "99% sRGB",
         "Conectividade": "1- HDMI (1.4), 1-DisplayPort 1.2 , 1-VGA e 1-USB 3.2",
         "Conforto Visual": "Tela antirreflexo e certificação TÜV"
@@ -880,7 +878,7 @@
       "specs": {
         "Tela": "27 polegadas",
         "Resolução": "Full HD (1920 x 1080)",
-        "Painel": "Tecnologia IPS (In-Plane Switching), antirreflexo com dureza 3H",
+        "Painel": "Tecnologia IPS (In-Plane Switching), antirreflexo 3H",
         "Taxa de Atualização": "Até 100 Hz",
         "Proporção": "16:9",
         "Gama de Cores": "16,7 milhões de cores (99% sRGB)",
