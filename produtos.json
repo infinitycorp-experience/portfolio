@@ -1615,13 +1615,12 @@
         "fotos/1788548374109_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
       ],
       "specs": {
-        "Processador": "Intel Core Ultra 7 256V/258V",
-        "NPU": "47 TOPS para recursos de IA",
+        "Processador": "Intel Core Ultra 7 e NPU: 47 TOPS",
+        "Tela": "OLED 3K (2880x1800): Touch 400 nits / FHD+ (1920x1200): Sem Touch 500 nits",
         "Memória": "16/32 GB LPDDR5X (8533 MT/s)",
         "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
         "Placa de Vídeo": "Intel Arc Graphics 140V",
-        "Tela": "OLED 3K (2880x1800): Touchscreen, 400 nits / FHD+ (1920x1200): Sem toque, 500 nits",
-        "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e apenas 2 portas Thunderbolt 4 (USB-C)",
+        "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e 2 portas Thunderbolt 4 (USB-C)",
         "Sistema": "Windows 11 Pro"
       },
       "logoMarca": "logos/dell.png",
