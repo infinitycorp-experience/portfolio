@@ -273,7 +273,7 @@
       ],
       "specs": {
         "Resolução": "203 dpi",
-        "Velocidade": "Até 6 pol/s (152 mm/s)",
+        "Velocidade": "Até 6 pol (152 mm/s)",
         "Impressão": "Até 108 mm",
         "Suprimentos": "Ribbons de até 300 ou 360 metros",
         "Rolos de etiquetas": "Diâmetro de até 127 mm",
@@ -281,7 +281,8 @@
         "Conectividade": "USB padrão",
         "Opcionais": "RJ45 (10/100), Wi-Fi, Bluetooth, Serial RS232, Cortador (cutter)"
       },
-      "logoMarca": "logos/dascom.png"
+      "logoMarca": "logos/dascom.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1788541591157",
@@ -343,9 +344,10 @@
         "Processador": "Intel Core  i5 / i7- 11ª / 12ª Gen",
         "Memória RAM": "8 - 16 - 32 GB DDR4",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics"
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics)"
       },
-      "logoMarca": "fotos/1788542060469_LogoDell.png"
+      "logoMarca": "fotos/1788542060469_LogoDell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1788541836554",
@@ -931,10 +933,11 @@
         "Processador": "Intel Core  i5 / i7- 14ª Gen",
         "Memória RAM": "8 - 16 - 32 GB DDR5",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics)",
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789473015351",
@@ -952,7 +955,7 @@
         "Processador": "Intel Core  i5 / i7- 14ª Gen",
         "Memória RAM": "8 - 16 - 32 - 64 GB DDR5",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics (Suporte a placa dedicada)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics) com suporte a placa dedicada",
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
         "Gabinete": "Formato Slim (SFF - Small Form Factor)"
       },
@@ -974,11 +977,12 @@
         "Processador": "Intel Core  i5 / i7- 12ª Gen",
         "Memória RAM": "8 - 16 - 32 - 64 GB DDR4",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics (Suporte a placa dedicada)",
+        "Placa de Vídeo (GPU)": "Integrada (Intel UHD Graphics) com suporte a placa dedicada",
         "Conectividade": "USB Tipo A e C (até 10 Gb/s), HDMI e DisplayPort, RJ45 e suporte a Wi-Fi/Bluetooth",
         "Gabinete": "Padrão"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789474142888",
@@ -1082,8 +1086,8 @@
       ],
       "specs": {
         "Tela": "10,4 polegadas",
-        "Processador": "Exynos 1280 (Octa: 2x 2.4 GHz + 6x 2.0 GHz)",
         "Resolução": "WUXGA+ (2000 x 1200)",
+        "Processador": "Exynos 1280 (Octa: 2x 2.4 GHz + 6x 2.0 GHz)",
         "Armazenamento": "128 GB (MicroSD até 1 TB)",
         "Memória RAM": "4 GB",
         "Câmera Traseira": "8 MP (gravação em Full HD)",
@@ -1111,10 +1115,10 @@
       ],
       "specs": {
         "Tela": "11 polegadas",
+        "Resolução": "WUXGA (1920 x 1200)",
         "Processador": "MT8775 (Octa: 4x 2.5 GHz + 4x 2.0 GHz)",
         "Memória RAM": "6 GB",
         "Armazenamento": "128 GB (MicroSD até 2 TB)",
-        "Resolução": "WUXGA (1920 x 1200), 90 Hz",
         "Câmera Traseira": "8 MP com foco automático",
         "Câmera Frontal": "5 MP",
         "Bateria": "7.040 mAh carregamento rápido de 25W",
@@ -1136,7 +1140,7 @@
       ],
       "specs": {
         "Tela": "10,9 polegadas",
-        "Resolução": "WUXGA+ (2304 x 1440), 90 Hz",
+        "Resolução": "WUXGA+ (2304 x 1440)",
         "Processador": "Exynos 1380 (Octa: 4x 2.4 GHz + 4x 2.0 GHz)",
         "Memória RAM": "6 GB ou 8 GB",
         "Armazenamento": "128 GB ou 256 GB (MicroSD até 2 TB)",
@@ -1166,7 +1170,7 @@
       ],
       "specs": {
         "Tela": "11 polegadas",
-        "Resolução": "2.5K (2560 x 1600), 90Hz e 500 nits",
+        "Resolução": "2.5K (2560 x 1600)",
         "Processador": "MT Dimensity 6300 (Octa: 2,40 GHz)",
         "Memória RAM": "8 GB LPDDR4X",
         "Armazenamento": "128 GB ou 256 GB (MicroSD)",
@@ -1210,8 +1214,7 @@
         "fotos/1789480490560_telainterativa.png"
       ],
       "specs": {
-        "Resolução": "UHD 4K",
-        "Painel": "Touch",
+        "Resolução": "UHD 4K Touch",
         "Processador": "Core I5",
         "Armazenamento": "SSD 120GB",
         "Sistema": "Windows 11",
@@ -1233,7 +1236,7 @@
       ],
       "specs": {
         "Resolução": "203 dpi",
-        "Velocidade": "4 pol  (102 mm/s)",
+        "Velocidade": "Até 4 pol  (102 mm/s)",
         "Impressão": "4,09 pol / 104 mm",
         "Memória": "128 MB de Flash e 128 MB de SDRAM",
         "Conectividade": "USB"
@@ -1324,7 +1327,7 @@
       ],
       "specs": {
         "Resolução": "203 dpi",
-        "Velocidade": "152 mm/s (6 pol/s)",
+        "Velocidade": "Até 152 mm/s",
         "Método": "Térmica direta (não usa tinta ou ribbon)",
         "Largura": "108 mm (4,25”)",
         "Comprimento": "Até 1778 mm (70”)",
@@ -1468,13 +1471,14 @@
       ],
       "specs": {
         "Controle": "Custo, Cotas ou Equipamentos",
-        "Autenticação": "Crachá, PIN e senha",
+        "Autenticação": "Crachá, PIN e Senha",
         "Impressão Segura": "Find-Me",
         "Sustentabilidade": "Políticas ecológicas e programas de plantio de árvores",
         "Mobilidade": "Suporta impressão BYOD de celulares, tablets",
         "Atividade": "Monitora e gerencia impressão, cópia, digitalização e fax"
       },
-      "logoMarca": "logos/papercut.png"
+      "logoMarca": "logos/papercut.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789562069354",
@@ -1515,7 +1519,7 @@
       ],
       "specs": {
         "Tela": "Dynamic AMOLED 2X de 6,2\"",
-        "Processador": "Snapdragon 8 Elite (Octa: 4,47 GHz)",
+        "Processador": "Snapdragon 8 Elite",
         "Resolução": "FHD+ (1080 x 2340) de 120Hz e 2600 nits",
         "Memória RAM": "12 GB",
         "Armazenamento": "Opções de 128 GB, 256 GB ou 512 GB",
@@ -1615,8 +1619,9 @@
         "fotos/1788548374109_NOTEBOOK_DELL_XPS_13_9350_ULTRA_7.png"
       ],
       "specs": {
-        "Processador": "Intel Core Ultra 7 e NPU: 47 TOPS",
-        "Tela": "OLED 3K (2880x1800): Touch 400 nits / FHD+ (1920x1200): Sem Touch 500 nits",
+        "Processador": "Core Ultra 7 e NPU: 47 TOPS",
+        "Tela": "13\" OLED 3K (2880x1800)",
+        "Opção Tela": "Touch 400 nits / FHD+ (1920x1200): Sem Touch 500 nits",
         "Memória": "16/32 GB LPDDR5X (8533 MT/s)",
         "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
         "Placa de Vídeo": "Intel Arc Graphics 140V",
@@ -1689,7 +1694,7 @@
       ],
       "specs": {
         "Processador": "Intel Ultra 7",
-        "Tela": "15.3\" Quad HD+ 2560x1600p - 180Hz",
+        "Tela": "15.3' QHD+ (2560x1600), 180Hz",
         "Memória": "32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
         "Placa de Vídeo": "RTX 5060",
@@ -1755,7 +1760,7 @@
       ],
       "specs": {
         "Resolução": "4K UHD",
-        "Touch": "Sim, Multi-ponto (até 20 toques)",
+        "Touch": "Multi-Ponto (até 20 toques)",
         "OS": "Android Embarcado e Windows Opcional",
         "Espelhamento": "Sim,  sem fio",
         "Especificação": "Lousa digital integrada"
