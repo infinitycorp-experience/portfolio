@@ -1089,7 +1089,7 @@
         "Bateria": "7.040 mAh carregamento rápido de 15W",
         "Conectividade": "Wi-Fi, Bluetooth, GPS e opcionais com 4G",
         "Sistema Operacional": "Android 14 com interface One UI 6.1",
-        "Áudio": "Alto-falantes estéreo assinado pela AKG e suporte a Dolby Atmos",
+        "Áudio": "Alto-falantes estéreo AKG e Dolby Atmos",
         "Acessório Incluso": "Caneta S Pen"
       },
       "logoMarca": "logos/samsung.png",
@@ -1137,15 +1137,15 @@
         "Resolução": "WUXGA+ (2304 x 1440), 90 Hz",
         "Processador": "Exynos 1380 (Octa: 4x 2.4 GHz + 4x 2.0 GHz)",
         "Memória RAM": "6 GB ou 8 GB",
-        "Armazenamento": "128 GB ou 256 GB (MicroSD até 1 TB)",
-        "Câmera Traseira": "8 MP",
+        "Armazenamento": "128 GB ou 256 GB (MicroSD até 2 TB)",
+        "Câmera Traseira": "8 MP (gravação em até 4K)",
         "Câmera Frontal": "12 MP ultra-wide (larga)",
         "Conectividade": "Wi-Fi 6, Bluetooth, GPS e opcionais com 5G",
-        "Resistência": "Certificação IP68 (resistência à água e poeira, aplicável também à S Pen)",
         "Bateria": "8.000 mAh carregamento rápido de 45W",
         "Áudio": "Alto-falantes estéreo com Dolby Atmos",
-        "Acessório Incluso": "Leitor de impressão digital",
-        "Sistema Operacional": "Android com interface One UI"
+        "Acessório Incluso": "Caneta S Pen e Leitor de impressão digital",
+        "Sistema Operacional": "Android com interface One UI",
+        "Resistência": "Certificação IP68 (resistência à água e poeira, aplicável também à S Pen)"
       },
       "logoMarca": "logos/samsung.png",
       "destaque": "sem-destaque"
