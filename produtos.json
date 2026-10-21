@@ -1322,7 +1322,7 @@
         "fotos/1789499185928_isd151.jpg"
       ],
       "specs": {
-        "Resolução": "203 DPI",
+        "Resolução": "203 dpi",
         "Velocidade": "152 mm/s (6 pol/s)",
         "Método": "Térmica direta (não usa tinta ou ribbon)",
         "Largura": "108 mm (4,25”)",
@@ -1333,7 +1333,8 @@
         "Dimensões e Peso": "215 mm x 178 mm x 149,5 mm",
         "Cabeça de Impressão": "30 km (Vida útil estimada)"
       },
-      "logoMarca": "logos/isd-tech.png"
+      "logoMarca": "logos/isd-tech.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789498369617",
