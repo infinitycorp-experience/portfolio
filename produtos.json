@@ -1103,10 +1103,11 @@
         "fotos/1791475479178_a11-1.jpg"
       ],
       "specs": {
-        "Tela": "11 polegadasProcessador: MediaTek MT8775 (Octa: 4x 2.5 GHz + 4x 2.0 GHz)",
+        "Tela": "11 polegadas",
+        "Processador": "MT8775 (Octa: 4x 2.5 GHz + 4x 2.0 GHz)",
         "Memória RAM": "6 GB",
         "Armazenamento": "128 GB (MicroSD até 2 TB)",
-        "Resolução": "WUXGA (1920 x 1200), de 90 Hz",
+        "Resolução": "WUXGA (1920 x 1200), 90 Hz",
         "Câmera Traseira": "8 MP com foco automático",
         "Câmera Frontal": "5 MP",
         "Bateria": "7.040 mAh carregamento rápido de 25W",
@@ -1129,12 +1130,12 @@
       "specs": {
         "Tela": "10,9 polegadas",
         "Resolução": "WUXGA+ (2304 x 1440), 90 Hz",
-        "Processador": "Samsung Exynos 1380 (octa-core de até 2.4 GHz)",
+        "Processador": "Samsung Exynos 1380 (Octa: 2.4 GHz)",
         "Memória RAM": "6 GB ou 8 GB",
         "Armazenamento": "128 GB ou 256 GB (MicroSD até 1 TB)",
         "Câmera Traseira": "8 MP",
         "Câmera Frontal": "12 MP ultra-wide (larga)",
-        "Conectividade": "Wi-Fi 6, Bluetooth e versões opcionais com 5G / celular",
+        "Conectividade": "Wi-Fi 6, Bluetooth e opcionais com 5G",
         "Resistência": "Certificação IP68 (resistência à água e poeira, aplicável também à S Pen)",
         "Bateria": "8.000 mAh com suporte a carregamento rápido"
       },
