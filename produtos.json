@@ -1564,16 +1564,17 @@
         "fotos/1789562520919_i171.jpg"
       ],
       "specs": {
-        "Tela": "SRetina XDR OLED de 6,3\" de 120 Hz",
+        "Tela": "SRetina XDR OLED de 6,3\"",
         "Processador": "Apple A19",
-        "Resolução": "2622 x 1206",
+        "Resolução": "2622 x 1206 de 120 Hz e 3000 nits",
         "Memória RAM": "8 GB",
         "Câmeras Traseiras": "48 MP e 12 MP UltraWide",
         "Câmera Frontal": "18 MP",
-        "Bateria": "Autonomia de até 30 horas  e recarga rápida de 50% em 20 minutos",
+        "Armazanamento": "Opções de 128 GB, 256 GB e 512 GB (não expansível)",
+        "Bateria": "Até 30 horas e recarga rápida de 50% em 20 minutos",
         "Gravação de Vídeo": "Até 4K",
         "Construção": "Peso de 177 gramas",
-        "Certificação": "IP68 e Ceramic Shield 2"
+        "Resistência": "IP68 e Ceramic Shield 2"
       },
       "logoMarca": "logos/apple.png",
       "destaque": "sem-destaque"
