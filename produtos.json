@@ -1057,15 +1057,16 @@
       "specs": {
         "Tela": "8,7 polegadas",
         "Resolução": "WXGA+ (1340 x 800)",
-        "Processador": "Octa-Core (MediaTek Helio G99 de 2.2 GHz e 2 GHz)",
-        "Memória": "4 GB",
-        "Armazenamento": "64 GB (expansível com cartão MicroSD de até 1 TB)",
+        "Processador": "MT Helio G99 (Octa: 2.2 GHz e 2 GHz)",
+        "Memória RAM": "4 GB",
+        "Armazenamento": "64 GB (MicroSD até 1 TB)",
         "Câmera Traseira": "8.0 MP com foco automático",
         "Câmera Frontal": "2.0 MP",
         "Conectividade": "4G LTE, Wi-Fi (2.4G+5GHz) e Bluetooth v5.3",
         "Bateria": "5.100 mAh"
       },
-      "logoMarca": "logos/samsung.png"
+      "logoMarca": "logos/samsung.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789474955375",
@@ -1163,15 +1164,16 @@
         "fotos/1791475104482_ideatab2.jpg"
       ],
       "specs": {
-        "Processador": "MediaTek Dimensity 6300 Octa-Core (até 2,40 GHz).",
-        "Memória RAM": "8 GB LPDDR4X.",
-        "Resolução": "2.5K (2560 x 1600)",
-        "Taxa": "90Hz e brilho de 500 nits.",
-        "Armazenamento": "128 GB ou 256 GB (expansível via cartão MicroSD).",
-        "Sistema Operacional": "Android 15.",
-        "Câmeras": "Traseira de 8 MP e frontal de 5 MP.",
+        "Tela": "11 polegadas",
+        "Resolução": "2.5K (2560 x 1600), 90Hz e 500 nits",
+        "Processador": "MT Dimensity 6300 (Octa: 2,40 GHz)",
+        "Memória RAM": "8 GB LPDDR4X",
+        "Armazenamento": "128 GB ou 256 GB (MicroSD)",
+        "Sistema Operacional": "Android 15 com interface ZUI 17",
+        "Câmera Traseira": "8 MP",
+        "Câmera Frontal": "5 MP",
         "Áudio": "4 alto-falantes estéreo Dolby Atmos.",
-        "Bateria": "7.040 mAh com suporte a carregamento de 20W.",
+        "Bateria": "7.040 mAh carregamento de 20W.",
         "Conectividade": "Wi-Fi e Bluetooth 5.2."
       },
       "logoMarca": "logos/lenovo.png"
