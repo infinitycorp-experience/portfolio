@@ -1509,15 +1509,20 @@
         "fotos/1789562511969_s251.webp"
       ],
       "specs": {
-        "Tela": "AMOLED 2X de 6,2\" de 120Hz",
-        "Processador": "Snapdragon 8 Elite",
+        "Tela": "Dynamic AMOLED 2X de 6,2\"",
+        "Processador": "Snapdragon 8 Elite (Octa: 4,47 GHz)",
+        "Resolução": "FHD+ (1080 x 2340) de 120Hz e 2600 nits",
         "Memória RAM": "12 GB",
         "Armazenamento": "Opções de 128 GB, 256 GB ou 512 GB",
+        "Sistema Operacional": "Android 15 com interface One UI 7",
         "Câmeras Traseiras": "Principal de 50 MP, Ultra Wide de 12 MP e Teleobjetiva de 10 MP",
-        "Bateria": "4.000 mAh carregamento de 25W",
+        "Câmera Frontal": "12 MP (f/2.2) com gravação em 4K",
+        "Gravação de Vídeo": "Até 8K a 30 fps",
+        "Bateria": "4.000 mAh carregamento de 25W e 15 W sem fio",
         "Resistência": "Certificação IP68 contra água e poeira"
       },
-      "logoMarca": "logos/samsung.png"
+      "logoMarca": "logos/samsung.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789562202005",
