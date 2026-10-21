@@ -1492,7 +1492,7 @@
         "Memória RAM": "4 GB a 8 GB de RAM",
         "Sistema Operacional": "Android 15 com interface One UI",
         "Armazenamento": "128 GB ou 256 GB (expansível via MicroSD até 2 TB)",
-        "Câmeras Traseira": "Principal de 50 MP, Ultra Wide de 5 MP e  Macro de 2 MP",
+        "Câmeras Traseiras": "Principal de 50 MP, Ultra Wide de 5 MP e  Macro de 2 MP",
         "Câmera Frontal": "13 MP",
         "Gravação de Vídeo": "Full HD a 30 fps",
         "Bateria": "5.000 mAh com carregamento de 25 W"
@@ -1541,11 +1541,17 @@
       "specs": {
         "Tela": "Super Retina XDR OLED de 6,1\"",
         "Processador": "Apple A18",
-        "Câmeras": "Principal de 48 MP e ultrawide de 12 MP com suporte a macro",
-        "Construção": "Alumínio aeroespacial e vidro traseiro infundido com cor, protegido por Ceramic Shield",
-        "Recursos extras": "Botão de Ação, Controle de Câmera dedicado e suporte a recursos de inteligência artificial."
+        "Resolução": "2556 x 1179",
+        "Memória RAM": "8 GB",
+        "Armazenamento": "Opções de 128 GB, 256 GB e 512 GB (não expansível)",
+        "Câmeras Traseiras": "Principal de 48 MP e ultrawide de 12 MP com suporte a macro",
+        "Câmera Frontal": "12 MP TrueDepth",
+        "Bateria": "Até 22 horas",
+        "Construção": "Alumínio aeroespacial e vidro traseiro infundido com cor, com Ceramic Shield",
+        "Resistência": "Certificação IP68 contra água e poeira"
       },
-      "logoMarca": "logos/apple.png"
+      "logoMarca": "logos/apple.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789562480930",
@@ -1560,12 +1566,17 @@
       "specs": {
         "Tela": "SRetina XDR OLED de 6,3\" de 120 Hz",
         "Processador": "Apple A19",
-        "Memória RAM": "8 GB e suporte ao Apple Intelligence",
-        "Câmeras": "Traseiro dupla com sensor principal de 48 MP e ultrawide de 12 MP; câmera frontal de 18 MP",
+        "Resolução": "2622 x 1206",
+        "Memória RAM": "8 GB",
+        "Câmeras Traseiras": "48 MP e 12 MP UltraWide",
+        "Câmera Frontal": "18 MP",
         "Bateria": "Autonomia de até 30 horas  e recarga rápida de 50% em 20 minutos",
-        "Construção": "Peso de 177 gramas com certificação IP68 e Ceramic Shield 2"
+        "Gravação de Vídeo": "Até 4K",
+        "Construção": "Peso de 177 gramas",
+        "Certificação": "IP68 e Ceramic Shield 2"
       },
-      "logoMarca": "logos/apple.png"
+      "logoMarca": "logos/apple.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789468105142",
