@@ -1232,12 +1232,13 @@
       ],
       "specs": {
         "Resolução": "203 dpi / 8 pontos por mm",
-        "Velocidade": "4 pol ou 102 mm por segundo",
+        "Velocidade": "4 pol  (102 mm por segundo)",
         "Impressão": "4,09 pol / 104 mm",
         "Memória": "128 MB de Flash e 128 MB de SDRAM",
         "Conectividade": "USB"
       },
-      "logoMarca": "logos/zebra.png"
+      "logoMarca": "logos/zebra.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1788533804721",
