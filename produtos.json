@@ -1487,15 +1487,18 @@
       ],
       "specs": {
         "Tela": "Super AMOLED de 6,7\"",
-        "Processador": "Exynos 1330",
-        "Resolução": "FHD+ e 90 Hz",
-        "Memória": "4 GB a 8 GB de RAM",
+        "Processador": "Exynos 1330 (Octa)",
+        "Resolução": "Full HD+ (1080 x 2340) de 90 Hz",
+        "Memória RAM": "4 GB a 8 GB de RAM",
+        "Sistema Operacional": "Android 15 com interface One UI",
         "Armazenamento": "128 GB ou 256 GB (expansível via MicroSD até 2 TB)",
-        "Câmeras": "Traseira tripla de 50 MP (principal) + 5 MP (ultra wide) + 2 MP (macro) frontal de 13 MP",
-        "Bateria": "5.000 mAh com carregamento de 25 W",
-        "Recursos extras": "Proteção IP54 contra água e poeira, NFC para pagamentos por aproximação e ferramentas de inteligência artificial"
+        "Câmeras Traseira": "Principal de 50 MP, Ultra Wide de 5 MP e  Macro de 2 MP",
+        "Câmera Frontal": "13 MP",
+        "Gravação de Vídeo": "Full HD a 30 fps",
+        "Bateria": "5.000 mAh com carregamento de 25 W"
       },
-      "logoMarca": "logos/samsung.png"
+      "logoMarca": "logos/samsung.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789561767261",
