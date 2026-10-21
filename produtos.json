@@ -906,13 +906,15 @@
         "Tela": "24 ou 27 polegadas",
         "Resolução": "Full HD (1920 x 1080)",
         "Painel": "IPS (ângulo de visão de 178°/178°)",
-        "Taxa de atualização": "Até 100 Hz ou 120 Hz",
-        "Tempo de resposta": "5ms (GTG)",
-        "Brilho": "250 cd/m²",
-        "Contraste": "1000",
-        "Proporção de tela": "16:9"
+        "Taxa de Atualização": "Até 100 Hz ou 120 Hz",
+        "Tempo de Resposta": "5ms (GTG)",
+        "Brilho": "250 nits",
+        "Contraste": "1000:1",
+        "Proporção": "16:9",
+        "Conectividade": "1-HDMI (1.4), 1-VGA (versão 100Hz) ou 2x HDMI 1.4 (120Hz)"
       },
-      "logoMarca": "logos/samsung.png"
+      "logoMarca": "logos/samsung.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789472512754",
