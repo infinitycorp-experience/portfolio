@@ -1080,15 +1080,20 @@
       ],
       "specs": {
         "Tela": "10,4 polegadas",
+        "Processador": "Exynos 1280 (Octa: 2x 2.4 GHz + 6x 2.0 GHz)",
         "Resolução": "WUXGA+ (2000 x 1200)",
-        "Armazenamento": "128 GB (expansível via cartão microSD de até 1 TB)",
+        "Armazenamento": "128 GB (MicroSD até 1 TB)",
         "Memória RAM": "4 GB",
         "Câmera Traseira": "8 MP (gravação em Full HD)",
-        "Câmera Frontal": "5 MPBateria: 7.040 mAh",
-        "Conectividade": "Wi-Fi (e versões com opção 4G/LTE dependendo do ano/modelo específico)",
+        "Câmera Frontal": "5 MP",
+        "Bateria": "7.040 mAh carregamento rápido de 15W",
+        "Conectividade": "Wi-Fi, Bluetooth, GPS e opcionais com 4G",
+        "Sistema Operacional": "Android 14 com interface One UI 6.1",
+        "Áudio": "Alto-falantes estéreo assinado pela AKG e suporte a Dolby Atmos",
         "Acessório Incluso": "Caneta S Pen"
       },
-      "logoMarca": "logos/samsung.png"
+      "logoMarca": "logos/samsung.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1791475448625",
@@ -1112,7 +1117,7 @@
         "Câmera Frontal": "5 MP",
         "Bateria": "7.040 mAh carregamento rápido de 25W",
         "Sistema Operacional": "Android 16 com interface Samsung One UI 8",
-        "Áudio": "4alto-falantes estéreo (Quad) Dolby Atmos e entrada P2",
+        "Áudio": "4 alto-falantes estéreo (Quad) Dolby Atmos e entrada P2",
         "Conectividade": "Wi-Fi 5, Bluetooth 5.3, USB-C 2.0 e versão opcional com 5G"
       },
       "logoMarca": "logos/samsung.png"
@@ -1130,14 +1135,17 @@
       "specs": {
         "Tela": "10,9 polegadas",
         "Resolução": "WUXGA+ (2304 x 1440), 90 Hz",
-        "Processador": "Samsung Exynos 1380 (Octa: 2.4 GHz)",
+        "Processador": "Exynos 1380 (Octa: 4x 2.4 GHz + 4x 2.0 GHz)",
         "Memória RAM": "6 GB ou 8 GB",
         "Armazenamento": "128 GB ou 256 GB (MicroSD até 1 TB)",
         "Câmera Traseira": "8 MP",
         "Câmera Frontal": "12 MP ultra-wide (larga)",
-        "Conectividade": "Wi-Fi 6, Bluetooth e opcionais com 5G",
+        "Conectividade": "Wi-Fi 6, Bluetooth, GPS e opcionais com 5G",
         "Resistência": "Certificação IP68 (resistência à água e poeira, aplicável também à S Pen)",
-        "Bateria": "8.000 mAh com suporte a carregamento rápido"
+        "Bateria": "8.000 mAh carregamento rápido de 45W",
+        "Áudio": "Alto-falantes estéreo com Dolby Atmos",
+        "Acessório Incluso": "Leitor de impressão digital",
+        "Sistema Operacional": "Android com interface One UI"
       },
       "logoMarca": "logos/samsung.png",
       "destaque": "sem-destaque"
