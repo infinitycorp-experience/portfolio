@@ -180,7 +180,8 @@
         "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "8/16/32 GB DDR4 (3200 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo": "Integrada (Intel UHD Graphics"
+        "Placa de Vídeo": "Integrada (Intel UHD Graphics",
+        "Sistema": "Windows 11 Pro"
       },
       "logoMarca": "logos/dell.png",
       "destaque": "mais-procurado"
@@ -1404,7 +1405,8 @@
         "Tela": "15,6\" - Full HD (1920 x 1080)",
         "Memória": "16/32 GB DDR5 (5600 MHz)",
         "Armazenamento": "SSD NVMe M.2 de 256 GB, 512 GB ou 1 TB",
-        "Placa de Vídeo": "Integrada (Intel UHD Graphics"
+        "Placa de Vídeo": "Integrada (Intel UHD Graphics",
+        "Sistema": "Windows 11 Pro"
       },
       "logoMarca": "logos/dell.png"
     },
@@ -1574,7 +1576,7 @@
         "Bateria": "Até 30 horas e recarga rápida de 50% em 20 minutos",
         "Gravação de Vídeo": "Até 4K",
         "Construção": "Peso de 177 gramas",
-        "Resistência": "IP68 e Ceramic Shield 2"
+        "Resistência": "Certificação IP68 e Ceramic Shield 2"
       },
       "logoMarca": "logos/apple.png",
       "destaque": "sem-destaque"
@@ -1619,9 +1621,11 @@
         "Armazenamento": "SSD de 512 GB ou 1 TB NVMe PCIe Gen 4",
         "Placa de Vídeo": "Intel Arc Graphics 140V",
         "Tela": "OLED 3K (2880x1800): Touchscreen, 400 nits / FHD+ (1920x1200): Sem toque, 500 nits",
-        "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e apenas 2 portas Thunderbolt 4 (USB-C)"
+        "Conectividade": "Wi-Fi 7, Bluetooth 5.4 e apenas 2 portas Thunderbolt 4 (USB-C)",
+        "Sistema": "Windows 11 Pro"
       },
-      "logoMarca": "logos/dell.png"
+      "logoMarca": "logos/dell.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1788543206762",
@@ -1643,6 +1647,7 @@
         "Memória": "16/32/64GB DDR5  (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
         "Placa de Vídeo": "RTX 3050 / 4050 / 5050",
+        "Sistema": "Windows 11 Pro",
         "Acabamento": "Tampa em metal com abertura de até 180º e logotipo holográfico"
       },
       "logoMarca": "logos/dell.png",
@@ -1667,7 +1672,8 @@
         "Memória": "16/32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
         "Placa de Vídeo": "RTX 4050 / 5050",
-        "Acabamento": "Tampa em metal com abertura de até 180º"
+        "Acabamento": "Tampa em metal com abertura de até 180º",
+        "Sistema": "Windows 11 Pro"
       },
       "logoMarca": "logos/lenovo.png"
     },
@@ -1687,7 +1693,8 @@
         "Tela": "15.3\" Quad HD+ 2560x1600p - 180Hz",
         "Memória": "32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
-        "Placa de Vídeo": "RTX 5060"
+        "Placa de Vídeo": "RTX 5060",
+        "Sistema": "Windows 11 Pro"
       },
       "logoMarca": "logos/avell.png"
     },
@@ -1732,6 +1739,7 @@
         "Memória": "16/32/64GB DDR5 (5600 MT/s)",
         "Armazenamento": "SSD NVMe M.2 de 512 GB ou 1 TB",
         "Placa de Vídeo": "RTX 5050",
+        "Sistema": "Windows 11 Pro",
         "Acabamento": "Premium"
       },
       "logoMarca": "logos/avell.png"
