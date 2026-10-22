@@ -1863,14 +1863,15 @@
         "Resolução": "2360 x 1640",
         "Processador": "Chip A14 Bionic (CPU de 6 núcleos e GPU de 4 núcleos)",
         "Memória RAM": "4 GB",
-        "Armazenamento interno": "Versões de 64 GB ou 256 GB (sem expansão por cartão de memória)",
+        "Armazenamento": "Versões de 64 GB ou 256 GB (sem expansão por cartão de memória)",
         "Câmera Traseira": "Grande-angular de 12 MP (gravação de vídeo em 4K)",
         "Câmera Frontal": "Ultra-angular de 12 MP na paisagem",
         "Conectividade": "Porta USB-C, Wi-Fi 6 e opção Cellular (5G) em modelos específicos",
         "Segurança": "Touch ID integrado no botão superior",
         "Compatibilidade de caneta": "Suporta o Apple Pencil (USB-C) e o Apple Pencil (1ª geração via adaptador)"
       },
-      "logoMarca": "logos/apple.png"
+      "logoMarca": "logos/apple.png",
+      "destaque": "sem-destaque"
     },
     {
       "id": "prod-1789476034749",
