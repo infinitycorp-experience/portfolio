@@ -498,7 +498,7 @@
         "Conectividade": "USB 3.0, RJ45 10/100/1000"
       },
       "logoMarca": "logos/hp.png",
-      "destaque": "sem-destaque"
+      "destaque": "top"
     },
     {
       "id": "xerox-c7020",
@@ -865,7 +865,7 @@
         "Conforto Visual": "Tela antirreflexo e certificação TÜV"
       },
       "logoMarca": "logos/dell.png",
-      "destaque": "sem-destaque"
+      "destaque": "mais-procurado"
     },
     {
       "id": "prod-1789471087004",
@@ -917,7 +917,7 @@
         "Conectividade": "1-HDMI (1.4), 1-VGA (versão 100Hz) ou 2x HDMI 1.4 (120Hz)"
       },
       "logoMarca": "logos/samsung.png",
-      "destaque": "sem-destaque"
+      "destaque": "top"
     },
     {
       "id": "prod-1789472512754",
@@ -1394,7 +1394,7 @@
       "categoria": "computer",
       "marca": "Dell",
       "nome": "Dell 15",
-      "destaque": "sem-destaque",
+      "destaque": "recomendado",
       "ativo": true,
       "imagens": [
         "fotos/1791401234131_dell15.png",
