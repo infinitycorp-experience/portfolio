@@ -1866,8 +1866,8 @@
         "Armazenamento": "Versões de 64 GB ou 256 GB (sem expansão por cartão de memória)",
         "Câmera Traseira": "Grande-angular de 12 MP (gravação de vídeo em 4K)",
         "Câmera Frontal": "Ultra-angular de 12 MP na paisagem",
-        "Conectividade": "Porta USB-C, Wi-Fi 6 e opcional 5G",
-        "Segurança": "Touch ID integrado no botão superior"
+        "Bateria": "28,93 Wh (cerca de 7821 mAh) com autonomia de até 10 horas",
+        "Conectividade": "Porta USB-C, Wi-Fi 6 e opcional 5G"
       },
       "logoMarca": "logos/apple.png",
       "destaque": "sem-destaque"
