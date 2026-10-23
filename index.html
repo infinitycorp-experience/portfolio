@@ -1929,6 +1929,7 @@ function dispararResumoSaida() {
 
   resumoSaidaDisparado = true;
   const minutos = Math.max(1, Math.round(tempoSegundos / 60));
+  const horaSaida = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
   let textoVistos = '0 em detalhes';
   if (produtosVisualizados.size > 0) {
@@ -1951,7 +1952,8 @@ function dispararResumoSaida() {
   const textoCarrinho = qtdCarrinho > 0 ? `🛒 ${qtdCarrinho} modelo(s) pendente(s)` : `🛒 Carrinho finalizado vazio`;
 
   const detalheFormatado =
-`⏳ Tempo: ~${minutos} min
+`🕐 Entrou: ${horaEntrada}  →  Saiu: ${horaSaida}
+⏳ Tempo total: ~${minutos} min
 
 👀 Vistos: ${textoVistos}
 
@@ -1961,7 +1963,8 @@ function dispararResumoSaida() {
 
 🫰🏻 Proposta (${textoCarrinho})`;
 
-  sendTrackingEvent(`Saiu da Página (entrada às ${horaEntrada}h) ⏱️`, detalheFormatado);
+  // ⚠️ CORREÇÃO: nome do evento precisa conter "resumo" para o Apps Script disparar o WhatsApp
+  sendTrackingEvent('Resumo da Visita', detalheFormatado);
 }
 
 document.addEventListener('visibilitychange', () => {
